@@ -6,7 +6,6 @@
         <title>@ViewBag.Title</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
-
         @Styles.Render("~/Content/files/css-one")
         <style>
             body {
@@ -19,13 +18,9 @@
 
     </head>
     <body>
-
         @RenderBody()
-
         @Scripts.Render("~/bundles/files/scripts")
         @RenderSection("scripts", required: false)
-
-
 
     </body>
 </html>
