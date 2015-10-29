@@ -1,0 +1,32 @@
+﻿@font-face{
+	font-family: OpenSans;
+	src:url(../../fonts/OpenSans-Regular.ttf);
+}
+body{
+	padding: 0;
+	margin: 0;
+	background: #ffffff;
+	font-family: OpenSans;
+
+}
+
+#header{
+    height:500px;
+    background: rgba(26,186,154,1);
+    background: -moz-radial-gradient(center, ellipse cover, rgba(26,186,154,1) 0%, rgba(23,169,140,1) 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(26,186,154,1)), color-stop(100%, rgba(23,169,140,1)));
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(26,186,154,1) 0%, rgba(23,169,140,1) 100%);
+    background: -o-radial-gradient(center, ellipse cover, rgba(26,186,154,1) 0%, rgba(23,169,140,1) 100%);
+    background: -ms-radial-gradient(center, ellipse cover, rgba(26,186,154,1) 0%, rgba(23,169,140,1) 100%);
+    background: radial-gradient(ellipse at center, rgba(26,186,154,1) 0%, rgba(23,169,140,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1aba9a', endColorstr='#17a98c', GradientType=1 );
+}
+#logo{
+    outline:1px solid #000000;
+    text-align:center;
+}
+#menu{
+    outline:1px solid #000000;
+    line-height:45px;
+    text-align:center;
+}
