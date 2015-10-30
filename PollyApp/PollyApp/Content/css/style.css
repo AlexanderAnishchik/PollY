@@ -10,7 +10,9 @@ body{
 	font-family: OpenSans;
 
 }
-
+a{
+    color:#ffffff;
+}
 #header{
     padding-top:20px;
     color:white;
@@ -41,27 +43,67 @@ body{
 }
 .button-create{
     font-size:16px;
-    width:200px;
-    height:40px;
+    width:220px;
+    height:50px;
     font-weight:bolder;
     color:white;
     background:none;
     border:2px solid #f39c12;
     border-radius:3px;
 }
+.button-create:hover{
+    font-size:16px;
+    width:220px;
+    height:50px;
+    font-weight:bolder;
+    color:#f39c12;
+    background:rgba(255,255,255,0.7);
+    border:2px solid rgba(255,255,255,0.3);
+    border-radius:3px;
+}
 .createpoll{
     margin-top:90px;
     text-align:center;
 }
+#wrapper{
+    color:#34495e;
+    height:500px;
+}
+.iphone{
+    position:absolute;
+    top:88px;
+    left:530px;
+}
+
+
+
+
 @media all and (min-width: 1200px) { 
-    
+    .macbook{
+    text-align:center;
+}
 }
 @media all and (min-width: 768px) and (max-width: 979px) {
+    .macbook{
+    text-align:center;
+}
     .createpoll{
         margin-top:80px;
     }
 }
 @media all and (max-width: 480px) {
+    
+    .iphone{
+        text-align:center;
+        position:initial;
+    }
+    .description > p {
+        font-size:12px;
+    }
+    .description{
+        text-align:center;
+        padding-top:0px;
+    }
     #header{
         padding-top:0;
     }
@@ -72,18 +114,27 @@ body{
         text-align:center;
     }
     .createpoll{
-        margin-top:15px;
+        margin-top:10px;
     }
+    
 }
 @media all and (min-width: 481px) and (max-width: 767px) {
     
+    .iphone{
+        text-align:center;
+        position:initial;
+    }
+    .description{
+        text-align:center;
+    }
     #logo{
         text-align:center;
     }
     .authbar{
         text-align:center;
+        margin-top:10px;
     }
     .createpoll{
-        margin-top:15px;
+        margin-top:30px;
     }
 }
