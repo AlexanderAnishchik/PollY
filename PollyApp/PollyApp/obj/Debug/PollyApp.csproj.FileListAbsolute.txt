@@ -19,3 +19,4 @@ D:\Projects\Projects\Web\PollY\PollyApp\PollyApp\bin\System.Web.Helpers.xml
 D:\Projects\Projects\Web\PollY\PollyApp\PollyApp\bin\System.Web.Mvc.xml
 D:\Projects\Projects\Web\PollY\PollyApp\PollyApp\obj\Debug\PollyApp.dll
 D:\Projects\Projects\Web\PollY\PollyApp\PollyApp\obj\Debug\PollyApp.pdb
+D:\Projects\Projects\Web\PollY\PollyApp\PollyApp\obj\Debug\PollyApp.csprojResolveAssemblyReference.cache
