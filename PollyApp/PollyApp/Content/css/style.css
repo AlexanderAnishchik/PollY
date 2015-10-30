@@ -16,7 +16,7 @@ a{
 #header{
     padding-top:20px;
     color:white;
-    height:500px;
+   
     background: rgba(26,186,154,1);
     background: -moz-radial-gradient(center, ellipse cover, rgba(26,186,154,1) 0%, rgba(23,169,140,1) 100%);
     background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(26,186,154,1)), color-stop(100%, rgba(23,169,140,1)));
@@ -67,24 +67,57 @@ a{
 }
 #wrapper{
     color:#34495e;
-    height:500px;
+    
 }
 .iphone{
     position:absolute;
     top:88px;
     left:530px;
 }
-
-
-
-
+#about{
+    
+    background:#f4ffff;
+    color:#34495e;
+}
+.moreinforow{
+    margin-top:25px;
+}
+/*.moreinforow p{
+    text-align:justify;
+}*/
+.moreinfobutton{
+    height:52px;
+    width:202px;
+    background:none;
+    border:1px solid #5fceca;
+    color:#5fceca;
+    margin-bottom:25px;
+    
+}
+.icon-about[align=left]{
+    margin-right:20px;
+}
+.icon-about[align=right]{
+    margin-left:20px;
+}
+.moreinfo{
+    text-align:center;
+}
 @media all and (min-width: 1200px) { 
     .macbook{
     text-align:center;
+    }
 }
+@media all and (min-width: 980px) and (max-width: 1199px) {
+    .macbook{
+    text-align:center;
+}
+    .createpoll{
+        margin-top:80px;
+    }
 }
 @media all and (min-width: 768px) and (max-width: 979px) {
-    .macbook{
+    .ipad{
     text-align:center;
 }
     .createpoll{

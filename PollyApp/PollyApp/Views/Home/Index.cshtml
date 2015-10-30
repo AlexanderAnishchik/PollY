@@ -10,6 +10,7 @@
 
     <meta name="viewport" content="width=device-width; initial-scale=1.0">
     <title>POLLY - service for poll creating</title>
+    <script src="~/Scripts/jquery-2.1.4.js"></script>
     <link rel="stylesheet" href="~/Content/bootstrap.css" />
     <link rel="stylesheet" href="~/Content/bootstrap-theme.min.css" />
     <link rel="stylesheet" href="~/Content/css/style.css" />
@@ -48,7 +49,7 @@
         </div>
     </div>
     <div id="wrapper" class="container-fluid">
-        <div class="container" id="wrapper">
+        <div class="container" id="wrapper-block">
             <div class="row">
                 <div class="col-lg-11 col-lg-offset-1 col-md-11 description" >
                     <h1 class="hidden-xs visible-lg visible-md visible-sm">БЫСТРОТА ИСПОЛЬЗОВАНИЯ И ПОЛУЧЕНИЯ ОТВЕТОВ</h1>
@@ -58,12 +59,55 @@
             </div>
             <div class="row">
                 <div class="col-lg-12 col-lg-offset-0 col-md-12 col-md-offset-0 сol-sm-12 сol-xs-12 divices">
-                    <div class="macbook visible-sm hidden-xs visible-lg visible-md">
+                    <div class="macbook hidden-sm hidden-xs visible-lg visible-md">
                         <img src="~/Content/images/mac-830.png" />
                     </div>
-                    <div class="iphone">
+                    <div class="ipad  visible-sm hidden-xs hidden-lg hidden-md">
+                        <img src="~/Content/images/ipad.png" />
+                    </div>
+                    <div class="iphone  hidden-sm visible-xs hidden-lg hidden-md">
                         <img src="~/Content/images/iphone6.png" />
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="about" class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-11 col-lg-offset-1">
+                    <h1>ПОЧЕМУ ИМЕННО МЫ ...?</h1>
+                </div>
+            </div>
+            <div class="row moreinforow">
+                <div class="col-lg-4 col-lg-offset-1">
+                    <img src="~/Content/images/api.png" align="left" class="icon-about" />
+                    <h3>API</h3>
+                    <p><small>Мы предоставляем свое API, которое Вы можете разместить на сайте вашей компании</small> </p>
+                </div>
+                <div class="col-lg-4 col-lg-offset-2">
+                    <img src="~/Content/images/currency-icon.png" align="right" class="icon-about" />
+                    <h3 align="right">Это бесплантно</h3>
+                    <p align="right"><small>POLLY - это бесплатный сервис для создания опросов</small></p>
+                </div>
+
+            </div>
+            <div class="row moreinforow">
+                <div class="col-lg-4 col-lg-offset-1">
+                    <img src="~/Content/images/ok-shield-icon.png" align="left" class="icon-about" />
+                    <h3>Приватность</h3>
+                    <p><small>Все опросы и голосования остаются конфидециальными</small></p>
+                </div>
+                <div class="col-lg-4 col-lg-offset-2">
+                    <img src="~/Content/images/about.png" align="right" class="icon-about" />
+                    <h3 align="right">Удобство</h3>
+                    <p align="right"><small>Мы предоставляем свой простой и удобный конструктор для создания различных типов опросов</small></p>
+                </div>
+
+            </div>
+            <div class="row moreinforow">
+                <div class="col-lg-12 moreinfo">
+                    <input type="button" class="moreinfobutton" value="ПОДРОБНЕЕ" />
                 </div>
             </div>
         </div>
