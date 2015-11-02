@@ -16,7 +16,7 @@ a{
 #header{
     padding-top:20px;
     color:white;
-   
+    padding-bottom:20px;
     background: rgba(26,186,154,1);
     background: -moz-radial-gradient(center, ellipse cover, rgba(26,186,154,1) 0%, rgba(23,169,140,1) 100%);
     background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(26,186,154,1)), color-stop(100%, rgba(23,169,140,1)));
@@ -92,8 +92,13 @@ a{
     border:1px solid #5fceca;
     color:#5fceca;
     margin-bottom:25px;
-    
 }
+.moreinfobutton:hover{
+    border:1px solid #5fceca;
+    background:#5fceca;
+    color:#f4ffff;
+}
+
 .icon-about[align=left]{
     margin-right:20px;
 }
@@ -112,6 +117,9 @@ a{
     .macbook{
     text-align:center;
 }
+    .ipad{
+        text-align:center;
+    }
     .createpoll{
         margin-top:80px;
     }
@@ -123,8 +131,13 @@ a{
     .createpoll{
         margin-top:80px;
     }
+   
 }
 @media all and (max-width: 480px) {
+    .moreinfocol{
+        text-align:center;
+        border-bottom:1px dashed #34495e;
+    }
     
     .iphone{
         text-align:center;
@@ -152,7 +165,12 @@ a{
     
 }
 @media all and (min-width: 481px) and (max-width: 767px) {
-    
+    .moreinfocol{
+        text-align:center;
+    }
+    .icon-about{
+        float:none;
+    }
     .iphone{
         text-align:center;
         position:initial;
