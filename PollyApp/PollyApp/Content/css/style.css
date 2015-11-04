@@ -34,6 +34,34 @@ a{
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1aba9a', endColorstr='#17a98c', GradientType=1 );*/
 }
 
+.scroll-button{
+    margin-top:25%;
+    background:url(../images/computer147.png);
+    border:none;
+    opacity:0.5;
+    width:45px;
+    height:45px;
+    background-position:center;
+    background-repeat:no-repeat;
+    
+}
+.scroll-button:hover{
+    margin-top:25%;
+    background:url(../images/computer147.png);
+    border:none;
+    opacity:1;
+    width:45px;
+    height:45px;
+    background-position:center;
+    background-repeat:no-repeat;
+    
+}
+.scroll-button:focus{
+    border:none;
+}
+.scroll-button:active{
+    border:none;
+}
 #logo{
    
     text-align:left;
@@ -41,7 +69,7 @@ a{
 
 .header-content{
    
-    margin-top:20%;
+    margin-top:12%;
 }
 .authbar{
     
@@ -125,16 +153,22 @@ a{
     .macbook{
     text-align:center;
     }
+    .scroll-button{
+    margin-top:25%;
+}
 }
 @media all and (min-width: 980px) and (max-width: 1199px) {
     .macbook{
     text-align:center;
-}
+    }
     .ipad{
         text-align:center;
     }
     .createpoll{
         margin-top:80px;
+    }
+    .scroll-button{
+        margin-top:5em;
     }
 }
 @media all and (min-width: 768px) and (max-width: 979px) {
@@ -144,6 +178,9 @@ a{
     .createpoll{
         margin-top:80px;
     }
+    .scroll-button{
+    margin-top:25em;
+}
    
 }
 @media all and (max-width: 480px) {
@@ -201,4 +238,7 @@ a{
     .createpoll{
         margin-top:30px;
     }
+    .scroll-button{
+    margin-top:25em;
+}
 }
