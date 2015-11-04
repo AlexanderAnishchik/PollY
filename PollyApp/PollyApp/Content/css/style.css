@@ -68,7 +68,8 @@ a{
 }
 
 .header-content{
-   
+    display:inline-block;
+    vertical-align:middle;
     margin-top:12%;
 }
 .authbar{

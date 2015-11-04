@@ -1,45 +1,45 @@
 ﻿@{Layout = "~/Views/Shared/_Layout.cshtml";}
-    
+    <script src="~/Scripts/front-end/animate.js"></script>  
+    <div id="header" class="container-fluid">
+        <div class="container" id="header-block">
+            <div class="row">
+                <div class="col-lg-2 col-md-2 col-sm-3" id="logo">
+                    <img src="~/Content/images/pollylogo.png" />
+                </div>
+                <div class="col-lg-2 col-lg-offset-8 col-md-3 col-md-offset-7 col-sm-3 col-sm-offset-6 authbar">
+                    <a href="#myModal">ВХОД</a> / <a href="#">РЕГИСТРАЦИЯ</a>
+                </div>
+            </div>
+            <div class="row header-content">
        
-        <section id="header" class="container-fluid">
-            <div class="container" id="header-block">
-                <div class="row">
-                    <div class="col-lg-2 col-md-2 col-sm-3" id="logo">
-                        <img src="~/Content/images/pollylogo.png" />
-                    </div>
-                    <div class="col-lg-2 col-lg-offset-8 col-md-3 col-md-offset-7 col-sm-3 col-sm-offset-6 authbar">
-                        <a href="#">ВХОД</a> / <a href="#">РЕГИСТРАЦИЯ</a>
-                    </div>
+                <div class="col-lg-7 col-lg-offset-1 description post">
+                    <h1 class="hidden-xs visible-lg visible-md visible-sm">CОЗДАНИЕ ОПРОСОВ И АНКЕТ</h1>
+                    <h3 class="visible-xs hidden-lg hidden-md hidden-sm">CОЗДАНИЕ ОПРОСОВ И АНКЕТ</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                        sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
                 </div>
-                <div class="row header-content">
-                    <div class="col-lg-7 col-lg-offset-1 description">
-                        <h1 class="hidden-xs visible-lg visible-md visible-sm">CОЗДАНИЕ ОПРОСОВ И АНКЕТ</h1>
-                        <h3 class="visible-xs hidden-lg hidden-md hidden-sm">CОЗДАНИЕ ОПРОСОВ И АНКЕТ</h3>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                            sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
-                    </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2 col-lg-offset-7 col-md-2 col-md-offset-6 col-sm-3 col-sm-offset-5 hidden-xs visible-sm visible-md visible-lg post">
+                    <img src="~/Content/images/strelka_free.png" />
                 </div>
-                <div class="row">
-                    <div class="col-lg-2 col-lg-offset-7 col-md-2 col-md-offset-6 col-sm-3 col-sm-offset-5 hidden-xs visible-sm visible-md visible-lg">
-                        <img src="~/Content/images/strelka_free.png" />
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-4 createpoll">
-                        <input type="button" class="button-create" value="Cоздать опрос" />
-                    </div>
-                     
-                </div>
-                <div class="row  hidden-xs visible-sm visible-md visible-lg">
-                    <div class="col-lg-12 moreinfo">
-                        <a href="#wrapper"><input type="button" class="scroll-button" value="" /></a>
-                    </div>
+                <div class="col-lg-3 col-md-4 col-sm-4 createpoll post">
+                    <input type="button" class="button-create" value="Cоздать опрос" />
                 </div>
 
             </div>
-        </section>
+            <div class="row  hidden-xs visible-sm visible-md visible-lg">
+                <div class="col-lg-12 moreinfo">
+                    <a href="#wrapper"><input type="button" class="scroll-button" value="" /></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
     
     <div id="wrapper" class="container-fluid">
         <div class="container" id="wrapper-block">
@@ -52,10 +52,10 @@
             </div>
             <div class="row">
                 <div class="col-lg-12 col-lg-offset-0 col-md-12 col-md-offset-0 сol-sm-12 сol-xs-12 divices">
-                    <div class="macbook hidden-sm hidden-xs visible-lg visible-md">
+                    <div class="macbook hidden-sm hidden-xs visible-lg visible-md post last">
                         <img src="~/Content/images/mac-830.png" />
                     </div>
-                    <div class="ipad  visible-sm hidden-xs hidden-lg hidden-md">
+                    <div class="ipad  visible-sm hidden-xs hidden-lg hidden-md post">
                         <img src="~/Content/images/ipad.png" />
                     </div>
                     <div class="iphone  hidden-sm visible-xs hidden-lg hidden-md">
@@ -74,7 +74,7 @@
                 </div>
             </div>
             <div class="row moreinforow">
-                <div class="col-lg-4 col-lg-offset-1 col-md-5 col-md-offset-0 col-sm-6 col-xs-12 moreinfocol">
+                <div class="col-lg-4 col-lg-offset-1 col-md-5 col-md-offset-0 col-sm-6 col-xs-12 moreinfocol post">
                     
                     <img src="~/Content/images/api.png" align="left" class="icon-about hidden-xs" />
                     <img src="~/Content/images/api.png" class="icon-about hidden-sm hidden-md hidden-lg" />
@@ -82,7 +82,7 @@
                     <h3>API</h3>
                     <p><small>Мы предоставляем свое API, которое Вы можете разместить на сайте вашей компании</small> </p>
                 </div>
-                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-2 col-sm-6 col-xs-12 moreinfocol">
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-2 col-sm-6 col-xs-12 moreinfocol post">
                     <img src="~/Content/images/currency-icon.png" align="right" class="icon-about hidden-xs" />
                     <img src="~/Content/images/currency-icon.png" class="icon-about hidden-sm hidden-md hidden-lg" />
                     <h3 class="hidden-xs visible-lg visible-md visible-sm" align="right">Это бесплантно</h3>
@@ -93,13 +93,13 @@
 
             </div>
             <div class="row moreinforow">
-                <div class="col-lg-4 col-lg-offset-1 col-md-5 col-md-offset-0 col-sm-6 col-xs-12 moreinfocol">
+                <div class="col-lg-4 col-lg-offset-1 col-md-5 col-md-offset-0 col-sm-6 col-xs-12 moreinfocol post">
                     <img src="~/Content/images/ok-shield-icon.png" align="left" class="icon-about hidden-xs" />
                     <img src="~/Content/images/ok-shield-icon.png" class="icon-about hidden-sm hidden-md hidden-lg" />
                     <h3>Приватность</h3>
                     <p><small>Все опросы и голосования остаются конфидециальными</small></p>
                 </div>
-                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-2 col-sm-6 col-xs-12 moreinfocol">
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-2 col-sm-6 col-xs-12 moreinfocol post ">
                     <img src="~/Content/images/about.png" align="right" class="icon-about hidden-xs" />
                     <img src="~/Content/images/about.png"  class="icon-about hidden-sm hidden-md hidden-lg" />
                     <h3 class="hidden-xs visible-lg visible-md visible-sm" align="right">Удобство</h3>
@@ -110,7 +110,7 @@
 
             </div>
             <div class="row moreinforow">
-                <div class="col-lg-12 moreinfo">
+                <div class="col-lg-12 moreinfo post last">
                     <input type="button" class="moreinfobutton" value="ПОДРОБНЕЕ" />
                 </div>
             </div>
