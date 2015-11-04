@@ -138,6 +138,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="GenericRepository\IRepository.cs" />
+    <Compile Include="GenericRepository\TEntity.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1129,6 +1131,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Scripts\front-end\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

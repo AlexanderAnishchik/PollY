@@ -15,20 +15,33 @@ a{
 }
 #header{
     padding-top:20px;
+    min-height:100%;
     color:white;
     padding-bottom:20px;
-    background: rgba(26,186,154,1);
+    height: 100vh;
+    background:url(../images/bg.jpg);
+    background-position-x:center;
+    background-position-y:center;
+    background-attachment:fixed;
+    background-size:cover;
+    /*background: rgba(26,186,154,1);
     background: -moz-radial-gradient(center, ellipse cover, rgba(26,186,154,1) 0%, rgba(23,169,140,1) 100%);
     background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(26,186,154,1)), color-stop(100%, rgba(23,169,140,1)));
     background: -webkit-radial-gradient(center, ellipse cover, rgba(26,186,154,1) 0%, rgba(23,169,140,1) 100%);
     background: -o-radial-gradient(center, ellipse cover, rgba(26,186,154,1) 0%, rgba(23,169,140,1) 100%);
     background: -ms-radial-gradient(center, ellipse cover, rgba(26,186,154,1) 0%, rgba(23,169,140,1) 100%);
     background: radial-gradient(ellipse at center, rgba(26,186,154,1) 0%, rgba(23,169,140,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1aba9a', endColorstr='#17a98c', GradientType=1 );
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1aba9a', endColorstr='#17a98c', GradientType=1 );*/
 }
+
 #logo{
    
     text-align:left;
+}
+
+.header-content{
+   
+    margin-top:20%;
 }
 .authbar{
     
@@ -57,8 +70,8 @@ a{
     height:50px;
     font-weight:bolder;
     color:#f39c12;
-    background:rgba(255,255,255,0.7);
-    border:2px solid rgba(255,255,255,0.3);
+    background:rgba(255,255,255,0.3);
+    border:2px solid rgba(255,255,255,1);
     border-radius:3px;
 }
 .createpoll{
