@@ -15,20 +15,61 @@ a{
 }
 #header{
     padding-top:20px;
+    min-height:100%;
     color:white;
     padding-bottom:20px;
-    background: rgba(26,186,154,1);
+    height: 100vh;
+    background:url(../images/bg.jpg);
+    background-position-x:center;
+    background-position-y:center;
+    background-attachment:fixed;
+    background-size:cover;
+    /*background: rgba(26,186,154,1);
     background: -moz-radial-gradient(center, ellipse cover, rgba(26,186,154,1) 0%, rgba(23,169,140,1) 100%);
     background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(26,186,154,1)), color-stop(100%, rgba(23,169,140,1)));
     background: -webkit-radial-gradient(center, ellipse cover, rgba(26,186,154,1) 0%, rgba(23,169,140,1) 100%);
     background: -o-radial-gradient(center, ellipse cover, rgba(26,186,154,1) 0%, rgba(23,169,140,1) 100%);
     background: -ms-radial-gradient(center, ellipse cover, rgba(26,186,154,1) 0%, rgba(23,169,140,1) 100%);
     background: radial-gradient(ellipse at center, rgba(26,186,154,1) 0%, rgba(23,169,140,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1aba9a', endColorstr='#17a98c', GradientType=1 );
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1aba9a', endColorstr='#17a98c', GradientType=1 );*/
+}
+
+.scroll-button{
+    margin-top:25%;
+    background:url(../images/computer147.png);
+    border:none;
+    opacity:0.5;
+    width:45px;
+    height:45px;
+    background-position:center;
+    background-repeat:no-repeat;
+    
+}
+.scroll-button:hover{
+    margin-top:25%;
+    background:url(../images/computer147.png);
+    border:none;
+    opacity:1;
+    width:45px;
+    height:45px;
+    background-position:center;
+    background-repeat:no-repeat;
+    
+}
+.scroll-button:focus{
+    border:none;
+}
+.scroll-button:active{
+    border:none;
 }
 #logo{
    
     text-align:left;
+}
+
+.header-content{
+   
+    margin-top:12%;
 }
 .authbar{
     
@@ -57,8 +98,8 @@ a{
     height:50px;
     font-weight:bolder;
     color:#f39c12;
-    background:rgba(255,255,255,0.7);
-    border:2px solid rgba(255,255,255,0.3);
+    background:rgba(255,255,255,0.3);
+    border:2px solid rgba(255,255,255,1);
     border-radius:3px;
 }
 .createpoll{
@@ -112,16 +153,22 @@ a{
     .macbook{
     text-align:center;
     }
+    .scroll-button{
+    margin-top:25%;
+}
 }
 @media all and (min-width: 980px) and (max-width: 1199px) {
     .macbook{
     text-align:center;
-}
+    }
     .ipad{
         text-align:center;
     }
     .createpoll{
         margin-top:80px;
+    }
+    .scroll-button{
+        margin-top:5em;
     }
 }
 @media all and (min-width: 768px) and (max-width: 979px) {
@@ -131,6 +178,9 @@ a{
     .createpoll{
         margin-top:80px;
     }
+    .scroll-button{
+    margin-top:25em;
+}
    
 }
 @media all and (max-width: 480px) {
@@ -188,4 +238,7 @@ a{
     .createpoll{
         margin-top:30px;
     }
+    .scroll-button{
+    margin-top:25em;
+}
 }
