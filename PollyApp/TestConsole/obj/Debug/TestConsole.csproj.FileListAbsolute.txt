@@ -1,1 +1,6 @@
 F:\Polly\PollyApp\TestConsole\bin\Debug\TestConsole.exe.config
+E:\Projects\PollY\PollyApp\TestConsole\bin\Debug\TestConsole.exe.config
+E:\Projects\PollY\PollyApp\TestConsole\bin\Debug\TestConsole.exe
+E:\Projects\PollY\PollyApp\TestConsole\bin\Debug\TestConsole.pdb
+E:\Projects\PollY\PollyApp\TestConsole\obj\Debug\TestConsole.exe
+E:\Projects\PollY\PollyApp\TestConsole\obj\Debug\TestConsole.pdb
