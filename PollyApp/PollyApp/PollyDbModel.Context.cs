@@ -13,10 +13,10 @@ namespace PollyApp
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class PollyEntities : DbContext
+    public partial class PollyEntities1 : DbContext
     {
-        public PollyEntities()
-            : base("name=PollyEntities")
+        public PollyEntities1()
+            : base("name=PollyEntities1")
         {
         }
     

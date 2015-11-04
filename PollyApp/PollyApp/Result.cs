@@ -14,7 +14,7 @@ namespace PollyApp
     
     public partial class Result
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public int QuestionId { get; set; }
         public int AnswerId { get; set; }
         public int ProjectId { get; set; }

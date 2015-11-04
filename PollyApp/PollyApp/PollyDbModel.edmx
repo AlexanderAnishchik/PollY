@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Answer" Type="nvarchar(max)" Nullable="false" />
           <Property Name="QuestionId" Type="int" Nullable="false" />
         </EntityType>
@@ -17,18 +17,18 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="CreatedOn" Type="datetime" />
           <Property Name="ModifiedOn" Type="datetime" />
           <Property Name="UserId" Type="int" Nullable="false" />
-          <Property Name="TypeId" Type="int" Nullable="false" />
+          <Property Name="TypeId" Type="int" />
         </EntityType>
         <EntityType Name="Question">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Question" Type="nvarchar(max)" Nullable="false" />
           <Property Name="ProjectId" Type="int" Nullable="false" />
         </EntityType>
@@ -36,7 +36,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="QuestionId" Type="int" Nullable="false" />
           <Property Name="AnswerId" Type="int" Nullable="false" />
           <Property Name="ProjectId" Type="int" Nullable="false" />
@@ -56,12 +56,12 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
           <Property Name="LastName" Type="nvarchar" MaxLength="50" />
-          <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Salt" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="Salt" Type="nvarchar" MaxLength="50" />
           <Property Name="Logo" Type="nvarchar(max)" />
           <Property Name="PermissionId" Type="int" Nullable="false" />
         </EntityType>
@@ -69,7 +69,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="LevelPermission" Type="int" Nullable="false" />
         </EntityType>
@@ -203,7 +203,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Answer1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="QuestionId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Question" Relationship="Self.FK_Answer_Question" FromRole="Answer" ToRole="Question" />
@@ -213,12 +213,12 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CreatedOn" Type="DateTime" Precision="3" />
           <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="TypeId" Type="Int32" Nullable="false" />
+          <Property Name="TypeId" Type="Int32" />
           <NavigationProperty Name="User" Relationship="Self.FK_Project_User" FromRole="Project" ToRole="User" />
           <NavigationProperty Name="Results" Relationship="Self.FK_Result_Project" FromRole="Project" ToRole="Result" />
         </EntityType>
@@ -226,7 +226,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Question1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ProjectId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Answers" Relationship="Self.FK_Answer_Question" FromRole="Question" ToRole="Answer" />
@@ -236,7 +236,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="QuestionId" Type="Int32" Nullable="false" />
           <Property Name="AnswerId" Type="Int32" Nullable="false" />
           <Property Name="ProjectId" Type="Int32" Nullable="false" />
@@ -260,12 +260,12 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Salt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Salt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Logo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="PermissionId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Projects" Relationship="Self.FK_Project_User" FromRole="User" ToRole="Project" />
@@ -276,7 +276,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="LevelPermission" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Users" Relationship="Self.FK_User_UserPermission" FromRole="UserPermission" ToRole="User" />
@@ -365,7 +365,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="PollyEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="PollyEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Answers" EntityType="Self.Answer" />
           <EntitySet Name="Projects" EntityType="Self.Project" />
           <EntitySet Name="Questions" EntityType="Self.Question" />
@@ -407,7 +407,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="PollyModelStoreContainer" CdmEntityContainer="PollyEntities">
+        <EntityContainerMapping StorageEntityContainer="PollyModelStoreContainer" CdmEntityContainer="PollyEntities1">
           <EntitySetMapping Name="Answers">
             <EntityTypeMapping TypeName="PollyModel.Answer">
               <MappingFragment StoreEntitySet="Answer">
