@@ -7,14 +7,14 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PollyApp
+namespace PollyApp.EFModel
 {
     using System;
     using System.Collections.Generic;
     
     public partial class Result
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public int QuestionId { get; set; }
         public int AnswerId { get; set; }
         public int ProjectId { get; set; }

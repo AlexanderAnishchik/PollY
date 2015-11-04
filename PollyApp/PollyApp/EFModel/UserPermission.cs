@@ -7,33 +7,24 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PollyApp
+namespace PollyApp.EFModel
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class UserPermission
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
+        public UserPermission()
         {
-            this.Projects = new HashSet<Project>();
-            this.Results = new HashSet<Result>();
+            this.Users = new HashSet<User>();
         }
     
         public int Id { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public string Salt { get; set; }
-        public string Logo { get; set; }
-        public int PermissionId { get; set; }
+        public string Name { get; set; }
+        public int LevelPermission { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Project> Projects { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Result> Results { get; set; }
-        public virtual UserPermission UserPermission { get; set; }
+        public virtual ICollection<User> Users { get; set; }
     }
 }
