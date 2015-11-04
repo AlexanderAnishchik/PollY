@@ -7,25 +7,22 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PollyApp
+namespace PollyApp.EFModel
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Answer
+    public partial class Result
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Answer()
-        {
-            this.Results = new HashSet<Result>();
-        }
-    
         public int Id { get; set; }
-        public string Answer1 { get; set; }
         public int QuestionId { get; set; }
+        public int AnswerId { get; set; }
+        public int ProjectId { get; set; }
+        public int UserId { get; set; }
     
+        public virtual Answer Answer { get; set; }
+        public virtual Project Project { get; set; }
         public virtual Question Question { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Result> Results { get; set; }
+        public virtual User User { get; set; }
     }
 }

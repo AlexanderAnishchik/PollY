@@ -7,16 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PollyApp
+namespace PollyApp.EFModel
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class PollyEntities1 : DbContext
+    public partial class PollyDbEntities : DbContext
     {
-        public PollyEntities1()
-            : base("name=PollyEntities1")
+        public PollyDbEntities()
+            : base("name=PollyDbEntities")
         {
         }
     

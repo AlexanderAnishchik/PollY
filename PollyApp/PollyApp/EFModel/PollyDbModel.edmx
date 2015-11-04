@@ -365,7 +365,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="PollyEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="PollyDbEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Answers" EntityType="Self.Answer" />
           <EntitySet Name="Projects" EntityType="Self.Project" />
           <EntitySet Name="Questions" EntityType="Self.Question" />
@@ -407,7 +407,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="PollyModelStoreContainer" CdmEntityContainer="PollyEntities1">
+        <EntityContainerMapping StorageEntityContainer="PollyModelStoreContainer" CdmEntityContainer="PollyDbEntities">
           <EntitySetMapping Name="Answers">
             <EntityTypeMapping TypeName="PollyModel.Answer">
               <MappingFragment StoreEntitySet="Answer">

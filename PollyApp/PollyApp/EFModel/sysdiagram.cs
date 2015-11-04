@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PollyApp
+namespace PollyApp.EFModel
 {
     using System;
     using System.Collections.Generic;

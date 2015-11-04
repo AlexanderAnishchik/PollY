@@ -166,7 +166,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="PollyEntities1" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="PollyDbEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Answers" EntityType="Self.Answer" />
     <EntitySet Name="Projects" EntityType="Self.Project" />
     <EntitySet Name="Questions" EntityType="Self.Question" />

@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using PollyApp.EFModel;
 using System.Reflection;
 
 namespace PollyApp.GenericRepository
 {
     public class Repository
     {
-        public PollyEntities Context { get; set; }
+        public PollyDbEntities Context { get; set; }
 
         public Repository()
         {
-            Context = new PollyEntities();
+            Context = new PollyDbEntities();
         }
 
         public IEnumerable<TEntity> GetListRecords<TEntity>() where TEntity : class
