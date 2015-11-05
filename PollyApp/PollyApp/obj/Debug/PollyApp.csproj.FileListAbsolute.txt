@@ -167,4 +167,3 @@ D:\Projects\Projects\Web\PollY\PollyApp\PollyApp\obj\Debug\PollyApp.csprojResolv
 D:\Projects\Projects\Web\PollY\PollyApp\PollyApp\obj\Debug\PollyApp.dll
 D:\Projects\Projects\Web\PollY\PollyApp\PollyApp\obj\Debug\PollyApp.pdb
 E:\Projects\PollY\PollyApp\PollyApp\obj\Debug\PollyApp.csprojResolveAssemblyReference.cache
-E:\Projects\PollY\PollyApp\PollyApp\bin\PollyApp.dll.config
