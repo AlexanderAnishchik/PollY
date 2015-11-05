@@ -33,7 +33,9 @@ a{
     background: radial-gradient(ellipse at center, rgba(26,186,154,1) 0%, rgba(23,169,140,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1aba9a', endColorstr='#17a98c', GradientType=1 );*/
 }
+#menu{
 
+}
 .scroll-button{
     margin-top:25%;
     background:url(../images/computer147.png);
@@ -62,8 +64,11 @@ a{
 .scroll-button:active{
     border:none;
 }
+.right-menu{
+    line-height:50px;
+}
 #logo{
-   
+    margin-top:-12px;
     text-align:left;
 }
 
