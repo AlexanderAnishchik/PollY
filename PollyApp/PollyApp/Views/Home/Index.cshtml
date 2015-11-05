@@ -1,5 +1,81 @@
-﻿@{Layout = "~/Views/Shared/_Layout.cshtml";}
+﻿@{Layout= "~/Views/Shared/_Layout.cshtml";}
     <script src="~/Scripts/front-end/animate.js"></script>  
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/bootstrap-modal.js"></script>
+
+
+
+    <!--AUTH MODAL BLOCK -->
+    <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">SIGN IN</h4>
+                </div>
+                <form action="" method="POST">
+                    <div class="modal-body">
+                        <div class="input-group input-group-lg textbox">
+                            <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/email.png" /></span>
+                            <input type="email" class="form-control" placeholder="E-mail" aria-describedby="sizing-addon1">
+                        </div>
+                        <div class="input-group input-group-lg textbox">
+                            <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/password.png" /></span>
+                            <input type="password" class="form-control" placeholder="Password" aria-describedby="sizing-addon1">
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <small>If you don't have account, you can register</small>
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#register" data-dismiss="modal">SIGN UP</button>
+                        <button type="submit" class="btn btn-default">SIGN IN</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+     <!--REGISTER MODAL BLOCK -->
+    <div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">SIGN UP</h4>
+                </div>
+                <form action="" method="POST">
+                    <div class="modal-body">
+                        <div class="input-group input-group-lg textbox">
+                            <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/user.png" /></span>
+                            <input type="text" class="form-control" placeholder="First name" aria-describedby="sizing-addon1">
+                        </div>
+                        <div class="input-group input-group-lg textbox">
+                            <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/user.png" /></span>
+                            <input type="text" class="form-control" placeholder="Second name" aria-describedby="sizing-addon1">
+                        </div>
+                        <div class="input-group input-group-lg textbox">
+                            <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/email.png" /></span>
+                            <input type="email" class="form-control" placeholder="E-mail" aria-describedby="sizing-addon1">
+                        </div>
+                        <div class="input-group input-group-lg textbox">
+                            <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/password.png" /></span>
+                            <input type="password" class="form-control" placeholder="Password" aria-describedby="sizing-addon1">
+                        </div>
+                        <div class="input-group input-group-lg textbox">
+                            <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/password.png" /></span>
+                            <input type="password" class="form-control" placeholder="Confirm password" aria-describedby="sizing-addon1">
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <small>Maybe you already had account, sign in please.</small>
+                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#login" data-dismiss="modal">SIGN IN</button>
+                        <button type="submit" class="btn btn-success">SIGN UP</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--HEADER-->
     <div id="header" class="container-fluid">
         <div class="container" id="header-block">
             <div class="row">
@@ -7,11 +83,13 @@
                     <img src="~/Content/images/pollylogo.png" />
                 </div>
                 <div class="col-lg-2 col-lg-offset-8 col-md-3 col-md-offset-7 col-sm-3 col-sm-offset-6 authbar">
-                    <a href="#myModal">ВХОД</a> / <a href="#">РЕГИСТРАЦИЯ</a>
+                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#login" >SIGN IN</button>
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#register">SING UP</button>
                 </div>
             </div>
+            
             <div class="row header-content">
-       
+
                 <div class="col-lg-7 col-lg-offset-1 description post">
                     <h1 class="hidden-xs visible-lg visible-md visible-sm">CОЗДАНИЕ ОПРОСОВ И АНКЕТ</h1>
                     <h3 class="visible-xs hidden-lg hidden-md hidden-sm">CОЗДАНИЕ ОПРОСОВ И АНКЕТ</h3>
@@ -38,13 +116,13 @@
                 </div>
             </div>
 
-        </div>
-    </div>
-    
+            </div>
+            </div>
+    <!--WRAPPER-->       
     <div id="wrapper" class="container-fluid">
         <div class="container" id="wrapper-block">
             <div class="row">
-                <div class="col-lg-11 col-lg-offset-1 col-md-11 description" >
+                <div class="col-lg-11 col-lg-offset-1 col-md-11 description">
                     <h1 class="hidden-xs visible-lg visible-md visible-sm">БЫСТРОТА ИСПОЛЬЗОВАНИЯ И ПОЛУЧЕНИЯ ОТВЕТОВ</h1>
                     <h3 class="visible-xs hidden-lg hidden-md hidden-sm">БЫСТРОТА ИСПОЛЬЗОВАНИЯ И ПОЛУЧЕНИЯ ОТВЕТОВ</h3>
                     <p><small>Получение ответов в 2 клика</small></p>
@@ -65,6 +143,7 @@
             </div>
         </div>
     </div>
+    <!--ABOUT US-->
     <div id="about" class="container-fluid">
         <div class="container">
             <div class="row">
@@ -75,7 +154,7 @@
             </div>
             <div class="row moreinforow">
                 <div class="col-lg-4 col-lg-offset-1 col-md-5 col-md-offset-0 col-sm-6 col-xs-12 moreinfocol post">
-                    
+
                     <img src="~/Content/images/api.png" align="left" class="icon-about hidden-xs" />
                     <img src="~/Content/images/api.png" class="icon-about hidden-sm hidden-md hidden-lg" />
 
@@ -101,7 +180,7 @@
                 </div>
                 <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-2 col-sm-6 col-xs-12 moreinfocol post ">
                     <img src="~/Content/images/about.png" align="right" class="icon-about hidden-xs" />
-                    <img src="~/Content/images/about.png"  class="icon-about hidden-sm hidden-md hidden-lg" />
+                    <img src="~/Content/images/about.png" class="icon-about hidden-sm hidden-md hidden-lg" />
                     <h3 class="hidden-xs visible-lg visible-md visible-sm" align="right">Удобство</h3>
                     <p class="hidden-xs visible-lg visible-md visible-sm" align="right"><small>Мы предоставляем свой простой и удобный конструктор для создания различных типов опросов</small></p>
                     <h3 class="visible-xs hidden-lg hidden-md hidden-sm" align="center">Удобство</h3>
