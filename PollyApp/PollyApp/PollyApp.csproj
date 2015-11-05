@@ -130,7 +130,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Answer.cs">
+    <Compile Include="EFModel\Answer.cs">
       <DependentUpon>PollyDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -138,43 +138,42 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="GenericRepository\IRepository.cs" />
-    <Compile Include="GenericRepository\TEntity.cs" />
+    <Compile Include="GenericRepository\Repository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="PollyDbModel.Context.cs">
+    <Compile Include="EFModel\PollyDbModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PollyDbModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="PollyDbModel.cs">
+    <Compile Include="EFModel\PollyDbModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PollyDbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="PollyDbModel.Designer.cs">
+    <Compile Include="EFModel\PollyDbModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PollyDbModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Project.cs">
+    <Compile Include="EFModel\Project.cs">
       <DependentUpon>PollyDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Question.cs">
+    <Compile Include="EFModel\Question.cs">
       <DependentUpon>PollyDbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Result.cs">
+    <Compile Include="EFModel\Result.cs">
       <DependentUpon>PollyDbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="sysdiagram.cs">
+    <Compile Include="EFModel\sysdiagram.cs">
       <DependentUpon>PollyDbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="User.cs">
+    <Compile Include="EFModel\User.cs">
       <DependentUpon>PollyDbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="UserPermission.cs">
+    <Compile Include="EFModel\UserPermission.cs">
       <DependentUpon>PollyDbModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -183,6 +182,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\animate.css" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\images\47296-f20b1009fc1ebce7c0c8c58e56213050.jpg" />
     <Content Include="Content\images\about.png" />
@@ -286,12 +286,12 @@
     <Content Include="Content\Site.css" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
-    <Content Include="PollyDbModel.Context.tt">
+    <Content Include="EFModel\PollyDbModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>PollyDbModel.edmx</DependentUpon>
       <LastGenOutput>PollyDbModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="PollyDbModel.tt">
+    <Content Include="EFModel\PollyDbModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>PollyDbModel.edmx</DependentUpon>
       <LastGenOutput>PollyDbModel.cs</LastGenOutput>
@@ -321,6 +321,9 @@
     <Content Include="Scripts\angular-touch.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\bootstrap-modal.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\errors.json" />
     <Content Include="Scripts\angular-touch.min.js.map" />
     <Content Include="Scripts\angular-sanitize.min.js.map" />
@@ -347,14 +350,16 @@
     <Content Include="fonts\OpenSans-Regular.ttf" />
     <Content Include="fonts\OpenSans-Semibold.ttf" />
     <Content Include="fonts\OpenSans-SemiboldItalic.ttf" />
-    <EntityDeploy Include="PollyDbModel.edmx">
+    <EntityDeploy Include="EFModel\PollyDbModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>PollyDbModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="PollyDbModel.edmx.diagram">
+    <Content Include="EFModel\PollyDbModel.edmx.diagram">
       <DependentUpon>PollyDbModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
+    <Content Include="Scripts\front-end\animate.js" />
+    <Content Include="Scripts\front-end\scroll-to.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-er.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-et.js" />
@@ -1113,6 +1118,7 @@
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Scripts\npm.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -1131,7 +1137,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Scripts\front-end\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

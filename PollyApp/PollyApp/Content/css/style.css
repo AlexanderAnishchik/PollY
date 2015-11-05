@@ -66,7 +66,8 @@ a{
 }
 
 .header-content{
-   
+    display:inline-block;
+    vertical-align:middle;
     margin-top:12%;
 }
 .authbar{
@@ -146,6 +147,12 @@ a{
 }
 .moreinfo{
     text-align:center;
+}
+.textbox{
+    margin-bottom:15px;
+}
+.last{
+    margin:0!important;
 }
 @media all and (min-width: 1200px) { 
     .macbook{
