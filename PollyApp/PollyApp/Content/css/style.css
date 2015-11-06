@@ -65,7 +65,11 @@ a{
 .right-menu{
     line-height:50px;
 }
+.btn-right-menu{
+    margin-left:10px;
+}
 #logo{
+    margin-right:75px;
     margin-top:-12px;
     text-align:left;
 }
@@ -159,7 +163,15 @@ a{
 .last{
     margin:0!important;
 }
-@media all and (min-width: 1200px) { 
+@media all and (min-width: 1600px) { 
+    .macbook{
+    text-align:center;
+    }
+    .scroll-button{
+    margin-top:30%;
+    }
+}
+@media all and (min-width: 1200px) and (max-width: 1599px) { 
     .macbook{
     text-align:center;
     }
@@ -194,9 +206,18 @@ a{
    
 }
 @media all and (max-width: 480px) {
+     .navbar-default .navbar-nav > li > a {
+      color: #fff;
+       background:rgba(0,0,0,0.8);
+    }
+    .navbar-default .navbar-nav > li > a:hover,
+    .navbar-default .navbar-nav > li > a:focus {
+      color: #fff;
+      background:rgba(0,0,0,0.8);
+    }
     .moreinfocol{
         text-align:center;
-        border-bottom:1px dashed #34495e;
+        border-bottom:1px dashed rgba(26,186,154,1);
     }
     
     .iphone{
@@ -225,6 +246,16 @@ a{
     
 }
 @media all and (min-width: 481px) and (max-width: 767px) {
+    .navbar-default .navbar-nav > li > a {
+      color: #fff;
+      background:rgba(0,0,0,0.8);
+    }
+    .navbar-default .navbar-nav > li > a:hover,
+    .navbar-default .navbar-nav > li > a:focus {
+      color: #fff;
+      background:rgba(0,0,0,0.8);
+      border-bottom:2px solid rgba(26,186,154,1);
+    }
     .moreinfocol{
         text-align:center;
     }

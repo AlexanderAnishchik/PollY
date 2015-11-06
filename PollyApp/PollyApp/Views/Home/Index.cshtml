@@ -2,7 +2,8 @@
     <script src="~/Scripts/front-end/animate.js"></script>  
     <script src="~/Scripts/bootstrap.js"></script>
     <script src="~/Scripts/bootstrap-modal.js"></script>
-
+    <script src="~/Scripts/animate-colors.js"></script>
+    <script src="~/Scripts/front-end/navigation-scroll.js"></script>
 
 
     <!--AUTH MODAL BLOCK -->
@@ -78,7 +79,7 @@
     <!--HEADER-->
     <div id="header" class="container-fluid">
 
-        <nav class="navbar navbar-default navbar-fixed-top">
+        <nav class="navbar navbar-default navbar-fixed-top" id="navigation">
             <div class="container-fluid">
                 <div class="container">
                     <!-- Brand and toggle get grouped for better mobile display -->
@@ -89,7 +90,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" id="logo" href="#"><img src="~/Content/images/pollylogo.png" /></a>
+                        <a class="navbar-brand" id="logo" href="#"><img src="~/Content/images/pollylogogreen.png" /></a>
                     </div>
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -100,8 +101,8 @@
                             <li><a href="#">DOCS</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right right-menu">
-                            <li><button type="button" class="btn btn-default" data-toggle="modal" data-target="#login">SIGN IN</button></li>
-                            <li><button type="button" class="btn btn-success" data-toggle="modal" data-target="#register">SING UP</button></li>
+                            <li><button type="button" class="btn btn-default btn-right-menu" data-toggle="modal" data-target="#login">SIGN IN</button></li>
+                            <li><button type="button" class="btn btn-success  btn-right-menu" data-toggle="modal" data-target="#register">SING UP</button></li>
                         </ul>
                     </div><!-- /.navbar-collapse -->
                 </div>
