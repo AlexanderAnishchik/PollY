@@ -36,6 +36,9 @@ a{
 #menu{
 
 }
+.center{
+    text-align:center;
+}
 .scroll-button{
     background:url(../images/computer147.png);
     border:none;
