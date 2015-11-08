@@ -2556,18 +2556,19 @@ output {
   font-size: 14px;
   line-height: 1.42857143;
   color: #555;
-  background-color: #fff;
+  background-color: none;
   background-image: none;
-  border: 1px solid #ccc;
+  border:none;
+  /*border: 1px solid #ccc;
   border-radius: 4px;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
           box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
   -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
        -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;*/
 }
 .form-control:focus {
-  border-color: #66afe9;
+  border-color: #fff;
   outline: 0;
   -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
           box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
@@ -2832,8 +2833,8 @@ select[multiple].input-lg {
 }
 .has-success .input-group-addon {
   color: #3c763d;
-  background-color: #dff0d8;
-  border-color: #3c763d;
+  /*background-color: #dff0d8;
+  border-color: #3c763d;*/
 }
 .has-success .form-control-feedback {
   color: #3c763d;
@@ -3865,6 +3866,7 @@ tbody.collapse.in {
   pointer-events: none;
 }
 .input-group {
+  background:none;
   position: relative;
   display: table;
   border-collapse: separate;
@@ -3880,6 +3882,7 @@ tbody.collapse.in {
   float: left;
   width: 100%;
   margin-bottom: 0;
+  background:none;
 }
 .input-group-lg > .form-control,
 .input-group-lg > .input-group-addon,
@@ -3950,9 +3953,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   line-height: 1;
   color: #555;
   text-align: center;
-  background-color: #eee;
+  /*background-color: #eee;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 4px;*/
 }
 .input-group-addon.input-sm {
   padding: 5px 10px;
@@ -5888,18 +5891,18 @@ button.list-group-item-danger.active:focus {
   font-size: 21px;
   font-weight: bold;
   line-height: 1;
-  color: #000;
-  text-shadow: 0 1px 0 #fff;
-  filter: alpha(opacity=20);
-  opacity: .2;
+  color: #fff;
+  /*text-shadow: 0 1px 0 #fff;*/
+  filter: alpha(opacity=30);
+  opacity: .3;
 }
 .close:hover,
 .close:focus {
-  color: #000;
+  color: #fff;
   text-decoration: none;
   cursor: pointer;
   filter: alpha(opacity=50);
-  opacity: .5;
+  opacity: .8;
 }
 button.close {
   -webkit-appearance: none;
@@ -5922,6 +5925,7 @@ button.close {
   overflow: hidden;
   -webkit-overflow-scrolling: touch;
   outline: 0;
+  color:#fff;
 }
 .modal.fade .modal-dialog {
   -webkit-transition: -webkit-transform .5s ease-out;
@@ -5949,15 +5953,15 @@ button.close {
 }
 .modal-content {
   position: relative;
-  background-color: #fff;
-  -webkit-background-clip: padding-box;
+  background-color: none;
+  /*-webkit-background-clip: padding-box;
           background-clip: padding-box;
   border: 1px solid #999;
   border: 1px solid rgba(0, 0, 0, .2);
   border-radius: 6px;
   outline: 0;
   -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
-          box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+          box-shadow: 0 3px 9px rgba(0, 0, 0, .5);*/
 }
 .modal-backdrop {
   position: fixed;
@@ -5966,15 +5970,15 @@ button.close {
   bottom: 0;
   left: 0;
   z-index: 1040;
-  background-color: #000;
+  background-color:#000;
 }
 .modal-backdrop.fade {
   filter: alpha(opacity=0);
   opacity: 0;
 }
 .modal-backdrop.in {
-  filter: alpha(opacity=50);
-  opacity: .5;
+  filter: alpha(opacity=80);
+  opacity: .8;
 }
 .modal-header {
   min-height: 16.42857143px;
@@ -6017,7 +6021,7 @@ button.close {
 @media (min-width: 768px) {
   .modal-dialog {
     width: 600px;
-    margin: 30px auto;
+    margin: 13% auto;
   }
   .modal-content {
     -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
