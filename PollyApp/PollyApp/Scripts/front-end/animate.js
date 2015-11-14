@@ -34,7 +34,7 @@ $(document).ready(function () {
             $("#feedback .post").addClass('animated zoomIn');
         }
 
-        if ($(this).scrollTop() == 0) {
+        /*if ($(this).scrollTop() == 0) {
             $("#wrapper .post, #about .post, #feedback .post").each(function () {
                 if ($(this).hasClass('last')) {
                     $(this).removeClass().addClass('post last');
@@ -43,6 +43,6 @@ $(document).ready(function () {
                 }
                 $(this).css({ visibility: "hidden" });
             });
-        }
+        }*/
     });
 });

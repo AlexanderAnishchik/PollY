@@ -39,6 +39,11 @@ a{
 .center{
     text-align:center;
 }
+.portrait{
+    width:150px;
+    height:150px;
+    margin:20px;
+}
 .scroll-button{
     background:url(../images/computer147.png);
     border:none;
@@ -87,8 +92,12 @@ a{
     line-height:45px;
     text-align:right;
 }
-.row{
-    
+#feedback{
+    color:#777;
+    padding-top:20px;
+}
+.feedback-text{
+    margin-top:20px;
 }
 .description{
     padding-top:30px;
