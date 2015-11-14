@@ -130,6 +130,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account\MemberWorker.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="EFModel\Answer.cs">
       <DependentUpon>PollyDbModel.tt</DependentUpon>
     </Compile>
