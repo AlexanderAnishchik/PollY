@@ -8,41 +8,37 @@ body{
 	margin: 0;
 	background: #ffffff;
 	font-family: OpenSans;
-
 }
 a{
     color:#ffffff;
 }
+.center{
+    text-align:center;
+}
+.last{
+    margin:0!important;
+}
+.description{
+    margin-bottom:25px;
+}
+#about, #feedback, #wrapper{
+    padding-top:35px;
+    padding-bottom:35px;
+}
+/*---------------------------------------------*/
+/*--------------HEADER SECTION-----------------*/
+/*---------------------------------------------*/
 #header{
     padding-top:20px;
     min-height:100%;
     color:white;
     padding-bottom:20px;
     height: 100vh;
-    background:url(../images/bg.jpg);
+    background:url(../images/bg2.jpg);
     background-position-x:center;
     background-position-y:center;
     background-attachment:fixed;
     background-size:cover;
-    /*background: rgba(26,186,154,1);
-    background: -moz-radial-gradient(center, ellipse cover, rgba(26,186,154,1) 0%, rgba(23,169,140,1) 100%);
-    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(26,186,154,1)), color-stop(100%, rgba(23,169,140,1)));
-    background: -webkit-radial-gradient(center, ellipse cover, rgba(26,186,154,1) 0%, rgba(23,169,140,1) 100%);
-    background: -o-radial-gradient(center, ellipse cover, rgba(26,186,154,1) 0%, rgba(23,169,140,1) 100%);
-    background: -ms-radial-gradient(center, ellipse cover, rgba(26,186,154,1) 0%, rgba(23,169,140,1) 100%);
-    background: radial-gradient(ellipse at center, rgba(26,186,154,1) 0%, rgba(23,169,140,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1aba9a', endColorstr='#17a98c', GradientType=1 );*/
-}
-#menu{
-
-}
-.center{
-    text-align:center;
-}
-.portrait{
-    width:150px;
-    height:150px;
-    margin:20px;
 }
 .scroll-button{
     background:url(../images/computer147.png);
@@ -64,7 +60,7 @@ a{
     background-repeat:no-repeat;
     
 }
-.scroll-button:focus{
+.scroll-button:focus, .scroll-button:active{
     border:none;
 }
 .scroll-button:active{
@@ -87,21 +83,14 @@ a{
     vertical-align:middle;
     margin-top:12%;
 }
+.header-content p{
+    text-align:left;
+}
 .authbar{
-    
     line-height:45px;
     text-align:right;
 }
-#feedback{
-    color:#777;
-    padding-top:20px;
-}
-.feedback-text{
-    margin-top:20px;
-}
-.description{
-    padding-top:30px;
-}
+
 .button-create{
     font-size:16px;
     width:220px;
@@ -126,38 +115,47 @@ a{
     margin-top:90px;
     text-align:center;
 }
+.textbox{
+    margin-bottom:15px;
+}
+
+/*---------------------------------------------*/
+/*--------------MACBOOK SECTION----------------*/
+/*---------------------------------------------*/
 #wrapper{
     color:#34495e;
-    
 }
+
 .iphone{
     position:absolute;
     top:88px;
     left:530px;
 }
+
+/*---------------------------------------------*/
+/*----------------ABOUT SECTION----------------*/
+/*---------------------------------------------*/
 #about{
-    
-    background:#f4ffff;
+    background:#edeeef;
     color:#34495e;
 }
+
 .moreinforow{
     margin-top:25px;
 }
-/*.moreinforow p{
-    text-align:justify;
-}*/
+
 .moreinfobutton{
     height:52px;
     width:202px;
     background:none;
-    border:1px solid #5fceca;
-    color:#5fceca;
+    border:1px solid #000000;
+    color:#000000;
     margin-bottom:25px;
 }
 .moreinfobutton:hover{
-    border:1px solid #5fceca;
-    background:#5fceca;
-    color:#f4ffff;
+    border:1px solid #8e8f8f;
+    background:rgba(0,0,0,0.4);
+    color:#ffffff;
 }
 
 .icon-about[align=left]{
@@ -169,12 +167,30 @@ a{
 .moreinfo{
     text-align:center;
 }
-.textbox{
-    margin-bottom:15px;
+/*---------------------------------------------*/
+/*--------------FEEDBACK SECTION---------------*/
+/*---------------------------------------------*/
+#feedback{
+   
+    padding-top:20px;
 }
-.last{
-    margin:0!important;
+.portrait{
+    width:150px;
+    height:150px;
+    margin:20px;
 }
+.feedback-text{
+    margin-top:20px;
+}
+#feedback description{
+    color:#34495e;
+}
+.carousel-inner{
+    color:#777;
+}
+/*---------------------------------------------*/
+/*----------------MOBILE DESIGN----------------*/
+/*---------------------------------------------*/
 @media all and (min-width: 1600px) { 
     .macbook{
     text-align:center;
