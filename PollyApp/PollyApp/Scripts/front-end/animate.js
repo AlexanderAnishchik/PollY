@@ -29,12 +29,12 @@ $(document).ready(function () {
             $("#aboutsecond .post").eq(1).addClass('animated fadeInUp');
 
         }
-        if (($(this).scrollTop() + h) >= $("#feedback").offset().top) {
-            $("#feedback .post").css({ visibility: "visible" });
-            $("#feedback .post").addClass('animated zoomIn');
+        if (($(this).scrollTop() + h) >= $("#slider").offset().top) {
+            $("#slider .post").css({ visibility: "visible" });
+            $("#slider .post").addClass('animated bounceInLeft');
         }
 
-        if ($(this).scrollTop() == 0) {
+        /*if ($(this).scrollTop() == 0) {
             $("#wrapper .post, #about .post, #feedback .post").each(function () {
                 if ($(this).hasClass('last')) {
                     $(this).removeClass().addClass('post last');
@@ -43,6 +43,6 @@ $(document).ready(function () {
                 }
                 $(this).css({ visibility: "hidden" });
             });
-        }
+        }*/
     });
 });

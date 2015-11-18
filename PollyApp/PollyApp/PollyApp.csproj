@@ -130,6 +130,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account\MemberWorker.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\APIController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="EFModel\Answer.cs">
       <DependentUpon>PollyDbModel.tt</DependentUpon>
     </Compile>
@@ -321,6 +325,10 @@
     <Content Include="Scripts\angular-touch.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\App\accountController.js" />
+    <Content Include="Scripts\App\apiController.js" />
+    <Content Include="Scripts\App\app.js" />
+    <Content Include="Scripts\App\homeController.js" />
     <Content Include="Scripts\bootstrap-modal.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
