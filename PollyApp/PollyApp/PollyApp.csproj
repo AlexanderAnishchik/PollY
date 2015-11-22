@@ -329,6 +329,7 @@
     <Content Include="Scripts\App\apiController.js" />
     <Content Include="Scripts\App\app.js" />
     <Content Include="Scripts\App\homeController.js" />
+    <Content Include="Scripts\App\loginController.js" />
     <Content Include="Scripts\bootstrap-modal.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

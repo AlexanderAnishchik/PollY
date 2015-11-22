@@ -1,4 +1,6 @@
 ﻿PollyApp.controller('homeController', ['$scope', function ($scope) {
-    $scope.init = function () {
+    var me = this;
+    me.init = function () {
+        
     };
 }]);

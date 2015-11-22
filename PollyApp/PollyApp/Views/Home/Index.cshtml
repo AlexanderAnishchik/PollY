@@ -7,7 +7,7 @@
 
 
     <!--AUTH MODAL BLOCK -->
-    <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="login" ng-controller="loginController as loginCtrl"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="center">
@@ -17,29 +17,29 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel">SIGN IN</h4>
                 </div>
-                <form action="" method="POST">
+                <div id="form_login">
                     <div class="modal-body">
                         <div class="input-group input-group-lg textbox">
                             <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/email.png" /></span>
-                            <input type="email" class="form-control" placeholder="E-mail" aria-describedby="sizing-addon1">
+                            <input type="email" ng-model="loginCtrl.login.email" class="form-control" placeholder="E-mail" aria-describedby="sizing-addon1">
                         </div>
                         <div class="input-group input-group-lg textbox">
                             <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/password.png" /></span>
-                            <input type="password" class="form-control" placeholder="Password" aria-describedby="sizing-addon1">
+                            <input type="password" ng-model="loginCtrl.login.password" class="form-control" placeholder="Password" aria-describedby="sizing-addon1">
                         </div>
 
                     </div>
                     <div class="modal-footer">
                         <small>If you don't have account, you can register</small>
                         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#register" data-dismiss="modal">SIGN UP</button>
-                        <button type="submit" class="btn btn-default">SIGN IN</button>
+                        <button type="button" ng-click="loginCtrl.signIn()" class="btn btn-default">SIGN IN</button>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
      <!--REGISTER MODAL BLOCK -->
-    <div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="register" ng-controller="loginController as loginCtrl" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -50,37 +50,37 @@
                     <div class="modal-body">
                         <div class="input-group input-group-lg textbox">
                             <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/user.png" /></span>
-                            <input type="text" class="form-control" placeholder="First name" aria-describedby="sizing-addon1">
+                            <input type="text" class="form-control" ng-model="loginCtrl.registr.first" placeholder="First name" aria-describedby="sizing-addon1">
                         </div>
                         <div class="input-group input-group-lg textbox">
                             <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/user.png" /></span>
-                            <input type="text" class="form-control" placeholder="Second name" aria-describedby="sizing-addon1">
+                            <input type="text" class="form-control" ng-model="loginCtrl.registr.last" placeholder="Last name" aria-describedby="sizing-addon1">
                         </div>
                         <div class="input-group input-group-lg textbox">
                             <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/email.png" /></span>
-                            <input type="email" class="form-control" placeholder="E-mail" aria-describedby="sizing-addon1">
+                            <input type="email" class="form-control" placeholder="E-mail" ng-model="loginCtrl.registr.email" aria-describedby="sizing-addon1">
                         </div>
                         <div class="input-group input-group-lg textbox">
                             <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/password.png" /></span>
-                            <input type="password" class="form-control" placeholder="Password" aria-describedby="sizing-addon1">
+                            <input type="password" class="form-control" ng-model="loginCtrl.registr.pass" placeholder="Password" aria-describedby="sizing-addon1">
                         </div>
                         <div class="input-group input-group-lg textbox">
                             <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/password.png" /></span>
-                            <input type="password" class="form-control" placeholder="Confirm password" aria-describedby="sizing-addon1">
+                            <input type="password" class="form-control" ng-model="loginCtrl.registr.confirmpass" placeholder="Confirm password" aria-describedby="sizing-addon1">
                         </div>
 
                     </div>
                     <div class="modal-footer">
                         <small>Maybe you already had account, sign in please.</small>
                         <button type="button" class="btn btn-default" data-toggle="modal" data-target="#login" data-dismiss="modal">SIGN IN</button>
-                        <button type="submit" class="btn btn-success">SIGN UP</button>
+                        <button type="button" ng-click="loginCtrl.signOut();" class="btn btn-success">SIGN UP</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
     <!--HEADER-->
-    <div id="header" class="container-fluid">
+    <div id="header" ng-controller="homeController as inpt" ng-init="inpt.init();" class="container-fluid">
 
         <nav class="navbar navbar-default navbar-fixed-top" id="navigation">
             <div class="container-fluid">
@@ -145,7 +145,7 @@
             </div>
             </div>
     <!--WRAPPER-->       
-   <section id="wrapper" class="container-fluid" ng-controller="homeController" ng-init="init()">
+   <section id="wrapper" class="container-fluid">
         <div class="container" id="wrapper-block">
             <div class="row">
                 <div class="col-lg-12 col-md-12 description center">
