@@ -46,7 +46,7 @@ namespace PollyApp.Account
                     salt = GetSalt();
                     hash = GetMd5Hash(md5Hash, password + salt);
                 }
-                rep.Add(new User { Email = email, Password = hash, Salt = salt, FirstName = firstName, LastName = lastName });
+                rep.Add(new User { Email = email, Password = hash, Salt = salt, FirstName = firstName, LastName = lastName, PermissionId=1 });
                 rep.Save();
             }
             catch (Exception ex)

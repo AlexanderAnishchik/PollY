@@ -166,4 +166,49 @@ F:\Polly\PollyApp\PollyApp\bin\ru\System.Web.WebPages.Deployment.resources.dll
 F:\Polly\PollyApp\PollyApp\bin\ru\System.Web.WebPages.Razor.resources.dll
 F:\Polly\PollyApp\PollyApp\obj\Debug\PollyApp.dll
 F:\Polly\PollyApp\PollyApp\obj\Debug\PollyApp.pdb
+D:\Новая папка\PollY\PollyApp\PollyApp\bin\PollyApp.dll.config
+D:\Новая папка\PollY\PollyApp\PollyApp\bin\PollyApp.dll
+D:\Новая папка\PollY\PollyApp\PollyApp\bin\PollyApp.pdb
+D:\Новая папка\PollY\PollyApp\PollyApp\bin\Antlr3.Runtime.dll
+D:\Новая папка\PollY\PollyApp\PollyApp\bin\EntityFramework.dll
+D:\Новая папка\PollY\PollyApp\PollyApp\bin\EntityFramework.SqlServer.dll
+D:\Новая папка\PollY\PollyApp\PollyApp\bin\Microsoft.Web.Infrastructure.dll
+D:\Новая папка\PollY\PollyApp\PollyApp\bin\Newtonsoft.Json.dll
+D:\Новая папка\PollY\PollyApp\PollyApp\bin\System.Net.Http.Formatting.dll
+D:\Новая папка\PollY\PollyApp\PollyApp\bin\System.Web.Http.dll
+D:\Новая папка\PollY\PollyApp\PollyApp\bin\System.Web.Http.WebHost.dll
+D:\Новая папка\PollY\PollyApp\PollyApp\bin\System.Web.Mvc.dll
+D:\Новая папка\PollY\PollyApp\PollyApp\bin\System.Web.Optimization.dll
+D:\Новая папка\PollY\PollyApp\PollyApp\bin\System.Web.Providers.dll
+D:\Новая папка\PollY\PollyApp\PollyApp\bin\System.Web.Razor.dll
+D:\Новая папка\PollY\PollyApp\PollyApp\bin\System.Web.WebPages.Deployment.dll
+D:\Новая папка\PollY\PollyApp\PollyApp\bin\System.Web.WebPages.dll
+D:\Новая папка\PollY\PollyApp\PollyApp\bin\System.Web.WebPages.Razor.dll
+D:\Новая папка\PollY\PollyApp\PollyApp\bin\WebGrease.dll
+D:\Новая папка\PollY\PollyApp\PollyApp\bin\EntityFramework.xml
+D:\Новая папка\PollY\PollyApp\PollyApp\bin\EntityFramework.SqlServer.xml
+D:\Новая папка\PollY\PollyApp\PollyApp\bin\Newtonsoft.Json.xml
+D:\Новая папка\PollY\PollyApp\PollyApp\bin\System.Net.Http.Formatting.xml
+D:\Новая папка\PollY\PollyApp\PollyApp\bin\System.Web.Http.xml
+D:\Новая папка\PollY\PollyApp\PollyApp\bin\System.Web.Http.WebHost.xml
+D:\Новая папка\PollY\PollyApp\PollyApp\bin\System.Web.Mvc.xml
+D:\Новая папка\PollY\PollyApp\PollyApp\bin\System.Web.Razor.xml
+D:\Новая папка\PollY\PollyApp\PollyApp\bin\System.Web.WebPages.xml
+D:\Новая папка\PollY\PollyApp\PollyApp\bin\System.Web.WebPages.Deployment.xml
+D:\Новая папка\PollY\PollyApp\PollyApp\bin\System.Web.WebPages.Razor.xml
+D:\Новая папка\PollY\PollyApp\PollyApp\bin\ru\EntityFramework.resources.dll
+D:\Новая папка\PollY\PollyApp\PollyApp\bin\ru\EntityFramework.SqlServer.resources.dll
+D:\Новая папка\PollY\PollyApp\PollyApp\bin\ru\System.Net.Http.Formatting.resources.dll
+D:\Новая папка\PollY\PollyApp\PollyApp\bin\ru\System.Web.Http.resources.dll
+D:\Новая папка\PollY\PollyApp\PollyApp\bin\ru\System.Web.Http.WebHost.resources.dll
+D:\Новая папка\PollY\PollyApp\PollyApp\bin\ru\System.Web.Mvc.resources.dll
+D:\Новая папка\PollY\PollyApp\PollyApp\bin\ru\System.Web.Optimization.resources.dll
+D:\Новая папка\PollY\PollyApp\PollyApp\bin\ru\System.Web.Providers.resources.dll
+D:\Новая папка\PollY\PollyApp\PollyApp\bin\ru\System.Web.Razor.resources.dll
+D:\Новая папка\PollY\PollyApp\PollyApp\bin\ru\System.Web.WebPages.resources.dll
+D:\Новая папка\PollY\PollyApp\PollyApp\bin\ru\System.Web.WebPages.Deployment.resources.dll
+D:\Новая папка\PollY\PollyApp\PollyApp\bin\ru\System.Web.WebPages.Razor.resources.dll
+D:\Новая папка\PollY\PollyApp\PollyApp\obj\Debug\PollyApp.csprojResolveAssemblyReference.cache
+D:\Новая папка\PollY\PollyApp\PollyApp\obj\Debug\PollyApp.dll
+D:\Новая папка\PollY\PollyApp\PollyApp\obj\Debug\PollyApp.pdb
 F:\Polly\PollyApp\PollyApp\obj\Debug\PollyApp.csprojResolveAssemblyReference.cache
