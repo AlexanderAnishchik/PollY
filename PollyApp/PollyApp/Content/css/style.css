@@ -41,7 +41,7 @@ a{
     background-size:cover;
 }
 #navigation {
-    background: #34495e;
+    background: #2c3e50;
 }
 .scroll-button{
     background:url(../images/computer147.png);
@@ -85,6 +85,22 @@ a{
     border-radius:3px;
 }
 .btn-menu:hover{
+    line-height:1.4;
+    background:none;
+    border:1px solid #8e8f8f;
+    padding: 5px 12px;
+    font-size:15px;
+    font-weight:normal;
+}
+.btn-menu:active{
+    line-height:1.4;
+    background:none;
+    border:1px solid #8e8f8f;
+    padding: 5px 12px;
+    font-size:15px;
+    font-weight:normal;
+}
+.btn-menu:focus{
     line-height:1.4;
     background:none;
     border:1px solid #8e8f8f;
