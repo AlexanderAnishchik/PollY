@@ -1,13 +1,22 @@
 ﻿@{Layout= "~/Views/Shared/_Layout.cshtml";}
+    
     <script src="~/Scripts/front-end/animate.js"></script>  
     <script src="~/Scripts/bootstrap.js"></script>
     <script src="~/Scripts/bootstrap-modal.js"></script>
     <script src="~/Scripts/animate-colors.js"></script>
+    <script src="~/Scripts/App/app.js"></script>
+    <script src="~/Scripts/App/homeController.js"></script>
+    <script src="~/Scripts/App/loginController.js"></script>   
+    <script src="~/Scripts/front-end/scroll-to.js"></script>
     <script src="~/Scripts/front-end/navigation-scroll.js"></script>
+    <script src="~/Scripts/front-end/auth.js"></script>
+
+    
+
 
 
     <!--AUTH MODAL BLOCK -->
-    <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="login" ng-controller="loginController as loginCtrl"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="center">
@@ -17,70 +26,83 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel">SIGN IN</h4>
                 </div>
-                <form action="" method="POST">
+                <div id="form_login">
                     <div class="modal-body">
                         <div class="input-group input-group-lg textbox">
                             <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/email.png" /></span>
-                            <input type="email" class="form-control" placeholder="E-mail" aria-describedby="sizing-addon1">
+                            <input type="email" ng-model="loginCtrl.login.email" class="form-control" placeholder="E-mail" aria-describedby="sizing-addon1">
                         </div>
                         <div class="input-group input-group-lg textbox">
                             <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/password.png" /></span>
-                            <input type="password" class="form-control" placeholder="Password" aria-describedby="sizing-addon1">
+                            <input type="password" ng-model="loginCtrl.login.password" class="form-control" placeholder="Password" aria-describedby="sizing-addon1">
                         </div>
 
                     </div>
                     <div class="modal-footer">
                         <small>If you don't have account, you can register</small>
                         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#register" data-dismiss="modal">SIGN UP</button>
-                        <button type="submit" class="btn btn-default">SIGN IN</button>
+                        <button type="button" ng-click="loginCtrl.signIn()" class="btn btn-default" id="signInBtn">SIGN IN</button>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
      <!--REGISTER MODAL BLOCK -->
-    <div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="register" ng-controller="loginController as loginCtrl" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel">SIGN UP</h4>
                 </div>
-                <form action="" method="POST">
+                <form method="POST" name="registerForm" novalidate>
                     <div class="modal-body">
-                        <div class="input-group input-group-lg textbox">
+                        <div class="input-group input-group-lg textbox" ng-class="{ 'has-error' : !registerForm.first.$pristine && registerForm.first.$invalid}">
                             <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/user.png" /></span>
-                            <input type="text" class="form-control" placeholder="First name" aria-describedby="sizing-addon1">
+                            <input type="text" class="form-control" name="first" ng-model="loginCtrl.registr.first" placeholder="First name" aria-describedby="sizing-addon1" required>
+                            
                         </div>
-                        <div class="input-group input-group-lg textbox">
+                        <div class="alert alert-danger" ng-show="registerForm.first.$invalid && !registerForm.first.$pristine">
+                            Your first name is required
+                        </div>
+                        <div class="input-group input-group-lg textbox" ng-class="{ 'has-error' : !registerForm.second.$pristine && registerForm.second.$invalid}">
                             <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/user.png" /></span>
-                            <input type="text" class="form-control" placeholder="Second name" aria-describedby="sizing-addon1">
+                            <input type="text" class="form-control" name="second" ng-model="loginCtrl.registr.last" placeholder="Last name" aria-describedby="sizing-addon1" required>
                         </div>
-                        <div class="input-group input-group-lg textbox">
+                        <div class="alert alert-danger" ng-show="registerForm.second.$invalid && !registerForm.second.$pristine">
+                            Your second name is required
+                        </div>
+                        <div class="input-group input-group-lg textbox" ng-class="{ 'has-error' : !registerForm.email.$pristine && registerForm.email.$invalid}">
                             <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/email.png" /></span>
-                            <input type="email" class="form-control" placeholder="E-mail" aria-describedby="sizing-addon1">
+                            <input type="email" class="form-control" placeholder="E-mail" name="email" ng-model="loginCtrl.registr.email" aria-describedby="sizing-addon1" required>
+                        </div>
+                        <div class="alert alert-danger" ng-show="registerForm.email.$invalid && !registerForm.email.$pristine">
+                                Please, enter correct e-mail <br />
+                                "simple@simple.com"
                         </div>
                         <div class="input-group input-group-lg textbox">
                             <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/password.png" /></span>
-                            <input type="password" class="form-control" placeholder="Password" aria-describedby="sizing-addon1">
+                            <input type="password" class="form-control" name="pass" ng-model="loginCtrl.registr.pass" placeholder="Password" aria-describedby="sizing-addon1">
                         </div>
+                        
                         <div class="input-group input-group-lg textbox">
-                            <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/password.png" /></span>
-                            <input type="password" class="form-control" placeholder="Confirm password" aria-describedby="sizing-addon1">
+                            <span class=" input-group-addon" id="sizing-addon1">
+                            <img src="~/Content/images/password.png" /></span>
+                            <input type="password" class="form-control" name="confirm" ng-model="loginCtrl.registr.confirmpass" placeholder="Confirm password" aria-describedby="sizing-addon1">
                         </div>
-
+                        
                     </div>
                     <div class="modal-footer">
                         <small>Maybe you already had account, sign in please.</small>
                         <button type="button" class="btn btn-default" data-toggle="modal" data-target="#login" data-dismiss="modal">SIGN IN</button>
-                        <button type="submit" class="btn btn-success">SIGN UP</button>
+                        <button type="button" ng-disabled="registerForm.$invalid" ng-click="loginCtrl.signOut();" class="btn btn-success" id="signUpBtn">SIGN UP</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
     <!--HEADER-->
-    <div id="header" class="container-fluid">
+    <div id="header" ng-controller="homeController as inpt" ng-init="inpt.init();" class="container-fluid">
 
         <nav class="navbar navbar-default navbar-fixed-top" id="navigation">
             <div class="container-fluid">
@@ -136,16 +158,16 @@
                 </div>
 
             </div>
-            <div class="row  hidden-xs visible-sm visible-md visible-lg">
+           <!-- <div class="row  hidden-xs visible-sm visible-md visible-lg">
                 <div class="col-lg-12 moreinfo">
                     <a href="#wrapper"><input type="button" class="scroll-button" value="" /></a>
                 </div>
-            </div>
+            </div>-->
 
             </div>
             </div>
     <!--WRAPPER-->       
-   <section id="wrapper" class="container-fluid" ng-controller="homeController" ng-init="init()">
+   <section id="wrapper" class="container-fluid">
         <div class="container" id="wrapper-block">
             <div class="row">
                 <div class="col-lg-12 col-md-12 description center">
@@ -302,4 +324,31 @@
                 </div>
             </div>
         </div>
+    </section>
+    <section class="container-fluid" id="footer">
+        <nav class="navbar navbar-default navbar-static-top" id="navigation">
+            <div class="container-fluid">
+                <div class="container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li><a href="#">CONSTRUCTOR</a></li>
+                            <li><a href="#">API</a></li>
+                            <li><a href="#">DOCS</a></li>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div>
+            </div><!-- /.container-fluid -->
+        </nav>
     </section>

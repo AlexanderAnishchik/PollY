@@ -5977,8 +5977,8 @@ button.close {
   opacity: 0;
 }
 .modal-backdrop.in {
-  filter: alpha(opacity=80);
-  opacity: .8;
+  filter: alpha(opacity=95);
+  opacity: .95;
 }
 .modal-header {
   min-height: 16.42857143px;
@@ -6024,8 +6024,9 @@ button.close {
     margin: 13% auto;
   }
   .modal-content {
-    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+   /* -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
             box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+   */
   }
   .modal-sm {
     width: 300px;
