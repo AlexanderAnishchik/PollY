@@ -40,6 +40,9 @@ a{
     background-attachment:fixed;
     background-size:cover;
 }
+#navigation {
+    background: #34495e;
+}
 .scroll-button{
     background:url(../images/computer147.png);
     border:none;
@@ -67,14 +70,31 @@ a{
     border:none;
 }
 .right-menu{
-    line-height:50px;
+    line-height:75px;
 }
 .btn-right-menu{
     margin-left:10px;
 }
+.btn-menu {
+    line-height:1.4;
+    background:none;
+    border:1px solid transparent;
+    padding: 5px 12px;
+    font-size:15px;
+    font-weight:normal;
+    border-radius:3px;
+}
+.btn-menu:hover{
+    line-height:1.4;
+    background:none;
+    border:1px solid #8e8f8f;
+    padding: 5px 12px;
+    font-size:15px;
+    font-weight:normal;
+}
 #logo{
     margin-right:75px;
-    margin-top:-12px;
+    margin-top:0;
     text-align:left;
 }
 
