@@ -49,8 +49,8 @@ a{
 /*--------------HEADER SECTION-----------------*/
 /*---------------------------------------------*/
 .portrait-mini{
-    height:35px;
-    margin:5px;
+    height:30px;
+    margin: 5px 5px 0px 5px;
 }
 #header{
     padding-top:20px;
@@ -134,7 +134,7 @@ a{
 }
 #logo{
     margin-right:75px;
-    margin-top:5px;
+    margin-top:0px;
     text-align:left;
 }
 

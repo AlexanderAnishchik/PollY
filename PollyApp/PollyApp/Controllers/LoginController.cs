@@ -11,7 +11,7 @@ namespace PollyApp.Controllers
     {
         public ActionResult SignIn(String login, String pass)
         {
-            return new JsonResult() { Data = MemberWorker.Login(login, pass) };
+            return new JsonResult() { Data = MemberWorker.Login(login, pass)};
         }
         [HttpPost]
         public JsonResult SignUp(String email, String pass, String firstName, String lastName)
