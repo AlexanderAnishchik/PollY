@@ -12,10 +12,8 @@ namespace PollyApp.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            //var user = Db.Context.Users.First();
-            //user.FirstName = "Sanya";
-            //Db.Update(user);
-            //Db.Save();
+            if (Session["isLogged"] == null)
+                Session["isLogged"] = false;
             return View();
         }
     }
