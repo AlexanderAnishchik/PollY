@@ -8,6 +8,9 @@ namespace PollyApp.Controllers
 {
     public class AccountController : Controller
     {
-
+        public ActionResult Index()
+        {
+            return View();
+        }
     }
 }

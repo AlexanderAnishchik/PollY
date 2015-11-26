@@ -30,5 +30,10 @@ namespace PollyApp.Controllers
                 return new JsonResult() { Data = false };
             }
         }
+        public ActionResult LogOut()
+        {
+            Session["isLogged"] = null;
+            return RedirectToAction("Index","Home");
+        }
     }
 }

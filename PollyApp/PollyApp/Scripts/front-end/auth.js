@@ -11,7 +11,4 @@ jQuery.noConflict();
             location.reload();
         });
     }, 500);*/
-    jQuery("#logout").click(function (e) {
-        alert("asdasd");
-    });
 });
