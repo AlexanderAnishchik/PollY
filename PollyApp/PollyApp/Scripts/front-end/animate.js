@@ -1,48 +1,30 @@
-﻿
-$(document).ready(function () {
-    var h = $(window).height();
+﻿jQuery(document).ready(function () {
 
-    $("#macbook .post").css("display","none");
-    $("#header .post").eq(1).addClass('animated fadeInLeftBig');
-    setTimeout(function () { $("#header .post").eq(0).addClass('animated fadeInDownBig'); }, 75);
-    setTimeout(function () { $("#header .post").eq(2).addClass('animated fadeInRightBig'); }, 77);
+    var h = jQuery(window).height();
+
+    jQuery("#macbook .post").css("display","none");
+    jQuery("#header .post").eq(1).addClass('animated fadeInLeftBig');
+    setTimeout(function () { jQuery("#header .post").eq(0).addClass('animated fadeInDownBig'); }, 75);
+    setTimeout(function () { jQuery("#header .post").eq(1).addClass('animated fadeInLeftBig'); }, 76);
+    setTimeout(function () { jQuery("#header .post").eq(2).addClass('animated fadeInRightBig'); }, 77);
     
 
-    $(window).scroll(function () {
-        if (($(this).scrollTop() + h) >= $("#macbook").offset().top) {
-            setTimeout(function () {
-                
-                //$("#macbook .post").css({ visibility: "visible" });
-                $("#macbook .post").eq(0).addClass('animated fadeInLeft');
-            }, 0);
-            
-        }
-        if (($(this).scrollTop() + h) >= $("#aboutfirst").offset().top) {
-            //$("#aboutfirst .post").css({ visibility: "visible" });
-            $("#aboutfirst .post").eq(0).addClass('animated fadeInUp');
-            $("#aboutfirst .post").eq(1).addClass('animated fadeInUp');
+    jQuery(window).scroll(function () {
+        
+        if ((jQuery(this).scrollTop() + h) >= jQuery("#aboutfirst").offset().top) {
+            jQuery("#aboutfirst .post").eq(0).addClass('animated fadeInUp');
+            jQuery("#aboutfirst .post").eq(1).addClass('animated fadeInUp');
            
         }
-        if (($(this).scrollTop() + h) >= $("#aboutsecond").offset().top) {
-            $("#aboutsecond .post").css({ visibility: "visible" });
-            $("#aboutsecond .post").eq(0).addClass('animated fadeInUp');
-            $("#aboutsecond .post").eq(1).addClass('animated fadeInUp');
+        if ((jQuery(this).scrollTop() + h) >= jQuery("#aboutsecond").offset().top) {
+            jQuery("#aboutsecond .post").css({ visibility: "visible" });
+            jQuery("#aboutsecond .post").eq(0).addClass('animated fadeInUp');
+            jQuery("#aboutsecond .post").eq(1).addClass('animated fadeInUp');
 
         }
-        if (($(this).scrollTop() + h) >= $("#slider").offset().top) {
-            $("#slider .post").css({ visibility: "visible" });
-            $("#slider .post").addClass('animated bounceInLeft');
+        if ((jQuery(this).scrollTop() + h) >= jQuery("#slider").offset().top) {
+            jQuery("#slider .post").css({ visibility: "visible" });
+            jQuery("#slider .post").addClass('animated bounceInLeft');
         }
-
-        /*if ($(this).scrollTop() == 0) {
-            $("#wrapper .post, #about .post, #feedback .post").each(function () {
-                if ($(this).hasClass('last')) {
-                    $(this).removeClass().addClass('post last');
-                } else {
-                    $(this).removeClass().addClass('post');
-                }
-                $(this).css({ visibility: "hidden" });
-            });
-        }*/
     });
 });

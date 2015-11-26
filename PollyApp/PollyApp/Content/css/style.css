@@ -25,16 +25,40 @@ a{
     padding-top:35px;
     padding-bottom:35px;
 }
+.text{
+    background:none;
+    text-decoration:none;
+    cursor:default;
+}
+.text:hover{
+    background:#fff;
+    text-decoration:none;
+    cursor:default;
+}
+.text > a{
+     background:none;
+    text-decoration:none;
+    cursor:default;
+}
+.text > a:hover{
+    background:#fff;
+    text-decoration:none;
+    cursor:default;
+}
 /*---------------------------------------------*/
 /*--------------HEADER SECTION-----------------*/
 /*---------------------------------------------*/
+.portrait-mini{
+    height:30px;
+    margin: 5px 5px 0px 5px;
+}
 #header{
     padding-top:20px;
     min-height:100%;
     color:white;
     padding-bottom:20px;
     height: 75vh;
-    background:url(../images/bg.jpg);
+    background:url(../images/bg3.jpg);
     background-position-x:center;
     background-position-y:center;
     background-attachment:fixed;
@@ -70,7 +94,7 @@ a{
     border:none;
 }
 .right-menu{
-    line-height:75px;
+    line-height:0px;
 }
 .btn-right-menu{
     margin-left:10px;
@@ -110,7 +134,7 @@ a{
 }
 #logo{
     margin-right:75px;
-    margin-top:0;
+    margin-top:0px;
     text-align:left;
 }
 
@@ -132,19 +156,20 @@ a{
     width:220px;
     height:50px;
     font-weight:bolder;
-    color:white;
+    
     background:none;
-    border:2px solid #f39c12;
+    border:2px solid #34495e;
     border-radius:3px;
+    color:#34495e
 }
 .button-create:hover{
     font-size:16px;
     width:220px;
     height:50px;
     font-weight:bolder;
-    color:#f39c12;
+    color:#34495e;
     background:rgba(255,255,255,0.3);
-    border:2px solid rgba(255,255,255,1);
+    border:2px solid #34495e;
     border-radius:3px;
 }
 .createpoll{
@@ -228,7 +253,7 @@ a{
 /*---------------FOOTER SECTION----------------*/
 /*---------------------------------------------*/
 #footer{
-    background-color:rgba(0,0,0,0.7);
+   background:#2c3e50;
     
 }
 /*---------------------------------------------*/
@@ -277,6 +302,9 @@ a{
    
 }
 @media all and (max-width: 480px) {
+    #header{
+        height:100vh;
+    }
      .navbar-default .navbar-nav > li > a {
       color: #fff;
        background:rgba(0,0,0,0.8);

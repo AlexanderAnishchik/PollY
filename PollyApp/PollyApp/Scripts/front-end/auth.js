@@ -1,5 +1,7 @@
-﻿jQuery.noConflict();
-    setTimeout(function () {
+﻿jQuery(document).ready(function () {
+
+jQuery.noConflict();
+    /*setTimeout(function () {
         jQuery('#signInBtn').click(function () {
             location.reload();
         });
@@ -8,4 +10,5 @@
         jQuery('#signUpBtn').click(function () {
             location.reload();
         });
-    }, 500);
+    }, 500);*/
+});

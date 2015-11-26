@@ -11,7 +11,9 @@ namespace PollyApp.Controllers
     {
         public ActionResult SignIn(String login, String pass)
         {
-            return new JsonResult() { Data = MemberWorker.Login(login, pass) };
+            var data = MemberWorker.Login(login, pass);
+            Session["isLogged"] = data;
+            return new JsonResult() { Data = data };
         }
         [HttpPost]
         public JsonResult SignUp(String email, String pass, String firstName, String lastName)
@@ -19,12 +21,19 @@ namespace PollyApp.Controllers
             try
             {
                 MemberWorker.Register(pass, email, firstName, lastName);
+                Session["isLogged"] = true;
                 return new JsonResult() { Data = true };
             }
             catch (Exception)
             {
+                Session["isLogged"] = false;
                 return new JsonResult() { Data = false };
             }
+        }
+        public ActionResult LogOut()
+        {
+            Session["isLogged"] = null;
+            return RedirectToAction("Index","Home");
         }
     }
 }
