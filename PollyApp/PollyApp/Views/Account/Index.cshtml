@@ -1,141 +1,156 @@
 ﻿@{
     ViewBag.Title = "Polly @alexanderanischik / Polly";
     Layout = "~/Views/Shared/_Dashboard.cshtml";
-}
-<script src="~/Scripts/bootstrap.js"></script>
 
-<nav class="navbar navbar-default navbar-fixed-top" id="navigation">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" id="logo" href="#"><img src="~/Content/images/pollylogogreen.png" /></a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li><img src="~/Content/images/foto_alexander.jpg" alt="second" class="img-circle portrait-mini"></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Anischik Alexander <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li class="text"><a href=""><b>Anischik Alexander</b></a></li>
-                        <li><a href=""><small>anischikalexander@gmail.com</small></a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="Account/Index">Account center</a></li>
-                        <li><a href="#">Settings</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Add poll</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="Login/LogOut" id="logout">Log out</a></li>
+    if (!(Boolean)Session["isLogged"])
+    {
+        <script language="JavaScript">
+            window.location.href = "/"
+        </script>
+    }
+    else
+    {
+        <script src="~/Scripts/bootstrap.js"></script>
+
+        <nav class="navbar navbar-default navbar-fixed-top" id="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" id="logo" href="#"><img src="~/Content/images/pollylogogreen.png" /></a>
+                </div>
+                 
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><img src="~/Content/images/foto_alexander.jpg" alt="second" class="img-circle portrait-mini"></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Anischik Alexander <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li class="text"><a href=""><b>Anischik Alexander</b></a></li>
+                                <li><a href=""><small>anischikalexander@gmail.com</small></a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="/Account/Index">Account center</a></li>
+                                <li><a href="#">Settings</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">Add poll</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="/Login/LogOut" id="logout">Log out</a></li>
+                            </ul>
+                        </li>
                     </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+                    <form class="navbar-form navbar-right">
+                        <input type="text" class="form-control" placeholder="Search...">
+                    </form>
+                </div>
+                
+            </div>
+        </nav>
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-3 col-md-2 sidebar">
            
-            <ul class="nav nav-sidebar">
-                <li><a href="#"><img src="~/Content/images/dashboard.png" class="icon" /> Dashboard</a></li>
-                <li><a href="#"><img src="~/Content/images/text lines15.png" class="icon"/> Polls</a></li>
-                <li><a href="#"><img src="~/Content/images/ascending7.png" class="icon" /> Analitycs</a></li>
-                <li><a href="#"><img src="~/Content/images/feedback.png" class="icon" /> Feedback</a></li>
+                    <ul class="nav nav-sidebar">
+                        <li><a href="#"><img src="~/Content/images/dashboard.png" class="icon" /> Dashboard</a></li>
+                        <li><a href="#"><img src="~/Content/images/text lines15.png" class="icon"/> Polls</a></li>
+                        <li><a href="#"><img src="~/Content/images/ascending7.png" class="icon" /> Analitycs</a></li>
+                        <li><a href="#"><img src="~/Content/images/feedback.png" class="icon" /> Feedback</a></li>
                 
-            </ul>
-            <ul class="nav nav-sidebar">
-                <li><a href="#"><img src="~/Content/images/faq.png" class="icon" /> FAQ</a></li>
-                <li><a href="#"><img src="~/Content/images/help.png" class="icon" /> Help</a></li>
-                <li><a href="#"><img src="~/Content/images/settings.png" class="icon" /> Settings</a></li>
+                    </ul>
+                    <ul class="nav nav-sidebar">
+                        <li><a href="#"><img src="~/Content/images/faq.png" class="icon" /> FAQ</a></li>
+                        <li><a href="#"><img src="~/Content/images/help.png" class="icon" /> Help</a></li>
+                        <li><a href="#"><img src="~/Content/images/settings.png" class="icon" /> Settings</a></li>
                 
-            </ul>
+                    </ul>
             
-        </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <h1 class="page-header">Dashboard</h1>
+                </div>
+                <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                    <h1 class="page-header">Dashboard</h1>
 
-            <div class="row placeholders">
-                <div class="col-xs-6 col-sm-3 placeholder">
-                    <img src="~/Content/images/polls.png" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-                    <h4>Polls</h4>
-                    <span class="text-muted">All polls</span>
-                </div>
-                <div class="col-xs-6 col-sm-3 placeholder">
-                    <img src="~/Content/images/analitycs.png" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-                    <h4>Analitycs</h4>
-                    <span class="text-muted">Graphycs and diagrams</span>
-                </div>
-                <div class="col-xs-6 col-sm-3 placeholder">
-                    <img src="~/Content/images/feedback-big.png" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-                    <h4>Feedback</h4>
-                    <span class="text-muted">Answers on your polls</span>
-                </div>
-                <div class="col-xs-6 col-sm-3 placeholder">
-                    <img src="~/Content/images/settings-big.png" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-                    <h4>Settings</h4>
-                    <span class="text-muted">Settings of your profile</span>
+                    <div class="row placeholders">
+                        <div class="col-xs-5 col-sm-3 placeholder">
+                            <img src="~/Content/images/polls.png" width="140" height="140" class="img-responsive" alt="Generic placeholder thumbnail">
+                            <h4>Polls</h4>
+                            <span class="text-muted">All polls</span>
+                        </div>
+                        <div class="col-xs-5 col-sm-3 placeholder">
+                            <img src="~/Content/images/analitycs.png" width="140" height="140" class="img-responsive" alt="Generic placeholder thumbnail">
+                            <h4>Analitycs</h4>
+                            <span class="text-muted">Graphycs and diagrams</span>
+                        </div>
+                        <div class="col-xs-5 col-sm-3 placeholder">
+                            <img src="~/Content/images/feedback-big.png" width="140" height="140" class="img-responsive" alt="Generic placeholder thumbnail">
+                            <h4>Feedback</h4>
+                            <span class="text-muted">Answers on your polls</span>
+                        </div>
+                        <div class="col-xs-5 col-sm-3 placeholder">
+                            <img src="~/Content/images/settings-big.png" width="140" height="140" class="img-responsive" alt="Generic placeholder thumbnail">
+                            <h4>Settings</h4>
+                            <span class="text-muted">Settings of your profile</span>
+                        </div>
+                    </div>
+
+                    <h2 class="sub-header">My polls</h2>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Title</th>
+                                    <th>Create date</th>
+                                    <th>Modified date</th>
+                                    <th>Privacy</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for(int i = 0; i<3;i++)
+                                { 
+                                <tr>
+                                    <td>1254</td>
+                                    <td>Apple or Orange</td>
+                                    <td>01.10.2015</td>
+                                    <td>10.10.2015</td>
+                                    <td>Private</td>
+                                </tr>
+                                <tr>
+                                    <td>1255</td>
+                                    <td>C# or Java</td>
+                                    <td>04.10.2015</td>
+                                    <td>09.10.2015</td>
+                                    <td>Public</td>
+                                </tr>
+                                <tr>
+                                    <td>1256</td>
+                                    <td>Microsoft or Apple</td>
+                                    <td>04.10.2015</td>
+                                    <td>04.10.2015</td>
+                                    <td>Private</td>
+                                </tr>
+                                <tr>
+                                    <td>1257</td>
+                                    <td>Your favourite programming language</td>
+                                    <td>05.10.2015</td>
+                                    <td>15.10.2015</td>
+                                    <td>Private</td>
+                                </tr>
+                                <tr>
+                                    <td>1258</td>
+                                    <td>Miss HNEU</td>
+                                    <td>17.10.2015</td>
+                                    <td>17.10.2015</td>
+                                    <td>Public</td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-
-            <h2 class="sub-header">My polls</h2>
-            <div class="table-responsive">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Title</th>
-                            <th>Create date</th>
-                            <th>Modified date</th>
-                            <th>Privacy</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @for(int i = 0; i<3;i++)
-                        { 
-                        <tr>
-                            <td>1254</td>
-                            <td>Apple or Orange</td>
-                            <td>01.10.2015</td>
-                            <td>10.10.2015</td>
-                            <td>Private</td>
-                        </tr>
-                        <tr>
-                            <td>1255</td>
-                            <td>C# or Java</td>
-                            <td>04.10.2015</td>
-                            <td>09.10.2015</td>
-                            <td>Public</td>
-                        </tr>
-                        <tr>
-                            <td>1256</td>
-                            <td>Microsoft or Apple</td>
-                            <td>04.10.2015</td>
-                            <td>04.10.2015</td>
-                            <td>Private</td>
-                        </tr>
-                        <tr>
-                            <td>1257</td>
-                            <td>Your favourite programming language</td>
-                            <td>05.10.2015</td>
-                            <td>15.10.2015</td>
-                            <td>Private</td>
-                        </tr>
-                        <tr>
-                            <td>1258</td>
-                            <td>Miss HNEU</td>
-                            <td>17.10.2015</td>
-                            <td>17.10.2015</td>
-                            <td>Public</td>
-                        </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
         </div>
-    </div>
-</div>
+    }
+}

@@ -12,7 +12,7 @@ namespace PollyApp.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            if (Session["isLogged"] == null)
+            if(Session["isLogged"]==null)
                 Session["isLogged"] = false;
             return View();
         }
