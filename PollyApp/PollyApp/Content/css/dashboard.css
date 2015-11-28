@@ -138,3 +138,15 @@ body {
     margin-top:-2px;
     margin-right:5px;
 }
+.last{
+    margin-right:0;
+}
+@media all and (max-width: 480px){
+    .form-control{
+        margin-right:0;
+        margin-top:20px;
+        margin-bottom:10px;
+        border-radius:0;
+        height:34px;
+    }
+}
