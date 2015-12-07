@@ -4383,7 +4383,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   padding-top: 10px;
   padding-bottom: 10px;
   line-height: 10px;
-  border-radius:4px;
 }
 @media (max-width: 767px) {
   .navbar-nav .open .dropdown-menu {
@@ -4422,6 +4421,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     padding-top: 15px;
     padding-bottom: 15px;
   }
+  
 }
 .navbar-form {
   padding: 10px 15px;
@@ -4566,11 +4566,16 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-default .navbar-nav > li > a {
   color: #afc3c7;
+   padding-top: 14px;
+   padding-bottom: 14px;
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
   color: #fff;
-  background:#3a526a;
+  border-bottom:2px solid #e74c3c;
+  padding-top: 14px;
+  padding-bottom: 20px;
+  background:none;
   
 }
 .navbar-default .navbar-nav > .active > a,

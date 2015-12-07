@@ -9,10 +9,11 @@ namespace PollyApp.Controllers
 {
     public class LoginController : Controller
     {
+        public GenericRepository.Repository Db = new GenericRepository.Repository();
         public ActionResult SignIn(String login, String pass)
         {
             var data = MemberWorker.Login(login, pass);
-            Session["isLogged"] = data;
+            Session["isLogged"] = data; 
             return new JsonResult() { Data = data };
         }
         [HttpPost]

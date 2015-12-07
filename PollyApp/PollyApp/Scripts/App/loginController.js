@@ -8,8 +8,7 @@
                 debugger;
             },
             function (data) {
-                
-                
+
             });
         }
     };
@@ -19,7 +18,7 @@
                 debugger;
             },
             function (data) {
-
+                
             });
         }
     };

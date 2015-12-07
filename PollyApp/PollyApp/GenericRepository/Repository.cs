@@ -36,6 +36,12 @@ namespace PollyApp.GenericRepository
             Context.Entry<TEntity>(temp).CurrentValues.SetValues(ent);
             Context.Entry<TEntity>(temp).State = EntityState.Modified;
         }
+        public User getUserByEmail(string email)
+        {
+            var user = Context.Users.Where(x => x.Email == email).First();
+            
+            return user;
+        }
         public void Save()
         {
             Context.SaveChanges();
