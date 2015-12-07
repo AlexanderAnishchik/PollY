@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b76057dfe6964e2a8ca845646d0972cb" Name="Diagram1">
+        <EntityTypeShape EntityType="PollyAppModel.Answer" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PollyAppModel.Project" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PollyAppModel.Question" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PollyAppModel.Result" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="PollyAppModel.User" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PollyAppModel.UserPermission" Width="1.5" PointX="1.5" PointY="9.5" IsExpanded="true" />
+        <AssociationConnector Association="PollyAppModel.FK_Answer_Question" ManuallyRouted="false" />
+        <AssociationConnector Association="PollyAppModel.FK_Result_Answer" ManuallyRouted="false" />
+        <AssociationConnector Association="PollyAppModel.FK_Project_User" ManuallyRouted="false" />
+        <AssociationConnector Association="PollyAppModel.FK_Result_Project" ManuallyRouted="false" />
+        <AssociationConnector Association="PollyAppModel.FK_Result_Question" ManuallyRouted="false" />
+        <AssociationConnector Association="PollyAppModel.FK_Result_User" ManuallyRouted="false" />
+        <AssociationConnector Association="PollyAppModel.FK_User_UserPermission" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
