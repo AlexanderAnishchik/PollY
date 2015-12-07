@@ -134,52 +134,49 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\APIController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="EFModel\Answer.cs">
-      <DependentUpon>PollyDbModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="EFModel\Answer.cs">
+      <DependentUpon>PollyDbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFModel\PollyDbEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PollyDbEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFModel\PollyDbEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PollyDbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFModel\PollyDbEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PollyDbEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EFModel\Project.cs">
+      <DependentUpon>PollyDbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFModel\Question.cs">
+      <DependentUpon>PollyDbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFModel\Result.cs">
+      <DependentUpon>PollyDbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFModel\User.cs">
+      <DependentUpon>PollyDbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFModel\UserPermission.cs">
+      <DependentUpon>PollyDbEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="GenericRepository\Repository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="EFModel\PollyDbModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PollyDbModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EFModel\PollyDbModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PollyDbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EFModel\PollyDbModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PollyDbModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="EFModel\Project.cs">
-      <DependentUpon>PollyDbModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="EFModel\Question.cs">
-      <DependentUpon>PollyDbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EFModel\Result.cs">
-      <DependentUpon>PollyDbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EFModel\sysdiagram.cs">
-      <DependentUpon>PollyDbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EFModel\User.cs">
-      <DependentUpon>PollyDbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EFModel\UserPermission.cs">
-      <DependentUpon>PollyDbModel.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -285,23 +282,22 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Content\ui-bootstrap-csp.css" />
-    <Content Include="EFModel\PollyDbModel.edmx.sql" />
+    <Content Include="EFModel\PollyDbEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PollyDbEntities.edmx</DependentUpon>
+      <LastGenOutput>PollyDbEntities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="EFModel\PollyDbEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PollyDbEntities.edmx</DependentUpon>
+      <LastGenOutput>PollyDbEntities.cs</LastGenOutput>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
-    <Content Include="EFModel\PollyDbModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>PollyDbModel.edmx</DependentUpon>
-      <LastGenOutput>PollyDbModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="EFModel\PollyDbModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>PollyDbModel.edmx</DependentUpon>
-      <LastGenOutput>PollyDbModel.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-aria.js" />
@@ -361,12 +357,12 @@
     <Content Include="fonts\OpenSans-Regular.ttf" />
     <Content Include="fonts\OpenSans-Semibold.ttf" />
     <Content Include="fonts\OpenSans-SemiboldItalic.ttf" />
-    <EntityDeploy Include="EFModel\PollyDbModel.edmx">
+    <EntityDeploy Include="EFModel\PollyDbEntities.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>PollyDbModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>PollyDbEntities.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="EFModel\PollyDbModel.edmx.diagram">
-      <DependentUpon>PollyDbModel.edmx</DependentUpon>
+    <Content Include="EFModel\PollyDbEntities.edmx.diagram">
+      <DependentUpon>PollyDbEntities.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\front-end\animate.js" />

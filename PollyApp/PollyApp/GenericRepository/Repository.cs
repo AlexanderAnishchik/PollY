@@ -9,11 +9,11 @@ namespace PollyApp.GenericRepository
 {
     public class Repository
     {
-        public PollyDbEntities Context { get; set; }
+        public Entities Context { get; set; }
 
         public Repository()
         {
-            Context = new PollyDbEntities();
+            Context = new Entities();
         }
 
         public IEnumerable<TEntity> GetListRecords<TEntity>() where TEntity : class
