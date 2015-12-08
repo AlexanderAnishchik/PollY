@@ -13,12 +13,18 @@ namespace PollyApp.Controllers
         public GenericRepository.Repository Db = new GenericRepository.Repository();
         public ActionResult SignIn(String login, String pass)
         {
-            User user = null;
+            Object user = null;
             var isLogged = MemberWorker.Login(login, pass);
             if (isLogged)
             {
                 Session["userId"] = login;
-                 user = Db.Context.Users.Where(x => x.Email == login).FirstOrDefault();
+                user = Db.Context.Users.Where(x => x.Email == login).Select(x => new
+                {
+                    x.Email,
+                    x.FirstName,
+                    x.LastName,
+                    x.Logo
+                }).FirstOrDefault();
             }
             Session["isLogged"] = isLogged;
             return new JsonResult() { Data = new { status = isLogged, user = user } };
