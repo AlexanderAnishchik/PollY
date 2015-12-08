@@ -1,27 +1,14 @@
 ﻿
-    $(window).scroll(function () {
-        var scrollTop = $(window).scrollTop();
-        if (scrollTop != 0) {
-            $("#navigation").animate({ backgroundColor: 'black' }, 400);
-            
-        }
-        else {
-            $("#navigation").animate({ backgroundColor: 'transparent' }, 350);
-        }
-    });
+jQuery(document).ready(function () {
 
-    $('#navigation').hover(
-        function (e) {
-            var scrollTop = $(window).scrollTop();
-            if (scrollTop != 0) {
-                $('#navigation').stop().animate({ backgroundColor: 'black' }, 400);            
-            }
-        },
-        function (e) {
-            var scrollTop = $(window).scrollTop();
-            if (scrollTop != 0) {
-                $('#navigation').stop().animate({ backgroundColor: 'black' }, 400);
-            
-            }
+    var h = jQuery(window).height();
+
+    jQuery(window).scroll(function () {
+
+        if ((jQuery(this).scrollTop() + h) >= jQuery("#wrapper").offset().top) {
+            $("#navigation").css("background","black");
         }
-    );
+       
+    });
+});
+    

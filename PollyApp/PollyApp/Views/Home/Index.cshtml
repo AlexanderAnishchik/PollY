@@ -8,7 +8,7 @@
     <script src="~/Scripts/App/homeController.js"></script>
     <script src="~/Scripts/App/loginController.js"></script>
     <script src="~/Scripts/front-end/auth.js"></script>
-    
+    <script src="~/Scripts/animate-colors.js"></script>
 
   @{
       
@@ -57,43 +57,47 @@
     <div class="modal fade" id="register" ng-controller="loginController as loginCtrl" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
+                <div class="center">
+                    <img src="~/Content/images/pollylogogreen.png" />
+                </div>
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel">SIGN UP</h4>
                 </div>
                 <form method="POST" name="registerForm" novalidate>
                     <div class="modal-body">
-                        <div class="input-group input-group-lg textbox" ng-class="{ 'has-error' : !registerForm.first.$pristine && registerForm.first.$invalid}">
+                        <div class="input-group input-group-lg textbox" ng-class="{ 'has-error' : !registerForm.first.$pristine && registerForm.first.$invalid, 'has-success' : !registerForm.first.$pristine && registerForm.first.$valid}">
                             <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/user.png" /></span>
                             <input type="text" class="form-control" name="first" ng-model="loginCtrl.registr.first" placeholder="First name" aria-describedby="sizing-addon1" required>
-                            
+
                         </div>
                         <div class="alert alert-danger" ng-show="registerForm.first.$invalid && !registerForm.first.$pristine">
                             Your first name is required
                         </div>
-                        <div class="input-group input-group-lg textbox" ng-class="{ 'has-error' : !registerForm.second.$pristine && registerForm.second.$invalid}">
+                        <div class="input-group input-group-lg textbox" ng-class="{ 'has-error' : !registerForm.second.$pristine && registerForm.second.$invalid, 'has-success' : !registerForm.second.$pristine && registerForm.second.$valid}">
                             <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/user.png" /></span>
                             <input type="text" class="form-control" name="second" ng-model="loginCtrl.registr.last" placeholder="Last name" aria-describedby="sizing-addon1" required>
                         </div>
                         <div class="alert alert-danger" ng-show="registerForm.second.$invalid && !registerForm.second.$pristine">
                             Your second name is required
                         </div>
-                        <div class="input-group input-group-lg textbox" ng-class="{ 'has-error' : !registerForm.email.$pristine && registerForm.email.$invalid}">
+                        <div class="input-group input-group-lg textbox" ng-class="{ 'has-error' : !registerForm.email.$pristine && registerForm.email.$invalid, 'has-success' : !registerForm.email.$pristine && registerForm.email.$valid}">
                             <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/email.png" /></span>
                             <input type="email" class="form-control" placeholder="E-mail" name="email" ng-model="loginCtrl.registr.email" aria-describedby="sizing-addon1" required>
                         </div>
                         <div class="alert alert-danger" ng-show="registerForm.email.$invalid && !registerForm.email.$pristine">
-                                Please, enter correct e-mail <br />
-                                "simple@simple.com"
+                            Please, enter correct e-mail <br />
+                            "simple@simple.com"
                         </div>
                         <div class="input-group input-group-lg textbox">
                             <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/password.png" /></span>
                             <input type="password" class="form-control" name="pass" ng-model="loginCtrl.registr.pass" placeholder="Password" aria-describedby="sizing-addon1">
                         </div>
-                        
+
                         <div class="input-group input-group-lg textbox">
                             <span class=" input-group-addon" id="sizing-addon1">
-                            <img src="~/Content/images/password.png" /></span>
+                                <img src="~/Content/images/password.png" />
+                            </span>
                             <input type="password" class="form-control" name="confirm" ng-model="loginCtrl.registr.confirmpass" placeholder="Confirm password" aria-describedby="sizing-addon1">
                         </div>
                         
@@ -138,9 +142,9 @@
                            }
                            @if ((Boolean)Session["isLogged"])
                            {
-                            <li><img src="~/Content/images/foto_alexander.jpg" alt="second" class="img-circle portrait-mini"></li>
+                            
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sasha<span class="caret"></span></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Alexander Anischik<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li class="text"><a href=""><b>Anischik Alexander</b></a></li>
                                     <li><a href=""><small>anischikalexander@gmail.com</small></a></li>
