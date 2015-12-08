@@ -10,6 +10,7 @@
                 var data = response.data;
                 if (data.status == true) {
                     $scope.user = data.user;
+                    debugger;
                 }
             },
             function (response) {

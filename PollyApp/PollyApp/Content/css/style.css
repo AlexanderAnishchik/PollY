@@ -1,403 +1,341 @@
 ﻿
-@font-face{
-	font-family: OpenSans;
-	src:url(../../fonts/OpenSans-Regular.ttf);
+@font-face {
+    font-family: OpenSans;
+    src: url(../../fonts/OpenSans-Regular.ttf);
 }
-body{
-	padding: 0;
-	margin: 0;
-	background: #ffffff;
-	font-family: OpenSans;
+
+body {
+    padding: 0;
+    margin: 0;
+    background: #ffffff;
+    font-family: OpenSans;
 }
-a{
-    color:#ffffff;
+
+a {
+    color: #ffffff;
 }
-.big{
-    font-size:60px;
-    font-weight:bold;
+
+.big {
+    font-size: 60px;
+    font-weight: bold;
 }
-.center{
-    text-align:center;
+
+.center {
+    text-align: center;
 }
-.last{
-    margin:0!important;
+
+.last {
+    margin: 0 !important;
 }
-.description{
-    margin-bottom:25px;
+
+
+#about, #feedback, #wrapper {
+    padding-top: 35px;
+    padding-bottom: 35px;
 }
-#about, #feedback, #wrapper{
-    padding-top:35px;
-    padding-bottom:35px;
+
+.portrait {
+    height: 200px;
 }
-.text{
-    background:none;
-    text-decoration:none;
-    cursor:default;
+.portrait-mini {
+    height: 30px;
+    margin: 5px 5px 0px 5px;
 }
-.text:hover{
-    background:#fff;
-    text-decoration:none;
-    cursor:default;
-}
-.text > a{
-     background:none;
-    text-decoration:none;
-    cursor:default;
-}
-.text > a:hover{
-    background:#fff;
-    text-decoration:none;
-    cursor:default;
+.textbox{
+    margin-bottom:10px;
 }
 /*---------------------------------------------*/
 /*--------------HEADER SECTION-----------------*/
 /*---------------------------------------------*/
-.portrait-mini{
-    height:30px;
-    margin: 5px 5px 0px 5px;
+
+
+#header {
+    padding-top: 20px;
+    color: white;
+    padding-bottom: 20px;
+    height: auto;
+    background: url(../images/bg3.jpg);
+    background-position-x: center;
+    background-position-y: center;
+    background-attachment: fixed;
+    background-size: cover;
 }
-#header{
-    padding-top:20px;
-    min-height:100%;
-    color:white;
-    padding-bottom:20px;
-    height: 75vh;
-    background:url(../images/bg3.jpg);
-    background-position-x:center;
-    background-position-y:center;
-    background-attachment:fixed;
-    background-size:cover;
-}
+
 #navigation {
-
-}
-.scroll-button{
-    background:url(../images/computer147.png);
-    border:none;
-    opacity:0.5;
-    width:45px;
-    height:45px;
-    background-position:center;
-    background-repeat:no-repeat;
-    
 }
 
-.scroll-button:hover{
-    background:url(../images/computer147.png);
-    border:none;
-    opacity:1;
-    width:45px;
-    height:45px;
-    background-position:center;
-    background-repeat:no-repeat;
-    
+.scroll-button {
+    background: url(../images/computer147.png);
+    border: none;
+    opacity: 0.5;
+    width: 45px;
+    height: 45px;
+    background-position: center;
+    background-repeat: no-repeat;
 }
-.scroll-button:focus, .scroll-button:active{
-    border:none;
+
+.scroll-button:hover {
+    background: url(../images/computer147.png);
+    border: none;
+    opacity: 1;
+    width: 45px;
+    height: 45px;
+    background-position: center;
+    background-repeat: no-repeat;
 }
-.scroll-button:active{
-    border:none;
+
+.scroll-button:focus, .scroll-button:active {
+    border: none;
 }
-.right-menu{
-    line-height:0px;
+
+.scroll-button:active {
+    border: none;
 }
-.btn-right-menu{
-    margin-left:10px;
+
+.right-menu {
+    line-height: 0px;
 }
-.btn-menu {
-    line-height:1.4;
-    background:none;
-    border:1px solid transparent;
-    padding: 5px 12px;
-    font-size:15px;
-    font-weight:normal;
-    border-radius:3px;
-}
-.btn-menu:hover{
-    line-height:1.4;
-    background:none;
-    border:1px solid #8e8f8f;
-    padding: 5px 12px;
-    font-size:15px;
-    font-weight:normal;
-}
-.btn-menu:active{
-    line-height:1.4;
-    background:none;
-    border:1px solid #8e8f8f;
-    padding: 5px 12px;
-    font-size:15px;
-    font-weight:normal;
-}
-.btn-menu:focus{
-    line-height:1.4;
-    background:none;
-    border:1px solid #8e8f8f;
-    padding: 5px 12px;
-    font-size:15px;
-    font-weight:normal;
-}
+
+
+
 .desc {
-    color:#1abc9c;
+    color: #1abc9c;
 }
+
 #logo {
-    margin-right:75px;
-    margin-top:0px;
-    text-align:left;
+    margin-right: 75px;
+    margin-top: -5px;
+    text-align: left;
 }
 
-.header-content{
-    margin-top:15%;
-}
-.header-content .desc{
-    margin-top:35px;
-    font-size:20px;
+.header-content .desc {
+    margin-top: 35px;
+    font-size: 20px;
 }
 
-.authbar{
-    line-height:45px;
-    text-align:right;
+.button-create {
+    font-size: 12px;
+    padding-left: 40px;
+    padding-right: 40px;
+    height: 50px;
+    font-weight: bolder;
+    background: none;
+    border: 2px solid #1abc9c;
+    border-radius: 3px;
+    color: white;
 }
 
-.button-create{
-    font-size:12px;
-    padding-left:40px;
-    padding-right:40px;
-    height:50px;
-    font-weight:bolder;
-    background:none;
-    border:2px solid #1abc9c;
-    border-radius:3px;
-    color:white;
+.button-create:hover, .button-create:focus {
+    outline: 0;
+    font-size: 12px;
+    padding-left: 40px;
+    padding-right: 40px;
+    height: 50px;
+    font-weight: bolder;
+    color: #ffffff;
+    background: rgba(255,255,255,0);
+    border: 2px solid #16a085;
+    border-radius: 3px;
 }
-.button-create:hover, .button-create:focus{
-    outline:0;
-    font-size:12px;
-    padding-left:40px;
-    padding-right:40px;
-    height:50px;
-    font-weight:bolder;
-    color:#ffffff;
-    background:rgba(255,255,255,0);
-    border:2px solid #16a085;
-    border-radius:3px;
+
+.createpoll {
+    margin-top: 90px;
+    text-align: center;
 }
-.createpoll{
-    margin-top:90px;
-    text-align:center;
-}
-.textbox{
-    margin-bottom:15px;
-}
+
 
 /*---------------------------------------------*/
 /*--------------MACBOOK SECTION----------------*/
 /*---------------------------------------------*/
-#wrapper{
-    color:#34495e;
-}
-
-.iphone{
-    position:absolute;
-    top:88px;
-    left:530px;
+#wrapper {
+    color: #34495e;
 }
 
 /*---------------------------------------------*/
 /*----------------ABOUT SECTION----------------*/
 /*---------------------------------------------*/
-#about{
-    background:#edeeef;
-    color:#34495e;
+#about {
+    background: #edeeef;
+    color: #34495e;
 }
 
-.moreinforow{
-    margin-top:25px;
+
+.moreinfobutton {
+    height: 52px;
+    width: 202px;
+    background: none;
+    border: 1px solid #000000;
+    color: #000000;
+    margin-bottom: 0px;
 }
 
-.moreinfobutton{
-    height:52px;
-    width:202px;
-    background:none;
-    border:1px solid #000000;
-    color:#000000;
-    margin-bottom:25px;
-}
-.moreinfobutton:hover, .moreinfobutton:focus{
-    outline:0;
-    border:1px solid #8e8f8f;
-    background:rgba(0,0,0,0.4);
-    color:#ffffff;
+.moreinfobutton:hover, .moreinfobutton:focus {
+    outline: 0;
+    border: 1px solid #8e8f8f;
+    background: rgba(0,0,0,0.4);
+    color: #ffffff;
 }
 
-.icon-about[align=left]{
-    margin-right:20px;
+.icon-about[align=left] {
+    margin-right: 10px;
 }
-.icon-about[align=right]{
-    margin-left:20px;
+
+.icon-about[align=right] {
+    margin-left: 10px;
 }
-.moreinfo{
-    text-align:center;
+
+.moreinfo {
+    text-align: center;
 }
 /*---------------------------------------------*/
 /*--------------FEEDBACK SECTION---------------*/
 /*---------------------------------------------*/
-#feedback{
-    background:rgba(255,255,255,1);
-    padding-top:20px;
-}
-.portrait{
-    width:150px;
-    height:150px;
-    margin:20px;
-}
-.feedback-text{
-    margin-top:20px;
-}
-#feedback description{
-    color:#34495e;
-}
-.carousel-inner{
-    color:#777;
-}
+
+
 /*---------------------------------------------*/
 /*---------------FOOTER SECTION----------------*/
 /*---------------------------------------------*/
-#bottom-part{
+#bottom-part {
     /*background:url(../images/bg.jpg);
     background-attachment:fixed;
     background-position:center;*/
 }
-#footer{
-   background:#2c3e50;
-    
+
+#footer {
+    background: #2c3e50;
 }
 /*---------------------------------------------*/
 /*----------------MOBILE DESIGN----------------*/
 /*---------------------------------------------*/
-@media all and (min-width: 1600px) { 
-    .macbook{
-    text-align:center;
+@media all and (min-width: 1600px) {
+    .macbook {
+        text-align: center;
     }
-    .scroll-button{
-    margin-top:30%;
-    }
-}
-@media all and (min-width: 1200px) and (max-width: 1599px) { 
-    .macbook{
-    text-align:center;
-    }
-    .header-content{
-        margin-top:7%;
-    }
-    .scroll-button{
-    margin-top:0;
+
+    .header-block {
+        margin-top: 10%;
+        margin-bottom: 10%;
     }
 }
+
+@media all and (min-width: 1200px) and (max-width: 1599px) {
+    .modal-dialog {
+        margin: 5% auto;
+    }
+    .header-block {
+        margin-top: 7%;
+        margin-bottom:7%;
+    }
+    .macbook {
+        text-align: center;
+    }
+}
+
 @media all and (min-width: 980px) and (max-width: 1199px) {
-    .macbook{
-    text-align:center;
+    .modal-dialog {
+        margin: 5% auto;
     }
-    .ipad{
-        text-align:center;
+    .header-block {
+        margin-top: 7%;
+        margin-bottom:7%;
     }
-    .createpoll{
-        margin-top:80px;
-    }
-    .scroll-button{
-        margin-top:0em;
+    .macbook {
+        text-align: center;
     }
 }
+
 @media all and (min-width: 768px) and (max-width: 979px) {
-    .ipad{
-    text-align:center;
-}
-    .createpoll{
-        margin-top:80px;
+     .modal-dialog {
+        margin: 5% auto;
+     }
+     .header-block {
+        margin-top: 5%;
+        margin-bottom:5%;
     }
-    .scroll-button{
-    margin-top:25em;
+    .ipad {
+        text-align: center;
+    }
 }
-   
-}
+
 @media all and (max-width: 480px) {
-    #header{
-        height:100vh;
-    }
-     .navbar-default .navbar-nav > li > a {
-      color: #fff;
-       background:rgba(0,0,0,0.8);
-    }
-    .navbar-default .navbar-nav > li > a:hover,
-    .navbar-default .navbar-nav > li > a:focus {
-      color: #fff;
-      background:rgba(0,0,0,0.8);
-    }
-    .moreinfocol{
-        text-align:center;
-        border-bottom:1px dashed rgba(26,186,154,1);
-    }
     
-    .iphone{
-        text-align:center;
-        position:initial;
+    .button-create{
+        margin-top:-40px;
     }
-    .description > p {
-        font-size:12px;
-    }
-    .description{
-        text-align:center;
-        padding-top:0px;
-    }
-    #header{
-        padding-top:0;
+    .navbar-collapse {
+        background: rgba(44,62,80,0.7);
     }
     #logo{
-        text-align:center;
+        margin-top:-10px;
     }
-    .authbar{
-        text-align:center;
+    #header {
+        height: 100vh;
     }
-    .createpoll{
-        margin-top:10px;
+    .header-block {
+        margin-top: 20%;
+        margin-bottom:10%;
     }
-    
-}
-@media all and (min-width: 481px) and (max-width: 767px) {
-    .navbar-default .navbar-nav > li > a {
-      color: #fff;
-      background:rgba(0,0,0,0.8);
-    }
-    .navbar-default .navbar-nav > li > a:hover,
-    .navbar-default .navbar-nav > li > a:focus {
-      color: #fff;
-      background:rgba(0,0,0,0.8);
-      border-bottom:2px solid rgba(26,186,154,1);
+    .big{
+        font-size: 45px;
+        font-weight: bold;
     }
     .moreinfocol{
+        text-align:center;
+        border-bottom: 1px solid #8e8f8f;
+    }
+    .moreinforow{
+        margin:10px;
+        padding:5px;
         text-align:center;
     }
     .icon-about{
-        float:none;
+        margin:0px;
+        height:128px;
     }
-    .iphone{
-        text-align:center;
-        position:initial;
+
+    .iphone {
+        text-align: center;
+        position: initial;
     }
-    .description{
-        text-align:center;
+}
+
+@media all and (min-width: 481px) and (max-width: 767px) {
+    .button-create{
+        margin-top:-40px;
+    }
+   .navbar-collapse {
+        background: rgba(44,62,80,0.7);
     }
     #logo{
+        margin-top:-10px;
+    }
+    #header {
+        height: 100vh;
+    }
+    .header-block {
+        margin-top: 20%;
+        margin-bottom:10%;
+    }
+    .big{
+        font-size: 45px;
+        font-weight: bold;
+    }
+    .moreinfocol{
+        text-align:center;
+        border-bottom: 1px solid #8e8f8f;
+    }
+    .moreinforow{
+        margin:10px;
+        padding:5px;
         text-align:center;
     }
-    .authbar{
-        text-align:center;
-        margin-top:10px;
+    .icon-about{
+        margin:0px;
+        height:128px;
     }
-    .createpoll{
-        margin-top:30px;
+
+    .iphone {
+        text-align: center;
+        position: initial;
     }
-    .scroll-button{
-    margin-top:25em;
-}
 }

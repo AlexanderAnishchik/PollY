@@ -4340,6 +4340,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   padding-bottom: 10px;
   line-height: 20px;
 }
+
 @media (max-width: 767px) {
   .navbar-nav .open .dropdown-menu {
     position: static;
@@ -4372,8 +4373,12 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     float: left;
   }
   .navbar-nav > li > a {
-    padding-top: 15px;
+    padding-top: 10px;
     padding-bottom: 15px;
+  }
+  .navbar-nav > li > a:hover {
+    padding-top: 10px;
+    padding-bottom: 13px;
   }
 }
 .navbar-form {
@@ -5913,6 +5918,8 @@ button.close {
 .modal-dialog {
   position: relative;
   width: auto;
+  max-height:750px;
+  overflow:auto;
   margin: 10px;
 }
 .modal-content {

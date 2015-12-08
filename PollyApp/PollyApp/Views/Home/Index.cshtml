@@ -1,148 +1,148 @@
-﻿@{Layout= "~/Views/Shared/_Layout.cshtml";
-  ViewBag.Title = "Polly - free service for poll and survey creating";
-  
+﻿@{Layout = "~/Views/Shared/_Layout.cshtml";
+ViewBag.Title = "Polly - free service for poll and survey creating";
+
 }
 
-    <script src="~/Scripts/bootstrap.js"></script>
-    <script src="~/Scripts/App/app.js"></script>
-    <script src="~/Scripts/App/homeController.js"></script>
-    <script src="~/Scripts/App/loginController.js"></script>
-    <script src="~/Scripts/front-end/auth.js"></script>
-    <script src="~/Scripts/animate-colors.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/App/app.js"></script>
+<script src="~/Scripts/App/homeController.js"></script>
+<script src="~/Scripts/App/loginController.js"></script>
+<script src="~/Scripts/front-end/auth.js"></script>
+<script src="~/Scripts/animate-colors.js"></script>
 
-  @{
-      
-      if ((Boolean)Session["isLogged"])
-      {
-          int e = 0;
-      }
-  }  
+@{
+
+    if ((Boolean)Session["isLogged"])
+    {
+        int e = 0;
+    }
+}
 
 
 
-    <!--AUTH MODAL BLOCK -->
-    <div class="modal fade" id="login" ng-controller="loginController as loginCtrl"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="center">
-                    <img src="~/Content/images/pollylogogreen.png" />
-                </div>
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">SIGN IN</h4>
-                </div>
-                <div id="form_login">
-                    <div class="modal-body">
-                        
-                        <div class="input-group input-group-lg textbox">
-                            <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/email.png" /></span>
-                            <input type="email" ng-model="loginCtrl.login.email" class="form-control" placeholder="E-mail" aria-describedby="sizing-addon1">
-                        </div>
-                        <div class="input-group input-group-lg textbox">
-                            <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/password.png" /></span>
-                            <input type="password" ng-model="loginCtrl.login.password" class="form-control" placeholder="Password" aria-describedby="sizing-addon1">
-                        </div>
+<!--AUTH MODAL BLOCK -->
+<div class="modal fade" id="login" ng-controller="loginController as loginCtrl" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="center">
+                <img src="~/Content/images/pollylogogreen.png" />
+            </div>
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">SIGN IN</h4>
+            </div>
+            <div id="form_login">
+                <div class="modal-body">
 
+                    <div class="input-group input-group-lg textbox">
+                        <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/email.png" /></span>
+                        <input type="email" ng-model="loginCtrl.login.email" class="form-control" placeholder="E-mail" aria-describedby="sizing-addon1">
                     </div>
-                    <div class="modal-footer">
-                        <small>If you don't have account, you can register</small>
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#register" data-dismiss="modal">SIGN UP</button>
-                        <button type="button" ng-click="loginCtrl.signIn()" class="btn btn-default" id="signInBtn">SIGN IN</button>
+                    <div class="input-group input-group-lg textbox">
+                        <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/password.png" /></span>
+                        <input type="password" ng-model="loginCtrl.login.password" class="form-control" placeholder="Password" aria-describedby="sizing-addon1">
                     </div>
+
+                </div>
+                <div class="modal-footer">
+                    <small>If you don't have account, you can register</small>
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#register" data-dismiss="modal">SIGN UP</button>
+                    <button type="button" ng-click="loginCtrl.signIn()" class="btn btn-default" id="signInBtn">SIGN IN</button>
                 </div>
             </div>
         </div>
     </div>
-     <!--REGISTER MODAL BLOCK -->
-    <div class="modal fade" id="register" ng-controller="loginController as loginCtrl" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="center">
-                    <img src="~/Content/images/pollylogogreen.png" />
-                </div>
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">SIGN UP</h4>
-                </div>
-                <form method="POST" name="registerForm" novalidate>
-                    <div class="modal-body">
-                        <div class="input-group input-group-lg textbox" ng-class="{ 'has-error' : !registerForm.first.$pristine && registerForm.first.$invalid, 'has-success' : !registerForm.first.$pristine && registerForm.first.$valid}">
-                            <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/user.png" /></span>
-                            <input type="text" class="form-control" name="first" ng-model="loginCtrl.registr.first" placeholder="First name" aria-describedby="sizing-addon1" required>
-
-                        </div>
-                        <div class="alert alert-danger" ng-show="registerForm.first.$invalid && !registerForm.first.$pristine">
-                            Your first name is required
-                        </div>
-                        <div class="input-group input-group-lg textbox" ng-class="{ 'has-error' : !registerForm.second.$pristine && registerForm.second.$invalid, 'has-success' : !registerForm.second.$pristine && registerForm.second.$valid}">
-                            <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/user.png" /></span>
-                            <input type="text" class="form-control" name="second" ng-model="loginCtrl.registr.last" placeholder="Last name" aria-describedby="sizing-addon1" required>
-                        </div>
-                        <div class="alert alert-danger" ng-show="registerForm.second.$invalid && !registerForm.second.$pristine">
-                            Your second name is required
-                        </div>
-                        <div class="input-group input-group-lg textbox" ng-class="{ 'has-error' : !registerForm.email.$pristine && registerForm.email.$invalid, 'has-success' : !registerForm.email.$pristine && registerForm.email.$valid}">
-                            <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/email.png" /></span>
-                            <input type="email" class="form-control" placeholder="E-mail" name="email" ng-model="loginCtrl.registr.email" aria-describedby="sizing-addon1" required>
-                        </div>
-                        <div class="alert alert-danger" ng-show="registerForm.email.$invalid && !registerForm.email.$pristine">
-                            Please, enter correct e-mail <br />
-                            "simple@simple.com"
-                        </div>
-                        <div class="input-group input-group-lg textbox">
-                            <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/password.png" /></span>
-                            <input type="password" class="form-control" name="pass" ng-model="loginCtrl.registr.pass" placeholder="Password" aria-describedby="sizing-addon1">
-                        </div>
-
-                        <div class="input-group input-group-lg textbox">
-                            <span class=" input-group-addon" id="sizing-addon1">
-                                <img src="~/Content/images/password.png" />
-                            </span>
-                            <input type="password" class="form-control" name="confirm" ng-model="loginCtrl.registr.confirmpass" placeholder="Confirm password" aria-describedby="sizing-addon1">
-                        </div>
-                        
-                    </div>
-                    <div class="modal-footer">
-                        <small>Maybe you already had account, sign in please.</small>
-                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#login" data-dismiss="modal">SIGN IN</button>
-                        <button type="button" ng-disabled="registerForm.$invalid" ng-click="loginCtrl.signOut();" class="btn btn-success" id="signUpBtn">SIGN UP</button>
-                    </div>
-                </form>
+</div>
+<!--REGISTER MODAL BLOCK -->
+<div class="modal fade" id="register" ng-controller="loginController as loginCtrl" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="center">
+                <img src="~/Content/images/pollylogogreen.png" />
             </div>
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">SIGN UP</h4>
+            </div>
+            <form method="POST" name="registerForm" novalidate>
+                <div class="modal-body">
+                    <div class="input-group input-group-lg textbox" ng-class="{ 'has-error' : !registerForm.first.$pristine && registerForm.first.$invalid, 'has-success' : !registerForm.first.$pristine && registerForm.first.$valid}">
+                        <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/user.png" /></span>
+                        <input type="text" class="form-control" name="first" ng-model="loginCtrl.registr.first" placeholder="First name" aria-describedby="sizing-addon1" required>
+
+                    </div>
+                    <div class="alert alert-danger" ng-show="registerForm.first.$invalid && !registerForm.first.$pristine">
+                        Your first name is required
+                    </div>
+                    <div class="input-group input-group-lg textbox" ng-class="{ 'has-error' : !registerForm.second.$pristine && registerForm.second.$invalid, 'has-success' : !registerForm.second.$pristine && registerForm.second.$valid}">
+                        <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/user.png" /></span>
+                        <input type="text" class="form-control" name="second" ng-model="loginCtrl.registr.last" placeholder="Last name" aria-describedby="sizing-addon1" required>
+                    </div>
+                    <div class="alert alert-danger" ng-show="registerForm.second.$invalid && !registerForm.second.$pristine">
+                        Your second name is required
+                    </div>
+                    <div class="input-group input-group-lg textbox" ng-class="{ 'has-error' : !registerForm.email.$pristine && registerForm.email.$invalid, 'has-success' : !registerForm.email.$pristine && registerForm.email.$valid}">
+                        <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/email.png" /></span>
+                        <input type="email" class="form-control" placeholder="E-mail" name="email" ng-model="loginCtrl.registr.email" aria-describedby="sizing-addon1" required>
+                    </div>
+                    <div class="alert alert-danger" ng-show="registerForm.email.$invalid && !registerForm.email.$pristine">
+                        Please, enter correct e-mail <br />
+                        "simple@simple.com"
+                    </div>
+                    <div class="input-group input-group-lg textbox">
+                        <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/password.png" /></span>
+                        <input type="password" class="form-control" name="pass" ng-model="loginCtrl.registr.pass" placeholder="Password" aria-describedby="sizing-addon1">
+                    </div>
+
+                    <div class="input-group input-group-lg textbox">
+                        <span class=" input-group-addon" id="sizing-addon1">
+                            <img src="~/Content/images/password.png" />
+                        </span>
+                        <input type="password" class="form-control" name="confirm" ng-model="loginCtrl.registr.confirmpass" placeholder="Confirm password" aria-describedby="sizing-addon1">
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <small>Maybe you already had account, sign in please.</small>
+                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#login" data-dismiss="modal">SIGN IN</button>
+                    <button type="button" ng-disabled="registerForm.$invalid" ng-click="loginCtrl.signOut();" class="btn btn-success" id="signUpBtn">SIGN UP</button>
+                </div>
+            </form>
         </div>
     </div>
-    <!--HEADER-->
-    <div id="header" ng-controller="homeController as inpt" ng-init="inpt.init();" class="container-fluid">
+</div>
+<!--HEADER-->
+<div id="header" ng-controller="homeController as inpt" ng-init="inpt.init();" class="container-fluid">
 
-        <nav class="navbar navbar-default navbar-fixed-top" id="navigation">
-            <div class="container-fluid">
-                <div class="container">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" id="logo" href="/"><img src="~/Content/images/pollylogogreen.png" /></a>
-                    </div>
+    <nav class="navbar navbar-default navbar-fixed-top" id="navigation">
+        <div class="container-fluid">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" id="logo" href="/"><img src="~/Content/images/pollylogogreen.png" /></a>
+                </div>
 
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav">
-                            <li><a href="#">CONSTRUCTOR</a></li>
-                            <li><a href="#">API</a></li>
-                            <li><a href="#">DOCS</a></li>
-                        </ul>
-                        <ul class="nav navbar-nav navbar-right right-menu">
-                           @if (!(Boolean)Session["isLogged"])
-                           {
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">CONSTRUCTOR</a></li>
+                        <li><a href="#">API</a></li>
+                        <li><a href="#">DOCS</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right right-menu">
+                        @if (!(Boolean)Session["isLogged"])
+                        {
                             <li><a href="" data-toggle="modal" data-target="#login">SIGN IN</a></li>
-                           }
-                           @if ((Boolean)Session["isLogged"])
-                           {
-                            
+                        }
+                        @if ((Boolean)Session["isLogged"])
+                        {
+
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Alexander Anischik<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
@@ -157,225 +157,222 @@
                                     <li><a href="Login/LogOut" id="logout">Log out</a></li>
                                 </ul>
                             </li>
-                           }
+                        }
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div>
+        </div><!-- /.container-fluid -->
+    </nav>
+
+    <div class="container header-block">
+
+        <div class="row header-content text-center">
+
+            <h1 class="hidden-xs visible-lg visible-md visible-sm big">We create surveys and polls</h1>
+            <h1 class="visible-xs hidden-lg hidden-md hidden-sm big">We create surveys and polls</h1>
+            <p class="desc">
+                Let's create polls that matter with us
+            </p>
+
+        </div>
+        <div class="row text-center">
+            <div class="createpoll post">
+                <input type="button" class="button-create" value="Сreate poll" />
+            </div>
+        </div>
+        <!--<div class="row  hidden-xs visible-sm visible-md visible-lg">
+             <div class="col-lg-12 moreinfo">
+                 <a href="#wrapper"><input type="button" class="scroll-button" value="" /></a>
+             </div>
+         </div>-->
+
+    </div>
+</div>
+<!--WRAPPER-->
+<section id="wrapper" class="container-fluid">
+    <div class="container" id="wrapper-block">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 description center">
+                <h1 class="hidden-xs visible-lg visible-md visible-sm">EASY TO USE AND QUICK RESPONSE</h1>
+                <h3 class="visible-xs hidden-lg hidden-md hidden-sm">EASY TO USE AND QUICK RESPONSE</h3>
+                <p><small>Получение ответов в 2 клика</small></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-lg-offset-0 col-md-12 col-md-offset-0 сol-sm-12 сol-xs-12 divices" id="macbook">
+                <div class="macbook hidden-sm hidden-xs visible-lg visible-md post last">
+                    <img src="~/Content/images/mac-830.png" />
+                </div>
+                <div class="ipad  visible-sm hidden-xs hidden-lg hidden-md post">
+                    <img src="~/Content/images/ipad.png" />
+                </div>
+                <div class="iphone  hidden-sm visible-xs hidden-lg hidden-md">
+                    <img src="~/Content/images/iphone6.png" />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--ABOUT US-->
+<section id="about" class="container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 description center">
+                <h1 class="hidden-xs visible-lg visible-md visible-sm">WHY WE ...?</h1>
+                <h3 class="visible-xs hidden-lg hidden-md hidden-sm">WHY WE ...?</h3>
+            </div>
+        </div>
+        <div class="row moreinforow" id="aboutfirst">
+            <div class="col-lg-4 col-lg-offset-1 col-md-5 col-md-offset-0 col-sm-6 col-xs-12 moreinfocol post">
+
+                <img src="~/Content/images/api.png" align="left" class="icon-about hidden-xs" />
+                <img src="~/Content/images/api.png" class="icon-about hidden-sm hidden-md hidden-lg" />
+
+                <h3>API</h3>
+                <p><small>We provide our API, which you can place on a site of your company</small> </p>
+            </div>
+            <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-2 col-sm-6 col-xs-12 moreinfocol post">
+                <img src="~/Content/images/currency-icon.png" align="right" class="icon-about hidden-xs" />
+                <img src="~/Content/images/currency-icon.png" class="icon-about hidden-sm hidden-md hidden-lg" />
+                <h3 class="hidden-xs visible-lg visible-md visible-sm" align="right">It's free</h3>
+                <p class="hidden-xs visible-lg visible-md visible-sm" align="right"><small>POLLY - it is free service for poll creating</small></p>
+                <h3 class="visible-xs hidden-lg hidden-md hidden-sm" align="center">Это бесплантно</h3>
+                <p class="visible-xs hidden-lg hidden-md hidden-sm" align="center"><small>POLLY - it is free service for poll creating</small></p>
+            </div>
+
+        </div>
+        <div class="row moreinforow" id="aboutsecond">
+            <div class="col-lg-4 col-lg-offset-1 col-md-5 col-md-offset-0 col-sm-6 col-xs-12 moreinfocol post">
+                <img src="~/Content/images/ok-shield-icon.png" align="left" class="icon-about hidden-xs" />
+                <img src="~/Content/images/ok-shield-icon.png" class="icon-about hidden-sm hidden-md hidden-lg" />
+                <h3>Security</h3>
+                <p><small>All the polls and vote are CONFIDENTIALITY</small></p>
+            </div>
+            <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-2 col-sm-6 col-xs-12 moreinfocol post">
+                <img src="~/Content/images/about.png" align="right" class="icon-about hidden-xs" />
+                <img src="~/Content/images/about.png" class="icon-about hidden-sm hidden-md hidden-lg" />
+                <h3 class="hidden-xs visible-lg visible-md visible-sm" align="right">Convenience</h3>
+                <p class="hidden-xs visible-lg visible-md visible-sm" align="right"><small>We provide a simple and convenient constructor to create different types of polls</small></p>
+                <h3 class="visible-xs hidden-lg hidden-md hidden-sm" align="center">Удобство</h3>
+                <p class="visible-xs hidden-lg hidden-md hidden-sm" align="center"><small>We provide a simple and convenient constructor to create different types of polls</small></p>
+            </div>
+
+        </div>
+        <div class="row moreinforow">
+            <div class="col-lg-12 moreinfo post last">
+                <input type="button" class="moreinfobutton" value="ПОДРОБНЕЕ" />
+            </div>
+        </div>
+    </div>
+</section>
+<section id="bottom-part">
+    <section class="container-fluid visible-lg visible-md hidden-sm hidden-xs" id="feedback">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 description center">
+                    <h1 class="hidden-xs visible-lg visible-md visible-sm">FEEDBACK ABOUT US</h1>
+                    <h3 class="visible-xs hidden-lg hidden-md hidden-sm">FEEDBACK ABOUT US</h3>
+                </div>
+            </div>
+            <div class="row center">
+
+                <div id="slider">
+                    <div id="carousel-example-generic" class="carousel slide post" data-ride="carousel">
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators">
+                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                        </ol>
+
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner" role="listbox">
+                            <div class="item active">
+                                <blockquote class="blockquote-reverse">
+                                    <img src="~/Content/images/foto_koc.jpg" alt="first" class="img-circle portrait">
+                                    <div class="carousel-caption">
+                                        <h2><small>KOTS GRIGORIY PAVLOVICH</small> </h2>
+                                        <h5><small>Dean of the Faculty of Economic Informatics</small></h5>
+
+                                        <p class="feedback-text">
+                                            "This is a fantastic project which I use both for personal purposes and for purposes of the University.
+                                            Polly - incredibly easy to use , in that each user will not even be able to use experienced this service without any problems."
+                                        </p>
+
+                                    </div>
+                                </blockquote>
+                            </div>
+                            <div class="item">
+                                <blockquote class="blockquote-reverse">
+                                    <img src="~/Content/images/foto_alexander.jpg" alt="second" class="img-circle portrait">
+                                    <div class="carousel-caption">
+                                        <h2><small>ANISCHIK ALEKSANDER OLEGOVICH</small> </h2>
+                                        <h5><small>.NET Developer</small></h5>
+
+                                        <p class="feedback-text">
+                                            "This is a fantastic project which I use both for personal purposes and for purposes of the University."
+                                        </p>
+
+                                    </div>
+                                </blockquote>
+                            </div>
+                            <div class="item">
+                                <blockquote class="blockquote-reverse">
+                                    <img src="~/Content/images/foto_artem.jpg" alt="third" class="img-circle portrait">
+                                    <div class="carousel-caption">
+                                        <h2><small>MOZHAROV ARTEM ALEKSEEVICH</small> </h2>
+                                        <h5><small>Front-end Developer</small></h5>
+
+                                        <p class="center">
+                                            "This is a fantastic project which I use both for personal purposes and for purposes of the University.
+                                            Polly - incredibly easy to use , in that each user will not even be able to use experienced this service without any problems."
+                                        </p>
+
+                                    </div>
+                                </blockquote>
+                            </div>
+
+                        </div>
+
+                        <!-- Controls -->
+                        <!--<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container-fluid" id="footer">
+        <nav class="navbar navbar-default navbar-static-top" id="navigation">
+            <div class="container-fluid">
+                <div class="container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li><a href="#">CONSTRUCTOR</a></li>
+                            <li><a href="#">API</a></li>
+                            <li><a href="#">DOCS</a></li>
                         </ul>
                     </div><!-- /.navbar-collapse -->
                 </div>
             </div><!-- /.container-fluid -->
         </nav>
-
-        <div class="container" id="header-block">
-
-            <div class="row header-content text-center">
-
-                <div class="text-center">
-                    <h1 class="hidden-xs visible-lg visible-md visible-sm big">We create surveys and polls</h1>
-                    <h3 class="visible-xs hidden-lg hidden-md hidden-sm big">WE CREATE SURVEYS AND POLLS</h3>
-                    <p class="desc">
-                        Let's create polls that matter with us
-                    </p>
-                </div>
-            </div>
-            <div class="row text-center">
-                
-                <div class="createpoll post">
-                    <input type="button" class="button-create" value="Сreate poll" />
-                </div>
-
-            </div>
-           <!--<div class="row  hidden-xs visible-sm visible-md visible-lg">
-                <div class="col-lg-12 moreinfo">
-                    <a href="#wrapper"><input type="button" class="scroll-button" value="" /></a>
-                </div>
-            </div>-->
-                   
-            </div>
-            </div>
-    <!--WRAPPER-->       
-   <section id="wrapper" class="container-fluid">
-        <div class="container" id="wrapper-block">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 description center">
-                    <h1 class="hidden-xs visible-lg visible-md visible-sm">EASY TO USE AND QUICK RESPONSE</h1>
-                    <h3 class="visible-xs hidden-lg hidden-md hidden-sm">EASY TO USE AND QUICK RESPONSE</h3>
-                    <p><small>Получение ответов в 2 клика</small></p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12 col-lg-offset-0 col-md-12 col-md-offset-0 сol-sm-12 сol-xs-12 divices" id="macbook">
-                    <div class="macbook hidden-sm hidden-xs visible-lg visible-md post last">
-                        <img src="~/Content/images/mac-830.png" />
-                    </div>
-                    <div class="ipad  visible-sm hidden-xs hidden-lg hidden-md post">
-                        <img src="~/Content/images/ipad.png" />
-                    </div>
-                    <div class="iphone  hidden-sm visible-xs hidden-lg hidden-md">
-                        <img src="~/Content/images/iphone6.png" />
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--ABOUT US-->
-    <section id="about" class="container-fluid">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 description center">
-                    <h1 class="hidden-xs visible-lg visible-md visible-sm">WHY WE ...?</h1>
-                    <h3 class="visible-xs hidden-lg hidden-md hidden-sm">WHY WE ...?</h3>
-                </div>
-            </div>
-            <div class="row moreinforow" id="aboutfirst">
-                <div class="col-lg-4 col-lg-offset-1 col-md-5 col-md-offset-0 col-sm-6 col-xs-12 moreinfocol post">
-
-                    <img src="~/Content/images/api.png" align="left" class="icon-about hidden-xs" />
-                    <img src="~/Content/images/api.png" class="icon-about hidden-sm hidden-md hidden-lg" />
-
-                    <h3>API</h3>
-                    <p><small>We provide our API, which you can place on a site of your company</small> </p>
-                </div>
-                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-2 col-sm-6 col-xs-12 moreinfocol post">
-                    <img src="~/Content/images/currency-icon.png" align="right" class="icon-about hidden-xs" />
-                    <img src="~/Content/images/currency-icon.png" class="icon-about hidden-sm hidden-md hidden-lg" />
-                    <h3 class="hidden-xs visible-lg visible-md visible-sm" align="right">It's free</h3>
-                    <p class="hidden-xs visible-lg visible-md visible-sm" align="right"><small>POLLY - it is free service for poll creating</small></p>
-                    <h3 class="visible-xs hidden-lg hidden-md hidden-sm" align="center">Это бесплантно</h3>
-                    <p class="visible-xs hidden-lg hidden-md hidden-sm" align="center"><small>POLLY - it is free service for poll creating</small></p>
-                </div>
-
-            </div>
-            <div class="row moreinforow" id="aboutsecond">
-                <div class="col-lg-4 col-lg-offset-1 col-md-5 col-md-offset-0 col-sm-6 col-xs-12 moreinfocol post">
-                    <img src="~/Content/images/ok-shield-icon.png" align="left" class="icon-about hidden-xs" />
-                    <img src="~/Content/images/ok-shield-icon.png" class="icon-about hidden-sm hidden-md hidden-lg" />
-                    <h3>Security</h3>
-                    <p><small>All the polls and vote are CONFIDENTIALITY</small></p>
-                </div>
-                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-2 col-sm-6 col-xs-12 moreinfocol post ">
-                    <img src="~/Content/images/about.png" align="right" class="icon-about hidden-xs" />
-                    <img src="~/Content/images/about.png" class="icon-about hidden-sm hidden-md hidden-lg" />
-                    <h3 class="hidden-xs visible-lg visible-md visible-sm" align="right">Convenience</h3>
-                    <p class="hidden-xs visible-lg visible-md visible-sm" align="right"><small>We provide a simple and convenient constructor to create different types of polls</small></p>
-                    <h3 class="visible-xs hidden-lg hidden-md hidden-sm" align="center">Удобство</h3>
-                    <p class="visible-xs hidden-lg hidden-md hidden-sm" align="center"><small>We provide a simple and convenient constructor to create different types of polls</small></p>
-                </div>
-
-            </div>
-            <div class="row moreinforow">
-                <div class="col-lg-12 moreinfo post last">
-                    <input type="button" class="moreinfobutton" value="ПОДРОБНЕЕ" />
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="bottom-part">
-        <section class="container-fluid visible-lg visible-md hidden-sm hidden-xs" id="feedback">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 description center">
-                        <h1 class="hidden-xs visible-lg visible-md visible-sm">FEEDBACK ABOUT US</h1>
-                        <h3 class="visible-xs hidden-lg hidden-md hidden-sm">FEEDBACK ABOUT US</h3>
-                    </div>
-                </div>
-                <div class="row center">
-
-                    <div id="slider">
-                        <div id="carousel-example-generic" class="carousel slide post" data-ride="carousel">
-                            <!-- Indicators -->
-                            <ol class="carousel-indicators">
-                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                            </ol>
-
-                            <!-- Wrapper for slides -->
-                            <div class="carousel-inner" role="listbox">
-                                <div class="item active">
-                                    <blockquote class="blockquote-reverse">
-                                        <img src="~/Content/images/foto_koc.jpg" alt="first" class="img-circle portrait">
-                                        <div class="carousel-caption">
-                                            <h2><small>KOTS GRIGORIY PAVLOVICH</small> </h2>
-                                            <h5><small>Dean of the Faculty of Economic Informatics</small></h5>
-
-                                            <p class="feedback-text">
-                                                "This is a fantastic project which I use both for personal purposes and for purposes of the University.
-                                                Polly - incredibly easy to use , in that each user will not even be able to use experienced this service without any problems."
-                                            </p>
-
-                                        </div>
-                                    </blockquote>
-                                </div>
-                                <div class="item">
-                                    <blockquote class="blockquote-reverse">
-                                        <img src="~/Content/images/foto_alexander.jpg" alt="second" class="img-circle portrait">
-                                        <div class="carousel-caption">
-                                            <h2><small>ANISCHIK ALEKSANDER OLEGOVICH</small> </h2>
-                                            <h5><small>.NET Developer</small></h5>
-
-                                            <p class="feedback-text">
-                                                "This is a fantastic project which I use both for personal purposes and for purposes of the University."
-                                            </p>
-
-                                        </div>
-                                    </blockquote>
-                                </div>
-                                <div class="item">
-                                    <blockquote class="blockquote-reverse">
-                                        <img src="~/Content/images/foto_artem.jpg" alt="third" class="img-circle portrait">
-                                        <div class="carousel-caption">
-                                            <h2><small>MOZHAROV ARTEM ALEKSEEVICH</small> </h2>
-                                            <h5><small>Front-end Developer</small></h5>
-
-                                            <p class="center">
-                                                "This is a fantastic project which I use both for personal purposes and for purposes of the University.
-                                                Polly - incredibly easy to use , in that each user will not even be able to use experienced this service without any problems."
-                                            </p>
-
-                                        </div>
-                                    </blockquote>
-                                </div>
-
-                            </div>
-
-                            <!-- Controls -->
-                            <!--<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
-                            </a>-->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <div class="container-fluid" id="footer">
-            <nav class="navbar navbar-default navbar-static-top" id="navigation">
-                <div class="container-fluid">
-                    <div class="container">
-                        <!-- Brand and toggle get grouped for better mobile display -->
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-
-                        </div>
-
-                        <!-- Collect the nav links, forms, and other content for toggling -->
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            <ul class="nav navbar-nav">
-                                <li><a href="#">CONSTRUCTOR</a></li>
-                                <li><a href="#">API</a></li>
-                                <li><a href="#">DOCS</a></li>
-                            </ul>
-                        </div><!-- /.navbar-collapse -->
-                    </div>
-                </div><!-- /.container-fluid -->
-            </nav>
-        </div>
-    </section>
+    </div>
+</section>

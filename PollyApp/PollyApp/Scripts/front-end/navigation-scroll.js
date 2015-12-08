@@ -5,8 +5,16 @@ jQuery(document).ready(function () {
 
     jQuery(window).scroll(function () {
 
-        if ((jQuery(this).scrollTop() + h) >= jQuery("#wrapper").offset().top) {
-            $("#navigation").css("background","black");
+        if ((jQuery(this).scrollTop()+h) >= jQuery("#header").height()+h) {
+            jQuery("#navigation").animate({ "backgroundColor": "blue" }, 100);
+            if (jQuery(window).width() <= 480)
+                jQuery(".navbar-collapse").css("background","rgba(0,0,0,0)");
+            
+        }
+        if ((jQuery(this).scrollTop() + h) < jQuery("#header").height() + h) {
+            jQuery("#navigation").animate({ "backgroundColor": "transparent" }, 100);
+            if(jQuery(window).width() <= 480)
+                jQuery(".navbar-collapse").css("background", "rgba(44, 62, 80,0.7)");
         }
        
     });
