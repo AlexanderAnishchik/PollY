@@ -21,12 +21,12 @@ namespace PollyApp.Controllers
             try
             {
                 MemberWorker.Register(pass, email, firstName, lastName);
-                Session["isLogged"] = true;
+                //Session["isLogged"] = true;
                 return new JsonResult() { Data = true };
             }
             catch (Exception)
             {
-                Session["isLogged"] = false;
+                //Session["isLogged"] = false;
                 return new JsonResult() { Data = false };
             }
         }
