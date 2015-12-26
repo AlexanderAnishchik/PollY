@@ -9,11 +9,11 @@ namespace PollyApp.GenericRepository
 {
     public class Repository
     {
-        public PollyDbEntities Context { get; set; }
+        public Entities Context { get; set; }
 
         public Repository()
         {
-            Context = new PollyDbEntities();
+            Context = new Entities();
         }
 
         public IEnumerable<TEntity> GetListRecords<TEntity>() where TEntity : class
@@ -35,6 +35,12 @@ namespace PollyApp.GenericRepository
             var temp = Context.Set<TEntity>().Find(dynEntity.Id);
             Context.Entry<TEntity>(temp).CurrentValues.SetValues(ent);
             Context.Entry<TEntity>(temp).State = EntityState.Modified;
+        }
+        public User getUserByEmail(string email)
+        {
+            var user = Context.Users.Where(x => x.Email == email).First();
+            
+            return user;
         }
         public void Save()
         {

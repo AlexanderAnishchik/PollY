@@ -134,52 +134,49 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\APIController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="EFModel\Answer.cs">
-      <DependentUpon>PollyDbModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="EFModel\Answer.cs">
+      <DependentUpon>PollyDbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFModel\PollyDbEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PollyDbEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFModel\PollyDbEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PollyDbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFModel\PollyDbEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PollyDbEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EFModel\Project.cs">
+      <DependentUpon>PollyDbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFModel\Question.cs">
+      <DependentUpon>PollyDbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFModel\Result.cs">
+      <DependentUpon>PollyDbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFModel\User.cs">
+      <DependentUpon>PollyDbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFModel\UserPermission.cs">
+      <DependentUpon>PollyDbEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="GenericRepository\Repository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="EFModel\PollyDbModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PollyDbModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EFModel\PollyDbModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PollyDbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EFModel\PollyDbModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PollyDbModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="EFModel\Project.cs">
-      <DependentUpon>PollyDbModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="EFModel\Question.cs">
-      <DependentUpon>PollyDbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EFModel\Result.cs">
-      <DependentUpon>PollyDbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EFModel\sysdiagram.cs">
-      <DependentUpon>PollyDbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EFModel\User.cs">
-      <DependentUpon>PollyDbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EFModel\UserPermission.cs">
-      <DependentUpon>PollyDbModel.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -187,49 +184,50 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\animate.css" />
+    <Content Include="Content\css\dashboard.css" />
     <Content Include="Content\css\style.css" />
-    <Content Include="Content\images\47296-f20b1009fc1ebce7c0c8c58e56213050.jpg" />
     <Content Include="Content\images\about.png" />
-    <Content Include="Content\images\advertising.jpg" />
+    <Content Include="Content\images\add.png" />
+    <Content Include="Content\images\analitycs.png" />
     <Content Include="Content\images\api.png" />
-    <Content Include="Content\images\arrow487.png" />
     <Content Include="Content\images\ascending7.png" />
-    <Content Include="Content\images\bluebox-psd-template.jpg" />
-    <Content Include="Content\images\Bootstrap-Flat-Design-Website-Templates.jpg" />
+    <Content Include="Content\images\bg.jpg" />
+    <Content Include="Content\images\bg2.jpg" />
+    <Content Include="Content\images\bg3.jpg" />
     <Content Include="Content\images\cash-meri-designview.png" />
+    <Content Include="Content\images\computer147.png" />
     <Content Include="Content\images\currency-icon.png" />
-    <Content Include="Content\images\diplom.png" />
-    <Content Include="Content\images\epam.png" />
+    <Content Include="Content\images\dashboard.png" />
+    <Content Include="Content\images\email.png" />
+    <Content Include="Content\images\faq.png" />
     <Content Include="Content\images\favorite19.png" />
-    <Content Include="Content\images\features-icons-poll-blue.png" />
-    <Content Include="Content\images\flat-flyer-design-template-f.jpg" />
+    <Content Include="Content\images\feedback-big.png" />
+    <Content Include="Content\images\feedback.png" />
+    <Content Include="Content\images\foto_alexander.jpg" />
+    <Content Include="Content\images\foto_artem.jpg" />
     <Content Include="Content\images\foto_koc.jpg" />
-    <Content Include="Content\images\fullview1.jpg" />
-    <Content Include="Content\images\images.jpg" />
+    <Content Include="Content\images\help.png" />
     <Content Include="Content\images\internet80.png" />
     <Content Include="Content\images\ipad.png" />
     <Content Include="Content\images\iphone6.png" />
     <Content Include="Content\images\iphone6plus_spacegrey_portrait.png" />
     <Content Include="Content\images\location51.png" />
-    <Content Include="Content\images\logo-homepage.png" />
-    <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\mac-830.png" />
-    <Content Include="Content\images\Macbook-Flat-Mockup.png" />
-    <Content Include="Content\images\network76.png" />
     <Content Include="Content\images\ok-shield-icon.png" />
     <Content Include="Content\images\pages.png" />
+    <Content Include="Content\images\password.png" />
     <Content Include="Content\images\poll.png" />
+    <Content Include="Content\images\polls.png" />
     <Content Include="Content\images\pollylogo.png" />
-    <Content Include="Content\images\remont-i-otdelka.JPG" />
-    <Content Include="Content\images\review4.png" />
+    <Content Include="Content\images\pollylogogreen.png" />
+    <Content Include="Content\images\pollylogowhite.png" />
     <Content Include="Content\images\right133.png" />
-    <Content Include="Content\images\rounded54.png" />
-    <Content Include="Content\images\SGh96jxFdR4.jpg" />
+    <Content Include="Content\images\settings-big.png" />
+    <Content Include="Content\images\settings.png" />
     <Content Include="Content\images\strelka_free.png" />
     <Content Include="Content\images\text lines15.png" />
     <Content Include="Content\images\tv monitor2.png" />
-    <Content Include="Content\images\unchecked_checkbox.png" />
-    <Content Include="Content\images\up21.png" />
+    <Content Include="Content\images\user.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -285,23 +283,22 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Content\ui-bootstrap-csp.css" />
-    <Content Include="EFModel\PollyDbModel.edmx.sql" />
+    <Content Include="EFModel\PollyDbEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PollyDbEntities.edmx</DependentUpon>
+      <LastGenOutput>PollyDbEntities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="EFModel\PollyDbEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PollyDbEntities.edmx</DependentUpon>
+      <LastGenOutput>PollyDbEntities.cs</LastGenOutput>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
-    <Content Include="EFModel\PollyDbModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>PollyDbModel.edmx</DependentUpon>
-      <LastGenOutput>PollyDbModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="EFModel\PollyDbModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>PollyDbModel.edmx</DependentUpon>
-      <LastGenOutput>PollyDbModel.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-aria.js" />
@@ -361,12 +358,12 @@
     <Content Include="fonts\OpenSans-Regular.ttf" />
     <Content Include="fonts\OpenSans-Semibold.ttf" />
     <Content Include="fonts\OpenSans-SemiboldItalic.ttf" />
-    <EntityDeploy Include="EFModel\PollyDbModel.edmx">
+    <EntityDeploy Include="EFModel\PollyDbEntities.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>PollyDbModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>PollyDbEntities.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="EFModel\PollyDbModel.edmx.diagram">
-      <DependentUpon>PollyDbModel.edmx</DependentUpon>
+    <Content Include="EFModel\PollyDbEntities.edmx.diagram">
+      <DependentUpon>PollyDbEntities.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\front-end\animate.js" />

@@ -4,16 +4,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PollyApp.EFModel;
 
 namespace PollyApp.Controllers
 {
     public class LoginController : Controller
     {
+        public GenericRepository.Repository Db = new GenericRepository.Repository();
         public ActionResult SignIn(String login, String pass)
         {
-            var data = MemberWorker.Login(login, pass);
-            Session["isLogged"] = data;
-            return new JsonResult() { Data = data };
+            Object user = null;
+            var isLogged = MemberWorker.Login(login, pass);
+            if (isLogged)
+            {
+                Session["userId"] = login;
+                user = Db.Context.Users.Where(x => x.Email == login).Select(x => new
+                {
+                    x.Email,
+                    x.FirstName,
+                    x.LastName,
+                    x.Logo
+                }).FirstOrDefault();
+            }
+            Session["isLogged"] = isLogged;
+            return new JsonResult() { Data = new { status = isLogged, user = user } };
         }
         [HttpPost]
         public JsonResult SignUp(String email, String pass, String firstName, String lastName)
@@ -33,7 +47,7 @@ namespace PollyApp.Controllers
         public ActionResult LogOut()
         {
             Session["isLogged"] = null;
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index", "Home");
         }
     }
 }
