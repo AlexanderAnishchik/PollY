@@ -324,11 +324,12 @@
     <Content Include="Scripts\angular-touch.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
-    <Content Include="Scripts\App\accountController.js" />
-    <Content Include="Scripts\App\apiController.js" />
+    <Content Include="Scripts\App\Controllers\accountController.js" />
+    <Content Include="Scripts\App\Controllers\apiController.js" />
     <Content Include="Scripts\App\app.js" />
-    <Content Include="Scripts\App\homeController.js" />
-    <Content Include="Scripts\App\loginController.js" />
+    <Content Include="Scripts\App\Controllers\homeController.js" />
+    <Content Include="Scripts\App\Controllers\headerController.js" />
+    <Content Include="Scripts\App\Services\headerKeeperService.js" />
     <Content Include="Scripts\bootstrap-modal.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -1146,6 +1147,9 @@
     <Content Include="Scripts\version.json" />
     <Content Include="Views\Shared\_Dashboard.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Popup\SignIn.cshtml" />
+    <Content Include="Views\Popup\SignOut.cshtml" />
+    <Content Include="Views\Header.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
