@@ -1,5 +1,5 @@
 ﻿(function () {
-    angular.module('zonarApp').service("apiUrlService", function () {
+    PollyApp.service("headerKeeperService", function () {
         var self = this;
     });
 })();

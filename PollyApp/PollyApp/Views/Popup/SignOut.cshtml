@@ -1,5 +1,5 @@
 ﻿<!--REGISTER MODAL BLOCK -->
-<div class="modal fade" id="register" ng-controller="loginController as loginCtrl" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="center">
@@ -17,7 +17,7 @@
                     <div class="modal-body">
                         <div class="input-group input-group-lg textbox" ng-class="{ 'has-error' : !registerForm.first.$pristine && registerForm.first.$invalid, 'has-success' : !registerForm.first.$pristine && registerForm.first.$valid}">
                             <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/user.png" /></span>
-                            <input type="text" class="form-control" name="first" ng-model="loginCtrl.registr.first" placeholder="First name" aria-describedby="sizing-addon1" required>
+                            <input type="text" class="form-control" name="first" ng-model="headCtrl.registr.first" placeholder="First name" aria-describedby="sizing-addon1" required>
 
 
                         </div>
@@ -27,7 +27,7 @@
                         </div>
                         <div class="input-group input-group-lg textbox" ng-class="{ 'has-error' : !registerForm.second.$pristine && registerForm.second.$invalid, 'has-success' : !registerForm.second.$pristine && registerForm.second.$valid}">
                             <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/user.png" /></span>
-                            <input type="text" class="form-control" name="second" ng-model="loginCtrl.registr.last" placeholder="Last name" aria-describedby="sizing-addon1" required>
+                            <input type="text" class="form-control" name="second" ng-model="headCtrl.registr.last" placeholder="Last name" aria-describedby="sizing-addon1" required>
 
                         </div>
                         <div class="alert alert-danger" ng-show="registerForm.second.$invalid && !registerForm.second.$pristine">
@@ -36,7 +36,7 @@
                         </div>
                         <div class="input-group input-group-lg textbox" ng-class="{ 'has-error' : !registerForm.email.$pristine && registerForm.email.$invalid, 'has-success' : !registerForm.email.$pristine && registerForm.email.$valid}">
                             <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/email.png" /></span>
-                            <input type="email" class="form-control" placeholder="E-mail" name="email" ng-model="loginCtrl.registr.email" aria-describedby="sizing-addon1" required>
+                            <input type="email" class="form-control" placeholder="E-mail" name="email" ng-model="headCtrl.registr.email" aria-describedby="sizing-addon1" required>
 
                         </div>
                         <div class="alert alert-danger" ng-show="registerForm.email.$invalid && !registerForm.email.$pristine">
@@ -47,13 +47,13 @@
                         <div class="input-group input-group-lg textbox">
 
                             <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/password.png" /></span>
-                            <input type="password" class="form-control" name="pass" ng-model="loginCtrl.registr.pass" placeholder="Password" aria-describedby="sizing-addon1">
+                            <input type="password" class="form-control" name="pass" ng-model="headCtrl.registr.pass" placeholder="Password" aria-describedby="sizing-addon1">
                         </div>
                         <div class="input-group input-group-lg textbox">
                             <span class="input-group-addon" id="sizing-addon1">
                                 <img src="~/Content/images/password.png" />
                             </span>
-                            <input type="password" class="form-control" name="confirm" ng-model="loginCtrl.registr.confirmpass" placeholder="Confirm password" aria-describedby="sizing-addon1">
+                            <input type="password" class="form-control" name="confirm" ng-model="headCtrl.registr.confirmpass" placeholder="Confirm password" aria-describedby="sizing-addon1">
                         </div>
                     </div>
                     
@@ -61,7 +61,7 @@
         <div class="modal-footer">
             <small>Maybe you already had account, sign in please.</small>
             <button type="button" class="btn btn-default" data-toggle="modal" data-target="#login" data-dismiss="modal">SIGN IN</button>
-            <button type="button" ng-disabled="registerForm.$invalid" ng-click="loginCtrl.signOut();" class="btn btn-success" id="signUpBtn">SIGN UP</button>
+            <button type="button" ng-disabled="registerForm.$invalid" ng-click="headCtrl.signOut();" class="btn btn-success" id="signUpBtn">SIGN UP</button>
 
         </div>
     </div>

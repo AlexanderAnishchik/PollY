@@ -1,5 +1,5 @@
 ﻿<!--AUTH MODAL BLOCK -->
-<div class="modal fade" id="login" ng-controller="loginController as loginCtrl" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 
     <div class="modal-dialog" role="document">
 
@@ -21,12 +21,12 @@
 
                     <div class="input-group input-group-lg textbox">
                         <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/email.png" /></span>
-                        <input type="email" ng-model="loginCtrl.login.email" class="form-control" placeholder="E-mail" aria-describedby="sizing-addon1">
+                        <input type="email" ng-model="headCtrl.login.email" class="form-control" placeholder="E-mail" aria-describedby="sizing-addon1">
 
                     </div>
                     <div class="input-group input-group-lg textbox">
                         <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/password.png" /></span>
-                        <input type="password" ng-model="loginCtrl.login.password" class="form-control" placeholder="Password" aria-describedby="sizing-addon1">
+                        <input type="password" ng-model="headCtrl.login.password" class="form-control" placeholder="Password" aria-describedby="sizing-addon1">
 
                     </div>
 
@@ -35,7 +35,7 @@
                 <div class="modal-footer">
                     <small>If you don't have account, you can register</small>
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#register" data-dismiss="modal">SIGN UP</button>
-                    <button type="button" ng-click="loginCtrl.signIn()" class="btn btn-default" id="signInBtn">SIGN IN</button>
+                    <button type="button" ng-click="headCtrl.signIn()" class="btn btn-default" id="signInBtn">SIGN IN</button>
                 </div>
             </div>
         </div>

@@ -1,4 +1,4 @@
-﻿-PollyApp.controller('loginController', ['$scope', '$http','headerKeeperService', function ($scope, $http, headerKeeperService) {
+﻿PollyApp.controller('headerController', ['$scope', '$http','headerKeeperService', function ($scope, $http, headerKeeperService) {
     var me = this;
     me.login = null;
     me.registr = null;
