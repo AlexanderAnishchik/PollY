@@ -1,0 +1,106 @@
+﻿<!--HEADER-->
+<div ng-controller="headerController as inpt">
+    @Html.Partial("~/Views/Popup/SignIn.cshtml", null)
+    @Html.Partial("~/Views/Popup/SignOut.cshtml", null)
+    <div id="header" class="container-fluid">
+
+
+        <nav class="navbar navbar-default navbar-fixed-top" id="navigation">
+
+            <div class="container-fluid">
+
+                <div class="container">
+
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+
+                        </button>
+                        <a class="navbar-brand" id="logo" href="/"><img src="~/Content/images/pollylogogreen.png" /></a>
+                    </div>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+
+                        <li><a href="#">CONSTRUCTOR</a></li>
+
+                        <li><a href="#">API</a></li>
+
+                        <li><a href="#">DOCS</a></li>
+
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right right-menu">
+                        @if (!(Boolean)Session["isLogged"])
+                        {
+                            <li><a href="" data-toggle="modal" data-target="#login">SIGN IN</a></li>
+                        }
+                        @if ((Boolean)Session["isLogged"])
+                        {
+
+
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Alexander Anischik<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+
+                                    <li class="text"><a href=""><b>Anischik Alexander</b></a></li>
+
+                                    <li><a href=""><small>anischikalexander@gmail.com</small></a></li>
+
+                                    <li role="separator" class="divider"></li>
+
+                                    <li><a href="Account/Index">Account center</a></li>
+
+                                    <li><a href="#">Settings</a></li>
+
+                                    <li role="separator" class="divider"></li>
+
+                                    <li><a href="#">Add poll</a></li>
+
+                                    <li role="separator" class="divider"></li>
+
+                                    <li><a href="Login/LogOut" id="logout">Log out</a></li>
+
+                                </ul>
+
+                            </li>
+                        }
+
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+
+        <div class="container header-block">
+
+            <div class="row header-content text-center">
+
+                <h1 class="hidden-xs visible-lg visible-md visible-sm big">We create surveys and polls</h1>
+                <h1 class="visible-xs hidden-lg hidden-md hidden-sm big">We create surveys and polls</h1>
+                <p class="desc">
+                    Let's create polls that matter with us
+
+                </p>
+
+
+            </div>
+            <div class="row text-center">
+
+                <div class="createpoll post">
+                    <input type="button" class="button-create" value="Сreate poll" />
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
