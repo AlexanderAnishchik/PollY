@@ -11,63 +11,62 @@
                 <h4 class="modal-title" id="myModalLabel">SIGN UP</h4>
 
             </div>
-            <form method="POST" name="registerForm" novalidate>
-                <div class="modal-body">
-                    <div class="input-group input-group-lg textbox" ng-class="{ 'has-error' : !registerForm.first.$pristine && registerForm.first.$invalid, 'has-success' : !registerForm.first.$pristine && registerForm.first.$valid}">
-                        <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/user.png" /></span>
-                        <input type="text" class="form-control" name="first" ng-model="loginCtrl.registr.first" placeholder="First name" aria-describedby="sizing-addon1" required>
+            
+                <form method="POST" name="registerForm"  novalidate>
+  
+                    <div class="modal-body">
+                        <div class="input-group input-group-lg textbox" ng-class="{ 'has-error' : !registerForm.first.$pristine && registerForm.first.$invalid, 'has-success' : !registerForm.first.$pristine && registerForm.first.$valid}">
+                            <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/user.png" /></span>
+                            <input type="text" class="form-control" name="first" ng-model="loginCtrl.registr.first" placeholder="First name" aria-describedby="sizing-addon1" required>
 
 
+                        </div>
+                        <div class="alert alert-danger" ng-show="registerForm.first.$invalid && !registerForm.first.$pristine">
+                            Your first name is required
+
+                        </div>
+                        <div class="input-group input-group-lg textbox" ng-class="{ 'has-error' : !registerForm.second.$pristine && registerForm.second.$invalid, 'has-success' : !registerForm.second.$pristine && registerForm.second.$valid}">
+                            <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/user.png" /></span>
+                            <input type="text" class="form-control" name="second" ng-model="loginCtrl.registr.last" placeholder="Last name" aria-describedby="sizing-addon1" required>
+
+                        </div>
+                        <div class="alert alert-danger" ng-show="registerForm.second.$invalid && !registerForm.second.$pristine">
+                            Your second name is required
+
+                        </div>
+                        <div class="input-group input-group-lg textbox" ng-class="{ 'has-error' : !registerForm.email.$pristine && registerForm.email.$invalid, 'has-success' : !registerForm.email.$pristine && registerForm.email.$valid}">
+                            <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/email.png" /></span>
+                            <input type="email" class="form-control" placeholder="E-mail" name="email" ng-model="loginCtrl.registr.email" aria-describedby="sizing-addon1" required>
+
+                        </div>
+                        <div class="alert alert-danger" ng-show="registerForm.email.$invalid && !registerForm.email.$pristine">
+                            Please, enter correct e-mail <br />
+                            "simple@simple.com"
+                        </div>
+
+                        <div class="input-group input-group-lg textbox">
+
+                            <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/password.png" /></span>
+                            <input type="password" class="form-control" name="pass" ng-model="loginCtrl.registr.pass" placeholder="Password" aria-describedby="sizing-addon1">
+                        </div>
+                        <div class="input-group input-group-lg textbox">
+                            <span class="input-group-addon" id="sizing-addon1">
+                                <img src="~/Content/images/password.png" />
+                            </span>
+                            <input type="password" class="form-control" name="confirm" ng-model="loginCtrl.registr.confirmpass" placeholder="Confirm password" aria-describedby="sizing-addon1">
+                        </div>
                     </div>
-                    <div class="alert alert-danger" ng-show="registerForm.first.$invalid && !registerForm.first.$pristine">
-                        Your first name is required
+                    
 
-                    </div>
-                    <div class="input-group input-group-lg textbox" ng-class="{ 'has-error' : !registerForm.second.$pristine && registerForm.second.$invalid, 'has-success' : !registerForm.second.$pristine && registerForm.second.$valid}">
-                        <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/user.png" /></span>
-                        <input type="text" class="form-control" name="second" ng-model="loginCtrl.registr.last" placeholder="Last name" aria-describedby="sizing-addon1" required>
+        <div class="modal-footer">
+            <small>Maybe you already had account, sign in please.</small>
+            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#login" data-dismiss="modal">SIGN IN</button>
+            <button type="button" ng-disabled="registerForm.$invalid" ng-click="loginCtrl.signOut();" class="btn btn-success" id="signUpBtn">SIGN UP</button>
 
-                    </div>
-                    <div class="alert alert-danger" ng-show="registerForm.second.$invalid && !registerForm.second.$pristine">
-                        Your second name is required
-
-                    </div>
-                    <div class="input-group input-group-lg textbox" ng-class="{ 'has-error' : !registerForm.email.$pristine && registerForm.email.$invalid, 'has-success' : !registerForm.email.$pristine && registerForm.email.$valid}">
-                        <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/email.png" /></span>
-                        <input type="email" class="form-control" placeholder="E-mail" name="email" ng-model="loginCtrl.registr.email" aria-describedby="sizing-addon1" required>
-
-                    </div>
-                    <div class="alert alert-danger" ng-show="registerForm.email.$invalid && !registerForm.email.$pristine">
-                        Please, enter correct e-mail <br />
-                        "simple@simple.com"
-                    </div>
-                </div>
-                <div class="input-group input-group-lg textbox">
-
-                    <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/password.png" /></span>		 +                        <img src="~/Content/images/ipad.png" />
-                    <input type="password" class="form-control" name="pass" ng-model="loginCtrl.registr.pass" placeholder="Password" aria-describedby="sizing-addon1">
-                </div>
-        </div>
-
-        <div class="input-group input-group-lg textbox">
-
-            <span class=" input-group-addon" id="sizing-addon1">
-                <img src="~/Content/images/password.png" />
-
-            </span>
-            <input type="password" class="form-control" name="confirm" ng-model="loginCtrl.registr.confirmpass" placeholder="Confirm password" aria-describedby="sizing-addon1">
         </div>
     </div>
-
-</div>
     </div>
-<div class="modal-footer">
-    <small>Maybe you already had account, sign in please.</small>
-    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#login" data-dismiss="modal">SIGN IN</button>
-    <button type="button" ng-disabled="registerForm.$invalid" ng-click="loginCtrl.signOut();" class="btn btn-success" id="signUpBtn">SIGN UP</button>
-
 </div>
-             </form>
-          </div>		          </div>
-     </div>
- </div>
+
+ 
+
