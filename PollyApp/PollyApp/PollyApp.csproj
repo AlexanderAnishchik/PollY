@@ -284,6 +284,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Content\ui-bootstrap-csp.css" />
+    <Content Include="Content\zxc.html" />
     <Content Include="EFModel\PollyDbEntities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>PollyDbEntities.edmx</DependentUpon>
@@ -328,8 +329,10 @@
     <Content Include="Scripts\App\app.js" />
     <Content Include="Scripts\App\Controllers\accountController.js" />
     <Content Include="Scripts\App\Controllers\apiController.js" />
+    <Content Include="Scripts\App\Controllers\constructorController.js" />
     <Content Include="Scripts\App\Controllers\headerController.js" />
     <Content Include="Scripts\App\Controllers\homeController.js" />
+    <Content Include="Scripts\App\Route\constructorRoute.js" />
     <Content Include="Scripts\App\Services\headerKeeperService.js" />
     <Content Include="Scripts\bootstrap-modal.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -1152,6 +1155,9 @@
     <Content Include="Views\Popup\SignIn.cshtml" />
     <Content Include="Views\Popup\SignOut.cshtml" />
     <Content Include="Views\Constructor\Index.cshtml" />
+    <Content Include="Content\partial\ChooseType.html" />
+    <Content Include="Content\partial\ChoosePermission.html" />
+    <Content Include="Content\partial\ChooseAccess.html" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

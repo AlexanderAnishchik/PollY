@@ -2,22 +2,28 @@
     ViewBag.Title = "Polly / Constructor / Add new poll";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<section class="container-fluid intro">
-    <div class="container">
-        <div class="row center intro-content">
-            <h2>Small intro</h2>
-            <img src="~/Content/images/macbookhalf.png" />
+<script src="~/Scripts/App/Controllers/constructorController.js"></script>
+<script src="~/Scripts/App/Route/constructorRoute.js"></script>
+<div ng-controller="constructorController as mainCtrl">
+    <section class="container-fluid intro">
+        <div class="container">
+            <div class="row center intro-content">
+                <h2>Small intro</h2>
+                <img src="~/Content/images/macbookhalf.png" />
+            </div>
         </div>
-    </div>
-</section>
-<section class="container-fluid">
-    <div class="container">
-        <div class="row center">
-            <h2>Work space</h2>
+    </section>
+    <section class="container-fluid">
+        <div class="container">
+            <div class="row center">
+                <h2>Work space</h2>
+            </div>
+            <div class="row">
+                <a href="/#/ChooseAccess">Choose Access</a> |
+                <a href="ChooseType">Choose Type</a> |
+                <a href="ChoosePermission">Choose Permission</a> |
+                <div ng-view></div>
+            </div>
         </div>
-        <div class="row">
-            <!-- WORK SPACE HERE -->
-        </div>
-    </div>
-</section>
+    </section>
+</div>

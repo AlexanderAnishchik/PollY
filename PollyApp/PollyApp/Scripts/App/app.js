@@ -1,1 +1,1 @@
-﻿var PollyApp = angular.module('Polly', []);
+﻿var PollyApp = angular.module('Polly', ['ngRoute']);
