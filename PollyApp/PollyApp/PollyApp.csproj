@@ -284,7 +284,6 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Content\ui-bootstrap-csp.css" />
-    <Content Include="Content\zxc.html" />
     <Content Include="EFModel\PollyDbEntities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>PollyDbEntities.edmx</DependentUpon>

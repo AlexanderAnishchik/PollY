@@ -19,10 +19,10 @@
                 <h2>Work space</h2>
             </div>
             <div class="row">
-                <a href="/#/ChooseAccess">Choose Access</a> |
-                <a href="ChooseType">Choose Type</a> |
-                <a href="ChoosePermission">Choose Permission</a> |
-                <div ng-view></div>
+                <a ng-href="" ng-click="template='Content/partial/ChooseAccess.html'">Choose Access</a> |
+                <a ng-href="" ng-click="template='Content/partial/ChooseType.html'">Choose Type</a> |
+                <a ng-href="" ng-click="template='Content/partial/ChoosePermission.html'">Choose Permission</a> |
+                <div ng-include src="template"></div>
             </div>
         </div>
     </section>
