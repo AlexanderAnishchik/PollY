@@ -12,28 +12,19 @@ namespace PollyApp.EFModel
     using System;
     using System.Collections.Generic;
     
-    public partial class Project
+    public partial class PollShare
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Project()
+        public PollShare()
         {
-            this.Results = new HashSet<Result>();
+            this.Projects = new HashSet<Project>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
-        public Nullable<System.DateTime> CreatedOn { get; set; }
-        public Nullable<System.DateTime> ModifiedOn { get; set; }
-        public int UserId { get; set; }
-        public Nullable<int> TypeId { get; set; }
-        public Nullable<int> AccessId { get; set; }
-        public Nullable<int> ShareId { get; set; }
+        public int Value { get; set; }
     
-        public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Result> Results { get; set; }
-        public virtual PollShare PollShare { get; set; }
-        public virtual PollAccess PollAccess { get; set; }
-        public virtual PollType PollType { get; set; }
+        public virtual ICollection<Project> Projects { get; set; }
     }
 }
