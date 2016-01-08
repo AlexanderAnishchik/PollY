@@ -203,12 +203,40 @@ a {
 
 #footer {
     background: #2c3e50;
+    padding:10px 10px 20px 10px;
+    font-family:OpenSans-light;
+    
 }
 .intro {
     background-color: #e67e22;
     padding:50px 10px 0 10px;
     color:#ffffff;
 }
+
+  @font-face {
+    font-family: OpenSans-light;
+    src: url(../../fonts/OpenSans-Light.ttf);
+    }
+.feedback-form{
+    
+    color:white;
+    text-align:justify;
+}
+#footer .title{
+    font-size:24px;
+    border-bottom:1px solid #1abc9c;
+    margin-bottom:10px;
+}
+.feedback-form > .footer-area {
+    margin-top:15px;
+}
+#footer .row{
+    color:#ffffff;
+}
+#footer .row .col-lg-4:hover .title{
+    border-bottom:1px solid #e67e22;
+}
+
 /*---------------------------------------------*/
 /*----------------MOBILE DESIGN----------------*/
 /*---------------------------------------------*/

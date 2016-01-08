@@ -257,3 +257,4 @@ E:\PollY\PollyApp\PollyApp\bin\ru\System.Web.WebPages.Razor.resources.dll
 E:\PollY\PollyApp\PollyApp\obj\Debug\PollyApp.csprojResolveAssemblyReference.cache
 E:\PollY\PollyApp\PollyApp\obj\Debug\PollyApp.dll
 E:\PollY\PollyApp\PollyApp\obj\Debug\PollyApp.pdb
+E:\Projects\PollY\PollyApp\PollyApp\bin\PollyApp.dll.config
