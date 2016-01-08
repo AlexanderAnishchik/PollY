@@ -5,24 +5,36 @@
 <script src="~/Scripts/App/Controllers/constructorController.js"></script>
 <div ng-controller="constructorController as mainCtrl">
     <section class="container-fluid intro">
-        <div class="container">
-            <div class="row center intro-content">
-                <h2>Small intro</h2>
-                <img src="~/Content/images/macbookhalf.png" />
-            </div>
-        </div>
+        
     </section>
     <section class="container-fluid">
-        <div class="container">
-            <div class="row center">
-                <h2>Work space</h2>
+        <div class="container work-space">
+            <div class="row ">
+
+                <div class="alert alert-info information" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    Lorem ipsum dolor sit amet, audiam timeam id nam, has dolor sensibus eu, pri doctus aliquando ei. 
+                    Vide porro apeirian est at, exerci habemus oporteat est cu. Eos cu utroque gubergren posidonium. Tollit intellegat interpretaris eum no, tractatos adolescens qui at. 
+                    Quo eirmod impetus no, virtute graecis in mea, ei ullum pertinacia cum. Labitur apeirian erroribus id nec. Eu est ubique populo dicunt, est tantas sensibus ut, cibo moderatius ad ius. 
+                    Est ea delectus complectitur, harum fierent ocurreret qui ei. Nonumes offendit recteque mel ne, cu eum regione dolores persequeris. Ei vis sale malis cetero, his ei laboramus forensibus. 
+                    Tempor ocurreret constituto et qui, no sed mediocrem evertitur. Has doctus expetenda instructior et, id sed eripuit recusabo principes. Habemus denique voluptua id pri, sit ex dicit fastidii, 
+                    vide idque vel et. Ridens dolores deleniti sed te, ut doming euripidis definitiones pro.
+                </div>
             </div>
             <div class="row">
-                <a ng-href="" ng-click="template='Content/partial/ChooseAccess.html'">Choose Access</a> |
-                <a ng-href="" ng-click="template='Content/partial/ChooseType.html'">Choose Type</a> |
-                <a ng-href="" ng-click="template='Content/partial/ChoosePermission.html'">Choose Permission</a> |
-                <div ng-include src="template"></div>
+                <a ng-href="" ng-click="template='Content/partial/ChooseType.html'"><button type="button" class="btn btn-primary btn-lg">Let's start</button></a>
+                <a ng-href="" ng-click="template='Content/partial/ChooseAccess.html'"><button type="button" class="btn btn-primary btn-lg">Next (access)</button></a>
+                <a ng-href="" ng-click="template='Content/partial/ChoosePermission.html'"><button type="button" class="btn btn-primary btn-lg">Next (perm)</button></a>  
             </div>
+            
         </div>
+        <div class="container add-poll-content">
+                <div ng-include src="template">
+
+                </div>
+        </div>
+        
     </section>
 </div>

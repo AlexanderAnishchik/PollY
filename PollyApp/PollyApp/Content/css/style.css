@@ -7,7 +7,7 @@
 body {
     padding: 0;
     margin: 0;
-    background: #ffffff;
+    background: #2c3e50;
     font-family: OpenSans;
 }
 
@@ -208,11 +208,14 @@ a {
     
 }
 .intro {
-    background-color: #e67e22;
-    padding:50px 10px 0 10px;
+    background-color: #34495e;
+    padding:55px 10px 0 10px;
     color:#ffffff;
 }
-
+.information{
+    font-size:18px;
+    margin-top:20px;
+}
   @font-face {
     font-family: OpenSans-light;
     src: url(../../fonts/OpenSans-Light.ttf);
@@ -236,7 +239,26 @@ a {
 #footer .row .col-lg-4:hover .title{
     border-bottom:1px solid #e67e22;
 }
-
+.add-poll-content{
+    margin-top:20px;
+}
+.wrapper-install{
+}
+.sidebar-install{
+    border-right:1px solid #8e8f8f;
+    
+}
+.sidebar-install-right{
+    border-left:1px solid #8e8f8f;
+}
+.work-space{
+    padding:10px;
+    background:#ffffff;
+}
+.work-space .title{
+    font-size:18px;
+    
+}
 /*---------------------------------------------*/
 /*----------------MOBILE DESIGN----------------*/
 /*---------------------------------------------*/

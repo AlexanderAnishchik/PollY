@@ -5904,6 +5904,26 @@ button.list-group-item-danger.active:focus {
   filter: alpha(opacity=80);
   opacity: .8;
 }
+.information > .close {
+  
+  float: right;
+  font-size: 21px;
+  font-weight: bold;
+  line-height: 1;
+  color: #000;
+  /*text-shadow: 0 1px 0 #fff;*/
+  filter: alpha(opacity=40);
+  opacity: .4;
+}
+.information > .close:hover,
+.information > .close:focus {
+  
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+  filter: alpha(opacity=80);
+  opacity: .8;
+}
 button.close {
   -webkit-appearance: none;
   padding: 0;
@@ -6810,5 +6830,50 @@ button.close {
   .hidden-print {
     display: none !important;
   }
+}
+
+.pills {
+  padding:0;
+  margin-left: 0;
+  list-style: none;
+  counter-reset: li;
+  font-family: calibri;
+}
+.pills li {
+  padding: 10px 0;
+  position: relative;
+  left: 1em;
+  margin-bottom: 0em;
+  padding-left: 1em;
+  background: #ffffff;
+}
+.pills li:before {
+  padding: 10px 0;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -2.1em;
+  width: 2.3em;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  background: #3498db;
+  counter-increment: li;
+  content: counter(li);
+  border-bottom:1px solid #ddd;
+}
+.pills .good:before {
+  padding: 10px 0;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -2.1em;
+  width: 2.3em;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  background: #1abc9c;
+  counter-increment: li;
+  content: counter(li);
 }
 /*# sourceMappingURL=bootstrap.css.map */
