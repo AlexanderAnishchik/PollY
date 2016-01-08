@@ -22,6 +22,11 @@
     <Property Name="TypeId" Type="Int32" />
     <NavigationProperty Name="User" Relationship="Self.FK_Project_User" FromRole="Project" ToRole="User" />
     <NavigationProperty Name="Results" Relationship="Self.FK_Result_Project" FromRole="Project" ToRole="Result" />
+    <Property Name="AccessId" Type="Int32" />
+    <Property Name="ShareId" Type="Int32" />
+    <NavigationProperty Name="PollShare" Relationship="PollyAppModel.FK_Project_PollShare" FromRole="Project" ToRole="PollShare" />
+    <NavigationProperty Name="PollAccess" Relationship="PollyAppModel.FK_Project_PollAccess" FromRole="Project" ToRole="PollAccess" />
+    <NavigationProperty Name="PollType" Relationship="PollyAppModel.FK_Project_PollType" FromRole="Project" ToRole="PollType" />
   </EntityType>
   <EntityType Name="Question">
     <Key>
@@ -191,5 +196,83 @@
       <End Role="UserPermission" EntitySet="UserPermissions" />
       <End Role="User" EntitySet="Users" />
     </AssociationSet>
+    <EntitySet Name="PollAccesses" EntityType="PollyAppModel.PollAccess" />
+    <EntitySet Name="PollShares" EntityType="PollyAppModel.PollShare" />
+    <EntitySet Name="PollTypes" EntityType="PollyAppModel.PollType" />
+    <AssociationSet Name="FK_Project_PollShare" Association="PollyAppModel.FK_Project_PollShare">
+      <End Role="PollShare" EntitySet="PollShares" />
+      <End Role="Project" EntitySet="Projects" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Project_PollAccess" Association="PollyAppModel.FK_Project_PollAccess">
+      <End Role="PollAccess" EntitySet="PollAccesses" />
+      <End Role="Project" EntitySet="Projects" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Project_PollType" Association="PollyAppModel.FK_Project_PollType">
+      <End Role="PollType" EntitySet="PollTypes" />
+      <End Role="Project" EntitySet="Projects" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="PollAccess">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Value" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Projects" Relationship="PollyAppModel.FK_Project_PollAccess" FromRole="PollAccess" ToRole="Project" />
+  </EntityType>
+  <EntityType Name="PollShare">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Value" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Projects" Relationship="PollyAppModel.FK_Project_PollShare" FromRole="PollShare" ToRole="Project" />
+  </EntityType>
+  <EntityType Name="PollType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Value" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Projects" Relationship="PollyAppModel.FK_Project_PollType" FromRole="PollType" ToRole="Project" />
+  </EntityType>
+  <Association Name="FK_Project_PollShare">
+    <End Type="PollyAppModel.PollShare" Role="PollShare" Multiplicity="0..1" />
+    <End Type="PollyAppModel.Project" Role="Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PollShare">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Project">
+        <PropertyRef Name="ShareId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Project_PollAccess">
+    <End Type="PollyAppModel.PollAccess" Role="PollAccess" Multiplicity="0..1" />
+    <End Type="PollyAppModel.Project" Role="Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PollAccess">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Project">
+        <PropertyRef Name="AccessId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Project_PollType">
+    <End Type="PollyAppModel.PollType" Role="PollType" Multiplicity="0..1" />
+    <End Type="PollyAppModel.Project" Role="Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PollType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Project">
+        <PropertyRef Name="TypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>
