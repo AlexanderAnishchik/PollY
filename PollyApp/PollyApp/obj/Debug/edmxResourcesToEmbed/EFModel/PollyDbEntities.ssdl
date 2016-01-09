@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="PollyAppModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="PollyAppModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Answer">
     <Key>
       <PropertyRef Name="Id" />
@@ -7,6 +7,30 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Answer" Type="nvarchar(max)" Nullable="false" />
     <Property Name="QuestionId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PollAccess">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Value" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PollShare">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Value" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PollType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Value" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Project">
     <Key>
@@ -18,6 +42,8 @@
     <Property Name="ModifiedOn" Type="datetime" />
     <Property Name="UserId" Type="int" Nullable="false" />
     <Property Name="TypeId" Type="int" />
+    <Property Name="AccessId" Type="int" />
+    <Property Name="ShareId" Type="int" />
   </EntityType>
   <EntityType Name="Question">
     <Key>
@@ -67,6 +93,42 @@
       </Principal>
       <Dependent Role="Answer">
         <PropertyRef Name="QuestionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Project_PollAccess">
+    <End Role="PollAccess" Type="Self.PollAccess" Multiplicity="0..1" />
+    <End Role="Project" Type="Self.Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PollAccess">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Project">
+        <PropertyRef Name="AccessId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Project_PollShare">
+    <End Role="PollShare" Type="Self.PollShare" Multiplicity="0..1" />
+    <End Role="Project" Type="Self.Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PollShare">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Project">
+        <PropertyRef Name="ShareId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Project_PollType">
+    <End Role="PollType" Type="Self.PollType" Multiplicity="0..1" />
+    <End Role="Project" Type="Self.Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PollType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Project">
+        <PropertyRef Name="TypeId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -144,6 +206,9 @@
   </Association>
   <EntityContainer Name="PollyAppModelStoreContainer">
     <EntitySet Name="Answer" EntityType="Self.Answer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PollAccess" EntityType="Self.PollAccess" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PollShare" EntityType="Self.PollShare" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PollType" EntityType="Self.PollType" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Project" EntityType="Self.Project" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Question" EntityType="Self.Question" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Result" EntityType="Self.Result" Schema="dbo" store:Type="Tables" />
@@ -152,6 +217,18 @@
     <AssociationSet Name="FK_Answer_Question" Association="Self.FK_Answer_Question">
       <End Role="Question" EntitySet="Question" />
       <End Role="Answer" EntitySet="Answer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Project_PollAccess" Association="Self.FK_Project_PollAccess">
+      <End Role="PollAccess" EntitySet="PollAccess" />
+      <End Role="Project" EntitySet="Project" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Project_PollShare" Association="Self.FK_Project_PollShare">
+      <End Role="PollShare" EntitySet="PollShare" />
+      <End Role="Project" EntitySet="Project" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Project_PollType" Association="Self.FK_Project_PollType">
+      <End Role="PollType" EntitySet="PollType" />
+      <End Role="Project" EntitySet="Project" />
     </AssociationSet>
     <AssociationSet Name="FK_Project_User" Association="Self.FK_Project_User">
       <End Role="User" EntitySet="User" />

@@ -13,6 +13,8 @@
     <EntitySetMapping Name="Projects">
       <EntityTypeMapping TypeName="PollyAppModel.Project">
         <MappingFragment StoreEntitySet="Project">
+          <ScalarProperty Name="ShareId" ColumnName="ShareId" />
+          <ScalarProperty Name="AccessId" ColumnName="AccessId" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
@@ -62,6 +64,33 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="LevelPermission" ColumnName="LevelPermission" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PollAccesses">
+      <EntityTypeMapping TypeName="PollyAppModel.PollAccess">
+        <MappingFragment StoreEntitySet="PollAccess">
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PollShares">
+      <EntityTypeMapping TypeName="PollyAppModel.PollShare">
+        <MappingFragment StoreEntitySet="PollShare">
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PollTypes">
+      <EntityTypeMapping TypeName="PollyAppModel.PollType">
+        <MappingFragment StoreEntitySet="PollType">
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
