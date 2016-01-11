@@ -5,21 +5,21 @@ using System.Web;
 
 namespace PollyApp.Helpers
 {
-    public  class DbEnum
-    {       
-        public  readonly enum PollType
+    public class DbEnum
+    {
+        public enum PollType
         {
-            Single=1,
-            Multiply=2
+            Single = 1,
+            Multiply = 2
         }
 
-        public  readonly enum PollShare
+        public enum PollShare
         {
             FreeLink = 1,
-            PasswordLink =2,
-            CommunityLink=3
+            PasswordLink = 2,
+            CommunityLink = 3
         }
-        public  readonly enum PollAccess
+        public enum PollAccess
         {
             Public = 1,
             Anonymous = 2
