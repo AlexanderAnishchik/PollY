@@ -4,12 +4,15 @@ using System.Data.Entity;
 using System.Linq;
 using PollyApp.EFModel;
 using System.Reflection;
+using PollyApp.Helpers;
 
 namespace PollyApp.GenericRepository
 {
     public class Repository
     {
         public Entities Context { get; set; }
+
+        public DbEnum DbEnum { get; set; }
 
         public Repository()
         {
@@ -36,12 +39,8 @@ namespace PollyApp.GenericRepository
             Context.Entry<TEntity>(temp).CurrentValues.SetValues(ent);
             Context.Entry<TEntity>(temp).State = EntityState.Modified;
         }
-        public User getUserByEmail(string email)
-        {
-            var user = Context.Users.Where(x => x.Email == email).First();
-            
-            return user;
-        }
+
+
         public void Save()
         {
             Context.SaveChanges();

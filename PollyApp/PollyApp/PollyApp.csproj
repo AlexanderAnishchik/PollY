@@ -143,9 +143,15 @@
     <Compile Include="EFModel\Answer.cs">
       <DependentUpon>PollyDbEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="EFModel\PollAccess.cs" />
-    <Compile Include="EFModel\PollShare.cs" />
-    <Compile Include="EFModel\PollType.cs" />
+    <Compile Include="EFModel\PollAccess.cs">
+      <DependentUpon>PollyDbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFModel\PollShare.cs">
+      <DependentUpon>PollyDbEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFModel\PollType.cs">
+      <DependentUpon>PollyDbEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="EFModel\PollyDbEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -181,6 +187,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\PollHelper.cs" />
+    <Compile Include="Helpers\DbEnum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
