@@ -12,7 +12,7 @@
 
             </div>
             
-                <form method="POST" name="registerForm"  novalidate>
+                <form method="POST"  name="registerForm"  novalidate>
   
                     <div class="modal-body">
                         <div class="input-group input-group-lg textbox" ng-class="{ 'has-error' : !registerForm.first.$pristine && registerForm.first.$invalid, 'has-success' : !registerForm.first.$pristine && registerForm.first.$valid}">
@@ -58,12 +58,13 @@
                     </div>
                     
 
-        <div class="modal-footer">
-            <small>Maybe you already had account, sign in please.</small>
-            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#login" data-dismiss="modal">SIGN IN</button>
-            <button type="button" ng-disabled="registerForm.$invalid" ng-click="headCtrl.signOut();" class="btn btn-success" id="signUpBtn">SIGN UP</button>
+                    <div class="modal-footer">
+                        <small>Maybe you already had account, sign in please.</small>
+                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#login" data-dismiss="modal">SIGN IN</button>
+                        <button type="button" ng-disabled="registerForm.$invalid" ng-click="headCtrl.signOut();" class="btn btn-success" id="signUpBtn">SIGN UP</button>
 
-        </div>
+                    </div>
+               </form>
     </div>
     </div>
 </div>

@@ -7,33 +7,101 @@
     <section class="container-fluid intro">
         
     </section>
-    <section class="container-fluid">
-        <div class="container work-space">
-            <div class="row ">
+    <section class="container-fluid add-poll">
+            <div class="step-number">
+                Step 1 of 3
+            </div>
+            <div class="alert alert-info alert-dismissible information" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <img src="~/Content/images/info.png"  /> If you are not logged in , your survey will not be published!
+            </div>
+            <div class="container add-poll-content">
+            <div class="step-title">
+                Let's get started
+            </div>
+            <div class="step-number">
+                <strong>Choose type!</strong> Be careful, type is choosed once, when poll is being created.
+            </div>
+        
+                <div class="row">
+                   <div class="col-lg-3 col-lg-offset-1 col-xs-offset-0 col-sm-offset-0 card">
+                       <div class="header-card">
+                           <img src="~/Content/images/layout22.png" class="img-thumbnail" />
+                       </div>
+                       <div class="content-card">
+                           Lorem ipsum dolor sit amet, no pri sensibus sadipscing, mazim aeque quidam pri at, has ex oratio ancillae pertinax. 
+                           Iriure fabulas accusamus et mea, ei quo noster denique erroribus, ut eum tempor reprimique temporibus. Eu nec sint 
+                           sonet, est aliquid propriae ponderum ex. In duo clita scripserit delicatissimi. Liber ornatus epicurei ei pri. Sed no quis lorem.
+                       </div>
+                       <div class="footer-card">
+                           <div class="row">
+                               <div class="col-lg-6 orange">
+                                   Multiply
+                               </div>
+                               <div class="col-lg-6 text-right">
+                                   <img src="~/Content/images/cloud79.png" />
+                                   <span>42</span>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+                    <div class="col-lg-3 col-lg-offset-1 col-xs-offset-0 col-sm-offset-0 card">
+                        <div class="header-card">
+                            <img src="~/Content/images/single.png" class="img-thumbnail" />
+                        </div>
+                        <div class="content-card">
+                            Lorem ipsum dolor sit amet, no pri sensibus sadipscing, mazim aeque quidam pri at, has ex oratio ancillae pertinax.
+                            Iriure fabulas accusamus et mea, ei quo noster denique erroribus, ut eum tempor reprimique temporibus. Eu nec sint
+                            sonet, est aliquid propriae ponderum ex. In duo clita scripserit delicatissimi. Liber ornatus epicurei ei pri. Sed no quis lorem.
+                        </div>
+                        <div class="footer-card">
+                            <div class="row">
+                                <div class="col-lg-6 blue">
+                                    Single
+                                </div>
+                                <div class="col-lg-6 text-right">
+                                    <img src="~/Content/images/cloud79.png" />
+                                    <span>42</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-lg-offset-1 col-xs-offset-0 col-sm-offset-0 card ">
+                        <div class="header-card">
+                            <img src="~/Content/images/quiz.png" class="img-thumbnail" />
+                        </div>
+                        <div class="content-card">
+                            Lorem ipsum dolor sit amet, no pri sensibus sadipscing, mazim aeque quidam pri at, has ex oratio ancillae pertinax.
+                            Iriure fabulas accusamus et mea, ei quo noster denique erroribus, ut eum tempor reprimique temporibus. Eu nec sint
+                            sonet, est aliquid propriae ponderum ex. In duo clita scripserit delicatissimi. Liber ornatus epicurei ei pri. Sed no quis lorem.
+                        </div>
+                        <div class="footer-card">
+                            <div class="row">
+                                <div class="col-lg-6 red">
+                                    Quiz
+                                </div>
+                                <div class="col-lg-6 text-right">
+                                    <img src="~/Content/images/cloud79.png" />
+                                    <span>42</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
 
-                <div class="alert alert-info information" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    Lorem ipsum dolor sit amet, audiam timeam id nam, has dolor sensibus eu, pri doctus aliquando ei. 
-                    Vide porro apeirian est at, exerci habemus oporteat est cu. Eos cu utroque gubergren posidonium. Tollit intellegat interpretaris eum no, tractatos adolescens qui at. 
-                    Quo eirmod impetus no, virtute graecis in mea, ei ullum pertinacia cum. Labitur apeirian erroribus id nec. Eu est ubique populo dicunt, est tantas sensibus ut, cibo moderatius ad ius. 
-                    Est ea delectus complectitur, harum fierent ocurreret qui ei. Nonumes offendit recteque mel ne, cu eum regione dolores persequeris. Ei vis sale malis cetero, his ei laboramus forensibus. 
-                    Tempor ocurreret constituto et qui, no sed mediocrem evertitur. Has doctus expetenda instructior et, id sed eripuit recusabo principes. Habemus denique voluptua id pri, sit ex dicit fastidii, 
-                    vide idque vel et. Ridens dolores deleniti sed te, ut doming euripidis definitiones pro.
                 </div>
-            </div>
-            <div class="row">
-                <a ng-href="" ng-click="template='Content/partial/ChooseType.html'"><button type="button" class="btn btn-primary btn-lg">Let's start</button></a>
-                <a ng-href="" ng-click="template='Content/partial/ChooseAccess.html'"><button type="button" class="btn btn-primary btn-lg">Next (access)</button></a>
-                <a ng-href="" ng-click="template='Content/partial/ChoosePermission.html'"><button type="button" class="btn btn-primary btn-lg">Next (perm)</button></a>  
-            </div>
-            
-        </div>
-        <div class="container add-poll-content">
+                <div class="row text-center">
+                    <button type="button" class="btn btn-install">Next</button>
+                </div>
                 <div ng-include src="template">
 
+                    
                 </div>
+            <!--<div class="row">
+                    <a ng-href="" ng-click="template='Content/partial/ChooseType.html'"><button type="button" class="btn btn-primary btn-lg">Let's start</button></a>
+                
+                    <a ng-href="" ng-click="template='Content/partial/ChoosePermission.html'"><button type="button" class="btn btn-primary btn-lg">Next (perm)</button></a>
+                </div>-->
         </div>
         
     </section>

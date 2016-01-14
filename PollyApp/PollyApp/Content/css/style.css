@@ -7,7 +7,7 @@
 body {
     padding: 0;
     margin: 0;
-    background: #2c3e50;
+    background: #f3f6f8;
     font-family: OpenSans;
 }
 
@@ -213,8 +213,13 @@ a {
     color:#ffffff;
 }
 .information{
-    font-size:18px;
-    margin-top:20px;
+    font-size:12px;
+    margin-top:25px;
+    color: #777777;
+}
+.information > img{
+    margin-top:-2px;
+    margin-right:10px;
 }
   @font-face {
     font-family: OpenSans-light;
@@ -240,24 +245,152 @@ a {
     border-bottom:1px solid #e67e22;
 }
 .add-poll-content{
-    margin-top:20px;
 }
 .wrapper-install{
 }
 .sidebar-install{
-    border-right:1px solid #8e8f8f;
+    border-right:1px solid #f2f3f3;
     
 }
 .sidebar-install-right{
-    border-left:1px solid #8e8f8f;
+    border-left:1px solid #f2f3f3;
 }
 .work-space{
+    border:1px solid #f2f3f3;
     padding:10px;
     background:#ffffff;
 }
 .work-space .title{
     font-size:18px;
     
+}
+.card{
+    margin-top:50px;
+    margin-bottom:50px;
+    background:#ffffff;
+    border:1px solid #dce5eb;
+    padding:0px;
+    height:300px;
+    font-family:Calibri;
+    font-weight:bold;
+    color:#a5b5c5;
+}
+.card:hover,
+.card:focus,
+.card:active{
+    border: 1px solid #2980b9;
+}
+.header-card{
+    padding:10px;
+}
+.content-card{
+    padding:10px;
+    font-size:14px;
+    height:150px;
+    overflow:hidden;
+    text-align:justify;
+    color:#7b7b7b;
+}
+.footer-card{
+    
+    margin-top:22px;
+    padding:10px;
+    border-top:1px solid #dfe1e2;
+}
+.step-number{
+    margin-top:25px;
+    color:#a5b5c5;
+    text-align:center;
+    font-size:16px;
+    font-family:Calibri;
+}
+.step-title{
+    text-align:center;
+    font-size:24px;
+    color: #404040;
+    
+}
+.add-poll{
+    margin-top:50px;
+}
+
+.footer-card > .row > .orange{
+    color:#e67e22;
+}
+.footer-card > .row > .blue{
+    color:#3498db;
+}
+.footer-card > .row > .red{
+    color:#e74c3c;
+}
+.add-poll  .col-lg-offset-1 {
+    margin-left: 6.3%;
+}
+
+.btn-install {
+  outline:none;
+  color: #a5b5c5;
+  background-color: #ffffff;
+  border-color: #a5b5c5;
+}
+.btn-install:focus,
+.btn-install.focus {
+  color: #8f8f8f;
+  outline:none;
+  background-color: #e2e6eb;
+  border-color: #d7dce0;
+}
+.btn-install:hover {
+  color: #8f8f8f;
+  outline:none;
+  background-color: #e2e6eb;
+  border-color: #d7dce0;
+}
+.btn-install:active,
+.btn-install.active,
+.open > .dropdown-toggle.btn-install {
+  color: #8f8f8f;
+  outline:none;
+  background-color: #e2e6eb;
+  border-color: #d7dce0;
+}
+.btn-install:active:hover,
+.btn-install.active:hover,
+.open > .dropdown-toggle.btn-primary:hover,
+.btn-install:active:focus,
+.btn-install.active:focus,
+.open > .dropdown-toggle.btn-install:focus,
+.btn-install:active.focus,
+.btn-install.active.focus,
+.open > .dropdown-toggle.btn-install.focus {
+   color: #8f8f8f;
+   outline:none;
+  background-color: #e2e6eb;
+  border-color: #d7dce0;
+}
+.btn-install:active,
+.btn-install.active,
+.open > .dropdown-toggle.btn-install {
+  background-image: none;
+
+}
+.btn-install.disabled:hover,
+.btn-install[disabled]:hover,
+fieldset[disabled] .btn-primary:hover,
+.btn-install.disabled:focus,
+.btn-install[disabled]:focus,
+fieldset[disabled] .btn-primary:focus,
+.btn-install.disabled.focus,
+.btn-install[disabled].focus,
+fieldset[disabled] .btn-primary.focus {
+  
+  background-color: #e2e6eb;
+  outline:none;
+  border-color: #d7dce0;
+}
+.btn-install .badge {
+  color: #337ab7;
+  background-color: #fff;
 }
 /*---------------------------------------------*/
 /*----------------MOBILE DESIGN----------------*/
