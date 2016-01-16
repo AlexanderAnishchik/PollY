@@ -1,6 +1,7 @@
-﻿PollyApp.controller('headerController', ['$scope', '$http','headerKeeperService', function ($scope, $http, headerKeeperService) {
+﻿PollyApp.controller('headerController', ['$scope', '$http','headerKeeperService', function ($scope, $http, headerKeeperService, $uibModal, $log) {
     var me = this;
     me.login = null;
+    
     me.registr = null;
     
     me.signIn = function () {
@@ -27,8 +28,9 @@
 
            });
         }
-        else {
-            modal.open();
-        }
+       
     };
+    
+    
+    
 }]);
