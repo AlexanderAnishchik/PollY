@@ -1147,6 +1147,8 @@
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
     <Content Include="Scripts\npm.js" />
+    <Content Include="Scripts\ui-bootstrap-1.0.3.min.js" />
+    <Content Include="Scripts\ui-bootstrap-tpls-1.0.3.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
