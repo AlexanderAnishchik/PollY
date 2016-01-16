@@ -188,6 +188,8 @@
     </Compile>
     <Compile Include="Helpers\PollHelper.cs" />
     <Compile Include="Helpers\DbEnum.cs" />
+    <Compile Include="Models\PollUnit.cs" />
+    <Compile Include="Models\PollWrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1171,7 +1173,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
