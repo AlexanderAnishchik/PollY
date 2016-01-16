@@ -44,16 +44,18 @@
                             "simple@simple.com"
                         </div>
 
-                        <div class="input-group input-group-lg textbox">
-
+                        <div class="input-group input-group-lg textbox" ng-class="{ 'has-error' : !registerForm.pass.$pristine && registerForm.pass.$invalid, 'has-success' : !registerForm.pass.$pristine && registerForm.pass.$valid}">
                             <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/password.png" /></span>
-                            <input type="password" class="form-control" name="pass" ng-model="headCtrl.registr.pass" placeholder="Password" aria-describedby="sizing-addon1">
+                            <input type="password" class="form-control" name="pass" ng-model="headCtrl.registr.pass" placeholder="Password" aria-describedby="sizing-addon1" required>
                         </div>
                         <div class="input-group input-group-lg textbox">
                             <span class="input-group-addon" id="sizing-addon1">
                                 <img src="~/Content/images/password.png" />
                             </span>
-                            <input type="password" class="form-control" name="confirm" ng-model="headCtrl.registr.confirmpass" placeholder="Confirm password" aria-describedby="sizing-addon1">
+                            <input type="password" class="form-control" name="confirmpass" ng-model="headCtrl.registr.confirmpass" placeholder="Confirm password" aria-describedby="sizing-addon1" required>
+                        </div>
+                        <div class="alert alert-danger" ng-show="(registerForm.pass.$invalid && !registerForm.pass.$pristine) || (registerForm.confirmpass.$invalid && !registerForm.confirmpass.$pristine)">
+                           Please enter your password!
                         </div>
                     </div>
                     
