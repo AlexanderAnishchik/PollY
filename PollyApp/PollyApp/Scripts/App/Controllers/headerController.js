@@ -2,9 +2,11 @@
     var me = this;
     me.login = null;
     me.registr = null;
+    $scope.headerData = headerKeeperService.data;
     me.init = function () {
-        $http.get("Account/GetUser", function (response) {
-            debugger;
+        $http.get("Account/GetUser").then(function (response) {
+         
+            headerKeeperService.data.user = response.data;
         },
           function (response) {
 

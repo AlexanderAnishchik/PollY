@@ -17,7 +17,7 @@ namespace PollyApp.Controllers
         public ActionResult GetUser()
         {
             if (Session["user"] != null)
-                return Json(Session["user"]);
+                return Json(Session["user"],JsonRequestBehavior.AllowGet);
             else
                 return null;
         }
