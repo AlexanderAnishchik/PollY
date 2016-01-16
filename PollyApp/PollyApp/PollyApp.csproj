@@ -344,7 +344,6 @@
     <Content Include="Scripts\App\Controllers\constructorController.js" />
     <Content Include="Scripts\App\Controllers\headerController.js" />
     <Content Include="Scripts\App\Controllers\homeController.js" />
-    <Content Include="Scripts\App\Controllers\modalController.js" />
     <Content Include="Scripts\App\Route\constructorRoute.js" />
     <Content Include="Scripts\App\Services\headerKeeperService.js" />
     <Content Include="Scripts\bootstrap-modal.js" />
@@ -1148,6 +1147,7 @@
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
     <Content Include="Scripts\npm.js" />
+    <Content Include="Scripts\ui-bootstrap-1.0.3.min.js" />
     <Content Include="Scripts\ui-bootstrap-tpls-1.0.3.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
@@ -1172,7 +1172,6 @@
     <Content Include="Content\partial\ChooseType.html" />
     <Content Include="Content\partial\ChoosePermission.html" />
     <Content Include="Content\partial\ChooseAccess.html" />
-    <Content Include="Views\Popup\Error.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

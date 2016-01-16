@@ -1,5 +1,5 @@
 ﻿<!--HEADER-->
-<div ng-controller="headerController as headCtrl">
+<div ng-controller="headerController as headCtrl" ng-init="headCtrl.init()">
     @Html.Partial("~/Views/Popup/SignIn.cshtml", null)
     @Html.Partial("~/Views/Popup/SignOut.cshtml", null)
     @Html.Partial("~/Views/Popup/Error.cshtml", null)
@@ -45,12 +45,12 @@
 
 
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >{{ user.FirstName }} {{user.LastName}}<span class="caret"></span></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >{{ headerData.user.FirstName }} {{headerData.user.LastName}}<span class="caret"></span></a>
                                     <ul class="dropdown-menu">
 
-                                        <li class="text"><a href=""><b>{{ user.FirstName }} {{user.LastName}}</b></a></li>
+                                        <li class="text"><a href=""><b>{{  headerData.user.FirstName }} {{ headerData.user.LastName}}</b></a></li>
 
-                                        <li><a href=""><small>{{ user.Email }}</small></a></li>
+                                        <li><a href=""><small>{{  headerData.user.Email }}</small></a></li>
 
                                         <li role="separator" class="divider"></li>
 
