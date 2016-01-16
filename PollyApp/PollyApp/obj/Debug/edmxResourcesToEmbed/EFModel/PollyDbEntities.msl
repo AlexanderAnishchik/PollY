@@ -5,7 +5,7 @@
       <EntityTypeMapping TypeName="PollyAppModel.Answer">
         <MappingFragment StoreEntitySet="Answer">
           <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Answer1" ColumnName="Answer" />
+          <ScalarProperty Name="Value" ColumnName="Answer" />
           <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -28,7 +28,7 @@
       <EntityTypeMapping TypeName="PollyAppModel.Question">
         <MappingFragment StoreEntitySet="Question">
           <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Question1" ColumnName="Question" />
+          <ScalarProperty Name="Value" ColumnName="Question" />
           <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
         </MappingFragment>
       </EntityTypeMapping>

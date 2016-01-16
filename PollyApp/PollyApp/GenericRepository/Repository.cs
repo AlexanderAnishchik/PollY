@@ -8,7 +8,7 @@ using PollyApp.Helpers;
 
 namespace PollyApp.GenericRepository
 {
-    public class Repository
+    public class Repository : IDisposable
     {
         public Entities Context { get; set; }
 
@@ -27,6 +27,10 @@ namespace PollyApp.GenericRepository
         {
             Context.Set<TEntity>().Add(ent);
         }
+        public void AddRange<TEntity>(List<TEntity> ents) where TEntity : class
+        {
+            Context.Set<TEntity>().AddRange(ents);
+        }
         public void Delete<TEntity>(int id) where TEntity : class
         {
             var el = Context.Set<TEntity>().Find(id);
@@ -39,7 +43,10 @@ namespace PollyApp.GenericRepository
             Context.Entry<TEntity>(temp).CurrentValues.SetValues(ent);
             Context.Entry<TEntity>(temp).State = EntityState.Modified;
         }
-
+        public void Dispose()
+        {
+            Context.Dispose();
+        }
 
         public void Save()
         {
