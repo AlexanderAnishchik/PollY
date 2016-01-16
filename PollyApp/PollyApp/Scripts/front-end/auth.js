@@ -1,4 +1,4 @@
-﻿jQuery(document).ready(function () {
+﻿/*jQuery(document).ready(function () {
 
 jQuery.noConflict();
     setTimeout(function () {
@@ -12,3 +12,4 @@ jQuery.noConflict();
         });
     }, 500);
 });
+*/

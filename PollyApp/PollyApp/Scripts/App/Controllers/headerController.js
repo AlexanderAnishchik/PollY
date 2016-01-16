@@ -2,7 +2,7 @@
     var me = this;
     me.login = null;
     me.registr = null;
-   
+    
     me.signIn = function () {
         if (me.login.email && me.login.password) {
             $http.post("Login/SignIn", { login: me.login.email, pass: me.login.password }).then(function (response) {
@@ -26,6 +26,9 @@
            function (response) {
 
            });
+        }
+        else {
+            modal.open();
         }
     };
 }]);
