@@ -6,10 +6,19 @@
     if ($scope.template == 'Content/partial/ChooseType.html') {
         $scope.next_template = 'Content/partial/ChooseAccess.html';
     }
-    $scope.userGotAccess = [
-    
-    ];
-    
+    $scope.count = 0;
+    $scope.changeTemplate = function () {
+        if ($scope.count == 1) {
+            $scope.next_template = 'Content/partial/ChoosePermission.html';
+            $scope.template = $scope.next_template;
+        }
+        else {
+            $scope.template = $scope.next_template;
+            $scope.count++;
+        }
+
+    }
+
     $scope.user_id_textbox = null;
     $scope.choosed = "Choose access"
     me.init = function () {
@@ -66,6 +75,9 @@
             }
     ];
 
+    $scope.userGotAccess = [
+
+    ];
     
     $scope.addNewField = function (id_textbox) {
            
@@ -74,27 +86,14 @@
                 $scope.userGotAccess.push($scope.dbUsers[i]);
             }
         }
-        $scope.user_id_textbox = null;
+        me.user_id_textbox = null;
         
     }
     
     $scope.deleteRow = function (idUser, index) {
-        $scope.userGotAccess.splice(index,idUser);
+        $scope.userGotAccess.splice(index,1);
     }
 
-
-    $scope.count = 0;
-    $scope.changeTemplate = function () {
-        if ($scope.count == 1) {
-            $scope.next_template = 'Content/partial/ChoosePermission.html';
-            $scope.template = $scope.next_template;
-        }
-        else {
-            $scope.template = $scope.next_template;
-            $scope.count++;
-        }
-        
-    }
 
 
     $scope.privacy = "Choose privacy";
