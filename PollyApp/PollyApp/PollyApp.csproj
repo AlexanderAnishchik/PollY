@@ -242,6 +242,9 @@
     <Content Include="Content\images\text lines15.png" />
     <Content Include="Content\images\tv monitor2.png" />
     <Content Include="Content\images\user.png" />
+    <Content Include="Content\partial\CodeAccess.html" />
+    <Content Include="Content\partial\FreeAccess.html" />
+    <Content Include="Content\partial\SomeonePeople.html" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -344,6 +347,7 @@
     <Content Include="Scripts\App\Controllers\constructorController.js" />
     <Content Include="Scripts\App\Controllers\headerController.js" />
     <Content Include="Scripts\App\Controllers\homeController.js" />
+    <Content Include="Scripts\App\Directives\enterDirective.js" />
     <Content Include="Scripts\App\Route\constructorRoute.js" />
     <Content Include="Scripts\App\Services\headerKeeperService.js" />
     <Content Include="Scripts\bootstrap-modal.js" />
@@ -1172,6 +1176,7 @@
     <Content Include="Content\partial\ChooseType.html" />
     <Content Include="Content\partial\ChoosePermission.html" />
     <Content Include="Content\partial\ChooseAccess.html" />
+    <Content Include="Views\Popup\Error.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

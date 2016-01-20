@@ -1,6 +1,41 @@
-﻿
-@{
-    ViewBag.Title = "ChoosePermission";
-}
+﻿<div class="step-number">
+    Step 3 of 3
+</div>
+<div class="alert alert-info alert-dismissible information" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <img src="/Content/images/info.png" /> If you are not logged in , your survey will not be published!
+</div>
+<div class="container add-poll-content">
+    <div class="step-title">
+        Let's get finished!
+    </div>
+    <div class="step-number">
+        <strong>Set privacy!</strong> Be careful, privacy is set once, when poll is created.
+    </div>
 
-<h2>ChoosePermission</h2>
+    <div class="row">
+        <div class="col-lg-4 col-lg-offset-4 card">
+            <div class="header-card text-center">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-danger">{{privacy}}</button>
+                    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" ng-repeat="privacy in privacy_list" ng-click="setPrivacy(privacy.name, privacy.description)">{{privacy.name}}</a></li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="content-card text-center">
+                {{description}}
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+</div>

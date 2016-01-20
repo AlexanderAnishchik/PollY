@@ -270,14 +270,19 @@ a {
     background:#ffffff;
     border:1px solid #dce5eb;
     padding:0px;
-    height:300px;
     font-family:Calibri;
     font-weight:bold;
     color:#a5b5c5;
 }
-.card:hover,
-.card:focus,
-.card:active{
+.card-md{
+    height:300px;
+}
+.card-lg{
+    height:450px;
+}
+.card-md:hover,
+.card-md:focus,
+.card-md:active{
     border: 1px solid #2980b9;
 }
 .header-card{
@@ -286,10 +291,12 @@ a {
 .content-card{
     padding:10px;
     font-size:14px;
-    height:150px;
+  
     overflow:hidden;
-    text-align:justify;
     color:#7b7b7b;
+}
+.content-card-md{
+    height:150px;
 }
 .footer-card{
     
@@ -323,7 +330,7 @@ a {
 .footer-card > .row > .red{
     color:#e74c3c;
 }
-.add-poll  .col-lg-offset-1 {
+.choose-type  .col-lg-offset-1 {
     margin-left: 6.3%;
 }
 
@@ -392,6 +399,46 @@ fieldset[disabled] .btn-primary.focus {
   color: #337ab7;
   background-color: #fff;
 }
+.secure_code{
+    margin-top:30px;
+    margin-bottom:30px;
+    border:1px solid #dfe1e2;
+    color:#1abc9c;
+    padding-bottom:10px;
+}
+.card > .content-card  .input-group > .input-group-addon{
+    background:#e2e6eb;
+    
+}
+.card > .content-card  .input-group > .form-control{
+    border:1px solid #e2e6eb;  
+    font-weight:normal;
+}
+.card > .content-card .input-group > .form-control:hover,
+.card > .content-card  .input-group > .form-control:focus,
+.card > .content-card  .input-group > .form-control:active {
+    outline:none;
+    box-shadow:none;
+}
+.foto-small{
+    width:40px;
+    height:40px;
+    margin-right:20px;
+}
+.added-user{
+    margin-bottom:20px;
+    font-size:18px;
+    color:#8f8f8f;
+    font-weight:normal;
+}
+.added-user  .close{
+    margin-top:10px;
+    color:#e74c3c;
+}
+.added-user .title{
+    margin-top:7.5px;
+}
+
 /*---------------------------------------------*/
 /*----------------MOBILE DESIGN----------------*/
 /*---------------------------------------------*/
