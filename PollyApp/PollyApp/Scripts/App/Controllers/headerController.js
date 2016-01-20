@@ -2,8 +2,10 @@
     var me = this;
     me.login = null;
     me.registr = null;
+    $scope.RegisterModalShowState = false;
     $scope.headerData = headerKeeperService.data;
     me.init = function () {
+
         $http.get("Account/GetUser").then(function (response) {
          
             headerKeeperService.data.user = response.data;
