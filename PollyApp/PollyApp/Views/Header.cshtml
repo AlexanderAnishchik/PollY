@@ -39,6 +39,7 @@
                             @if (!(Boolean)Session["isLogged"])
                             {
                                 <li><a href="" data-toggle="modal" data-target="#login">SIGN IN</a></li>
+                                <li><button type="button" class="btn btn-success" id="signInBtn" data-toggle="modal" data-target="#register">SIGN UP</button></li>
                             }
                             @if ((Boolean)Session["isLogged"])
                             {
