@@ -78,7 +78,7 @@
     }
     
     $scope.deleteRow = function (idUser, index) {
-        $scope.userGotAccess.splice(index,idUser);
+        $scope.userGotAccess.splice(index,1);
     }
 
 
