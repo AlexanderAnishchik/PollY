@@ -9,8 +9,7 @@
     $scope.userGotAccess = [
     
     ];
-    
-    $scope.user_id_textbox = null;
+    $scope.data = {};
     $scope.choosed = "Choose access"
     me.init = function () {
 
@@ -74,7 +73,7 @@
                 $scope.userGotAccess.push($scope.dbUsers[i]);
             }
         }
-        $scope.user_id_textbox = null;
+        $scope.data.user_id_textbox = null;
         
     }
     
