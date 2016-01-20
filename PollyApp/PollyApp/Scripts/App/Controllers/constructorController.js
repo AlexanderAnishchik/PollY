@@ -6,9 +6,11 @@
     if ($scope.template == 'Content/partial/ChooseType.html') {
         $scope.next_template = 'Content/partial/ChooseAccess.html';
     }
+    $scope.userGotAccess = [
     
+    ];
     
-    
+    $scope.user_id_textbox = null;
     $scope.choosed = "Choose access"
     me.init = function () {
 
@@ -42,10 +44,42 @@
         }
         $scope.generated = result;
     }
+    $scope.dbUsers = [
+         {
+             id: 1,
+             'FirstName': 'Artem',
+             'LastName': 'Mozharov',
+             'logo': '/Content/images/foto_artem.jpg',
 
-    $scope.addNewField = function () {
+         },
+            {
+                id: 2,
+                'FirstName': 'Alexander',
+                'LastName': 'Anischik',
+                'logo': '/Content/images/foto_alexander.jpg',
+            },
+            {
+                id: 3,
+                'FirstName': 'Grihoriy',
+                'LastName': 'Kots',
+                'logo': '/Content/images/foto_koc.jpg',
+            }
+    ];
+
+    
+    $scope.addNewField = function (id_textbox) {
+           
+        for (i = 0; i < $scope.dbUsers.length; i++) {
+            if ($scope.dbUsers[i].id == id_textbox) {
+                $scope.userGotAccess.push($scope.dbUsers[i]);
+            }
+        }
+        $scope.user_id_textbox = null;
         
-        alert("SANYA PLZ DO THIS EVENT");
+    }
+    
+    $scope.deleteRow = function (idUser, index) {
+        $scope.userGotAccess.splice(index,idUser);
     }
 
 
@@ -80,5 +114,6 @@
         $scope.privacy = name;
         $scope.description = desc;
     }
+   
 }]);
 
