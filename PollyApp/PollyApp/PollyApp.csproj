@@ -242,8 +242,8 @@
     <Content Include="Content\images\text lines15.png" />
     <Content Include="Content\images\tv monitor2.png" />
     <Content Include="Content\images\user.png" />
-    <Content Include="Content\partial\CodeAccess.html" />
-    <Content Include="Content\partial\FreeAccess.html" />
+    <Content Include="Content\partial\Anonymous.html" />
+    <Content Include="Content\partial\Public.html" />
     <Content Include="Content\partial\SomeonePeople.html" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />

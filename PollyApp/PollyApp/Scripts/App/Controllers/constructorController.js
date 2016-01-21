@@ -17,7 +17,6 @@
     };
     $scope.access_types = null;
     $scope.setAccess = function (type) {
-        debugger;
         $scope.choosed = type;
         type = type.replace(/\s+/g, '');
         $scope.access_type = 'Content/partial/' + type + '.html';
