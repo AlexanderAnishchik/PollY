@@ -2,10 +2,15 @@
     <p>This type of access allows you to leave the answers only to a certain circle of registered users.</p>
     <p>Please enter ID of user</p>
     <div class="text-justify added-user row" ng-repeat="user in userGotAccess">
-        <div class="col-lg-1"><img src="{{user.logo}}"  class="img-rounded foto-small"/></div>
+        <div class="col-lg-1"><img src="/Content/images/Users/{{user.Logo}}"class="img-rounded foto-small"/></div>
         <div class="col-lg-10 title">{{user.FirstName}} {{user.LastName}}</div>
         <div class="col-lg-1"><button type="button" class="close" ng-click="deleteRow(user.id, $index)"><span aria-hidden="true">&times;</span></button></div>
     </div>
+
+    <div class="alert alert-danger" ng-show="tmp">
+        {{error}}
+    </div>
+
     <div class="input-group">
         <span class="input-group-addon" id="">https://polly.com/users/</span>
         <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" ng-enter="addNewField(data.user_id_textbox)" ng-model="data.user_id_textbox" placeholder="user id">

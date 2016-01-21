@@ -1,4 +1,4 @@
-﻿PollyApp.controller('constructorController', ['$scope', 'headerKeeperService', function ($scope, headerKeeperService) {
+﻿PollyApp.controller('constructorController', ['$scope', '$http', 'headerKeeperService', function ($scope, $http, headerKeeperService) {
     var me = this;
     $scope.generated = "";
     $scope.access_type = 'Content/partial/FreeAccess.html'
@@ -43,36 +43,54 @@
         }
         $scope.generated = result;
     }
-    $scope.dbUsers = [
-         {
-             id: 1,
-             'FirstName': 'Artem',
-             'LastName': 'Mozharov',
-             'logo': '/Content/images/foto_artem.jpg',
-
-         },
-            {
-                id: 2,
-                'FirstName': 'Alexander',
-                'LastName': 'Anischik',
-                'logo': '/Content/images/foto_alexander.jpg',
-            },
-            {
-                id: 3,
-                'FirstName': 'Grihoriy',
-                'LastName': 'Kots',
-                'logo': '/Content/images/foto_koc.jpg',
-            }
-    ];
-
     
+
+    $scope.error = null;
     $scope.addNewField = function (id_textbox) {
-           
-        for (i = 0; i < $scope.dbUsers.length; i++) {
-            if ($scope.dbUsers[i].id == id_textbox) {
-                $scope.userGotAccess.push($scope.dbUsers[i]);
+        $scope.tmp = false;
+        for (i = 0; i < $scope.userGotAccess.length; i++) {
+            if($scope.userGotAccess[i].Id == id_textbox)
+            {
+                $scope.tmp = true;
+                break;
             }
         }
+        if ($scope.tmp) {
+            $scope.error = "User already exist";
+        }
+        else {
+            $http.post("Account/GetUserById", { id: id_textbox }).then(function (response) {
+                
+                var data = response.data;
+                if (data.user == null) {
+                    $scope.tmp = true;
+                    $scope.error = "The user does not exist";
+                    
+                }
+                else {
+                    if (data.user.Logo == null) {
+                        data.user.Logo = 'nophoto.png';
+                    }
+                    $scope.userGotAccess.push(data.user);
+                    $scope.tmp = false;
+                }
+                
+                
+            },
+            function (response) {
+                
+                   
+                    
+                
+            });
+        }
+        
+
+        //for (i = 0; i < $scope.dbUsers.length; i++) {
+        //    if ($scope.dbUsers[i].id == id_textbox) {
+        //        $scope.userGotAccess.push($scope.dbUsers[i]);
+        //    }
+        //}
         $scope.data.user_id_textbox = null;
         
     }
