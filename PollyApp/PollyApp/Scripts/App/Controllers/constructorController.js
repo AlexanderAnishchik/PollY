@@ -46,6 +46,7 @@
     
 
     $scope.error = null;
+    $scope.loader = false;
     $scope.addNewField = function (id_textbox) {
         $scope.tmp = false;
         for (i = 0; i < $scope.userGotAccess.length; i++) {
@@ -59,8 +60,9 @@
             $scope.error = "User already exist";
         }
         else {
+            $scope.loader = true;
             $http.post("Account/GetUserById", { id: id_textbox }).then(function (response) {
-                
+                $scope.loader = false;
                 var data = response.data;
                 if (data.user == null) {
                     $scope.tmp = true;

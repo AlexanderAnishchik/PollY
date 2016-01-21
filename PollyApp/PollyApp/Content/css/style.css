@@ -14,7 +14,9 @@ body {
 a {
     color: #ffffff;
 }
+.loader > img{
 
+}
 .big {
     font-size: 60px;
     font-weight: bold;
