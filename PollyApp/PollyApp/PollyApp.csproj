@@ -387,6 +387,7 @@
       <DependentUpon>PollyDbEntities.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
+    <Content Include="Scripts\Factory\pollSettingsFactory.js" />
     <Content Include="Scripts\front-end\animate.js" />
     <Content Include="Scripts\front-end\navigation-scroll.js" />
     <Content Include="Scripts\front-end\scroll-to.js" />

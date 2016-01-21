@@ -1,4 +1,4 @@
-﻿PollyApp.controller('constructorController', ['$scope', '$http', 'headerKeeperService', function ($scope, $http, headerKeeperService) {
+﻿PollyApp.controller('constructorController', ['$scope', '$http', 'headerKeeperService', 'pollSettingsFactory', function ($scope, $http, headerKeeperService, pollSettingsFactory) {
     var me = this;
     $scope.generated = "";
     $scope.access_type = 'Content/partial/FreeAccess.html'
@@ -12,23 +12,12 @@
     $scope.data = {};
     $scope.choosed = "Choose access"
     me.init = function () {
-
+        $scope.access_types = pollSettingsFactory.PollAccess;
+        debugger;
     };
-    $scope.access_types = [
-    {
-        'name': 'Free Access',
-        
-    },
-    {
-        'name': 'Code Access',
-        
-    },
-    {
-        'name': 'Someone People',
-        
-    }
-    ];
+    $scope.access_types = null;
     $scope.setAccess = function (type) {
+        debugger;
         $scope.choosed = type;
         type = type.replace(/\s+/g, '');
         $scope.access_type = 'Content/partial/' + type + '.html';
