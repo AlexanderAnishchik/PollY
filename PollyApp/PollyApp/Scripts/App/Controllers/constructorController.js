@@ -10,12 +10,31 @@
     
     ];
     $scope.data = {};
-    $scope.choosed = "Choose access"
+    $scope.choosed = "Choose access";
+    $scope.privacy = "Choose privacy";
+    $scope.description = "Please choose type of privacy. Be careful when you will be choosing type and think carefully before you make a choice, because this may depend on the number of voting.";
+    $scope.share_list = [
+    {
+        'name': 'Public',
+        'description': 'This type of survey allows the creator of privacy and all voting to see who voted for which option.',
+
+    },
+    {
+        'name': 'Private',
+        'description': 'This type of privacy to hide data on voters and to leave all voting incognito.',
+    }
+    ];
+    $scope.setPrivacy = function (name, desc) {
+        $scope.privacy = name;
+        $scope.description = desc;
+    }
+    $scope.access_types = null;
+    $scope.share_list = null;
     me.init = function () {
         $scope.access_types = pollSettingsFactory.PollAccess;
-        debugger;
+        $scope.share_list = pollSettingsFactory.PollShare;
     };
-    $scope.access_types = null;
+ 
     $scope.setAccess = function (type) {
         $scope.choosed = type;
         type = type.replace(/\s+/g, '');
@@ -104,23 +123,7 @@
     }
 
 
-    $scope.privacy = "Choose privacy";
-    $scope.description = "Please choose type of privacy. Be careful when you will be choosing type and think carefully before you make a choice, because this may depend on the number of voting.";
-    $scope.privacy_list = [
-    {
-        'name': 'Public',
-        'description': 'This type of survey allows the creator of privacy and all voting to see who voted for which option.',
-
-    },
-    {
-        'name': 'Private',
-        'description': 'This type of privacy to hide data on voters and to leave all voting incognito.',
-    }
-    ];
-    $scope.setPrivacy = function (name,desc) {
-        $scope.privacy = name;
-        $scope.description = desc;
-    }
+  
    
 }]);
 
