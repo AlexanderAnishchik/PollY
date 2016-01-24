@@ -13,20 +13,9 @@
     $scope.choosed = "Choose access";
     $scope.privacy = "Choose privacy";
     $scope.description = "Please choose type of privacy. Be careful when you will be choosing type and think carefully before you make a choice, because this may depend on the number of voting.";
-    $scope.share_list = [
-    {
-        'name': 'Public',
-        'description': 'This type of survey allows the creator of privacy and all voting to see who voted for which option.',
-
-    },
-    {
-        'name': 'Private',
-        'description': 'This type of privacy to hide data on voters and to leave all voting incognito.',
-    }
-    ];
-    $scope.setPrivacy = function (name, desc) {
-        $scope.privacy = name;
-        $scope.description = desc;
+    $scope.setPrivacy = function (type) {
+        $scope.privacy = type.label;
+        $scope.partialPath = 'Content/partial/share/' + type.logicalName + '.html';
     }
     $scope.access_types = null;
     $scope.share_list = null;
@@ -36,9 +25,8 @@
     };
  
     $scope.setAccess = function (type) {
-        $scope.choosed = type;
-        type = type.replace(/\s+/g, '');
-        $scope.access_type = 'Content/partial/' + type + '.html';
+        $scope.choosed = type.label;
+        $scope.partialPath = 'Content/partial/access/' + type.logicalName + '.html';
     };
     $scope.generateCode = function() {
         var result = '';
@@ -95,11 +83,6 @@
         }
         
 
-        //for (i = 0; i < $scope.dbUsers.length; i++) {
-        //    if ($scope.dbUsers[i].id == id_textbox) {
-        //        $scope.userGotAccess.push($scope.dbUsers[i]);
-        //    }
-        //}
         $scope.data.user_id_textbox = null;
         
     }
