@@ -12,6 +12,11 @@
                    logicalName: "Multiply",
                    value: 2,
                    label: "Multiply"
+               },
+               {
+                   logicalName: "quiz",
+                   value: 3,
+                   label: "Quiz"
                }
             ],
 
@@ -19,7 +24,7 @@
                {
                    logicalName: "FreeLink",
                    value: 1,
-                   label: "Poll Share"
+                   label: "Free Link"
                },
                {
                    logicalName: "PasswordLink",
