@@ -24,7 +24,7 @@
                     </button>
                     <ul class="dropdown-menu">
                         <li>
-                        <a href="#" ng-repeat="type in access_types" ng-click="setAccess(type.label)">
+                        <a href="#" ng-repeat="type in access_types" ng-click="setAccess(type)">
                             {{type.label}}
                             </a>
                         </li>
@@ -33,7 +33,7 @@
                 </div>
             </div>
             <div class="content-card">
-                <div ng-include src="access_type">
+                <div ng-include src="partialPath">
 
 
                 </div>          

@@ -17,6 +17,27 @@ a {
 .loader > img{
 
 }
+.constructor > .card{
+    
+}
+.row.constructor > .card input{
+    box-shadow:none;
+    border:1px solid #e2e6eb;
+    font-weight:normal;
+    color:#8f8f8f;
+}
+.row.constructor > .card input:focus,
+.row.constructor > .card input:hover{
+    outline:none;
+    box-shadow:none;
+    box-shadow:none;
+    border:1px solid #1abc9c;
+    font-weight:normal;
+    color:#8f8f8f;
+}
+.footer-card > .btn-success{
+    color:#1abc9c;
+}
 .big {
     font-size: 60px;
     font-weight: bold;
@@ -56,7 +77,7 @@ a {
     color: white;
     padding-bottom: 20px;
     height: auto;
-    background: url(../images/bg2.jpg);
+    background: url(../images/bg3.jpg);
     background-position-x: center;
     background-position-y: center;
     background-attachment: fixed;
@@ -250,13 +271,7 @@ a {
 }
 .wrapper-install{
 }
-.sidebar-install{
-    border-right:1px solid #f2f3f3;
-    
-}
-.sidebar-install-right{
-    border-left:1px solid #f2f3f3;
-}
+
 .work-space{
     border:1px solid #f2f3f3;
     padding:10px;
@@ -305,6 +320,16 @@ a {
     margin-top:22px;
     padding:10px;
     border-top:1px solid #dfe1e2;
+}
+.sidebar-left,
+.sidebar-right{
+    margin-top:51px;
+    margin-bottom:50px;
+    background:#ffffff;
+    padding:10px;
+    font-family:Calibri;
+    font-weight:bold;
+    color:#a5b5c5;
 }
 .step-number{
     margin-top:25px;

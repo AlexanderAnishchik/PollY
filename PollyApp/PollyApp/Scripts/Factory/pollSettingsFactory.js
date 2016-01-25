@@ -1,6 +1,5 @@
 ﻿(function () {
     PollyApp.factory("pollSettingsFactory", function () {
-        debugger;
         return {
             PollType: [
              {
@@ -28,7 +27,7 @@
                },
                {
                    logicalName: "PasswordLink",
-                   value: 2,
+                   value: 2,    
                    label: "Password Link"
                },
                {
