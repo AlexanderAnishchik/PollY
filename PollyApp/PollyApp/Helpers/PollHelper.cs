@@ -12,29 +12,48 @@ namespace PollyApp.Helpers
     {
         public static void Save(PollWrapper poll)
         {
+
             Project newProj = new Project();
-            newProj.UserId = poll.UserId;
-            newProj.Name=poll.PollName;
+            newProj.UserId = (Int32)poll.UserId;
+            newProj.Name = poll.PollName;
             using (var Db = new Repository())
             {
-                Db.Add(newProj);
-                Db.Save();
-                if (poll.PollUnits != null)
+                using (var dbContextTransaction = Db.Context.Database.BeginTransaction())
                 {
-                    foreach (var el in poll.PollUnits)
+                    try
                     {
-                        el.Question.ProjectId = newProj.Id;
-                        Db.Add(el.Question);
+                        var pollShare = Db.Context.PollShares.Where(x => x.Value == poll.PollShare).Select(x => x.Id).First();
+                        var pollAccess = Db.Context.PollAccesses.Where(x => x.Value == poll.PollAccess).Select(x => x.Id).First();
+                        var pollTypes = Db.Context.PollTypes.Where(x => x.Value == poll.PollType).Select(x => x.Id).First();
+                        newProj.AccessId = pollAccess;
+                        newProj.ShareId = pollShare;
+                        newProj.TypeId = pollTypes;
+                        Db.Add(newProj);
                         Db.Save();
-                        foreach (var an in el.Answers)
+                        if (poll.PollUnits != null)
                         {
-                            an.QuestionId = el.Question.Id;
+                            foreach (var el in poll.PollUnits)
+                            {
+                                el.Question.ProjectId = newProj.Id;
+                                Db.Add(el.Question);
+                                Db.Save();
+                                foreach (var an in el.Answers)
+                                {
+                                    an.QuestionId = el.Question.Id;
+                                }
+                                Db.AddRange(el.Answers);
+                                Db.Save();
+                            }
                         }
-                        Db.AddRange(el.Answers);
-                        Db.Save();
+                        dbContextTransaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        dbContextTransaction.Rollback();
                     }
                 }
             }
+
         }
     }
 }
