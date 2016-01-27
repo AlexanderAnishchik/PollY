@@ -21,7 +21,7 @@ namespace PollyApp.EFModel
         }
     
         public int Id { get; set; }
-        public string Answer1 { get; set; }
+        public string Value { get; set; }
         public int QuestionId { get; set; }
     
         public virtual Question Question { get; set; }

@@ -1,7 +1,8 @@
 ﻿<!--HEADER-->
-<div ng-controller="headerController as headCtrl">
+<div ng-controller="headerController as headCtrl" ng-init="headCtrl.init()">
     @Html.Partial("~/Views/Popup/SignIn.cshtml", null)
     @Html.Partial("~/Views/Popup/SignOut.cshtml", null)
+    @Html.Partial("~/Views/Popup/Error.cshtml", null)
     
 
         <nav class="navbar navbar-default navbar-fixed-top" id="navigation">
@@ -27,7 +28,7 @@
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
 
-                            <li><a href="/Constructor">CONSTRUCTOR</a></li>
+                            <li><a href="/Constructor">BUILDER</a></li>
 
                             <li><a href="#">API</a></li>
 
@@ -37,19 +38,19 @@
                         <ul class="nav navbar-nav navbar-right right-menu">
                             @if (!(Boolean)Session["isLogged"])
                             {
-                                <li><a href="" data-toggle="modal" data-target="#login">SIGN IN</a></li>
+                                <li><button type="button" class="btn btn-success" id="signInBtn" data-toggle="modal" data-target="#login">SIGN IN</button></li>
                             }
                             @if ((Boolean)Session["isLogged"])
                             {
 
 
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Alexander Anischik<span class="caret"></span></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >{{ headerData.user.FirstName }} {{headerData.user.LastName}}<span class="caret"></span></a>
                                     <ul class="dropdown-menu">
 
-                                        <li class="text"><a href=""><b>Anischik Alexander</b></a></li>
+                                        <li class="text"><a href=""><b>{{  headerData.user.FirstName }} {{ headerData.user.LastName}}</b></a></li>
 
-                                        <li><a href=""><small>anischikalexander@gmail.com</small></a></li>
+                                        <li><a href=""><small>{{  headerData.user.Email }}</small></a></li>
 
                                         <li role="separator" class="divider"></li>
 

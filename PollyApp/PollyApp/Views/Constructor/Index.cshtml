@@ -3,28 +3,20 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <script src="~/Scripts/App/Controllers/constructorController.js"></script>
-<script src="~/Scripts/App/Route/constructorRoute.js"></script>
-<div ng-controller="constructorController as mainCtrl">
+<script src="~/Scripts/App/Directives/enterDirective.js"></script>
+<div ng-controller="constructorController as mainCtrl" ng-init="mainCtrl.init();">
     <section class="container-fluid intro">
-        <div class="container">
-            <div class="row center intro-content">
-                <h2>Small intro</h2>
-                <img src="~/Content/images/macbookhalf.png" />
-            </div>
-        </div>
+        
     </section>
-    <section class="container-fluid">
-        <div class="container">
-            <div class="row center">
-                <h2>Work space</h2>
-            </div>
-            <div class="row">
-                <a href="/">aaa</a>
-                <a ng-href="" ng-click="template='Content/partial/ChooseAccess.html'">Choose Access</a> |
-                <a ng-href="" ng-click="template='Content/partial/ChooseType.html'">Choose Type</a> |
-                <a ng-href="" ng-click="template='Content/partial/ChoosePermission.html'">Choose Permission</a> |
-                <div ng-include src="template"></div>
-            </div>
+    <section class="container-fluid add-poll">
+           
+        <div ng-include src="template">
+
+
+        </div>
+        
+        <div class="row text-center">
+            <a ng-href="" ng-click="changeTemplate()"><button type="button" class="btn btn-install">Next</button></a>
         </div>
     </section>
 </div>

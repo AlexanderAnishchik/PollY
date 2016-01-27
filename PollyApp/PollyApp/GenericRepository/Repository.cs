@@ -4,12 +4,15 @@ using System.Data.Entity;
 using System.Linq;
 using PollyApp.EFModel;
 using System.Reflection;
+using PollyApp.Helpers;
 
 namespace PollyApp.GenericRepository
 {
-    public class Repository
+    public class Repository : IDisposable
     {
         public Entities Context { get; set; }
+
+        public DbEnum DbEnum { get; set; }
 
         public Repository()
         {
@@ -24,6 +27,10 @@ namespace PollyApp.GenericRepository
         {
             Context.Set<TEntity>().Add(ent);
         }
+        public void AddRange<TEntity>(List<TEntity> ents) where TEntity : class
+        {
+            Context.Set<TEntity>().AddRange(ents);
+        }
         public void Delete<TEntity>(int id) where TEntity : class
         {
             var el = Context.Set<TEntity>().Find(id);
@@ -36,12 +43,11 @@ namespace PollyApp.GenericRepository
             Context.Entry<TEntity>(temp).CurrentValues.SetValues(ent);
             Context.Entry<TEntity>(temp).State = EntityState.Modified;
         }
-        public User getUserByEmail(string email)
+        public void Dispose()
         {
-            var user = Context.Users.Where(x => x.Email == email).First();
-            
-            return user;
+            Context.Dispose();
         }
+
         public void Save()
         {
             Context.SaveChanges();

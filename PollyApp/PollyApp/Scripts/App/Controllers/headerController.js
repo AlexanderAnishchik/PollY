@@ -1,8 +1,19 @@
-﻿PollyApp.controller('headerController', ['$scope', '$http','headerKeeperService', function ($scope, $http, headerKeeperService) {
+﻿PollyApp.controller('headerController', ['$scope', '$http', 'headerKeeperService', function ($scope, $http, headerKeeperService) {
     var me = this;
     me.login = null;
     me.registr = null;
-    $scope.user = null;
+    $scope.RegisterModalShowState = false;
+    $scope.headerData = headerKeeperService.data;
+    me.init = function () {
+
+        $http.get("Account/GetUser").then(function (response) {
+         
+            headerKeeperService.data.user = response.data;
+        },
+          function (response) {
+
+          });
+    }
     me.signIn = function () {
         if (me.login.email && me.login.password) {
             $http.post("Login/SignIn", { login: me.login.email, pass: me.login.password }).then(function (response) {
@@ -27,5 +38,8 @@
 
            });
         }
+        
     };
+
+    
 }]);

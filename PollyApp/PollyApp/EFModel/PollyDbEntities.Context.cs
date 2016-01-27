@@ -31,5 +31,8 @@ namespace PollyApp.EFModel
         public virtual DbSet<Result> Results { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UserPermission> UserPermissions { get; set; }
+        public virtual DbSet<PollAccess> PollAccesses { get; set; }
+        public virtual DbSet<PollShare> PollShares { get; set; }
+        public virtual DbSet<PollType> PollTypes { get; set; }
     }
 }

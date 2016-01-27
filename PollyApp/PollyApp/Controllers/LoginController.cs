@@ -17,15 +17,17 @@ namespace PollyApp.Controllers
             var isLogged = MemberWorker.Login(login, pass);
             if (isLogged)
             {
-                Session["userId"] = login;
+               
                 user = Db.Context.Users.Where(x => x.Email == login).Select(x => new
                 {
+                    x.Id,
                     x.Email,
                     x.FirstName,
                     x.LastName,
                     x.Logo
                 }).FirstOrDefault();
             }
+            Session["user"] = user;
             Session["isLogged"] = isLogged;
             return new JsonResult() { Data = new { status = isLogged, user = user } };
         }
