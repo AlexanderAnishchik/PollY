@@ -212,6 +212,8 @@
     <Content Include="Content\images\ipad.png" />
     <Content Include="Content\images\iphone6.png" />
     <Content Include="Content\images\iphone6plus_spacegrey_portrait.png" />
+    <Content Include="Content\images\layout1.png" />
+    <Content Include="Content\images\layout2.png" />
     <Content Include="Content\images\location51.png" />
     <Content Include="Content\images\mac-830.png" />
     <Content Include="Content\images\ok-shield-icon.png" />

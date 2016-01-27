@@ -12,7 +12,7 @@ body {
 }
 
 a {
-    color: #ffffff;
+    color: #e7e7e7;
 }
 
 .big {
@@ -208,6 +208,9 @@ a {
     background-color: #e67e22;
     padding:50px 10px 0 10px;
     color:#ffffff;
+}
+.poll-cart {
+    border: 1px solid #ebebeb;
 }
 /*---------------------------------------------*/
 /*----------------MOBILE DESIGN----------------*/
