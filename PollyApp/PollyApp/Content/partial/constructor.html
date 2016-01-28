@@ -12,23 +12,142 @@
 
     <div class="row constructor">
         <div class="sidebar-left col-lg-2">
-            LEFT
+            <div class="title">
+                STEPS
+            </div>
+            <div class="content">
+                <div class="steps bg-success">
+                    FIRST STEP
+                </div>
+                <div class="steps bg-success">
+                    FIRST STEP
+                </div>
+                <div class="steps bg-success">
+                    FIRST STEP
+                </div>
+            </div>
         </div>
-        <div class="card col-lg-8">
+        <div class="card col-lg-6 col-lg-offset-1">
             <div class="header-card">
                 <div class="form-group">
                     <label for="titlePoll">Title</label>
                     <input type="text" class="form-control" id="titlePoll" placeholder="Poll title">
+                    
                 </div>
+                <hr />
             </div>
             <div class="content-card">
-                asdsad
+                <div class="row">
+                    <div class="col-lg-5">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="addNewQuestion" placeholder="New question">
+                            <button class="btnDeleteQuestion"></button>
+                        </div>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-warning">One from list</button>
+                            <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="caret"></span>
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">One from list</a></li>
+                                <li><a href="#">Several from list</a></li>
+                                <li><a href="#">Image</a></li>
+                            </ul>
+                        </div>
+                        <div class="form-inline">
+                            <div class="form-group ">
+                                <input type="text" class="form-control-static" id="" value="FIRST ANSWER" placeholder="Add answer">
+                            </div>
+                            <button type="button" class="delete"></button>
+                        </div>
+                        <div class="form-inline">
+                            <div class="form-group ">
+                                <input type="text" class="form-control-static" id="" placeholder="Add answer">
+                            </div>
+                            
+                        </div>
+                        <p>
+                            <button type="button" class="btn btn-default btn-sm">Add</button>
+                        </p>
+                    </div>
+                    <div class="col-lg-5 col-lg-offset-1">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="" placeholder="New question">
+                            <button class="btnAddQuestion"></button>
+                            
+                        </div>
+                    </div>
+                              
+                </div>
+               
             </div>
             <div class="footer-card">
                 <button class="btn btn-success">SAVE POLL</button>
             </div>
         </div>
-        <div class="sidebar-right col-lg-2">
+        <div class="sidebar-right col-lg-2 col-lg-offset-1">
+            <div class="title">
+                QUESTIONS
+            </div>
+            <div class="content">
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingOne">
+                            <h4 class="panel-title">
+                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    First question
+                                </a>   
+                            </h4>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                            <div class="panel-body">
+                                <ol>
+                                    <li>Answer 1</li>
+                                    <li>Answer 2</li>
+                                    <li>Answer 3</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingTwo">
+                            <h4 class="panel-title">
+                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Second question
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                            <div class="panel-body">
+                                <ol>
+                                    <li>Answer 1</li>
+                                    <li>Answer 2</li>
+                                    <li>Answer 3</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingThree">
+                            <h4 class="panel-title">
+                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Third question
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                            <div class="panel-body">
+                                <ol>
+                                    <li>Answer 1</li>
+                                    <li>Answer 2</li>
+                                    <li>Answer 3</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+            </div>
             
         </div>
     </div>
