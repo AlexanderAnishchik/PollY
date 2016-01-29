@@ -77,11 +77,14 @@ a {
     color: white;
     padding-bottom: 20px;
     height: auto;
-    background: url(../images/bg3.jpg);
+    background-color:#19283f;
+    background-image: url(../images/met-stars.png), linear-gradient(#202023, #19283f);
+    background-size: contain;
+    background-repeat: repeat;
     background-position-x: center;
     background-position-y: center;
     background-attachment: fixed;
-    background-size: cover;
+    
 }
 
 #navigation {
@@ -214,6 +217,25 @@ a {
 /*--------------FEEDBACK SECTION---------------*/
 /*---------------------------------------------*/
 
+#feedback{
+    background-color:#19283f;
+    background-image: url(../images/met-stars.png), linear-gradient(#202023, #19283f);
+    background-size: contain;
+    background-repeat: repeat;
+    background-position-x: left;
+    background-position-y: center;
+    background-attachment: fixed;
+}
+#feedback h1,
+#feedback h3{
+    color:#ffffff;
+}
+#feedback h2>small{
+    color:#1abc9c;
+}
+#feedback h5>small{
+    color:#e74c3c;
+}
 
 /*---------------------------------------------*/
 /*---------------FOOTER SECTION----------------*/
@@ -347,7 +369,81 @@ a {
 .add-poll{
     margin-top:50px;
 }
+.btnAddQuestion{
+    background:url(../images/add.png);
+   width:34px;
+    height:34px;
+    background-repeat:no-repeat;
+    background-position:center;
+    border:none;
+    position:absolute;
+    top:-1px;
+    left:99%;
+    opacity:0.7;
+}
+.btnDeleteQuestion{
+    background:url(../images/delete.png);
+    width:34px;
+    height:34px;
+    background-repeat:no-repeat;
+    background-position:center;
+    border:none;
+    position:absolute;
+    top:-1px;
+    left:97%;
+    opacity:0.7; 
 
+}
+.delete{
+    background:url(../images/deleteX.png);
+    position:relative;
+    width:34px;
+    height:34px;
+    background-repeat:no-repeat;
+    background-position:center;
+    border:none;
+    background-size:unset;
+    top:8px;
+    opacity:0.7; 
+}
+.delete:hover,
+.delete:focus,
+.btnDeleteQuestion:hover,
+.btnDeleteQuestion:focus,
+.btnAddQuestion:hover,
+.btnAddQuestion:focus{
+    opacity:0.9;
+    outline:none; 
+}
+.sidebar-left > .title{
+    margin-top:-4px;
+    padding-bottom:5px;
+    font-size:26px;
+    margin-bottom:10px;
+    color:#404040;
+    font-weight:normal;
+    border-bottom:1px solid #dce5eb;
+}
+.sidebar-right > .title{
+    margin-top:-4px;
+    padding-bottom:5px;
+    font-size:26px;
+    margin-bottom:10px;
+    color:#404040;
+    font-weight:normal;
+    border-bottom:1px solid #dce5eb;
+    text-align:right;
+}
+.steps{
+    color:#ffffff;
+    padding-left:10px;
+    padding-top:10px;
+    padding-bottom:10px;
+    border-bottom:1px solid #dce5eb;
+}
+.constructor .card > .content-card .col-lg-offset-1{
+    margin-left: 12.33333333%;
+}
 .footer-card > .row > .orange{
     color:#e67e22;
 }
@@ -360,7 +456,17 @@ a {
 .choose-type  .col-lg-offset-1 {
     margin-left: 6.3%;
 }
-
+.content-card > .row .form-group > .btn-group{
+    margin-top:10px;
+}
+.form-control-static{
+    padding-left:5px;
+    width:200px;
+    margin-bottom:10px;
+}
+.content-card > .row .btn-group{
+    margin-bottom:10px;
+}
 .btn-install {
   outline:none;
   color: #a5b5c5;
@@ -603,4 +709,9 @@ li > #signInBtn{
         text-align: center;
         position: initial;
     }
+}
+#feedback p{
+    font-family:Calibri;
+    color:#ffffff;
+    font-weight:lighter;
 }
