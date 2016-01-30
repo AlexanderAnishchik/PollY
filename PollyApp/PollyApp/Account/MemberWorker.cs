@@ -6,6 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace PollyApp.Account
 {
@@ -34,6 +35,20 @@ namespace PollyApp.Account
             {
                 throw new Exception(ex.Message);
             }
+        }
+        public static void AddUserCookie(HttpResponseBase response,string user,int timeOutHours)
+        {
+            
+            var ticket = new FormsAuthenticationTicket(user, true, timeOutHours*60);
+            string encrypted = FormsAuthentication.Encrypt(ticket);
+            var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, encrypted);
+            cookie.Expires = System.DateTime.Now.AddHours(timeOutHours);
+            response.Cookies.Add(cookie);
+            FormsAuthentication.SetAuthCookie(user, false, ticket.CookiePath);
+        }
+        public static void SignOut()
+        {
+            FormsAuthentication.SignOut();
         }
         public static void Register(String password, String email, String firstName, String lastName)
         {

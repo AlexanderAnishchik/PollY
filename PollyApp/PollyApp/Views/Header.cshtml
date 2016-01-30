@@ -36,11 +36,11 @@
 
                         </ul>
                         <ul class="nav navbar-nav navbar-right right-menu">
-                            @if (!(Boolean)Session["isLogged"])
+                            @if (!Request.IsAuthenticated)
                             {
                                 <li><button type="button" class="btn btn-success" id="signInBtn" data-toggle="modal" data-target="#login">SIGN IN</button></li>
                             }
-                            @if ((Boolean)Session["isLogged"])
+                            @if (Request.IsAuthenticated)
                             {
 
 
