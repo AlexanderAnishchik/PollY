@@ -1,4 +1,4 @@
-﻿PollyApp.controller('headerController', ['$scope', '$http', 'headerKeeperService', function ($scope, $http, headerKeeperService) {
+﻿PollyApp.controller('headerController', ['$scope', '$http', '$window', 'headerKeeperService', function ($scope, $http, $window, headerKeeperService) {
     var me = this;
     me.login = null;
     me.registr = null;
@@ -21,7 +21,7 @@
                 var data = response.data;
                 if (data.status == true) {
                     $scope.user = data.user;
-
+                    $window.location.reload();
                 }
             },
         function (response) {
