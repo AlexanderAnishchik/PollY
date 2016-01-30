@@ -325,7 +325,11 @@ a {
     border: 1px solid #2980b9;
 }
 .header-card{
+    
     padding:10px;
+}
+.constructor  .header-card{
+    color:#848484;
 }
 .content-card{
     padding:10px;
@@ -348,10 +352,23 @@ a {
     margin-top:51px;
     margin-bottom:50px;
     background:#ffffff;
+    border-radius:5px;
     padding:10px;
     font-family:Calibri;
     font-weight:bold;
     color:#a5b5c5;
+}
+.sidebar-left .content{
+    border-right:1px solid #dce5eb;
+    border-bottom:1px solid #dce5eb;
+    border-bottom-left-radius:5px;
+    border-bottom-right-radius:5px;
+}
+.sidebar-right .content{
+    border-left:1px solid #dce5eb;
+    border-bottom:1px solid #dce5eb;
+    border-bottom-left-radius:5px;
+    border-bottom-right-radius:5px;
 }
 .step-number{
     margin-top:25px;
@@ -404,7 +421,7 @@ a {
     border:none;
     background-size:unset;
     top:8px;
-    margin-right:80px;
+    margin-right:40px;
     opacity:0.7;
 }
 .add{
@@ -417,8 +434,11 @@ a {
     border:none;
     background-size:unset;
     top:8px;
-    margin-right:80px;
+    margin-right:40px;
     opacity:0.7;
+}
+.form-inline > .form-group{
+    margin-left:40px;
 }
 .delete:hover,
 .delete:focus,
@@ -432,33 +452,52 @@ a {
     outline:none; 
 }
 .sidebar-left > .title{
-    margin-top:-4px;
-    padding-bottom:5px;
+    border-top-left-radius:5px;
+    border-top-right-radius:5px;
+    background:#1abc9c;
+    padding:15px 15px 15px 20px;
     font-size:26px;
-    margin-bottom:10px;
-    color:#404040;
+    color:#ffffff;
     font-weight:normal;
-    border-bottom:1px solid #dce5eb;
+    letter-spacing:3px;
+}
+.sidebar-left.col-lg-2,
+.sidebar-right.col-lg-2{
+    padding:0;
 }
 .sidebar-right > .title{
-    margin-top:-4px;
-    padding-bottom:5px;
+    border-top-left-radius:5px;
+    border-top-right-radius:5px;
+    background:#1abc9c;
+    padding:15px 15px 15px 20px;
     font-size:26px;
-    margin-bottom:10px;
-    color:#404040;
-    font-weight:normal;
-    border-bottom:1px solid #dce5eb;
-    text-align:right;
-}
-.steps{
     color:#ffffff;
+    font-weight:normal;
+    letter-spacing:3px;
+}
+
+.steps{
+    color:#748f9c;
+    cursor:pointer;
     padding-left:10px;
-    padding-top:10px;
-    padding-bottom:10px;
-    border-bottom:1px solid #dce5eb;
+    padding-top:20px;
+    padding-bottom:20px;
+    
+    font-weight:normal;
+}
+.steps > .badge{
+    background:none;
+    margin-top:-2.5px;
+}
+.steps:hover{
+    color:#ffffff;
+    background:#435e79;
 }
 .constructor .card > .content-card .col-lg-offset-1{
     margin-left: 12.33333333%;
+}
+.constructor .card > .content-card{
+    margin-top:-25px;
 }
 .footer-card > .row > .orange{
     color:#e67e22;

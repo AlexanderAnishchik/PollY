@@ -28,11 +28,7 @@ namespace PollyApp.Controllers
                     x.Logo
                 }).FirstOrDefault();
             }
-            HttpCookie cookie = new HttpCookie("MyName");
-            //Set an expiration on the cookie, which indicates that after 10 minutes, the cookie will expire, so the user will have to recreate it.
-            cookie.Expires = DateTime.Now.AddMinutes(10);
-            cookie.Value = "ZXZXC";
-            Response.Cookies.Add(cookie);
+           
             Session["user"] = user;
             Session["isLogged"] = isLogged;
             var ticket = new FormsAuthenticationTicket(((dynamic)user).Email, true, 30);
