@@ -485,9 +485,21 @@ a {
     
     font-weight:normal;
 }
-.steps > .badge{
+.steps  .badge{
     background:none;
     margin-top:-2.5px;
+}
+.steps .close{
+    color:#e74c3c;
+    margin-right:15px;
+    filter: alpha(opacity=60);
+    opacity: .6;
+}
+.steps .close:hover,
+.steps .close:focus{
+    filter: alpha(opacity=90);
+    opacity: .9;
+    outline:none;
 }
 .steps:hover{
     color:#ffffff;
@@ -627,7 +639,9 @@ fieldset[disabled] .btn-primary.focus {
     margin-top:7.5px;
 }
 
-
+.footer .btn-success{
+    color:#1abc9c;
+}
 /*---------------------------------------------*/
 /*----------------MOBILE DESIGN----------------*/
 /*---------------------------------------------*/
@@ -654,7 +668,10 @@ fieldset[disabled] .btn-primary.focus {
         text-align: center;
     }
 }
-
+.col-1,col-2{
+    position:relative;
+    display:inline;
+}
 @media all and (min-width: 980px) and (max-width: 1199px) {
     .modal-dialog {
         margin: 5% auto;
