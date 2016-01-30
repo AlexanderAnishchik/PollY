@@ -29,13 +29,7 @@ namespace PollyApp.Controllers
                 }).FirstOrDefault();
                 MemberWorker.AddUserCookie(Response, ((dynamic)user).Email,3600);
             }
-            HttpCookie cookie = new HttpCookie("MyName");
-            //Set an expiration on the cookie, which indicates that after 10 minutes, the cookie will expire, so the user will have to recreate it.
-            cookie.Expires = DateTime.Now.AddMinutes(10);
-            cookie.Value = "ZXZXC";
-            Response.Cookies.Add(cookie);
             Session["user"] = user;
-            Session["isLogged"] = isLogged;
             return new JsonResult() { Data = new { status = isLogged, user = user } };
         }
         [HttpPost]

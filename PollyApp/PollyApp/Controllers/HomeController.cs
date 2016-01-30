@@ -13,10 +13,6 @@ namespace PollyApp.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            if (Request.IsAuthenticated)
-            {
-                Session["isLogged"] = false;
-            }
             return View();
         }
     }
