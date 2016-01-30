@@ -404,10 +404,26 @@ a {
     border:none;
     background-size:unset;
     top:8px;
-    opacity:0.7; 
+    margin-right:80px;
+    opacity:0.7;
+}
+.add{
+    background:url(../images/add.png);
+    position:relative;
+    width:34px;
+    height:34px;
+    background-repeat:no-repeat;
+    background-position:center;
+    border:none;
+    background-size:unset;
+    top:8px;
+    margin-right:80px;
+    opacity:0.7;
 }
 .delete:hover,
 .delete:focus,
+.add:hover,
+.add:focus,
 .btnDeleteQuestion:hover,
 .btnDeleteQuestion:focus,
 .btnAddQuestion:hover,
@@ -461,7 +477,7 @@ a {
 }
 .form-control-static{
     padding-left:5px;
-    width:200px;
+    width:350px;
     margin-bottom:10px;
 }
 .content-card > .row .btn-group{
