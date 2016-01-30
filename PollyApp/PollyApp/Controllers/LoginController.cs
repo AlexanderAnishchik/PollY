@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PollyApp.EFModel;
+using System.Web.Security;
 
 namespace PollyApp.Controllers
 {
@@ -29,6 +30,11 @@ namespace PollyApp.Controllers
             }
             Session["user"] = user;
             Session["isLogged"] = isLogged;
+            var ticket = new FormsAuthenticationTicket(((dynamic)user).Email, true, 30);
+            string encrypted = FormsAuthentication.Encrypt(ticket);
+            var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, encrypted);
+            cookie.Expires = System.DateTime.Now.AddMonths(1);
+            Response.Cookies.Add(cookie);
             return new JsonResult() { Data = new { status = isLogged, user = user } };
         }
         [HttpPost]
