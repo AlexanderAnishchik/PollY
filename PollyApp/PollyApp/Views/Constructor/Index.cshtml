@@ -15,8 +15,9 @@
 
         </div>
         
-        <div class="row text-center">
-            <a ng-href="" ng-click="changeTemplate()"><button type="button" class="btn btn-install">Next</button></a>
+        <div class="row text-center footer">
+            <a ng-href="" ng-click="changeTemplate()" ng-show="count==1 || count==2"><button type="button" class="btn btn-install">Next</button></a>
+            <button class="btn btn-success" ng-show="count==3">SAVE POLL</button>
         </div>
     </section>
 </div>
