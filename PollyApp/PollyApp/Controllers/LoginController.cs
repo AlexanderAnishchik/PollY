@@ -14,7 +14,7 @@ namespace PollyApp.Controllers
         public GenericRepository.Repository Db = new GenericRepository.Repository();
         public ActionResult SignIn(String login, String pass)
         {
-            Object user = null;
+            object user = null;
             var isLogged = MemberWorker.Login(login, pass);
             if (isLogged)
             {
@@ -27,15 +27,9 @@ namespace PollyApp.Controllers
                     x.LastName,
                     x.Logo
                 }).FirstOrDefault();
+                MemberWorker.AddUserCookie(Response, ((dynamic)user).Email,3600);
             }
-           
             Session["user"] = user;
-            Session["isLogged"] = isLogged;
-            var ticket = new FormsAuthenticationTicket(((dynamic)user).Email, true, 30);
-            string encrypted = FormsAuthentication.Encrypt(ticket);
-            var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, encrypted);
-            cookie.Expires = System.DateTime.Now.AddMonths(1);
-            Response.Cookies.Add(cookie);
             return new JsonResult() { Data = new { status = isLogged, user = user } };
         }
         [HttpPost]
@@ -44,18 +38,17 @@ namespace PollyApp.Controllers
             try
             {
                 MemberWorker.Register(pass, email, firstName, lastName);
-                //Session["isLogged"] = true;
+                MemberWorker.AddUserCookie(Response, email, 3600);
                 return new JsonResult() { Data = true };
             }
             catch (Exception)
             {
-                //Session["isLogged"] = false;
                 return new JsonResult() { Data = false };
             }
         }
         public ActionResult LogOut()
         {
-            Session["isLogged"] = null;
+            MemberWorker.SignOut();
             return RedirectToAction("Index", "Home");
         }
     }
