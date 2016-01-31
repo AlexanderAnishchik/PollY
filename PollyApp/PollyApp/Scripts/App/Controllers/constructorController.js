@@ -26,6 +26,10 @@
             return "add";
         return "delete";
     }
+    $scope.addBlock = function (last) {
+        pollBuilderService.addBlock();
+        $scope.changeBlock($scope.builderData.poll.length-1);
+    }
     me.init = function () {
         $scope.access_types = pollSettingsFactory.PollAccess;
         $scope.share_list = pollSettingsFactory.PollShare;
@@ -37,6 +41,13 @@
         $scope.choosed = type.label;
         $scope.partialPath = 'Content/partial/access/' + type.logicalName + '.html';
     };
+    $scope.changeAnswerState = function (block, index, isAdd) {
+        if (isAdd)
+            pollBuilderService.addAnswer(block);
+        else
+            pollBuilderService.deleteAnswer(block,index);
+
+    }
     $scope.changeBlock = function (index) {
         $scope.currentBlock = $scope.builderData.poll[index];
     };
@@ -51,7 +62,9 @@
         $scope.generated = result;
     }
     
-
+    $scope.savePoll = function () {
+        pollBuilderService.save();
+    }
     $scope.error = null;
     $scope.loader = false;
     $scope.addNewField = function (id_textbox) {
