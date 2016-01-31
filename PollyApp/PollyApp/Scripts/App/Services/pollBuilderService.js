@@ -5,18 +5,19 @@
         self.pollData.poll = [];
         self.testData = function () {
             self.pollData.PollType = 1;
+            self.pollData.Title = "MYPOLL";
             self.pollData.PollShare = 1;
             self.pollData.PollAccess = 1;
             self.pollData.poll[0] = {
-                question: "What did you do?",
-                answers: ["ZXC", "cvbcvb", ""]
+                question: "Are you fapping today at 1 a.m.?",
+                answers: ["yes", "fapfup", ""]
             };
             self.pollData.poll[1] = {
                 question: "What did you do?",
                 answers: ["ZXC", "cvbcvb", ""]
             };
             self.pollData.poll[2] = {
-                question: "What did you do?",
+                question: "Does Max cook?",
                 answers: ["ZXC", "cvbcvb", ""]
             };
         }

@@ -1,4 +1,4 @@
-﻿PollyApp.controller('constructorController', ['$scope', '$http', 'headerKeeperService', 'pollSettingsFactory', function ($scope, $http, headerKeeperService, pollSettingsFactory) {
+﻿PollyApp.controller('constructorController', ['$scope', '$http', 'headerKeeperService', 'pollSettingsFactory', 'pollBuilderService', function ($scope, $http, headerKeeperService, pollSettingsFactory, pollBuilderService) {
     var me = this;
     $scope.generated = "";
     $scope.access_type = 'Content/partial/FreeAccess.html'
@@ -10,6 +10,8 @@
     
     ];
     $scope.data = {};
+    $scope.builderData = pollBuilderService.pollData;
+    $scope.currentBlock = null;
     $scope.choosed = "Choose access";
     $scope.privacy = "Choose privacy";
     $scope.description = "Please choose type of privacy. Be careful when you will be choosing type and think carefully before you make a choice, because this may depend on the number of voting.";
@@ -19,14 +21,24 @@
     }
     $scope.access_types = null;
     $scope.share_list = null;
+    $scope.answersSetCssClass = function (last) {
+        if (last)
+            return "add";
+        return "delete";
+    }
     me.init = function () {
         $scope.access_types = pollSettingsFactory.PollAccess;
         $scope.share_list = pollSettingsFactory.PollShare;
+        pollBuilderService.testData();
+        $scope.currentBlock = $scope.builderData.poll[0];
     };
  
     $scope.setAccess = function (type) {
         $scope.choosed = type.label;
         $scope.partialPath = 'Content/partial/access/' + type.logicalName + '.html';
+    };
+    $scope.changeBlock = function (index) {
+        $scope.currentBlock = $scope.builderData.poll[index];
     };
     $scope.generateCode = function() {
         var result = '';
