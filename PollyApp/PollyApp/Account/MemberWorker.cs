@@ -18,6 +18,8 @@ namespace PollyApp.Account
         {
             try
             {
+                if (String.IsNullOrWhiteSpace(email) || String.IsNullOrWhiteSpace(password))
+                    throw new Exception("Email or Password is not set");
                 var rep = new GenericRepository.Repository();
                 var user = rep.Context.Users.Where(x => x.Email == email).FirstOrDefault();
                 if (user != null)

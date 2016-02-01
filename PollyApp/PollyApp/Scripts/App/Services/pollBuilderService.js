@@ -1,25 +1,28 @@
 ﻿(function () {
-    PollyApp.service("pollBuilderService", ["pollSettingsFactory", function (pollSettingsFactory) {
+    PollyApp.service("pollBuilderService", ["pollSettingsFactory", "$http", function (pollSettingsFactory, $http) {
         var self = this;
         self.pollData = {};
         self.pollData.poll = [];
+        self.addAnswer = function (block) {
+            block.answers.push({ value: "" });
+        }
+        self.deleteAnswer = function (block, index) {
+            block.answers.splice(index, 1);
+        }
         self.testData = function () {
             self.pollData.PollType = 1;
-            self.pollData.Title = "MYPOLL";
             self.pollData.PollShare = 1;
             self.pollData.PollAccess = 1;
             self.pollData.poll[0] = {
-                question: "Are you fapping today at 1 a.m.?",
-                answers: ["yes", "fapfup", ""]
+                question: {value:null},
+                answers: [{ value: null }]
             };
-            self.pollData.poll[1] = {
-                question: "What did you do?",
-                answers: ["ZXC", "cvbcvb", ""]
-            };
-            self.pollData.poll[2] = {
-                question: "Does Max cook?",
-                answers: ["ZXC", "cvbcvb", ""]
-            };
+        }
+        self.addBlock = function (last) {
+            self.pollData.poll.push({
+                question: { value: null },
+                answers: [{ value: null }]
+            });
         }
         self.setShare = function (share) {
             if (share && typeof share != "undefined") {
@@ -30,6 +33,14 @@
                 }
 
             }
+        };
+        self.save = function () {
+
+            $http.post("Constructor/SavePoll", { newPoll: self.pollData }).then(function (response) {
+
+            }, function (response) {
+
+            });
         };
         self.setType = function (type) {
             if (type && typeof type != "undefined") {

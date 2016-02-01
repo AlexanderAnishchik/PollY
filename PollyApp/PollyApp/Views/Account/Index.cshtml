@@ -2,7 +2,7 @@
     ViewBag.Title = "Polly @alexanderanischik / Polly";
     Layout = "~/Views/Shared/_Dashboard.cshtml";
 
-    if (!(Boolean)Session["isLogged"])
+    if (!Request.IsAuthenticated)
     {
         <script language="JavaScript">
             window.location.href = "/"

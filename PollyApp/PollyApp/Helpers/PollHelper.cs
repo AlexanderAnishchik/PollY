@@ -30,9 +30,9 @@ namespace PollyApp.Helpers
                         newProj.TypeId = pollTypes;
                         Db.Add(newProj);
                         Db.Save();
-                        if (poll.PollUnits != null)
+                        if (poll.Poll != null)
                         {
-                            foreach (var el in poll.PollUnits)
+                            foreach (var el in poll.Poll)
                             {
                                 el.Question.ProjectId = newProj.Id;
                                 Db.Add(el.Question);
