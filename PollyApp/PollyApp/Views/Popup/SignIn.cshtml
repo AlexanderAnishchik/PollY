@@ -91,14 +91,17 @@
                             <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/password.png" /></span>
                             <input type="password" class="form-control" name="pass" ng-model="headCtrl.registr.pass" placeholder="Password" aria-describedby="sizing-addon1" required>
                         </div>
-                        <div class="input-group input-group-lg textbox">
+                        <div class="input-group input-group-lg textbox" ng-class="{ 'has-error' : !registerForm.confirmpass.$pristine && passwordConfirmation, 'has-success' : !registerForm.confirmpass.$pristine && !passwordConfirmation }">
                             <span class="input-group-addon" id="sizing-addon1">
                                 <img src="~/Content/images/password.png" />
                             </span>
-                            <input type="password" class="form-control" name="confirmpass" ng-model="headCtrl.registr.confirmpass" placeholder="Confirm password" aria-describedby="sizing-addon1" required>
+                            <input type="password" class="form-control" name="confirmpass" ng-model="headCtrl.registr.confirmpass" placeholder="Confirm password" aria-describedby="sizing-addon1" required  ng-mouseleave="checkPasswordConfirmation()" ng-mo>
                         </div>
                         <div class="alert alert-danger" ng-show="(registerForm.pass.$invalid && !registerForm.pass.$pristine) || (registerForm.confirmpass.$invalid && !registerForm.confirmpass.$pristine)">
                             Please enter your password!
+                        </div>
+                        <div class="alert alert-danger" ng-show="!registerForm.pass.$pristine && !registerForm.confirmpass.$pristine && passwordConfirmation">
+                            Passwords do not match!
                         </div>
                     </div>
 

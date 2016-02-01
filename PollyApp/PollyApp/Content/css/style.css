@@ -322,6 +322,7 @@ a {
 .card-md:hover,
 .card-md:focus,
 .card-md:active{
+    cursor:pointer;
     border: 1px solid #2980b9;
 }
 .header-card{
@@ -533,6 +534,16 @@ a {
 }
 .content-card > .row .btn-group{
     margin-bottom:10px;
+}
+.card.disabled{
+     -webkit-filter: grayscale(100%);
+      -moz-filter: grayscale(100%);
+      -ms-filter: grayscale(100%);
+      -o-filter: grayscale(100%);
+      filter: grayscale(100%);
+      filter: url(grayscale.svg#greyscale); /* Firefox 4+ */
+      filter: gray;
+      cursor:default
 }
 .btn-install {
   outline:none;

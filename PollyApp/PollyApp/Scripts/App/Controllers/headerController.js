@@ -14,6 +14,16 @@
 
           });
     }
+    $scope.passwordConfirmation = false;
+    $scope.checkPasswordConfirmation = function () {
+        if (me.registr.pass!=me.registr.confirmpass) {
+            $scope.passwordConfirmation = true;
+        }
+        if (me.registr.pass == me.registr.confirmpass) {
+            $scope.passwordConfirmation = false;
+        }
+        
+    }
     me.signIn = function () {
         if (me.login.email && me.login.password) {
             $http.post("Login/SignIn", { login: me.login.email, pass: me.login.password }).then(function (response) {
