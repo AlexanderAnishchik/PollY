@@ -45,6 +45,11 @@
                         if (input.$name == "pass") {
                             $scope.passValid = false;
                         }
+                        else {
+                            if (input.$name == "password") {
+                                $scope.passValid = false;
+                            }
+                        }
                     }
                 }
             }
@@ -65,15 +70,16 @@
     $scope.errorAuth = "";
     me.signIn = function () {
         if (me.login.email && me.login.password) {
+            $scope.loader = true;
             $http.post("Login/SignIn", { login: me.login.email, pass: me.login.password }).then(function (response) {
-
+                $scope.loader = false;
                 var data = response.data;
                 if (data.status == true) {
                     $scope.user = data.user;
                     $window.location.reload();
                 }
                 else {
-                    $scope.errorAuth = "Login or password is uncorrect. Please try again";
+                    $scope.errorAuth = "The login or password you’ve entered is incorrect. Forgot password?";
                 }
             },
         function (response) {
