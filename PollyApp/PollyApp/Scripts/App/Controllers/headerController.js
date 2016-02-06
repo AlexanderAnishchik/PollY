@@ -68,17 +68,15 @@
 
     //===AUTHORIZATION===
     $scope.errorAuth = "";
-    
+    $scope.loader = false;
     me.signIn = function () {
         if (me.login.email && me.login.password) {
             $scope.loader = true;
-            $http.post("Login/SignIn", { login: me.login.email, pass: me.login.password }).then(function (response) {
-                $scope.loader = false;
+            $http.post("Login/SignIn", { login: me.login.email, pass: me.login.password }).then(function (response) { 
                 var data = response.data;
                 if (data.status == true) {
-                    
                     $scope.user = data.user;
-                     
+                    $window.location.reload();
                     
                 }
                 else {
