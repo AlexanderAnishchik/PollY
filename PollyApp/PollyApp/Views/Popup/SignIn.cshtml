@@ -64,14 +64,13 @@
                     <h4 class="modal-title" id="myModalLabel">SIGN UP</h4>
 
                 </div>
-                <div class="modal-body" ng-show="isRegister">
-                    <div class="alert alert-success">
-                        Registration completed successfully
-                    </div>
-                </div>
-                <form method="POST" name="registerForm" novalidate ng-show="!isRegister">
+                
+                <form method="POST" name="registerForm" novalidate>
 
                     <div class="modal-body">
+                        <div class="alert alert-success" ng-show="isRegister">
+                            Registration completed successfully
+                        </div>
                         <div class="input-group input-group-lg textbox" ng-class="{ 'has-error' : !registerForm.first.$pristine && registerForm.first.$invalid, 'has-success' : !registerForm.first.$pristine && registerForm.first.$valid}">
                             <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/user.png" /></span>
                             <input type="text" class="form-control" name="first" ng-model="headCtrl.registr.first" placeholder="First name"  required ng-minlength="2" ng-blur="checkValidation(registerForm.first)">
