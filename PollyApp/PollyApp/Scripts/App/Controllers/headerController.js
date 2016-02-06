@@ -7,23 +7,62 @@
     me.init = function () {
 
         $http.get("Account/GetUser").then(function (response) {
-         
+
             headerKeeperService.data.user = response.data;
         },
           function (response) {
 
           });
-    }
-    $scope.passwordConfirmation = false;
-    $scope.checkPasswordConfirmation = function () {
-        if (me.registr.pass!=me.registr.confirmpass) {
-            $scope.passwordConfirmation = true;
+    };
+
+    //===VALIDATION===
+    $scope.passConfirm = true;
+    $scope.checkPasswordConfirmation = function (first,second) {
+        if (first.$viewValue == second.$viewValue)
+            $scope.passConfirm = true;
+        else
+            $scope.passConfirm = false;
+    };
+
+    $scope.firstValid = true;
+    $scope.secondValid = true;
+    $scope.emailValid = true;
+    $scope.passValid = true;
+    $scope.checkValidation = function (input) {
+        if(!input.$valid && !input.$pristline){
+            if (input.$name == 'first') {
+                $scope.firstValid = false;
+            }
+            else {
+                if(input.$name == "second"){
+                    $scope.secondValid = false;
+                }
+                else {
+                    if (input.$name == "email") {
+                        $scope.emailValid = false;
+                    }
+                    else {
+                        if (input.$name == "pass") {
+                            $scope.passValid = false;
+                        }
+                    }
+                }
+            }
+
         }
-        if (me.registr.pass == me.registr.confirmpass) {
-            $scope.passwordConfirmation = false;
+        else {
+            if (input.$valid && !input.$pristline)
+            {
+                $scope.firstValid = true;
+                $scope.secondValid = true;
+                $scope.emailValid = true;
+                $scope.passValid = true;
+            }
         }
-        
-    }
+    };
+
+    //===AUTHORIZATION===
+    $scope.errorAuth = "";
     me.signIn = function () {
         if (me.login.email && me.login.password) {
             $http.post("Login/SignIn", { login: me.login.email, pass: me.login.password }).then(function (response) {
@@ -32,6 +71,9 @@
                 if (data.status == true) {
                     $scope.user = data.user;
                     $window.location.reload();
+                }
+                else {
+                    $scope.errorAuth = "Login or password is uncorrect. Please try again";
                 }
             },
         function (response) {

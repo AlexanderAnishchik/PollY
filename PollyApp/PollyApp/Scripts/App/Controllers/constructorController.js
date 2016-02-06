@@ -1,5 +1,6 @@
 ﻿PollyApp.controller('constructorController', ['$scope', '$http', 'headerKeeperService', 'pollSettingsFactory', 'pollBuilderService', function ($scope, $http, headerKeeperService, pollSettingsFactory, pollBuilderService) {
     var me = this;
+    $scope.headerData = headerKeeperService.data;
     $scope.generated = "";
     $scope.access_type = 'Content/partial/FreeAccess.html'
     $scope.template = 'Content/partial/ChooseType.html';

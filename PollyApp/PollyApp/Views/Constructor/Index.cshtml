@@ -10,9 +10,15 @@
         
     </section>
     <section class="container-fluid add-poll">
-           
+           @if (!Request.IsAuthenticated)
+            {
+            <div class="alert alert-info alert-dismissible information" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <img src="/Content/images/info.png" /> If you are not logged in , your survey will not be published!
+            </div>
+           }
         <div ng-include src="template">
-
+            
 
         </div>
         

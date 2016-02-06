@@ -38,10 +38,10 @@ namespace PollyApp.Account
                 throw new Exception(ex.Message);
             }
         }
-        public static void AddUserCookie(HttpResponseBase response,string user,int timeOutHours)
+        public static void AddUserCookie(HttpResponseBase response, string user, int timeOutHours)
         {
-            
-            var ticket = new FormsAuthenticationTicket(user, true, timeOutHours*60);
+
+            var ticket = new FormsAuthenticationTicket(user, true, timeOutHours * 60);
             string encrypted = FormsAuthentication.Encrypt(ticket);
             var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, encrypted);
             cookie.Expires = System.DateTime.Now.AddHours(timeOutHours);
@@ -64,7 +64,7 @@ namespace PollyApp.Account
                     salt = GetSalt();
                     hash = GetMd5Hash(md5Hash, password + salt);
                 }
-                rep.Add(new User { Email = email, Password = hash, Salt = salt, FirstName = firstName, LastName = lastName, PermissionId=1 });
+                rep.Add(new User { Email = email, Password = hash, Salt = salt, FirstName = firstName, LastName = lastName, PermissionId = 1 });
                 rep.Save();
             }
             catch (Exception ex)
