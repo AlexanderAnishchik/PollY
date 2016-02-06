@@ -88,6 +88,7 @@ a {
 }
 
 #navigation {
+    outline:1px solid #000;
 }
 
 .scroll-button {
@@ -653,6 +654,11 @@ fieldset[disabled] .btn-primary.focus {
 .footer .btn-success{
     color:#1abc9c;
 }
+.poll-page{
+    outline:1px solid #000;
+    background:#ffffff;
+    margin-top:57px;
+}
 /*---------------------------------------------*/
 /*----------------MOBILE DESIGN----------------*/
 /*---------------------------------------------*/
@@ -664,6 +670,9 @@ fieldset[disabled] .btn-primary.focus {
     .header-block {
         margin-top: 10%;
         margin-bottom: 10%;
+    }
+    .poll-page{
+        min-height:922px;
     }
 }
 
