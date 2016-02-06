@@ -131,6 +131,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account\MemberWorker.cs" />
+    <Compile Include="Attributes\UserAuthAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\APIController.cs" />
     <Compile Include="Controllers\ConstructorController.cs" />
