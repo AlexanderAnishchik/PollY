@@ -44,7 +44,7 @@ namespace PollyApp.Controllers
             }
             catch (Exception ex)
             {
-                return "S";
+                return ex.Message;
             }
 
         }
