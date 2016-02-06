@@ -11,14 +11,16 @@
     </section>
     <section class="container-fluid add-poll">
            
-        <div ng-include src="template">
+        <div ng-include src="step">
 
 
         </div>
         
-        <div class="row text-center footer">
-            <a ng-href="" ng-click="changeTemplate()" ng-show="count==1 || count==2"><button type="button" class="btn btn-install">Next</button></a>
-            <button class="btn btn-success" ng-click="savePoll()" ng-show="count==3">SAVE POLL</button>
-        </div>
+        @*<div class="row text-center footer">
+            <a ng-href="" ng-click="step = settingsView.step2;" ng-show="step!=settingsView.step4"><button type="button" class="btn btn-install">Next</button></a>
+            <a ng-href="" ng-click="step = settingsView.step3;" ng-show="step!=settingsView.step4"><button type="button" class="btn btn-install">Next</button></a>
+            <a ng-href="" ng-click="step = settingsView.step4;" ng-show="step!=settingsView.step4"><button type="button" class="btn btn-install">Next</button></a>
+            <button class="btn btn-success" ng-click="savePoll()" ng-show="step==settingsView.step4">SAVE POLL</button>
+        </div>*@
     </section>
 </div>
