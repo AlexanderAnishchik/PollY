@@ -2,9 +2,8 @@
 
     var h = jQuery(window).height();
 
-    jQuery("#macbook .post").css("display","none");
-    jQuery("#header .post").eq(1).addClass('animated fadeInLeftBig');
-    setTimeout(function () { jQuery("#header .post").eq(0).addClass('animated fadeInDownBig'); }, 75);
+    /*jQuery("#macbook .post").css("display","none");
+    jQuery("#header .post").eq(1).addClass('animated fadeInLeftBig');    setTimeout(function () { jQuery("#header .post").eq(0).addClass('animated fadeInDownBig'); }, 75);
     setTimeout(function () { jQuery("#header .post").eq(1).addClass('animated fadeInLeftBig'); }, 76);
     setTimeout(function () { jQuery("#header .post").eq(2).addClass('animated fadeInRightBig'); }, 77);
     
@@ -26,5 +25,5 @@
             jQuery("#slider .post").css({ visibility: "visible" });
             jQuery("#slider .post").addClass('animated bounceInLeft');
         }
-    });
+    });*/
 });

@@ -131,6 +131,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account\MemberWorker.cs" />
+    <Compile Include="Attributes\UserAuthAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\APIController.cs" />
     <Compile Include="Controllers\ConstructorController.cs" />
@@ -140,6 +141,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PollController.cs" />
     <Compile Include="EFModel\Answer.cs">
       <DependentUpon>PollyDbEntities.tt</DependentUpon>
     </Compile>
@@ -208,8 +210,13 @@
     <Content Include="Content\images\bg.jpg" />
     <Content Include="Content\images\bg2.jpg" />
     <Content Include="Content\images\bg3.jpg" />
+    <Content Include="Content\images\bg3.png" />
+    <Content Include="Content\images\briefcase50.png" />
     <Content Include="Content\images\cash-meri-designview.png" />
+    <Content Include="Content\images\cinema21.png" />
+    <Content Include="Content\images\cloud79.png" />
     <Content Include="Content\images\computer147.png" />
+    <Content Include="Content\images\connection31.png" />
     <Content Include="Content\images\currency-icon.png" />
     <Content Include="Content\images\dashboard.png" />
     <Content Include="Content\images\email.png" />
@@ -221,14 +228,19 @@
     <Content Include="Content\images\foto_artem.jpg" />
     <Content Include="Content\images\foto_koc.jpg" />
     <Content Include="Content\images\help.png" />
+    <Content Include="Content\images\info.png" />
     <Content Include="Content\images\internet80.png" />
     <Content Include="Content\images\ipad.png" />
     <Content Include="Content\images\iphone6.png" />
     <Content Include="Content\images\iphone6plus_spacegrey_portrait.png" />
-    <Content Include="Content\images\layout1.png" />
-    <Content Include="Content\images\layout2.png" />
+    <Content Include="Content\images\layout22 %281%29.png" />
+    <Content Include="Content\images\layout22.png" />
+    <Content Include="Content\images\loader.gif" />
+    <Content Include="Content\images\loader2.gif" />
     <Content Include="Content\images\location51.png" />
+    <Content Include="Content\images\lock134.png" />
     <Content Include="Content\images\mac-830.png" />
+    <Content Include="Content\images\macbookhalf.png" />
     <Content Include="Content\images\ok-shield-icon.png" />
     <Content Include="Content\images\pages.png" />
     <Content Include="Content\images\password.png" />
@@ -237,13 +249,20 @@
     <Content Include="Content\images\pollylogo.png" />
     <Content Include="Content\images\pollylogogreen.png" />
     <Content Include="Content\images\pollylogowhite.png" />
+    <Content Include="Content\images\quiz.png" />
     <Content Include="Content\images\right133.png" />
     <Content Include="Content\images\settings-big.png" />
     <Content Include="Content\images\settings.png" />
+    <Content Include="Content\images\single.png" />
     <Content Include="Content\images\strelka_free.png" />
     <Content Include="Content\images\text lines15.png" />
     <Content Include="Content\images\tv monitor2.png" />
     <Content Include="Content\images\user.png" />
+    <Content Include="Content\images\Users\artem_mozharov.jpg" />
+    <Content Include="Content\images\Users\dima_ivlev.jpg" />
+    <Content Include="Content\images\Users\julia_pomazkina.png" />
+    <Content Include="Content\images\Users\nophoto.png" />
+    <Content Include="Content\images\Users\sanya_axel.jpg" />
     <Content Include="Content\partial\access\Anonymous.html" />
     <Content Include="Content\partial\access\Public.html" />
     <Content Include="Content\partial\access\Someone.html" />
@@ -321,7 +340,6 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-aria.js" />
@@ -353,9 +371,12 @@
     <Content Include="Scripts\App\Controllers\constructorController.js" />
     <Content Include="Scripts\App\Controllers\headerController.js" />
     <Content Include="Scripts\App\Controllers\homeController.js" />
+    <Content Include="Scripts\App\Controllers\modalController.js" />
     <Content Include="Scripts\App\Directives\enterDirective.js" />
+    <Content Include="Scripts\App\Directives\focusoutDirective.js" />
     <Content Include="Scripts\App\Route\constructorRoute.js" />
     <Content Include="Scripts\App\Services\headerKeeperService.js" />
+    <Content Include="Scripts\App\Services\pollBuilderService.js" />
     <Content Include="Scripts\bootstrap-modal.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -392,11 +413,13 @@
     <Content Include="EFModel\PollyDbEntities.edmx.diagram">
       <DependentUpon>PollyDbEntities.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\Publish.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\Factory\pollSettingsFactory.js" />
     <Content Include="Scripts\front-end\animate.js" />
     <Content Include="Scripts\front-end\navigation-scroll.js" />
     <Content Include="Scripts\front-end\scroll-to.js" />
+    <Content Include="Scripts\holder.min.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-er.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-et.js" />
@@ -1157,7 +1180,6 @@
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
-    <Content Include="Scripts\npm.js" />
     <Content Include="Scripts\ui-bootstrap-1.0.3.min.js" />
     <Content Include="Scripts\ui-bootstrap-tpls-1.0.3.js" />
     <Content Include="Scripts\_references.js" />
@@ -1181,9 +1203,10 @@
     <Content Include="Views\Popup\SignOut.cshtml" />
     <Content Include="Views\Constructor\Index.cshtml" />
     <Content Include="Content\partial\ChooseType.html" />
-    <Content Include="Content\partial\ChoosePermission.html" />
+    <Content Include="Content\partial\ChooseShare.html" />
     <Content Include="Content\partial\ChooseAccess.html" />
     <Content Include="Views\Popup\Error.cshtml" />
+    <Content Include="Views\Poll\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

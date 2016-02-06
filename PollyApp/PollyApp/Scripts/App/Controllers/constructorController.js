@@ -1,5 +1,6 @@
-﻿PollyApp.controller('constructorController', ['$scope', '$http', 'headerKeeperService', 'pollSettingsFactory', function ($scope, $http, headerKeeperService, pollSettingsFactory) {
+﻿PollyApp.controller('constructorController', ['$scope', '$http', 'headerKeeperService', 'pollSettingsFactory', 'pollBuilderService', function ($scope, $http, headerKeeperService, pollSettingsFactory, pollBuilderService) {
     var me = this;
+    $scope.headerData = headerKeeperService.data;
     $scope.generated = "";
     $scope.access_type = 'Content/partial/FreeAccess.html'
     $scope.template = 'Content/partial/ChooseType.html';
@@ -9,24 +10,64 @@
     $scope.userGotAccess = [
     
     ];
+    $scope.settingsView = {
+        step1: 'Content/partial/ChooseType.html',
+        step2: 'Content/partial/ChooseAccess.html',
+        step3: 'Content/partial/ChooseShare.html',
+        step4: 'Content/partial/constructor.html',
+    };
+    $scope.setStep = function (stepValue) {
+        debugger;
+        $scope.step = stepValue;
+    }
+    $scope.step = $scope.settingsView.step1;
     $scope.data = {};
+    $scope.builderData = pollBuilderService.pollData;
+    $scope.currentBlock = null;
     $scope.choosed = "Choose access";
     $scope.privacy = "Choose privacy";
     $scope.description = "Please choose type of privacy. Be careful when you will be choosing type and think carefully before you make a choice, because this may depend on the number of voting.";
-    $scope.setPrivacy = function (type) {
+    $scope.setShare = function (type) {
+        pollBuilderService.setShare(type);
         $scope.privacy = type.label;
         $scope.partialPath = 'Content/partial/share/' + type.logicalName + '.html';
     }
     $scope.access_types = null;
     $scope.share_list = null;
+    $scope.answersSetCssClass = function (last) {
+        if (last)
+            return "add";
+        return "delete";
+    }
+    $scope.addBlock = function (last) {
+        pollBuilderService.addBlock();
+        $scope.changeBlock($scope.builderData.poll.length-1);
+    }
     me.init = function () {
         $scope.access_types = pollSettingsFactory.PollAccess;
         $scope.share_list = pollSettingsFactory.PollShare;
+        $scope.poll_type = pollSettingsFactory.PollType;
+        pollBuilderService.testData();
+        $scope.currentBlock = $scope.builderData.poll[0];
     };
- 
+    $scope.setPollType = function (type) {
+        pollBuilderService.setType(type.value);
+        $scope.step = $scope.settingsView.step2;
+
+    }
     $scope.setAccess = function (type) {
         $scope.choosed = type.label;
         $scope.partialPath = 'Content/partial/access/' + type.logicalName + '.html';
+    };
+    $scope.changeAnswerState = function (block, index, isAdd) {
+        if (isAdd)
+            pollBuilderService.addAnswer(block);
+        else
+            pollBuilderService.deleteAnswer(block,index);
+
+    }
+    $scope.changeBlock = function (index) {
+        $scope.currentBlock = $scope.builderData.poll[index];
     };
     $scope.generateCode = function() {
         var result = '';
@@ -39,7 +80,9 @@
         $scope.generated = result;
     }
     
-
+    $scope.savePoll = function () {
+        pollBuilderService.save();
+    }
     $scope.error = null;
     $scope.loader = false;
     $scope.addNewField = function (id_textbox) {
@@ -92,20 +135,20 @@
     }
 
 
-    $scope.count = 0;
+    
     $scope.changeTemplate = function () {
-        if ($scope.count == 1) {
+        if ($scope.step == 1) {
             $scope.next_template = 'Content/partial/ChoosePermission.html';
             $scope.template = $scope.next_template;
-            $scope.count++;
+            $scope.step++;
         }
         else {
-            if ($scope.count == 2) {
+            if ($scope.step == 2) {
                 $scope.next_template = 'Content/partial/constructor.html';
                 $scope.template = $scope.next_template;
             }
             $scope.template = $scope.next_template;
-            $scope.count++;
+            $scope.step++;
         }
         
     }

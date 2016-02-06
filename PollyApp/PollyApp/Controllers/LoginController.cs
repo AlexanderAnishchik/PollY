@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PollyApp.EFModel;
+using System.Web.Security;
 
 namespace PollyApp.Controllers
 {
@@ -13,7 +14,7 @@ namespace PollyApp.Controllers
         public GenericRepository.Repository Db = new GenericRepository.Repository();
         public ActionResult SignIn(String login, String pass)
         {
-            Object user = null;
+            object user = null;
             var isLogged = MemberWorker.Login(login, pass);
             if (isLogged)
             {
@@ -26,29 +27,29 @@ namespace PollyApp.Controllers
                     x.LastName,
                     x.Logo
                 }).FirstOrDefault();
+                MemberWorker.AddUserCookie(Response, ((dynamic)user).Email,3600);
             }
             Session["user"] = user;
-            Session["isLogged"] = isLogged;
             return new JsonResult() { Data = new { status = isLogged, user = user } };
         }
         [HttpPost]
-        public JsonResult SignUp(String email, String pass, String firstName, String lastName)
+        public JsonResult SignUp(String firstName, String lastName, String email, String pass)
         {
             try
             {
                 MemberWorker.Register(pass, email, firstName, lastName);
-                //Session["isLogged"] = true;
+                MemberWorker.AddUserCookie(Response, email, 3600);
                 return new JsonResult() { Data = true };
             }
             catch (Exception)
             {
-                //Session["isLogged"] = false;
                 return new JsonResult() { Data = false };
             }
         }
         public ActionResult LogOut()
         {
-            Session["isLogged"] = null;
+            MemberWorker.SignOut();
+            Session["user"] = null;
             return RedirectToAction("Index", "Home");
         }
     }

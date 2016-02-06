@@ -6,6 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace PollyApp.Account
 {
@@ -17,6 +18,8 @@ namespace PollyApp.Account
         {
             try
             {
+                if (String.IsNullOrWhiteSpace(email) || String.IsNullOrWhiteSpace(password))
+                    throw new Exception("Email or Password is not set");
                 var rep = new GenericRepository.Repository();
                 var user = rep.Context.Users.Where(x => x.Email == email).FirstOrDefault();
                 if (user != null)
@@ -35,6 +38,20 @@ namespace PollyApp.Account
                 throw new Exception(ex.Message);
             }
         }
+        public static void AddUserCookie(HttpResponseBase response, string user, int timeOutHours)
+        {
+
+            var ticket = new FormsAuthenticationTicket(user, true, timeOutHours * 60);
+            string encrypted = FormsAuthentication.Encrypt(ticket);
+            var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, encrypted);
+            cookie.Expires = System.DateTime.Now.AddHours(timeOutHours);
+            response.Cookies.Add(cookie);
+            FormsAuthentication.SetAuthCookie(user, false, ticket.CookiePath);
+        }
+        public static void SignOut()
+        {
+            FormsAuthentication.SignOut();
+        }
         public static void Register(String password, String email, String firstName, String lastName)
         {
             try
@@ -47,7 +64,7 @@ namespace PollyApp.Account
                     salt = GetSalt();
                     hash = GetMd5Hash(md5Hash, password + salt);
                 }
-                rep.Add(new User { Email = email, Password = hash, Salt = salt, FirstName = firstName, LastName = lastName, PermissionId=1 });
+                rep.Add(new User { Email = email, Password = hash, Salt = salt, FirstName = firstName, LastName = lastName, PermissionId = 1 });
                 rep.Save();
             }
             catch (Exception ex)

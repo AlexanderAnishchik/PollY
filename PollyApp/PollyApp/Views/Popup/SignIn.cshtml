@@ -16,23 +16,33 @@
                     <h4 class="modal-title" id="myModalLabel">SIGN IN</h4>
 
                 </div>
-                <form method="POST" name="signinForm" novalidate>
+                <div class="spinner" ng-show="loader">
+                    <div class="rect1"></div>
+                    <div class="rect2"></div>
+                    <div class="rect3"></div>
+                    <div class="rect4"></div>
+                    <div class="rect5"></div>
+                </div>
+                <form method="POST" name="signinForm" novalidate ng-show="!loader">
                     <div id="form_login">
                         <div class="modal-body">
-
-                            <div class="input-group input-group-lg textbox" ng-class="{'has-error' : !signinForm.email.$pristine && signinForm.email.$invalid, 'has-success' : !signinForm.email.$pristine && signinForm.email.$valid}">
+                            <div class="alert alert-danger" ng-show="errorAuth != ''">
+                                {{errorAuth}}
+                            </div>
+                            <div class="input-group input-group-lg textbox" ng-class="{'has-error' : !signinForm.email.$pristine && !emailValid, 'has-success' : !signinForm.email.$pristine && emailValid}">
                                 <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/email.png" /></span>
-                                <input type="email" ng-model="headCtrl.login.email" name="email" class="form-control" placeholder="E-mail" aria-describedby="sizing-addon1" required>
+                                <input type="email" ng-model="headCtrl.login.email" name="email" class="form-control" placeholder="E-mail" aria-describedby="sizing-addon1" required ng-blur="checkValidation(signinForm.email)">
 
                             </div>
-                            <div class="alert alert-danger" ng-show="signinForm.email.$invalid && !signinForm.email.$pristine">
-                                Please, enter correct e-mail!
+                            <div class="alert alert-danger" ng-show="!emailValid && !signinForm.email.$pristine">
+                                Please, enter correct e-mail <br />
+                                "simple@simple.com"!
                             </div>
-                            <div class="input-group input-group-lg textbox" ng-class="{'has-error' : !signinForm.password.$pristine && signinForm.password.$invalid, 'has-success' : !signinForm.password.$pristine && signinForm.password.$valid}">
+                            <div class="input-group input-group-lg textbox" ng-class="{'has-error' : !signinForm.password.$pristine && !passValid, 'has-success' : !signinForm.password.$pristine && passValid}">
                                 <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/password.png" /></span>
-                                <input type="password" ng-model="headCtrl.login.password" name="password" ng-minlength="5" ng-maxlength="15" class="form-control" placeholder="Password" aria-describedby="sizing-addon1" required>
+                                <input type="password" ng-model="headCtrl.login.password" name="password" ng-minlength="5" ng-maxlength="15" class="form-control" placeholder="Password" required ng-blur="checkValidation(signinForm.password)">
                             </div>
-                            <div class="alert alert-danger" ng-show="signinForm.password.$invalid && !signinForm.password.$pristine">
+                            <div class="alert alert-danger" ng-show="!passValid && !signinForm.password.$pristine">
                                 Please enter password from 5 to 15 symbols!
                             </div>
                         </div>
@@ -54,52 +64,58 @@
                     <h4 class="modal-title" id="myModalLabel">SIGN UP</h4>
 
                 </div>
-
+                
                 <form method="POST" name="registerForm" novalidate>
 
                     <div class="modal-body">
+                        <div class="alert alert-success" ng-show="isRegister">
+                            Registration completed successfully
+                        </div>
                         <div class="input-group input-group-lg textbox" ng-class="{ 'has-error' : !registerForm.first.$pristine && registerForm.first.$invalid, 'has-success' : !registerForm.first.$pristine && registerForm.first.$valid}">
                             <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/user.png" /></span>
-                            <input type="text" class="form-control" name="first" ng-model="headCtrl.registr.first" placeholder="First name" aria-describedby="sizing-addon1" required>
-
-
+                            <input type="text" class="form-control" name="first" ng-model="headCtrl.registr.first" placeholder="First name" ng-minlength="2" ng-blur="checkValidation(registerForm.first)">
                         </div>
-                        <div class="alert alert-danger" ng-show="registerForm.first.$invalid && !registerForm.first.$pristine">
-                            Your first name is required
-
+                        <div class="alert alert-danger" ng-show="!firstValid && !registerForm.first.$pristine">
+                            First name length must be more then 1 sybmols!
                         </div>
-                        <div class="input-group input-group-lg textbox" ng-class="{ 'has-error' : !registerForm.second.$pristine && registerForm.second.$invalid, 'has-success' : !registerForm.second.$pristine && registerForm.second.$valid}">
+
+                        <div class="input-group input-group-lg textbox" ng-class="{ 'has-error' : !registerForm.last.$pristine && registerForm.last.$invalid, 'has-success' : !registerForm.last.$pristine && registerForm.last.$valid}">
                             <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/user.png" /></span>
-                            <input type="text" class="form-control" name="second" ng-model="headCtrl.registr.last" placeholder="Last name" aria-describedby="sizing-addon1" required>
-
+                            <input type="text" class="form-control" name="last" ng-model="headCtrl.registr.last"  placeholder="Last name"  required ng-minlength="2" ng-blur="checkValidation(registerForm.last)">
                         </div>
-                        <div class="alert alert-danger" ng-show="registerForm.second.$invalid && !registerForm.second.$pristine">
-                            Your second name is required
-
+                        <div class="alert alert-danger" ng-show="!secondValid && !registerForm.last.$pristine">
+                            Second name length must be more then 1 sybmols!
                         </div>
+                        
                         <div class="input-group input-group-lg textbox" ng-class="{ 'has-error' : !registerForm.email.$pristine && registerForm.email.$invalid, 'has-success' : !registerForm.email.$pristine && registerForm.email.$valid}">
                             <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/email.png" /></span>
-                            <input type="email" class="form-control" placeholder="E-mail" name="email" ng-model="headCtrl.registr.email" aria-describedby="sizing-addon1" required>
+                            <input type="email" class="form-control" name="email" ng-model="headCtrl.registr.email" placeholder="E-mail"  required ng-blur="checkValidation(registerForm.email)">
 
                         </div>
-                        <div class="alert alert-danger" ng-show="registerForm.email.$invalid && !registerForm.email.$pristine">
+                        <div class="alert alert-danger" ng-show="!emailValid && !registerForm.email.$pristine">
                             Please, enter correct e-mail <br />
-                            "simple@simple.com"
+                            "simple@simple.com"!
                         </div>
 
                         <div class="input-group input-group-lg textbox" ng-class="{ 'has-error' : !registerForm.pass.$pristine && registerForm.pass.$invalid, 'has-success' : !registerForm.pass.$pristine && registerForm.pass.$valid}">
                             <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/password.png" /></span>
-                            <input type="password" class="form-control" name="pass" ng-model="headCtrl.registr.pass" placeholder="Password" aria-describedby="sizing-addon1" required>
+                            <input type="password" class="form-control" name="pass" ng-model="headCtrl.registr.pass" ng-minlength="5" ng-maxlength="15"   placeholder="Password"   required ng-blur="checkValidation(registerForm.pass)">
                         </div>
-                        <div class="input-group input-group-lg textbox">
-                            <span class="input-group-addon" id="sizing-addon1">
-                                <img src="~/Content/images/password.png" />
-                            </span>
-                            <input type="password" class="form-control" name="confirmpass" ng-model="headCtrl.registr.confirmpass" placeholder="Confirm password" aria-describedby="sizing-addon1" required>
+
+                        <div class="input-group input-group-lg textbox" ng-class="{ 'has-error' : !registerForm.confirmpass.$pristine && !passValid, 'has-success' : !registerForm.confirmpass.$pristine && passValid }">
+                            <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/password.png" /></span>
+                            <input type="password" class="form-control" name="confirmpass" ng-model="headCtrl.registr.confirmpass" ng-minlength="5" ng-maxlength="15"   placeholder="Confirm password" required  ng-blur="checkPasswordConfirmation(registerForm.confirmpass,registerForm.pass)">
                         </div>
-                        <div class="alert alert-danger" ng-show="(registerForm.pass.$invalid && !registerForm.pass.$pristine) || (registerForm.confirmpass.$invalid && !registerForm.confirmpass.$pristine)">
-                            Please enter your password!
+
+                        <div class="alert alert-danger" ng-show="!passValid && !registerForm.pass.$pristine">
+                            Password length must be from 5 to 15 chars!
                         </div>
+
+                        <div class="alert alert-danger" ng-show="!registerForm.pass.$pristine && !registerForm.confirmpass.$pristine && !passConfirm">
+                            Passwords do not match!
+                        </div>
+
+                        
                     </div>
 
 

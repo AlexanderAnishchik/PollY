@@ -49,6 +49,7 @@
           <Property Name="TypeId" Type="int" />
           <Property Name="AccessId" Type="int" />
           <Property Name="ShareId" Type="int" />
+          <Property Name="UrlCode" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Question">
           <Key>
@@ -291,6 +292,7 @@
           <NavigationProperty Name="PollShare" Relationship="PollyAppModel.FK_Project_PollShare" FromRole="Project" ToRole="PollShare" />
           <NavigationProperty Name="PollAccess" Relationship="PollyAppModel.FK_Project_PollAccess" FromRole="Project" ToRole="PollAccess" />
           <NavigationProperty Name="PollType" Relationship="PollyAppModel.FK_Project_PollType" FromRole="Project" ToRole="PollType" />
+          <Property Name="UrlCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Question">
           <Key>
@@ -557,6 +559,7 @@
           <EntitySetMapping Name="Projects">
             <EntityTypeMapping TypeName="PollyAppModel.Project">
               <MappingFragment StoreEntitySet="Project">
+                <ScalarProperty Name="UrlCode" ColumnName="UrlCode" />
                 <ScalarProperty Name="ShareId" ColumnName="ShareId" />
                 <ScalarProperty Name="AccessId" ColumnName="AccessId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />

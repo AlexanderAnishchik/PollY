@@ -2,21 +2,25 @@
     ViewBag.Title = "Polly / Constructor / Add new poll";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<script src="~/Scripts/App/Services/pollBuilderService.js"></script>
 <script src="~/Scripts/App/Controllers/constructorController.js"></script>
 <script src="~/Scripts/App/Directives/enterDirective.js"></script>
 <div ng-controller="constructorController as mainCtrl" ng-init="mainCtrl.init();">
-    <section class="container-fluid intro">
-        
-    </section>
+    @if (!Request.IsAuthenticated)
+    {
+        <div class="alert alert-info alert-dismissible information" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <img src="/Content/images/info.png" /> If you are not logged in , your survey will not be published!
+        </div>
+    }
+    
     <section class="container-fluid add-poll">
            
-        <div ng-include src="template">
+        <div ng-include src="step">
 
 
         </div>
         
-        <div class="row text-center">
-            <a ng-href="" ng-click="changeTemplate()"><button type="button" class="btn btn-install">Next</button></a>
-        </div>
+    
     </section>
 </div>
