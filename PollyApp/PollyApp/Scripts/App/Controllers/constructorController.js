@@ -16,6 +16,10 @@
         step3: 'Content/partial/ChooseShare.html',
         step4: 'Content/partial/constructor.html',
     };
+    $scope.setStep = function (stepValue) {
+        debugger;
+        $scope.step = stepValue;
+    }
     $scope.step = $scope.settingsView.step1;
     $scope.data = {};
     $scope.builderData = pollBuilderService.pollData;
