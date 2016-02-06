@@ -10,13 +10,21 @@
     $scope.userGotAccess = [
     
     ];
+    $scope.settingsView = {
+        step1: 'Content/partial/ChooseType.html',
+        step2: 'Content/partial/ChooseAccess.html',
+        step3: 'Content/partial/ChooseShare.html',
+        step4: 'Content/partial/constructor.html',
+    };
+    $scope.step = $scope.settingsView.step1;
     $scope.data = {};
     $scope.builderData = pollBuilderService.pollData;
     $scope.currentBlock = null;
     $scope.choosed = "Choose access";
     $scope.privacy = "Choose privacy";
     $scope.description = "Please choose type of privacy. Be careful when you will be choosing type and think carefully before you make a choice, because this may depend on the number of voting.";
-    $scope.setPrivacy = function (type) {
+    $scope.setShare = function (type) {
+        pollBuilderService.setShare(type);
         $scope.privacy = type.label;
         $scope.partialPath = 'Content/partial/share/' + type.logicalName + '.html';
     }
@@ -34,10 +42,15 @@
     me.init = function () {
         $scope.access_types = pollSettingsFactory.PollAccess;
         $scope.share_list = pollSettingsFactory.PollShare;
+        $scope.poll_type = pollSettingsFactory.PollType;
         pollBuilderService.testData();
         $scope.currentBlock = $scope.builderData.poll[0];
     };
- 
+    $scope.setPollType = function (type) {
+        pollBuilderService.setType(type.value);
+        $scope.step = $scope.settingsView.step2;
+
+    }
     $scope.setAccess = function (type) {
         $scope.choosed = type.label;
         $scope.partialPath = 'Content/partial/access/' + type.logicalName + '.html';
@@ -118,20 +131,20 @@
     }
 
 
-    $scope.count = 0;
+    
     $scope.changeTemplate = function () {
-        if ($scope.count == 1) {
+        if ($scope.step == 1) {
             $scope.next_template = 'Content/partial/ChoosePermission.html';
             $scope.template = $scope.next_template;
-            $scope.count++;
+            $scope.step++;
         }
         else {
-            if ($scope.count == 2) {
+            if ($scope.step == 2) {
                 $scope.next_template = 'Content/partial/constructor.html';
                 $scope.template = $scope.next_template;
             }
             $scope.template = $scope.next_template;
-            $scope.count++;
+            $scope.step++;
         }
         
     }

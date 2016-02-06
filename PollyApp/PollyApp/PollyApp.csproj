@@ -1202,7 +1202,7 @@
     <Content Include="Views\Popup\SignOut.cshtml" />
     <Content Include="Views\Constructor\Index.cshtml" />
     <Content Include="Content\partial\ChooseType.html" />
-    <Content Include="Content\partial\ChoosePermission.html" />
+    <Content Include="Content\partial\ChooseShare.html" />
     <Content Include="Content\partial\ChooseAccess.html" />
     <Content Include="Views\Popup\Error.cshtml" />
     <Content Include="Views\Poll\Index.cshtml" />
