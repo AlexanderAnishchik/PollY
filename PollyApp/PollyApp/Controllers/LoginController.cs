@@ -33,7 +33,7 @@ namespace PollyApp.Controllers
             return new JsonResult() { Data = new { status = isLogged, user = user } };
         }
         [HttpPost]
-        public JsonResult SignUp(String email, String pass, String firstName, String lastName)
+        public JsonResult SignUp(String firstName, String lastName, String email, String pass)
         {
             try
             {
