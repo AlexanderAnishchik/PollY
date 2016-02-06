@@ -1,4 +1,5 @@
-﻿using PollyApp.EFModel;
+﻿using PollyApp.Controllers;
+using PollyApp.EFModel;
 using PollyApp.GenericRepository;
 using System;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Http.Filters;
 using System.Web.Mvc;
+using System.Web.Routing;
 
 namespace PollyApp.Attributes
 {
@@ -22,18 +24,23 @@ namespace PollyApp.Attributes
                 {
                     if (filterContext.HttpContext.User.Identity.IsAuthenticated == true)
                     {
-                        User currUser = new User();
+                        dynamic currUser = new User();
                         using (var Db = new Repository())
                         {
-                            currUser = Db.Context.Users.Where(x => x.Email == filterContext.HttpContext.User.Identity.Name).FirstOrDefault();
+                            currUser = Db.Context.Users.Where(x => x.Email == filterContext.HttpContext.User.Identity.Name).ToList().Select(x => new User
+                            {
+                                Email = x.Email,
+                                FirstName = x.FirstName,
+                                Id = x.Id,
+                                LastName = x.LastName,
+                                PermissionId = x.PermissionId,
+                                Logo = x.Logo
+                            }).FirstOrDefault();
                         }
                         if (currUser != null)
                             filterContext.HttpContext.Session["user"] = currUser;
-                        else
-                            throw new Exception("Error cookie");
                     }
-                    else
-                        throw new Exception("Error cookie");
+                    base.OnActionExecuting(filterContext);
                 }
             }
         }

@@ -72,12 +72,9 @@
     me.signIn = function () {
         if (me.login.email && me.login.password) {
             $scope.loader = true;
-            $http.post("Login/SignIn", { login: me.login.email, pass: me.login.password }).then(function (response) { 
-                var data = response.data;
-                if (data.status == true) {
-                    $scope.user = data.user;
+            $http.post("Login/SignIn", { login: me.login.email, pass: me.login.password }).then(function (response) {
+                if (response.data.status == true) {
                     $window.location.reload();
-                    
                 }
                 else {
                     $scope.errorAuth = "The login or password you’ve entered is incorrect. Forgot password?";
