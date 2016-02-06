@@ -4367,7 +4367,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-nav > li > a {
   padding-top: 10px;
-  padding-bottom: 10px;
+  padding-bottom: 12px;
   line-height: 20px;
 }
 
@@ -4406,7 +4406,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     padding-top: 10px;
     padding-bottom: 15px;
   }
-  .navbar-nav > li > a:hover {
+  .navbar-nav > li > a:hover,
+  .navbar-nav > li > a:focus,
+  .navbar-nav > li > a:active {
     padding-top: 10px;
     padding-bottom: 13px;
   }
