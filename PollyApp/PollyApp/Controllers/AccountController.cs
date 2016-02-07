@@ -1,4 +1,5 @@
-﻿using PollyApp.GenericRepository;
+﻿using PollyApp.EFModel;
+using PollyApp.GenericRepository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,11 +15,14 @@ namespace PollyApp.Controllers
         {
             return View();
         }
-        [HttpGet]
+     
         public ActionResult GetUser()
         {
             if (Session["user"] != null)
-                return Json(Session["user"], JsonRequestBehavior.AllowGet);
+            {
+                User user = (User)Session["user"];
+                return new JsonResult() { Data = user, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            }
             else
                 return null;
         }

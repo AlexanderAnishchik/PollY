@@ -49,6 +49,7 @@ namespace PollyApp.Controllers
         public ActionResult LogOut()
         {
             MemberWorker.SignOut();
+            Session["user"] = null;
             return RedirectToAction("Index", "Home");
         }
     }

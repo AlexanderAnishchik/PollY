@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PollyApp.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,8 +12,10 @@ namespace PollyApp.Controllers
     {
         public GenericRepository.Repository Db = new GenericRepository.Repository();
         // GET: Home
+        [UserAuth]
         public ActionResult Index()
         {
+            
             return View();
         }
     }
