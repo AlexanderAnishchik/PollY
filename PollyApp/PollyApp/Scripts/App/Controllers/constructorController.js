@@ -17,7 +17,6 @@
         step4: 'Content/partial/constructor.html',
     };
     $scope.setStep = function (stepValue) {
-        debugger;
         $scope.step = stepValue;
     }
     $scope.step = $scope.settingsView.step1;
@@ -28,7 +27,7 @@
     $scope.privacy = "Choose privacy";
     $scope.description = "Please choose type of privacy. Be careful when you will be choosing type and think carefully before you make a choice, because this may depend on the number of voting.";
     $scope.setShare = function (type) {
-        pollBuilderService.setShare(type);
+        pollBuilderService.setShare(type.value);
         $scope.privacy = type.label;
         $scope.partialPath = 'Content/partial/share/' + type.logicalName + '.html';
     }
@@ -53,11 +52,11 @@
     $scope.setPollType = function (type) {
         pollBuilderService.setType(type.value);
         $scope.step = $scope.settingsView.step2;
-
     }
     $scope.setAccess = function (type) {
         $scope.choosed = type.label;
         $scope.partialPath = 'Content/partial/access/' + type.logicalName + '.html';
+        pollBuilderService.setAccess(type.value);
     };
     $scope.changeAnswerState = function (block, index, isAdd) {
         if (isAdd)
@@ -68,6 +67,12 @@
     }
     $scope.changeBlock = function (index) {
         $scope.currentBlock = $scope.builderData.poll[index];
+    };
+    $scope.deleteBlock = function (index) {
+        if ($scope.builderData.poll.length > 1) {
+            pollBuilderService.deleteQuestion(index);
+            $scope.currentBlock = $scope.builderData.poll[0];
+        }
     };
     $scope.generateCode = function() {
         var result = '';

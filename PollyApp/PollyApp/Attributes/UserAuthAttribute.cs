@@ -24,18 +24,19 @@ namespace PollyApp.Attributes
                 {
                     if (filterContext.HttpContext.User.Identity.IsAuthenticated == true)
                     {
-                        dynamic currUser = new User();
+                        var currUser = new User();
                         using (var Db = new Repository())
                         {
-                            currUser = Db.Context.Users.Where(x => x.Email == filterContext.HttpContext.User.Identity.Name).ToList().Select(x => new User
-                            {
-                                Email = x.Email,
-                                FirstName = x.FirstName,
-                                Id = x.Id,
-                                LastName = x.LastName,
-                                PermissionId = x.PermissionId,
-                                Logo = x.Logo
-                            }).FirstOrDefault();
+                            //currUser = Db.Context.Users.Where(x => x.Email == filterContext.HttpContext.User.Identity.Name).ToList().Select(x => new User
+                            //{
+                            //    Email = x.Email,
+                            //    FirstName = x.FirstName,
+                            //    Id = x.Id,
+                            //    LastName = x.LastName,
+                            //    PermissionId = x.PermissionId,
+                            //    Logo = x.Logo
+                            //}).FirstOrDefault();
+                            currUser = Db.Context.Users.Where(x => x.Email == filterContext.HttpContext.User.Identity.Name).FirstOrDefault();
                         }
                         if (currUser != null)
                             filterContext.HttpContext.Session["user"] = currUser;

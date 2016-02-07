@@ -12,14 +12,17 @@
                 STEPS
             </div>
             <div class="content">
-                <div class="steps">
+                <div class="steps" ng-click="setStep(settingsView.step1)">
                     <span class="badge"><img src="Content/images/layout-white.png" /></span> Choose template
                 </div>
-                <div class="steps">
+                <div class="steps" ng-click="setStep(settingsView.step2)">
                     <span class="badge"><img src="Content/images/access.png" /></span> Set access
                 </div>
-                <div class="steps">
+                <div class="steps"  ng-click="setStep(settingsView.step3)">
                     <span class="badge"><img src="Content/images/privacy.png" /></span> Set privacy
+                </div>
+                <div class="steps"  ng-click="setStep(settingsView.step4)">
+                    <span class="badge"><img src="Content/images/privacy.png" /></span> Maker
                 </div>
             </div>
         </div>
@@ -68,7 +71,7 @@
 
                     <span class="badge"><img src="Content/images/question.png" /></span>
                     {{block.question.value || "New Question"}}
-                    <button type="button" class="close"><span aria-hidden="true">&times;</span></button>
+                    <button type="button" ng-click="deleteBlock($index)" class="close"><span aria-hidden="true">&times;</span></button>
 
                 </div>
 

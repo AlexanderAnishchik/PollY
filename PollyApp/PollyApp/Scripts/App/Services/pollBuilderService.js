@@ -9,6 +9,9 @@
         self.deleteAnswer = function (block, index) {
             block.answers.splice(index, 1);
         }
+        self.deleteQuestion = function (block, index) {
+            self.pollData.poll.splice(index, 1);
+        }
         self.testData = function () {
             self.pollData.PollType = 1;
             self.pollData.PollShare = 1;
@@ -27,9 +30,9 @@
         self.setShare = function (share) {
             if (share && typeof share != "undefined") {
                 if (pollSettingsFactory.PollShare.some(function (el) {
-                    el.value == share;
+                   return el.value == share;
                 })) {
-                    self.pollData.PollShare = share;
+                     self.pollData.PollShare = share;
                 }
 
             }
@@ -45,7 +48,7 @@
         self.setType = function (type) {
             if (type && typeof type != "undefined") {
                 if (pollSettingsFactory.PollType.some(function (el) {
-                    el.value == type;
+                   return el.value == type;
                 })) {
                     self.pollData.PollType = type;
                 }
@@ -55,7 +58,7 @@
         self.setAccess = function (access) {
             if (access && typeof access != "undefined") {
                 if (pollSettingsFactory.PollAccess.some(function (el) {
-                    el.value == access;
+                  return el.value == access;
                 })) {
                     self.pollData.PollAccess = access;
                 }
