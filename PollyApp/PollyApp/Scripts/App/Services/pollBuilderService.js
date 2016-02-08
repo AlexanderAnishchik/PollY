@@ -13,9 +13,9 @@
             self.pollData.poll.splice(index, 1);
         }
         self.testData = function () {
-            self.pollData.PollType = 1;
-            self.pollData.PollShare = 1;
-            self.pollData.PollAccess = 1;
+            self.pollData.PollType = 0;
+            self.pollData.PollShare = 0;
+            self.pollData.PollAccess = 0;
             self.pollData.poll[0] = {
                 question: {value:null},
                 answers: [{ value: null }]
