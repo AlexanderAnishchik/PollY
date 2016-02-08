@@ -26,14 +26,14 @@
                    label: "Free Link"
                },
                {
-                   logicalName: "PasswordLink",
+                   logicalName: "UserSet",
                    value: 2,    
-                   label: "Password Link"
+                   label: "User Set"
                },
                {
-                   logicalName: "CommunityLink",
+                   logicalName: "CodeSet",
                    value: 3,
-                   label: "Community Link"
+                   label: "Code Set"
                }
             ],
             PollAccess: [
@@ -43,16 +43,10 @@
                   label: "Public"
               },
               {
-                  logicalName: "Anonymous",
+                  logicalName: "Private",
                   value: 2,
-                  label: "Anonymous"
-              },
-               {
-                   logicalName: "Someone",
-                   value: 3,
-                   label: "Someone People"
-               }
-
+                  label: "Private"
+              }
 
             ]
 

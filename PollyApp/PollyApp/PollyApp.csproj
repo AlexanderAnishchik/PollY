@@ -263,13 +263,13 @@
     <Content Include="Content\images\Users\julia_pomazkina.png" />
     <Content Include="Content\images\Users\nophoto.png" />
     <Content Include="Content\images\Users\sanya_axel.jpg" />
-    <Content Include="Content\partial\access\Anonymous.html" />
+    <Content Include="Content\partial\access\Private.html" />
     <Content Include="Content\partial\access\Public.html" />
     <Content Include="Content\partial\access\Someone.html" />
     <Content Include="Content\partial\constructor.html" />
     <Content Include="Content\partial\share\FreeLink.html" />
-    <Content Include="Content\partial\share\CommunityLink.html" />
-    <Content Include="Content\partial\share\PasswordLink.html" />
+    <Content Include="Content\partial\share\UserSet.html" />
+    <Content Include="Content\partial\share\CodeSet.html" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
