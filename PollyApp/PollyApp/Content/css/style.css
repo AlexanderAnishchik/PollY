@@ -47,9 +47,7 @@ a {
     text-align: center;
 }
 
-.last {
-    margin: 0 !important;
-}
+
 
 
 #about, #feedback, #wrapper {
@@ -254,10 +252,13 @@ a {
 }
 
 #footer {
-    background: #2c3e50;
-    padding:10px 10px 20px 10px;
+    background:#fff;
     font-family:OpenSans-light;
+    padding:2% 0px 2% 0px;
     
+}
+#footer h1{
+    color:#202023;
 }
 .intro {
     background-color: #34495e;
@@ -671,10 +672,53 @@ fieldset[disabled] .btn-primary.focus {
     
 }
 .poll-page{
-    
     background:#ffffff;
     margin-top:57px;
 }
+#footer .form-inline{
+    margin-top:5%;
+}
+#footer .form-inline > .form-group{
+    margin-right:3.5%;
+    margin-left:0;
+    width:47.91%;
+}
+#footer .form-group > .input-lg{
+    height:75px;
+    background:#fff;
+    box-shadow:none;
+    border:1px solid #ccc;
+    border-radius:2px;
+}
+#footer .form-group > .input-lg:hover,
+#footer .form-group > .input-lg:focus{
+    
+    border:1px solid #1abc9c;
+   
+}
+#footer textarea{
+    background:#fff;
+    border-radius:2px;
+    margin-top:5%;
+    margin-bottom:5%;
+    border:1px solid #ccc;
+    box-shadow:none;
+}
+#footer textarea:hover,
+#footer textarea:focus{
+    border:1px solid #1abc9c;
+}
+#footer .form-inline > .form-group > .form-control{
+    width:100%;  
+}
+#footer .form-group{
+    margin-top:2.5%;
+    margin-bottom:2.5%;
+}
+#footer .btn-lg{
+    height:70px;
+}
+
 /*---------------------------------------------*/
 /*----------------MOBILE DESIGN----------------*/
 /*---------------------------------------------*/
@@ -875,4 +919,7 @@ li > #signInBtn{
     transform: scaleY(1.0);
     -webkit-transform: scaleY(1.0);
   }
+}
+.last {
+    margin: 0 0 0 0 !important;
 }

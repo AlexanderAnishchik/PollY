@@ -373,7 +373,6 @@
     <Content Include="Scripts\App\Controllers\homeController.js" />
     <Content Include="Scripts\App\Controllers\modalController.js" />
     <Content Include="Scripts\App\Directives\enterDirective.js" />
-    <Content Include="Scripts\App\Directives\focusoutDirective.js" />
     <Content Include="Scripts\App\Route\constructorRoute.js" />
     <Content Include="Scripts\App\Services\headerKeeperService.js" />
     <Content Include="Scripts\App\Services\pollBuilderService.js" />
