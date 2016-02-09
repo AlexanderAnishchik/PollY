@@ -77,7 +77,9 @@
                     $window.location.reload();
                 }
                 else {
+                    $scope.loader = false;
                     $scope.errorAuth = "The login or password you’ve entered is incorrect. Forgot password?";
+                    
                 }
             },
         function (response) {

@@ -205,12 +205,15 @@
     <Content Include="Content\images\about.png" />
     <Content Include="Content\images\access.png" />
     <Content Include="Content\images\add.png" />
+    <Content Include="Content\images\air-scene0-right_GEO_US.png" />
     <Content Include="Content\images\analitycs.png" />
     <Content Include="Content\images\api.png" />
     <Content Include="Content\images\ascending7.png" />
     <Content Include="Content\images\briefcase50.png" />
+    <Content Include="Content\images\chart.png" />
     <Content Include="Content\images\cinema21.png" />
     <Content Include="Content\images\cloud79.png" />
+    <Content Include="Content\images\coffee.png" />
     <Content Include="Content\images\computer147.png" />
     <Content Include="Content\images\connection31.png" />
     <Content Include="Content\images\currency-icon.png" />
@@ -226,6 +229,7 @@
     <Content Include="Content\images\foto_artem.jpg" />
     <Content Include="Content\images\foto_koc.jpg" />
     <Content Include="Content\images\help.png" />
+    <Content Include="Content\images\hero-full-width-min.png" />
     <Content Include="Content\images\info.png" />
     <Content Include="Content\images\internet80.png" />
     <Content Include="Content\images\ipad.png" />
@@ -245,8 +249,11 @@
     <Content Include="Content\images\origami9.png" />
     <Content Include="Content\images\pages.png" />
     <Content Include="Content\images\password.png" />
+    <Content Include="Content\images\place.png" />
+    <Content Include="Content\images\platform.png" />
     <Content Include="Content\images\poll.png" />
     <Content Include="Content\images\polls.png" />
+    <Content Include="Content\images\pollylogo.png" />
     <Content Include="Content\images\pollylogogreen.png" />
     <Content Include="Content\images\privacy.png" />
     <Content Include="Content\images\question.png" />
@@ -255,6 +262,7 @@
     <Content Include="Content\images\settings-big.png" />
     <Content Include="Content\images\settings.png" />
     <Content Include="Content\images\single.png" />
+    <Content Include="Content\images\speaker.jpg" />
     <Content Include="Content\images\text lines15.png" />
     <Content Include="Content\images\tv monitor2.png" />
     <Content Include="Content\images\user.png" />
