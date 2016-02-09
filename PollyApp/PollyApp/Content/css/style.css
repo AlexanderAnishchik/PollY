@@ -777,6 +777,9 @@ fieldset[disabled] .btn-primary.focus {
     }
 }
 @media all and (max-width: 480px) {
+    #footer .form-inline > .form-group{
+        display:inline-table;
+    }
     .pluces .col-lg-4{
         padding-top:10px !important;
     }
