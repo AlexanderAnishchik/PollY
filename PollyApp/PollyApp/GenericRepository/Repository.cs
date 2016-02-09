@@ -1,4 +1,6 @@
-﻿using System;
+﻿//password azure Aa123987!
+//password for cloud business city Aa123987!!!
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
