@@ -1,4 +1,5 @@
-﻿using PollyApp.EFModel;
+﻿using PollyApp.Attributes;
+using PollyApp.EFModel;
 using PollyApp.GenericRepository;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace PollyApp.Controllers
         {
             return View();
         }
-     
+        [UserAuth]
         public ActionResult GetUser()
         {
             if (Session["user"] != null)
