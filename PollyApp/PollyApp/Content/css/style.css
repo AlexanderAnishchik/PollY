@@ -3,7 +3,9 @@
     font-family: OpenSans;
     src: url(../../fonts/OpenSans-Regular.ttf);
 }
-
+.description{
+    margin-bottom:5%;
+}
 body {
     padding: 0;
     margin: 0;
@@ -48,11 +50,9 @@ a {
 }
 
 
-
-
 #about, #feedback, #wrapper {
-    padding-top: 35px;
-    padding-bottom: 35px;
+    padding-top: 2%;
+    padding-bottom: 2%;
 }
 
 .portrait {
@@ -81,8 +81,7 @@ a {
     background-repeat: repeat;
     background-position-x: center;
     background-position-y: center;
-    background-attachment: fixed;
-    
+    background-attachment: fixed;   
 }
 
 #navigation {
@@ -93,26 +92,6 @@ a {
     background-position-x: center;
     background-position-y: center;
     background-attachment: fixed;
-}
-
-.scroll-button {
-    background: url(../images/computer147.png);
-    border: none;
-    opacity: 0.5;
-    width: 45px;
-    height: 45px;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-.scroll-button:hover {
-    background: url(../images/computer147.png);
-    border: none;
-    opacity: 1;
-    width: 45px;
-    height: 45px;
-    background-position: center;
-    background-repeat: no-repeat;
 }
 
 .scroll-button:focus, .scroll-button:active {
@@ -180,17 +159,55 @@ a {
 /*---------------------------------------------*/
 #wrapper {
     color: #34495e;
+    background-color:#fff;
 }
-
+#macbook{
+    margin-bottom:4%;
+}
+#wrapper .description small{
+    border-bottom:3px solid #1abc9c;
+    padding-bottom:5px;
+}
+.pluses{
+    margin-top:4%;
+    margin-bottom:5%;
+}
+.pluces .col-lg-4{
+    margin-top:10px;
+}
 /*---------------------------------------------*/
 /*----------------ABOUT SECTION----------------*/
 /*---------------------------------------------*/
 #about {
-    background: #edeeef;
-    color: #34495e;
+    background-color: #fff;
+    color: #ccc;
+    height:auto;
+    background-image: url('../images/speaker.jpg');
+    background-size:cover;
+    background-repeat:no-repeat;
+    background-position-x:center;
+    background-position-y:center;
+   
 }
-
-
+#about .description{
+    border-left:3px solid #1abc9c;
+    margin-left:15px;
+    color:#fff;
+}
+#about .description small{
+    color:#ccc;
+}
+#about .hero_image{
+    
+    
+}
+#about .media{
+    margin-bottom:12%;
+}
+#about .media-object,
+#wrapper .media-object{
+    border:1px solid #ccc;
+}
 .moreinfobutton {
     height: 52px;
     width: 202px;
@@ -223,17 +240,11 @@ a {
 /*---------------------------------------------*/
 
 #feedback{
-    background-color:#19283f;
-    background-image: url(../images/met-stars.png), linear-gradient(#202023, #19283f);
-    background-size: contain;
-    background-repeat: repeat;
-    background-position-x: left;
-    background-position-y: center;
-    background-attachment: fixed;
+    background-color:#ffffff;
 }
 #feedback h1,
 #feedback h3{
-    color:#ffffff;
+    color:#202023;
 }
 #feedback h2>small{
     color:#1abc9c;
@@ -245,20 +256,58 @@ a {
 /*---------------------------------------------*/
 /*---------------FOOTER SECTION----------------*/
 /*---------------------------------------------*/
-#bottom-part {
-    /*background:url(../images/bg.jpg);
-    background-attachment:fixed;
-    background-position:center;*/
-}
 
 #footer {
     background:#fff;
     font-family:OpenSans-light;
-    padding:2% 0px 2% 0px;
+    padding:0% 0px 2% 0px;
     
 }
 #footer h1{
     color:#202023;
+}
+#footer .form-inline{
+    margin-top:-1%;
+}
+#footer .form-inline > .form-group{
+    margin-right:3.5%;
+    margin-left:0;
+    width:47.91%;
+}
+#footer .form-group > .input-lg{
+    height:75px;
+    background:#fff;
+    box-shadow:none;
+    border:1px solid #ccc;
+    border-radius:2px;
+}
+#footer .form-group > .input-lg:hover,
+#footer .form-group > .input-lg:focus{
+    
+    border:1px solid #1abc9c;
+   
+}
+#footer textarea{
+    background:#fff;
+    border-radius:2px;
+    margin-top:5%;
+    margin-bottom:5%;
+    border:1px solid #ccc;
+    box-shadow:none;
+}
+#footer textarea:hover,
+#footer textarea:focus{
+    border:1px solid #1abc9c;
+}
+#footer .form-inline > .form-group > .form-control{
+    width:100%;  
+}
+#footer .form-group{
+    margin-top:2.5%;
+    margin-bottom:2.5%;
+}
+#footer .btn-lg{
+    height:70px;
 }
 .intro {
     background-color: #34495e;
@@ -283,14 +332,6 @@ a {
     color:white;
     text-align:justify;
 }
-#footer .title{
-    font-size:24px;
-    border-bottom:1px solid #1abc9c;
-    margin-bottom:10px;
-}
-.feedback-form > .footer-area {
-    margin-top:15px;
-}
 .footer-area  .btn-success{
     color:#1abc9c;
 }
@@ -298,16 +339,6 @@ a {
 .footer-area  .btn-success:focus{
     color:#1abc9c;
     outline:none;
-}
-#footer .row{
-    color:#ffffff;
-}
-#footer .row .col-lg-4:hover .title{
-    border-bottom:1px solid #e67e22;
-}
-.add-poll-content{
-}
-.wrapper-install{
 }
 
 .work-space{
@@ -625,7 +656,7 @@ fieldset[disabled] .btn-primary.focus {
 }
 .btn-install .badge {
   color: #a5b5c5;
-  background:url(../../images/origami9.png);
+  background:none;
 }
 #footer .btn-lg.btn-install:focus,
 #footer .btn-lg.btn-install.focus {
@@ -685,49 +716,7 @@ fieldset[disabled] .btn-primary.focus {
     background:#ffffff;
     margin-top:57px;
 }
-#footer .form-inline{
-    margin-top:5%;
-}
-#footer .form-inline > .form-group{
-    margin-right:3.5%;
-    margin-left:0;
-    width:47.91%;
-}
-#footer .form-group > .input-lg{
-    height:75px;
-    background:#fff;
-    box-shadow:none;
-    border:1px solid #ccc;
-    border-radius:2px;
-}
-#footer .form-group > .input-lg:hover,
-#footer .form-group > .input-lg:focus{
-    
-    border:1px solid #1abc9c;
-   
-}
-#footer textarea{
-    background:#fff;
-    border-radius:2px;
-    margin-top:5%;
-    margin-bottom:5%;
-    border:1px solid #ccc;
-    box-shadow:none;
-}
-#footer textarea:hover,
-#footer textarea:focus{
-    border:1px solid #1abc9c;
-}
-#footer .form-inline > .form-group > .form-control{
-    width:100%;  
-}
-#footer .form-group{
-    margin-top:2.5%;
-    margin-bottom:2.5%;
-}
-#footer .btn-lg{
-    height:70px;
-}
+
 
 /*---------------------------------------------*/
 /*----------------MOBILE DESIGN----------------*/
@@ -787,11 +776,10 @@ fieldset[disabled] .btn-primary.focus {
         text-align: center;
     }
 }
-li > #signInBtn{
-    margin-top:2px;
-}
 @media all and (max-width: 480px) {
-    
+    .pluces .col-lg-4{
+        padding-top:10px !important;
+    }
     .button-create{
         margin-top:-40px;
     }
@@ -833,6 +821,9 @@ li > #signInBtn{
 }
 
 @media all and (min-width: 481px) and (max-width: 767px) {
+    .pluces .col-lg-4{
+    padding-top:10px !important;
+    }
     .button-create{
         margin-top:-40px;
     }
@@ -874,7 +865,7 @@ li > #signInBtn{
 }
 #feedback p{
     font-family:Calibri;
-    color:#ffffff;
+    color:#ccc;
     font-weight:lighter;
 }
 /*-------------LOADER----------*/
