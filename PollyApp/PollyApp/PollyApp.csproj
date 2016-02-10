@@ -190,6 +190,7 @@
     </Compile>
     <Compile Include="Helpers\PollHelper.cs" />
     <Compile Include="Helpers\DbEnum.cs" />
+    <Compile Include="JsonConverters\AnswerConverter.cs" />
     <Compile Include="Models\PollUnit.cs" />
     <Compile Include="Models\PollWrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -425,7 +426,7 @@
     <None Include="Properties\PublishProfiles\thepolly - Web Deploy %283%29.pubxml" />
     <None Include="Properties\PublishProfiles\thepolly - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
-    <Content Include="Scripts\Factory\pollSettingsFactory.js" />
+    <Content Include="Scripts\App\Factory\pollSettingsFactory.js" />
     <Content Include="Scripts\front-end\animate.js" />
     <Content Include="Scripts\front-end\navigation-scroll.js" />
     <Content Include="Scripts\front-end\scroll-to.js" />
@@ -1220,6 +1221,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="JsonConverters\Helpers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

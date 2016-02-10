@@ -1,6 +1,7 @@
 ﻿using PollyApp.EFModel;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -11,13 +12,13 @@ using System.Web.Security;
 
 namespace PollyApp.Account
 {
-    public static class MemberWorker
+    public class EmailCheck
     {
-        private const int SaltValueSize = 4;
-        private static String[] HashingAlgorithms = new String[] { "SHA256", "MD5" };
-        public static bool IsValidEmail(string strIn)
+        bool invalid = false;
+
+        public bool IsValidEmail(string strIn)
         {
-            bool invalid = false;
+            invalid = false;
             if (String.IsNullOrEmpty(strIn))
                 return false;
 
@@ -48,13 +49,36 @@ namespace PollyApp.Account
                 return false;
             }
         }
+
+        private string DomainMapper(Match match)
+        {
+            // IdnMapping class with default property values.
+            IdnMapping idn = new IdnMapping();
+
+            string domainName = match.Groups[2].Value;
+            try
+            {
+                domainName = idn.GetAscii(domainName);
+            }
+            catch (ArgumentException)
+            {
+                invalid = true;
+            }
+            return match.Groups[1].Value + domainName;
+        }
+    }
+    public static class MemberWorker
+    {
+        private const int SaltValueSize = 4;
+        private static String[] HashingAlgorithms = new String[] { "SHA256", "MD5" };
         public static Boolean Login(String email, String password)
         {
             try
             {
+                var emailCheck = new EmailCheck();
                 if (String.IsNullOrWhiteSpace(email) || String.IsNullOrWhiteSpace(password))
                     throw new Exception("Email or Password is not set");
-                if(!IsValidEmail(email) || password.Length>15|| password.Length < 5)
+                if(!emailCheck.IsValidEmail(email) || password.Length>15|| password.Length < 5)
                     throw new Exception("Email or Password is not valid");
                 var rep = new GenericRepository.Repository();
                 var user = rep.Context.Users.Where(x => x.Email == email).FirstOrDefault();
@@ -92,9 +116,10 @@ namespace PollyApp.Account
         {
             try
             {
+                var emailCheck = new EmailCheck();
                 if (String.IsNullOrWhiteSpace(email) || String.IsNullOrWhiteSpace(password) || String.IsNullOrWhiteSpace(firstName) || String.IsNullOrWhiteSpace(lastName))
                     throw new Exception("Email or Password is not set");
-                if (!IsValidEmail(email) || password.Length > 15 || password.Length < 5)
+                if (!emailCheck.IsValidEmail(email) || password.Length > 15 || password.Length < 5)
                     throw new Exception("Email or Password is not valid");
                 var rep = new GenericRepository.Repository();
                 String hash = String.Empty;
