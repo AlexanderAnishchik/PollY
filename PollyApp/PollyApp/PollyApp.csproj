@@ -253,6 +253,7 @@
     <Content Include="Content\images\platform.png" />
     <Content Include="Content\images\poll.png" />
     <Content Include="Content\images\polls.png" />
+    <Content Include="Content\images\pollylogo.png" />
     <Content Include="Content\images\pollylogogreen.png" />
     <Content Include="Content\images\privacy.png" />
     <Content Include="Content\images\question.png" />
