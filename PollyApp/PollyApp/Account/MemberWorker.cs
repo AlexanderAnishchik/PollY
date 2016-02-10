@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -14,12 +15,47 @@ namespace PollyApp.Account
     {
         private const int SaltValueSize = 4;
         private static String[] HashingAlgorithms = new String[] { "SHA256", "MD5" };
+        public static bool IsValidEmail(string strIn)
+        {
+            bool invalid = false;
+            if (String.IsNullOrEmpty(strIn))
+                return false;
+
+            // Use IdnMapping class to convert Unicode domain names.
+            try
+            {
+                strIn = Regex.Replace(strIn, @"(@)(.+)$", this.DomainMapper,
+                                      RegexOptions.None, TimeSpan.FromMilliseconds(200));
+            }
+            catch (RegexMatchTimeoutException)
+            {
+                return false;
+            }
+
+            if (invalid)
+                return false;
+
+            // Return true if strIn is in valid e-mail format.
+            try
+            {
+                return Regex.IsMatch(strIn,
+                      @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
+                      @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$",
+                      RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
+            }
+            catch (RegexMatchTimeoutException)
+            {
+                return false;
+            }
+        }
         public static Boolean Login(String email, String password)
         {
             try
             {
                 if (String.IsNullOrWhiteSpace(email) || String.IsNullOrWhiteSpace(password))
                     throw new Exception("Email or Password is not set");
+                if(!IsValidEmail(email) || password.Length>15|| password.Length < 5)
+                    throw new Exception("Email or Password is not valid");
                 var rep = new GenericRepository.Repository();
                 var user = rep.Context.Users.Where(x => x.Email == email).FirstOrDefault();
                 if (user != null)
@@ -46,7 +82,7 @@ namespace PollyApp.Account
             var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, encrypted);
             cookie.Expires = System.DateTime.Now.AddHours(timeOutHours);
             response.Cookies.Add(cookie);
-            FormsAuthentication.SetAuthCookie(user, false, ticket.CookiePath);
+            FormsAuthentication.SetAuthCookie(user, true, ticket.CookiePath);
         }
         public static void SignOut()
         {
@@ -56,6 +92,10 @@ namespace PollyApp.Account
         {
             try
             {
+                if (String.IsNullOrWhiteSpace(email) || String.IsNullOrWhiteSpace(password) || String.IsNullOrWhiteSpace(firstName) || String.IsNullOrWhiteSpace(lastName))
+                    throw new Exception("Email or Password is not set");
+                if (!IsValidEmail(email) || password.Length > 15 || password.Length < 5)
+                    throw new Exception("Email or Password is not valid");
                 var rep = new GenericRepository.Repository();
                 String hash = String.Empty;
                 String salt = String.Empty;

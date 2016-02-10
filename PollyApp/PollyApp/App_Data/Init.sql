@@ -1,0 +1,9 @@
+Insert Into [dbo].[UserPermission] Values ('Basic',1);
+Insert Into [dbo].[PollType] Values ('Single',1);
+Insert Into [dbo].[PollType] Values ('Multiply',2);
+Insert Into [dbo].[PollType] Values ('Quiz',3);
+Insert Into [dbo].[PollShare] Values ('FreeLink',1);
+Insert Into [dbo].[PollShare] Values ('UserSet',2);
+Insert Into [dbo].[PollShare] Values ('CodeSet',3);
+Insert Into [dbo].[PollAccess] Values ('Public',1);
+Insert Into [dbo].[PollAccess] Values ('Private',2);
