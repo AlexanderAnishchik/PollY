@@ -19,20 +19,20 @@ namespace PollyApp.Controllers
         {
             return View();
         }
-        //        var Question = { value:"xcvxcv" }
-        //        var Answer = { value:"xcvxcv" }
-        //       var Answers =[Answer, Answer, Answer]
-        //     var PollUnits =[{Question, Answers},{Question,Answers
-        //},{Question,Answers}]
+//        var Question = { value:"xcvxcv" }
+//                var Answer = { value:"xcvxcv" }
+//               var Answers =[Answer, Answer, Answer]
+//             var PollUnits =[{Question, Answers},{Question,Answers
+//},{Question,Answers}]
 
-        //       jQuery.ajax({
-        //         method: "POST",
-        //         url: "/Constructor/SavePoll",
+//               jQuery.ajax({
+//                 method: "POST",
+//                 url: "/Constructor/SavePoll",
 
-        //                  data: JSON.stringify({PollUnits,PollName:"zxcxc"}),
-        //                  contentType: 'application/json; charset=utf-8',
+//                          data: JSON.stringify({PollUnits,PollName:"zxcxc"}),
+//                          contentType: 'application/json; charset=utf-8',
 
-        //        });
+//                });
         [UserAuth]
         public string SavePoll(PollWrapper newPoll)
         {
