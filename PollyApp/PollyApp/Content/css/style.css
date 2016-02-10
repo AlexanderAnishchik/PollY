@@ -9,7 +9,7 @@
 body {
     padding: 0;
     margin: 0;
-    background: #f3f6f8;
+    background: #eeeeee;
     font-family: OpenSans;
 }
 
@@ -93,7 +93,11 @@ a {
     background-position-y: center;
     background-attachment: fixed;
 }
-
+.has-error .input-group-addon {
+  color: #a94442;
+  background-color: none !important;
+  border-color: #a94442;
+}
 .scroll-button:focus, .scroll-button:active {
     border: none;
 }
@@ -260,7 +264,7 @@ a {
 #footer {
     background:#fff;
     font-family:OpenSans-light;
-    padding:0% 0px 2% 0px;
+    padding:2% 0px 2% 0px;
     
 }
 #footer h1{
@@ -713,11 +717,42 @@ fieldset[disabled] .btn-primary.focus {
     
 }
 .poll-page{
-    background:#ffffff;
     margin-top:57px;
+    font-family:Calibri;
+    
 }
-
-
+.poll-title{
+    border:1px solid #ccc;
+    margin-top:30px;
+    background:#fff;
+    padding:20px;
+    -webkit-box-shadow: 0px 0px 3px 1px rgba(204,204,204,1);
+    -moz-box-shadow: 0px 0px 3px 1px rgba(204,204,204,1);
+    box-shadow: 0px 0px 3px 1px rgba(204,204,204,1);
+}
+.poll-title > h1{
+    color:#616161;
+    margin:0;
+    padding:0;
+}
+.answer{
+    border:1px solid #ccc;
+    margin-top:15px;
+    font-size:24px;
+    color:#8f8f8f;
+    background:#fff;
+    padding:15px;
+    font-weight:200;
+}
+.question{
+    border:1px solid #ccc;
+    margin-top:15px;
+    font-size:18px;
+    color:#8f8f8f;
+    background:#fff;
+    padding:19px;
+    font-weight:200;
+}
 /*---------------------------------------------*/
 /*----------------MOBILE DESIGN----------------*/
 /*---------------------------------------------*/
@@ -730,9 +765,7 @@ fieldset[disabled] .btn-primary.focus {
         margin-top: 10%;
         margin-bottom: 10%;
     }
-    .poll-page{
-        min-height:922px;
-    }
+    
 }
 
 @media all and (min-width: 1200px) and (max-width: 1599px) {
