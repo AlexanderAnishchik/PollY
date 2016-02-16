@@ -18,7 +18,6 @@ namespace PollyApp.EFModel
         public Entities()
             : base("name=Entities")
         {
-            this.Configuration.LazyLoadingEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -27,13 +26,17 @@ namespace PollyApp.EFModel
         }
     
         public virtual DbSet<Answer> Answers { get; set; }
-        public virtual DbSet<Project> Projects { get; set; }
-        public virtual DbSet<Question> Questions { get; set; }
-        public virtual DbSet<Result> Results { get; set; }
-        public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<UserPermission> UserPermissions { get; set; }
+        public virtual DbSet<CodeSet> CodeSets { get; set; }
         public virtual DbSet<PollAccess> PollAccesses { get; set; }
         public virtual DbSet<PollShare> PollShares { get; set; }
         public virtual DbSet<PollType> PollTypes { get; set; }
+        public virtual DbSet<Project> Projects { get; set; }
+        public virtual DbSet<ProjectAccessVoter> ProjectAccessVoters { get; set; }
+        public virtual DbSet<Question> Questions { get; set; }
+        public virtual DbSet<QuestionType> QuestionTypes { get; set; }
+        public virtual DbSet<Result> Results { get; set; }
+        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<UserPermission> UserPermissions { get; set; }
+        public virtual DbSet<UserSet> UserSets { get; set; }
     }
 }

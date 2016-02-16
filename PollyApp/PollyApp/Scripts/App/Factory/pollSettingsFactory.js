@@ -27,7 +27,7 @@
                },
                {
                    logicalName: "UserSet",
-                   value: 2,    
+                   value: 2,
                    label: "User Set"
                },
                {

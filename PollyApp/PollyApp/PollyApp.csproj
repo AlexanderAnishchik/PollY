@@ -143,46 +143,58 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PollController.cs" />
     <Compile Include="EFModel\Answer.cs">
-      <DependentUpon>PollyDbEntities.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFModel\CodeSet.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFModel\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFModel\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFModel\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="EFModel\PollAccess.cs">
-      <DependentUpon>PollyDbEntities.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="EFModel\PollShare.cs">
-      <DependentUpon>PollyDbEntities.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="EFModel\PollType.cs">
-      <DependentUpon>PollyDbEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EFModel\PollyDbEntities.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PollyDbEntities.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EFModel\PollyDbEntities.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PollyDbEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EFModel\PollyDbEntities.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PollyDbEntities.edmx</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="EFModel\Project.cs">
-      <DependentUpon>PollyDbEntities.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFModel\ProjectAccessVoter.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="EFModel\Question.cs">
-      <DependentUpon>PollyDbEntities.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFModel\QuestionType.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="EFModel\Result.cs">
-      <DependentUpon>PollyDbEntities.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="EFModel\User.cs">
-      <DependentUpon>PollyDbEntities.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="EFModel\UserPermission.cs">
-      <DependentUpon>PollyDbEntities.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFModel\UserSet.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="GenericRepository\Repository.cs" />
     <Compile Include="Global.asax.cs">
@@ -191,6 +203,7 @@
     <Compile Include="Helpers\PollHelper.cs" />
     <Compile Include="Helpers\DbEnum.cs" />
     <Compile Include="JsonConverters\AnswerConverter.cs" />
+    <Compile Include="JsonConverters\Helpers\TextAnswer.cs" />
     <Compile Include="Models\PollUnit.cs" />
     <Compile Include="Models\PollWrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -334,15 +347,15 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Content\ui-bootstrap-csp.css" />
-    <Content Include="EFModel\PollyDbEntities.Context.tt">
+    <Content Include="EFModel\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>PollyDbEntities.edmx</DependentUpon>
-      <LastGenOutput>PollyDbEntities.Context.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="EFModel\PollyDbEntities.tt">
+    <Content Include="EFModel\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>PollyDbEntities.edmx</DependentUpon>
-      <LastGenOutput>PollyDbEntities.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -382,6 +395,7 @@
     <Content Include="Scripts\App\Controllers\homeController.js" />
     <Content Include="Scripts\App\Controllers\modalController.js" />
     <Content Include="Scripts\App\Directives\enterDirective.js" />
+    <Content Include="Scripts\App\Factory\answerTypeFactory.js" />
     <Content Include="Scripts\App\Route\constructorRoute.js" />
     <Content Include="Scripts\App\Services\headerKeeperService.js" />
     <Content Include="Scripts\App\Services\pollBuilderService.js" />
@@ -414,12 +428,12 @@
     <Content Include="fonts\OpenSans-Regular.ttf" />
     <Content Include="fonts\OpenSans-Semibold.ttf" />
     <Content Include="fonts\OpenSans-SemiboldItalic.ttf" />
-    <EntityDeploy Include="EFModel\PollyDbEntities.edmx">
+    <EntityDeploy Include="EFModel\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>PollyDbEntities.Designer.cs</LastGenOutput>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="EFModel\PollyDbEntities.edmx.diagram">
-      <DependentUpon>PollyDbEntities.edmx</DependentUpon>
+    <Content Include="EFModel\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\Publish.pubxml" />
     <None Include="Properties\PublishProfiles\thepolly - Web Deploy %282%29.pubxml" />
@@ -1222,7 +1236,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="JsonConverters\Helpers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
