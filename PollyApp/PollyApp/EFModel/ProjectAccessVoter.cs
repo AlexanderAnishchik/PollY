@@ -12,18 +12,25 @@ namespace PollyApp.EFModel
     using System;
     using System.Collections.Generic;
     
-    public partial class Answer
+    public partial class ProjectAccessVoter
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Answer()
+        public ProjectAccessVoter()
         {
             this.Results = new HashSet<Result>();
         }
     
         public int Id { get; set; }
-        public string AnswerValue { get; set; }
-        public int OrderValue { get; set; }
+        public Nullable<bool> IsUsed { get; set; }
+        public Nullable<int> CodeSetId { get; set; }
+        public Nullable<int> UserSetId { get; set; }
+        public int ProjectId { get; set; }
+        public int AccessId { get; set; }
     
+        public virtual CodeSet CodeSet { get; set; }
+        public virtual PollAccess PollAccess { get; set; }
+        public virtual Project Project { get; set; }
+        public virtual UserSet UserSet { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Result> Results { get; set; }
     }

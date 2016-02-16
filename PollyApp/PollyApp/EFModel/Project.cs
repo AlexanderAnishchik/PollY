@@ -17,6 +17,7 @@ namespace PollyApp.EFModel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Project()
         {
+            this.ProjectAccessVoters = new HashSet<ProjectAccessVoter>();
             this.Results = new HashSet<Result>();
         }
     
@@ -26,15 +27,16 @@ namespace PollyApp.EFModel
         public Nullable<System.DateTime> ModifiedOn { get; set; }
         public int UserId { get; set; }
         public Nullable<int> TypeId { get; set; }
-        public Nullable<int> AccessId { get; set; }
+        public bool IsActive { get; set; }
         public Nullable<int> ShareId { get; set; }
         public string UrlCode { get; set; }
     
+        public virtual PollShare PollShare { get; set; }
+        public virtual PollType PollType { get; set; }
         public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ProjectAccessVoter> ProjectAccessVoters { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Result> Results { get; set; }
-        public virtual PollShare PollShare { get; set; }
-        public virtual PollAccess PollAccess { get; set; }
-        public virtual PollType PollType { get; set; }
     }
 }

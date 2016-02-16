@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bd7224acedd04834bfa83985a4a6f7d8" Name="Diagram1">
+        <EntityTypeShape EntityType="PollyDbModel.Answer" Width="1.5" PointX="7.5" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PollyDbModel.CodeSet" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PollyDbModel.PollAccess" Width="1.5" PointX="5.25" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PollyDbModel.PollShare" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PollyDbModel.PollType" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PollyDbModel.Project" Width="1.5" PointX="5.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PollyDbModel.ProjectAccessVoter" Width="1.5" PointX="7.5" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PollyDbModel.Question" Width="1.5" PointX="7.5" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PollyDbModel.QuestionType" Width="1.5" PointX="5.25" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PollyDbModel.Result" Width="1.5" PointX="9.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PollyDbModel.User" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PollyDbModel.UserPermission" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PollyDbModel.UserSet" Width="1.5" PointX="5.25" PointY="8.375" IsExpanded="true" />
+        <AssociationConnector Association="PollyDbModel.FK_Result_Answer" ManuallyRouted="false" />
+        <AssociationConnector Association="PollyDbModel.FK_ProjectAccessVoters_CodeSet1" ManuallyRouted="false" />
+        <AssociationConnector Association="PollyDbModel.FK_ProjectAccessVoters_PollAccess" ManuallyRouted="false" />
+        <AssociationConnector Association="PollyDbModel.FK_Project_PollShare" ManuallyRouted="false" />
+        <AssociationConnector Association="PollyDbModel.FK_Project_PollType" ManuallyRouted="false" />
+        <AssociationConnector Association="PollyDbModel.FK_Project_User" ManuallyRouted="false" />
+        <AssociationConnector Association="PollyDbModel.FK_ProjectAccessVoters_Project" ManuallyRouted="false" />
+        <AssociationConnector Association="PollyDbModel.FK_Result_Project" ManuallyRouted="false" />
+        <AssociationConnector Association="PollyDbModel.FK_ProjectAccessVoters_CodeSet" ManuallyRouted="false" />
+        <AssociationConnector Association="PollyDbModel.FK_Result_ProjectAccessVoters" ManuallyRouted="false" />
+        <AssociationConnector Association="PollyDbModel.FK_Question_QuestionType" ManuallyRouted="false" />
+        <AssociationConnector Association="PollyDbModel.FK_Result_Question" ManuallyRouted="false" />
+        <AssociationConnector Association="PollyDbModel.FK_User_UserPermission" ManuallyRouted="false" />
+        <AssociationConnector Association="PollyDbModel.FK_UserSet_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

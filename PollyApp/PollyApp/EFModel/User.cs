@@ -18,7 +18,7 @@ namespace PollyApp.EFModel
         public User()
         {
             this.Projects = new HashSet<Project>();
-            this.Results = new HashSet<Result>();
+            this.UserSets = new HashSet<UserSet>();
         }
     
         public int Id { get; set; }
@@ -32,8 +32,8 @@ namespace PollyApp.EFModel
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Project> Projects { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Result> Results { get; set; }
         public virtual UserPermission UserPermission { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserSet> UserSets { get; set; }
     }
 }
