@@ -37,9 +37,9 @@ namespace PollyApp.Controllers
         {
             try
             {
-                MemberWorker.Register(pass, email, firstName, lastName);
+              var result=  MemberWorker.Register(pass, email, firstName, lastName);
                 MemberWorker.AddUserCookie(Response, email, 3600);
-                return new JsonResult() { Data = true };
+                return new JsonResult() { Data = result };
             }
             catch (Exception)
             {

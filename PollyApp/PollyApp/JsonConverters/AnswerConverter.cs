@@ -7,6 +7,6 @@ namespace PollyApp.JsonConverters
 {
     public static class AnswerConverter
     {
-
+        
     }
 }

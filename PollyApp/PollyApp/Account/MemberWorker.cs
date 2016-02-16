@@ -78,7 +78,7 @@ namespace PollyApp.Account
                 var emailCheck = new EmailCheck();
                 if (String.IsNullOrWhiteSpace(email) || String.IsNullOrWhiteSpace(password))
                     throw new Exception("Email or Password is not set");
-                if(!emailCheck.IsValidEmail(email) || password.Length>15|| password.Length < 5)
+                if (!emailCheck.IsValidEmail(email) || password.Length > 15 || password.Length < 5)
                     throw new Exception("Email or Password is not valid");
                 var rep = new GenericRepository.Repository();
                 var user = rep.Context.Users.Where(x => x.Email == email).FirstOrDefault();
@@ -112,7 +112,7 @@ namespace PollyApp.Account
         {
             FormsAuthentication.SignOut();
         }
-        public static void Register(String password, String email, String firstName, String lastName)
+        public static bool Register(String password, String email, String firstName, String lastName)
         {
             try
             {
@@ -121,16 +121,23 @@ namespace PollyApp.Account
                     throw new Exception("Email or Password is not set");
                 if (!emailCheck.IsValidEmail(email) || password.Length > 15 || password.Length < 5)
                     throw new Exception("Email or Password is not valid");
-                var rep = new GenericRepository.Repository();
-                String hash = String.Empty;
-                String salt = String.Empty;
-                using (MD5 md5Hash = MD5.Create())
+                using (var rep = new GenericRepository.Repository())
                 {
-                    salt = GetSalt();
-                    hash = GetMd5Hash(md5Hash, password + salt);
+                    if (rep.Context.Users.Where(x => x.Email == email).FirstOrDefault() != null)
+                    {
+                        return false;
+                    }
+                    String hash = String.Empty;
+                    String salt = String.Empty;
+                    using (MD5 md5Hash = MD5.Create())
+                    {
+                        salt = GetSalt();
+                        hash = GetMd5Hash(md5Hash, password + salt);
+                    }
+                    rep.Add(new User { Email = email, Password = hash, Salt = salt, FirstName = firstName, LastName = lastName, PermissionId = 1 });
+                    rep.Save();
+                    return true;
                 }
-                rep.Add(new User { Email = email, Password = hash, Salt = salt, FirstName = firstName, LastName = lastName, PermissionId = 1 });
-                rep.Save();
             }
             catch (Exception ex)
             {
