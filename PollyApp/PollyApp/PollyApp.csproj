@@ -267,6 +267,7 @@
     <Content Include="Content\images\platform.png" />
     <Content Include="Content\images\poll.png" />
     <Content Include="Content\images\polls.png" />
+    <Content Include="Content\images\pollylogo.png" />
     <Content Include="Content\images\pollylogogreen.png" />
     <Content Include="Content\images\privacy.png" />
     <Content Include="Content\images\question.png" />
@@ -437,6 +438,7 @@
     <None Include="Properties\PublishProfiles\Publish.pubxml" />
     <None Include="Properties\PublishProfiles\thepolly - Web Deploy %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\thepolly - Web Deploy %283%29.pubxml" />
+    <None Include="Properties\PublishProfiles\thepolly - Web Deploy %284%29.pubxml" />
     <None Include="Properties\PublishProfiles\thepolly - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\App\Factory\pollSettingsFactory.js" />
