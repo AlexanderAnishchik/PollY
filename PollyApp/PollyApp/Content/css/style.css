@@ -9,7 +9,7 @@
 body {
     padding: 0;
     margin: 0;
-    background: #eeeeee;
+    background: #f5f6f7;
     font-family: OpenSans;
 }
 
@@ -206,7 +206,9 @@ a {
     
 }
 #about .media{
-    margin-bottom:12%;
+    margin-bottom:7%;
+    background-color:rgba(0,0,0,0.4);
+    padding:10px;
 }
 #about .media-object,
 #wrapper .media-object{
@@ -719,39 +721,51 @@ fieldset[disabled] .btn-primary.focus {
 .poll-page{
     margin-top:57px;
     font-family:Calibri;
-    
 }
-.poll-title{
-    border:1px solid #ccc;
-    margin-top:30px;
-    background:#fff;
-    padding:20px;
-    -webkit-box-shadow: 0px 0px 3px 1px rgba(204,204,204,1);
-    -moz-box-shadow: 0px 0px 3px 1px rgba(204,204,204,1);
-    box-shadow: 0px 0px 3px 1px rgba(204,204,204,1);
+.poll-page .logo{
+    margin-bottom:57px;
 }
-.poll-title > h1{
-    color:#616161;
-    margin:0;
+.poll-page > .poll-title{
+    font-size:50px;
+    color:#1abc9c;
+}
+.poll-page .thumbnail > img{
+    width:300px;
+    height:auto;
+    border-top-left-radius:4px;
+    border-top-right-radius:4px;
+}
+.poll-page .thumbnail {
+    padding:0;
+    border-radius:4px;
+    border:none;
+}
+.poll-page .thumbnail h2,
+.poll-page .thumbnail p,
+.poll-page .thumbnail span{
+    color:#5c5146;
+}
+.poll-page .thumbnail h2{
+    padding:0;
+    margin:0px 0px 5px 0px;
+}
+.poll-page .thumbnail p input{
+    margin-bottom:15px;
+}
+.poll-page .row{
     padding:0;
 }
-.answer{
-    border:1px solid #ccc;
-    margin-top:15px;
-    font-size:24px;
-    color:#8f8f8f;
-    background:#fff;
-    padding:15px;
-    font-weight:200;
+.btn-vote{
+    background:#1abc9c;
+    color:#fff;
+    border:1px solid #1abc9c;
+    padding:7.5px 20px;
+    
 }
-.question{
-    border:1px solid #ccc;
-    margin-top:15px;
-    font-size:18px;
-    color:#8f8f8f;
-    background:#fff;
-    padding:19px;
-    font-weight:200;
+.btn-vote:hover{
+     background:none;
+     color:#1abc9c;
+     border:1px solid #1abc9c;
 }
 /*---------------------------------------------*/
 /*----------------MOBILE DESIGN----------------*/
@@ -959,4 +973,85 @@ fieldset[disabled] .btn-primary.focus {
 }
 .last {
     margin: 0 0 0 0 !important;
+}
+input[type=checkbox].css-checkbox {
+	position:absolute; 
+    z-index:-1000; 
+    left:-1000px; 
+    overflow: hidden; 
+    clip: rect(0 0 0 0); 
+    height:1px; width:1px; 
+    margin:-1px; 
+    padding:0; 
+    border:0;
+}
+
+input[type=checkbox].css-checkbox + label.css-label {
+    padding-left:40px;
+    height:24px; 
+    display:inline-block;
+    line-height:24px;
+    background-repeat:no-repeat;
+    background-position: 0 0;
+    font-size:16px;
+    vertical-align:middle;
+    cursor:pointer;
+
+}
+
+input[type=checkbox].css-checkbox:checked + label.css-label {
+    background-position: 0 -24px;
+}
+label.css-label {
+    background-image:url(../images/pollycheckbox.png);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    color:#5c5146;
+    font-weight:lighter;
+    
+}
+input[type=radio].css-radio {
+	position:absolute; 
+    z-index:-1000; 
+    left:-1000px; 
+    overflow: hidden; 
+    clip: rect(0 0 0 0); 
+    height:1px; width:1px; 
+    margin:-1px; 
+    padding:0; 
+    border:0;
+}
+
+input[type=radio].css-radio + label.css-labelr {
+    padding-left:40px;
+    height:24px; 
+    display:inline-block;
+    line-height:24px;
+    background-repeat:no-repeat;
+    background-position: 0 0;
+    font-size:16px;
+    vertical-align:middle;
+    cursor:pointer;
+
+
+}
+
+input[type=radio].css-radio:checked + label.css-labelr {
+    background-position: 0 -24px;
+}
+label.css-labelr {
+    background-image:url(../images/pollyradio.png);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    color:#5c5146;
+    font-weight:lighter;
+    
 }
