@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="PollyDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="PollyDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Answer">
           <Key>
             <PropertyRef Name="Id" />
@@ -12,6 +12,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="AnswerValue" Type="nvarchar(max)" Nullable="false" />
           <Property Name="OrderValue" Type="int" Nullable="false" />
+          <Property Name="QuestionId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="CodeSet">
           <Key>
@@ -126,6 +127,18 @@
           <Property Name="IPAdrress" Type="nvarchar" MaxLength="50" />
           <Property Name="MACAdrress" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <Association Name="Answer_QuestionId">
+          <End Role="Question" Type="Self.Question" Multiplicity="1" />
+          <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Question">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Answer">
+              <PropertyRef Name="QuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Project_PollShare">
           <End Role="PollShare" Type="Self.PollShare" Multiplicity="0..1" />
           <End Role="Project" Type="Self.Project" Multiplicity="*" />
@@ -308,6 +321,10 @@
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserPermission" EntityType="Self.UserPermission" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserSet" EntityType="Self.UserSet" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="Answer_QuestionId" Association="Self.Answer_QuestionId">
+            <End Role="Question" EntitySet="Question" />
+            <End Role="Answer" EntitySet="Answer" />
+          </AssociationSet>
           <AssociationSet Name="FK_Project_PollShare" Association="Self.FK_Project_PollShare">
             <End Role="PollShare" EntitySet="PollShare" />
             <End Role="Project" EntitySet="Project" />
@@ -365,8 +382,7 @@
             <End Role="UserSet" EntitySet="UserSet" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PollyDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -378,6 +394,8 @@
           <Property Name="AnswerValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="OrderValue" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Results" Relationship="Self.FK_Result_Answer" FromRole="Answer" ToRole="Result" />
+          <Property Name="QuestionId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Question" Relationship="PollyDbModel.Answer_QuestionId" FromRole="Answer" ToRole="Question" />
         </EntityType>
         <EntityType Name="CodeSet">
           <Key>
@@ -459,6 +477,7 @@
           <Property Name="QuestionTypeId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="QuestionType" Relationship="Self.FK_Question_QuestionType" FromRole="Question" ToRole="QuestionType" />
           <NavigationProperty Name="Results" Relationship="Self.FK_Result_Question" FromRole="Question" ToRole="Result" />
+          <NavigationProperty Name="Answers" Relationship="PollyDbModel.Answer_QuestionId" FromRole="Question" ToRole="Answer" />
         </EntityType>
         <EntityType Name="QuestionType">
           <Key>
@@ -757,7 +776,23 @@
             <End Role="User" EntitySet="Users" />
             <End Role="UserSet" EntitySet="UserSets" />
           </AssociationSet>
+          <AssociationSet Name="Answer_QuestionId" Association="PollyDbModel.Answer_QuestionId">
+            <End Role="Question" EntitySet="Questions" />
+            <End Role="Answer" EntitySet="Answers" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="Answer_QuestionId">
+          <End Type="PollyDbModel.Question" Role="Question" Multiplicity="1" />
+          <End Type="PollyDbModel.Answer" Role="Answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Question">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Answer">
+              <PropertyRef Name="QuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -767,6 +802,7 @@
           <EntitySetMapping Name="Answers">
             <EntityTypeMapping TypeName="PollyDbModel.Answer">
               <MappingFragment StoreEntitySet="Answer">
+                <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="AnswerValue" ColumnName="AnswerValue" />
                 <ScalarProperty Name="OrderValue" ColumnName="OrderValue" />

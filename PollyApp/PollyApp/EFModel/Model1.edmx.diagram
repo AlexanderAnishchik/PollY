@@ -32,6 +32,7 @@
         <AssociationConnector Association="PollyDbModel.FK_Result_Question" ManuallyRouted="false" />
         <AssociationConnector Association="PollyDbModel.FK_User_UserPermission" ManuallyRouted="false" />
         <AssociationConnector Association="PollyDbModel.FK_UserSet_User" ManuallyRouted="false" />
+        <AssociationConnector Association="PollyDbModel.Answer_QuestionId" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
