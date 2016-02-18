@@ -25,10 +25,8 @@ namespace PollyApp.EFModel
         public Nullable<int> CodeSetId { get; set; }
         public Nullable<int> UserSetId { get; set; }
         public int ProjectId { get; set; }
-        public int AccessId { get; set; }
     
         public virtual CodeSet CodeSet { get; set; }
-        public virtual PollAccess PollAccess { get; set; }
         public virtual Project Project { get; set; }
         public virtual UserSet UserSet { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

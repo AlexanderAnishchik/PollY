@@ -27,6 +27,7 @@ namespace PollyApp.Helpers
                         newProj.UserId = (int)poll.UserId;
                         newProj.Name = poll.PollName;
                         newProj.ShareId = pollShare;
+                        newProj.AccessId = pollAccess;
                         newProj.TypeId = pollTypes;
                         newProj.CreatedOn = DateTime.Now;
                         newProj.ModifiedOn= DateTime.Now;
@@ -34,21 +35,21 @@ namespace PollyApp.Helpers
                         newProj.UrlCode = GenerateProjectCode();
                         Db.Add(newProj);
                         Db.Save();
-                        //if (poll.Poll != null)
-                        //{
-                        //    foreach (var el in poll.Poll)
-                        //    {
-                        //        el.Question.ProjectId = newProj.Id;
-                        //        Db.Add(el.Question);
-                        //        Db.Save();
-                        //        foreach (var an in el.Answers)
-                        //        {
-                        //            an.QuestionId = el.Question.Id;
-                        //        }
-                        //        Db.AddRange(el.Answers);
-                        //        Db.Save();
-                        //    }
-                        //}
+                        if (poll.Poll != null)
+                        {
+                            foreach (var el in poll.Poll)
+                            {
+                                el.Question.ProjectId = newProj.Id;
+                                Db.Add(el.Question);
+                                Db.Save();
+                                foreach (var an in el.Answers)
+                                {
+                                    an.QuestionId = el.Question.Id;
+                                }
+                                Db.AddRange(el.Answers);
+                                Db.Save();
+                            }
+                        }
                         dbContextTransaction.Commit();
                     }
                     catch (Exception ex)

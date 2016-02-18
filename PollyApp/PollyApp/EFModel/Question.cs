@@ -17,8 +17,8 @@ namespace PollyApp.EFModel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Question()
         {
-            this.Results = new HashSet<Result>();
             this.Answers = new HashSet<Answer>();
+            this.Results = new HashSet<Result>();
         }
     
         public int Id { get; set; }
@@ -26,10 +26,10 @@ namespace PollyApp.EFModel
         public int ProjectId { get; set; }
         public int QuestionTypeId { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Answer> Answers { get; set; }
         public virtual QuestionType QuestionType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Result> Results { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Answer> Answers { get; set; }
     }
 }

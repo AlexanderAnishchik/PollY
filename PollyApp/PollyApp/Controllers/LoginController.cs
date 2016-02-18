@@ -18,7 +18,7 @@ namespace PollyApp.Controllers
             var isLogged = MemberWorker.Login(login, pass);
             if (isLogged)
             {
-               
+
                 user = Db.Context.Users.Where(x => x.Email == login).Select(x => new
                 {
                     x.Id,
@@ -27,19 +27,42 @@ namespace PollyApp.Controllers
                     x.LastName,
                     x.Logo
                 }).FirstOrDefault();
-                MemberWorker.AddUserCookie(Response, ((dynamic)user).Email,3600);
+                MemberWorker.AddUserCookie(Response, ((dynamic)user).Email, 3600);
             }
             Session["user"] = user;
             return new JsonResult() { Data = new { status = isLogged, user = user } };
         }
         [HttpPost]
-        public JsonResult SignUp(String firstName, String lastName, String email, String pass)
+        public ActionResult SignUp(String firstName, String lastName, String email, String pass)
         {
             try
             {
-              var result=  MemberWorker.Register(pass, email, firstName, lastName);
-                MemberWorker.AddUserCookie(Response, email, 3600);
-                return new JsonResult() { Data = result };
+                var result = MemberWorker.Register(pass, email, firstName, lastName);
+                switch (result)
+                {
+                    case MemberWorker.RegisterStatus.Success:
+                        {
+                            MemberWorker.AddUserCookie(Response, email, 3600);
+                            return new JsonResult() { Data = "OK" };
+
+                        }
+                    case MemberWorker.RegisterStatus.NotValid:
+                        return new JsonResult() { Data = "Invalid Email or Password" };
+                    case MemberWorker.RegisterStatus.EmailExists:
+                        return new JsonResult() { Data = "Email is exists" };
+                    default:
+                        return new HttpStatusCodeResult(400);
+                }
+                if (result == MemberWorker.RegisterStatus.Success)
+                {
+
+                    MemberWorker.AddUserCookie(Response, email, 3600);
+                    return new JsonResult() { Data = "OK" };
+                }
+                else
+                {
+                    return new JsonResult() { Data = false };
+                }
             }
             catch (Exception)
             {
