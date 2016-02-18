@@ -71,15 +71,15 @@ namespace PollyApp.Account
     {
         private const int SaltValueSize = 4;
         private static String[] HashingAlgorithms = new String[] { "SHA256", "MD5" };
-        public static Boolean Login(String email, String password)
+        public static LoginStatus SignIn(String email, String password)
         {
             try
             {
                 var emailCheck = new EmailCheck();
                 if (String.IsNullOrWhiteSpace(email) || String.IsNullOrWhiteSpace(password))
-                    throw new Exception("Email or Password is not set");
+                    return LoginStatus.EmptyValue;
                 if (!emailCheck.IsValidEmail(email) || password.Length > 15 || password.Length < 5)
-                    throw new Exception("Email or Password is not valid");
+                    return LoginStatus.NotValid;
                 var rep = new GenericRepository.Repository();
                 var user = rep.Context.Users.Where(x => x.Email == email).FirstOrDefault();
                 if (user != null)
@@ -88,14 +88,15 @@ namespace PollyApp.Account
                     var userSalt = user.Salt;
                     using (MD5 md5Hash = MD5.Create())
                     {
-                        return VerifyMd5Hash(md5Hash, password + userSalt, userPass);
+                        if(VerifyMd5Hash(md5Hash, password + userSalt, userPass))
+                            return LoginStatus.Success;
                     }
                 }
-                return false;
+                return LoginStatus.UnexpectedError;
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                return LoginStatus.UnexpectedError;
             }
         }
         public static void AddUserCookie(HttpResponseBase response, string user, int timeOutHours)
@@ -141,7 +142,7 @@ namespace PollyApp.Account
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                return RegisterStatus.UnexpectedError;
             }
         }
         private static String GetMd5Hash(MD5 md5Hash, String input)
@@ -174,6 +175,13 @@ namespace PollyApp.Account
             NotValid=3,
             UnexpectedError=4,
             EmailExists=5
+        }
+        public enum LoginStatus
+        {
+            Success = 1,
+            EmptyValue = 2,
+            NotValid = 3,
+            UnexpectedError = 4
         }
     }
 }

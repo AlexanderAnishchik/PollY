@@ -50,14 +50,18 @@
         if (me.registr.first && me.registr.last && me.registr.email && me.registr.pass && me.registr.confirmpass && me.registr.pass == me.registr.confirmpass) {
             $http.post("Login/SignUp", { email: me.registr.email, pass: me.registr.pass, firstName: me.registr.first, lastName: me.registr.last }).then(function (response) {
                 var data = response.data;
-                if (data == "OK") {
-                    $scope.isRegister = true;
-                    setTimeout(function () {
-                        $scope.isAuth = false;
-                        $window.location.reload();
-                    }, 2000);
+                if (response.status == 200) {
+                    if (data == "OK") {
+                        $scope.isRegister = true;
+                        setTimeout(function () {
+                            $scope.isAuth = false;
+                            $window.location.reload();
+                        }, 2000);
+                    }
                 }
+                else {
 
+                }
             },
            function (response) {
 

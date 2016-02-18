@@ -15,7 +15,7 @@ namespace PollyApp.Controllers
         public ActionResult SignIn(String login, String pass)
         {
             object user = null;
-            var isLogged = MemberWorker.Login(login, pass);
+            var isLogged = MemberWorker.SignIn(login, pass);
             if (isLogged)
             {
 
