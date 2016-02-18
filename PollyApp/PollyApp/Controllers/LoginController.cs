@@ -16,21 +16,28 @@ namespace PollyApp.Controllers
         {
             object user = null;
             var isLogged = MemberWorker.SignIn(login, pass);
-            if (isLogged)
+            switch (isLogged)
             {
+                case MemberWorker.LoginStatus.Success:
+                    {
+                        user = Db.Context.Users.Where(x => x.Email == login).Select(x => new
+                        {
+                            x.Id,
+                            x.Email,
+                            x.FirstName,
+                            x.LastName,
+                            x.Logo
+                        }).FirstOrDefault();
+                        MemberWorker.AddUserCookie(Response, ((dynamic)user).Email, 3600);
+                        Session["user"] = user;
+                        return new JsonResult() { Data = new { status = "OK", user = user } };
 
-                user = Db.Context.Users.Where(x => x.Email == login).Select(x => new
-                {
-                    x.Id,
-                    x.Email,
-                    x.FirstName,
-                    x.LastName,
-                    x.Logo
-                }).FirstOrDefault();
-                MemberWorker.AddUserCookie(Response, ((dynamic)user).Email, 3600);
+                    }
+                case MemberWorker.LoginStatus.NotValid:
+                    return new JsonResult() { Data = new { status = "Invalid Email or Password", user = user } };
+                default:
+                    return new HttpStatusCodeResult(400);
             }
-            Session["user"] = user;
-            return new JsonResult() { Data = new { status = isLogged, user = user } };
         }
         [HttpPost]
         public ActionResult SignUp(String firstName, String lastName, String email, String pass)
