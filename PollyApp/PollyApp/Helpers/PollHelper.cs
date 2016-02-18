@@ -20,6 +20,7 @@ namespace PollyApp.Helpers
                 {
                     try
                     {
+                        var questionType = Db.Context.QuestionTypes.Where(x => x.Id == 1).Select(x => x.Id).First();
                         var pollShare = Db.Context.PollShares.Where(x => x.Value == poll.PollShare).Select(x => x.Id).First();
                         var pollAccess = Db.Context.PollAccesses.Where(x => x.Value == poll.PollAccess).Select(x => x.Id).First();
                         var pollTypes = Db.Context.PollTypes.Where(x => x.Value == poll.PollType).Select(x => x.Id).First();
@@ -40,11 +41,15 @@ namespace PollyApp.Helpers
                             foreach (var el in poll.Poll)
                             {
                                 el.Question.ProjectId = newProj.Id;
+                                el.Question.QuestionTypeId = questionType;
                                 Db.Add(el.Question);
                                 Db.Save();
+                                int order = 1;
                                 foreach (var an in el.Answers)
                                 {
                                     an.QuestionId = el.Question.Id;
+                                    an.OrderValue = 1;
+                                    order++;
                                 }
                                 Db.AddRange(el.Answers);
                                 Db.Save();
