@@ -26,11 +26,13 @@ namespace PollyApp.EFModel
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
         public int UserId { get; set; }
-        public Nullable<int> TypeId { get; set; }
+        public int TypeId { get; set; }
         public bool IsActive { get; set; }
-        public Nullable<int> ShareId { get; set; }
+        public int ShareId { get; set; }
         public string UrlCode { get; set; }
+        public int AccessId { get; set; }
     
+        public virtual PollAccess PollAccess { get; set; }
         public virtual PollShare PollShare { get; set; }
         public virtual PollType PollType { get; set; }
         public virtual User User { get; set; }

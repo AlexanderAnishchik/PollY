@@ -10,7 +10,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="AnswerValue" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Value" Type="nvarchar(max)" Nullable="false" />
           <Property Name="OrderValue" Type="int" Nullable="false" />
           <Property Name="QuestionId" Type="int" Nullable="false" />
         </EntityType>
@@ -54,10 +54,11 @@
           <Property Name="CreatedOn" Type="datetime" />
           <Property Name="ModifiedOn" Type="datetime" />
           <Property Name="UserId" Type="int" Nullable="false" />
-          <Property Name="TypeId" Type="int" />
+          <Property Name="TypeId" Type="int" Nullable="false" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
-          <Property Name="ShareId" Type="int" />
-          <Property Name="UrlCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="ShareId" Type="int" Nullable="false" />
+          <Property Name="UrlCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AccessId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ProjectAccessVoters">
           <Key>
@@ -68,7 +69,6 @@
           <Property Name="CodeSetId" Type="int" />
           <Property Name="UserSetId" Type="int" />
           <Property Name="ProjectId" Type="int" Nullable="false" />
-          <Property Name="AccessId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Question">
           <Key>
@@ -140,7 +140,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Project_PollShare">
-          <End Role="PollShare" Type="Self.PollShare" Multiplicity="0..1" />
+          <End Role="PollShare" Type="Self.PollShare" Multiplicity="1" />
           <End Role="Project" Type="Self.Project" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PollShare">
@@ -152,7 +152,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Project_PollType">
-          <End Role="PollType" Type="Self.PollType" Multiplicity="0..1" />
+          <End Role="PollType" Type="Self.PollType" Multiplicity="1" />
           <End Role="Project" Type="Self.Project" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PollType">
@@ -196,18 +196,6 @@
             </Principal>
             <Dependent Role="ProjectAccessVoters">
               <PropertyRef Name="CodeSetId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ProjectAccessVoters_PollAccess">
-          <End Role="PollAccess" Type="Self.PollAccess" Multiplicity="1" />
-          <End Role="ProjectAccessVoters" Type="Self.ProjectAccessVoters" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PollAccess">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ProjectAccessVoters">
-              <PropertyRef Name="AccessId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -307,6 +295,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="Project_AccessId_FK">
+          <End Role="PollAccess" Type="Self.PollAccess" Multiplicity="1" />
+          <End Role="Project" Type="Self.Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PollAccess">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Project">
+              <PropertyRef Name="AccessId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="PollyDbModelStoreContainer">
           <EntitySet Name="Answer" EntityType="Self.Answer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CodeSet" EntityType="Self.CodeSet" Schema="dbo" store:Type="Tables" />
@@ -345,10 +345,6 @@
             <End Role="CodeSet" EntitySet="CodeSet" />
             <End Role="ProjectAccessVoters" EntitySet="ProjectAccessVoters" />
           </AssociationSet>
-          <AssociationSet Name="FK_ProjectAccessVoters_PollAccess" Association="Self.FK_ProjectAccessVoters_PollAccess">
-            <End Role="PollAccess" EntitySet="PollAccess" />
-            <End Role="ProjectAccessVoters" EntitySet="ProjectAccessVoters" />
-          </AssociationSet>
           <AssociationSet Name="FK_ProjectAccessVoters_Project" Association="Self.FK_ProjectAccessVoters_Project">
             <End Role="Project" EntitySet="Project" />
             <End Role="ProjectAccessVoters" EntitySet="ProjectAccessVoters" />
@@ -381,75 +377,156 @@
             <End Role="User" EntitySet="User" />
             <End Role="UserSet" EntitySet="UserSet" />
           </AssociationSet>
+          <AssociationSet Name="Project_AccessId_FK" Association="Self.Project_AccessId_FK">
+            <End Role="PollAccess" EntitySet="PollAccess" />
+            <End Role="Project" EntitySet="Project" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PollyDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Answers" EntityType="PollyDbModel.Answer" />
+          <EntitySet Name="CodeSets" EntityType="PollyDbModel.CodeSet" />
+          <EntitySet Name="PollAccesses" EntityType="PollyDbModel.PollAccess" />
+          <EntitySet Name="PollShares" EntityType="PollyDbModel.PollShare" />
+          <EntitySet Name="PollTypes" EntityType="PollyDbModel.PollType" />
+          <EntitySet Name="Projects" EntityType="PollyDbModel.Project" />
+          <EntitySet Name="ProjectAccessVoters" EntityType="PollyDbModel.ProjectAccessVoter" />
+          <EntitySet Name="Questions" EntityType="PollyDbModel.Question" />
+          <EntitySet Name="QuestionTypes" EntityType="PollyDbModel.QuestionType" />
+          <EntitySet Name="Results" EntityType="PollyDbModel.Result" />
+          <EntitySet Name="Users" EntityType="PollyDbModel.User" />
+          <EntitySet Name="UserPermissions" EntityType="PollyDbModel.UserPermission" />
+          <EntitySet Name="UserSets" EntityType="PollyDbModel.UserSet" />
+          <AssociationSet Name="Answer_QuestionId" Association="PollyDbModel.Answer_QuestionId">
+            <End Role="Question" EntitySet="Questions" />
+            <End Role="Answer" EntitySet="Answers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Result_Answer" Association="PollyDbModel.FK_Result_Answer">
+            <End Role="Answer" EntitySet="Answers" />
+            <End Role="Result" EntitySet="Results" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectAccessVoters_CodeSet1" Association="PollyDbModel.FK_ProjectAccessVoters_CodeSet1">
+            <End Role="CodeSet" EntitySet="CodeSets" />
+            <End Role="ProjectAccessVoter" EntitySet="ProjectAccessVoters" />
+          </AssociationSet>
+          <AssociationSet Name="Project_AccessId_FK" Association="PollyDbModel.Project_AccessId_FK">
+            <End Role="PollAccess" EntitySet="PollAccesses" />
+            <End Role="Project" EntitySet="Projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_PollShare" Association="PollyDbModel.FK_Project_PollShare">
+            <End Role="PollShare" EntitySet="PollShares" />
+            <End Role="Project" EntitySet="Projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_PollType" Association="PollyDbModel.FK_Project_PollType">
+            <End Role="PollType" EntitySet="PollTypes" />
+            <End Role="Project" EntitySet="Projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_User" Association="PollyDbModel.FK_Project_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Project" EntitySet="Projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectAccessVoters_Project" Association="PollyDbModel.FK_ProjectAccessVoters_Project">
+            <End Role="Project" EntitySet="Projects" />
+            <End Role="ProjectAccessVoter" EntitySet="ProjectAccessVoters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Result_Project" Association="PollyDbModel.FK_Result_Project">
+            <End Role="Project" EntitySet="Projects" />
+            <End Role="Result" EntitySet="Results" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectAccessVoters_CodeSet" Association="PollyDbModel.FK_ProjectAccessVoters_CodeSet">
+            <End Role="UserSet" EntitySet="UserSets" />
+            <End Role="ProjectAccessVoter" EntitySet="ProjectAccessVoters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Result_ProjectAccessVoters" Association="PollyDbModel.FK_Result_ProjectAccessVoters">
+            <End Role="ProjectAccessVoter" EntitySet="ProjectAccessVoters" />
+            <End Role="Result" EntitySet="Results" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Question_QuestionType" Association="PollyDbModel.FK_Question_QuestionType">
+            <End Role="QuestionType" EntitySet="QuestionTypes" />
+            <End Role="Question" EntitySet="Questions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Result_Question" Association="PollyDbModel.FK_Result_Question">
+            <End Role="Question" EntitySet="Questions" />
+            <End Role="Result" EntitySet="Results" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_UserPermission" Association="PollyDbModel.FK_User_UserPermission">
+            <End Role="UserPermission" EntitySet="UserPermissions" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserSet_User" Association="PollyDbModel.FK_UserSet_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserSet" EntitySet="UserSets" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="Answer">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="AnswerValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="OrderValue" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Results" Relationship="Self.FK_Result_Answer" FromRole="Answer" ToRole="Result" />
           <Property Name="QuestionId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Question" Relationship="PollyDbModel.Answer_QuestionId" FromRole="Answer" ToRole="Question" />
+          <NavigationProperty Name="Results" Relationship="PollyDbModel.FK_Result_Answer" FromRole="Answer" ToRole="Result" />
         </EntityType>
         <EntityType Name="CodeSet">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CodeText" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="ProjectAccessVoters" Relationship="Self.FK_ProjectAccessVoters_CodeSet1" FromRole="CodeSet" ToRole="ProjectAccessVoters" />
+          <Property Name="CodeText" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ProjectAccessVoters" Relationship="PollyDbModel.FK_ProjectAccessVoters_CodeSet1" FromRole="CodeSet" ToRole="ProjectAccessVoter" />
         </EntityType>
         <EntityType Name="PollAccess">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Value" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="ProjectAccessVoters" Relationship="Self.FK_ProjectAccessVoters_PollAccess" FromRole="PollAccess" ToRole="ProjectAccessVoters" />
+          <NavigationProperty Name="Projects" Relationship="PollyDbModel.Project_AccessId_FK" FromRole="PollAccess" ToRole="Project" />
         </EntityType>
         <EntityType Name="PollShare">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Value" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Projects" Relationship="Self.FK_Project_PollShare" FromRole="PollShare" ToRole="Project" />
+          <NavigationProperty Name="Projects" Relationship="PollyDbModel.FK_Project_PollShare" FromRole="PollShare" ToRole="Project" />
         </EntityType>
         <EntityType Name="PollType">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Value" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Projects" Relationship="Self.FK_Project_PollType" FromRole="PollType" ToRole="Project" />
+          <NavigationProperty Name="Projects" Relationship="PollyDbModel.FK_Project_PollType" FromRole="PollType" ToRole="Project" />
         </EntityType>
         <EntityType Name="Project">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CreatedOn" Type="DateTime" Precision="3" />
           <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="TypeId" Type="Int32" />
+          <Property Name="TypeId" Type="Int32" Nullable="false" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="ShareId" Type="Int32" />
-          <Property Name="UrlCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="PollShare" Relationship="Self.FK_Project_PollShare" FromRole="Project" ToRole="PollShare" />
-          <NavigationProperty Name="PollType" Relationship="Self.FK_Project_PollType" FromRole="Project" ToRole="PollType" />
-          <NavigationProperty Name="User" Relationship="Self.FK_Project_User" FromRole="Project" ToRole="User" />
-          <NavigationProperty Name="ProjectAccessVoters" Relationship="Self.FK_ProjectAccessVoters_Project" FromRole="Project" ToRole="ProjectAccessVoters" />
-          <NavigationProperty Name="Results" Relationship="Self.FK_Result_Project" FromRole="Project" ToRole="Result" />
+          <Property Name="ShareId" Type="Int32" Nullable="false" />
+          <Property Name="UrlCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AccessId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PollAccess" Relationship="PollyDbModel.Project_AccessId_FK" FromRole="Project" ToRole="PollAccess" />
+          <NavigationProperty Name="PollShare" Relationship="PollyDbModel.FK_Project_PollShare" FromRole="Project" ToRole="PollShare" />
+          <NavigationProperty Name="PollType" Relationship="PollyDbModel.FK_Project_PollType" FromRole="Project" ToRole="PollType" />
+          <NavigationProperty Name="User" Relationship="PollyDbModel.FK_Project_User" FromRole="Project" ToRole="User" />
+          <NavigationProperty Name="ProjectAccessVoters" Relationship="PollyDbModel.FK_ProjectAccessVoters_Project" FromRole="Project" ToRole="ProjectAccessVoter" />
+          <NavigationProperty Name="Results" Relationship="PollyDbModel.FK_Result_Project" FromRole="Project" ToRole="Result" />
         </EntityType>
         <EntityType Name="ProjectAccessVoter">
           <Key>
@@ -460,33 +537,31 @@
           <Property Name="CodeSetId" Type="Int32" />
           <Property Name="UserSetId" Type="Int32" />
           <Property Name="ProjectId" Type="Int32" Nullable="false" />
-          <Property Name="AccessId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="CodeSet" Relationship="Self.FK_ProjectAccessVoters_CodeSet1" FromRole="ProjectAccessVoters" ToRole="CodeSet" />
-          <NavigationProperty Name="PollAccess" Relationship="Self.FK_ProjectAccessVoters_PollAccess" FromRole="ProjectAccessVoters" ToRole="PollAccess" />
-          <NavigationProperty Name="Project" Relationship="Self.FK_ProjectAccessVoters_Project" FromRole="ProjectAccessVoters" ToRole="Project" />
-          <NavigationProperty Name="UserSet" Relationship="Self.FK_ProjectAccessVoters_CodeSet" FromRole="ProjectAccessVoters" ToRole="UserSet" />
-          <NavigationProperty Name="Results" Relationship="Self.FK_Result_ProjectAccessVoters" FromRole="ProjectAccessVoters" ToRole="Result" />
+          <NavigationProperty Name="CodeSet" Relationship="PollyDbModel.FK_ProjectAccessVoters_CodeSet1" FromRole="ProjectAccessVoter" ToRole="CodeSet" />
+          <NavigationProperty Name="Project" Relationship="PollyDbModel.FK_ProjectAccessVoters_Project" FromRole="ProjectAccessVoter" ToRole="Project" />
+          <NavigationProperty Name="UserSet" Relationship="PollyDbModel.FK_ProjectAccessVoters_CodeSet" FromRole="ProjectAccessVoter" ToRole="UserSet" />
+          <NavigationProperty Name="Results" Relationship="PollyDbModel.FK_Result_ProjectAccessVoters" FromRole="ProjectAccessVoter" ToRole="Result" />
         </EntityType>
         <EntityType Name="Question">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="QuestionValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="QuestionValue" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ProjectId" Type="Int32" Nullable="false" />
           <Property Name="QuestionTypeId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="QuestionType" Relationship="Self.FK_Question_QuestionType" FromRole="Question" ToRole="QuestionType" />
-          <NavigationProperty Name="Results" Relationship="Self.FK_Result_Question" FromRole="Question" ToRole="Result" />
           <NavigationProperty Name="Answers" Relationship="PollyDbModel.Answer_QuestionId" FromRole="Question" ToRole="Answer" />
+          <NavigationProperty Name="QuestionType" Relationship="PollyDbModel.FK_Question_QuestionType" FromRole="Question" ToRole="QuestionType" />
+          <NavigationProperty Name="Results" Relationship="PollyDbModel.FK_Result_Question" FromRole="Question" ToRole="Result" />
         </EntityType>
         <EntityType Name="QuestionType">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Value" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Questions" Relationship="Self.FK_Question_QuestionType" FromRole="QuestionType" ToRole="Question" />
+          <NavigationProperty Name="Questions" Relationship="PollyDbModel.FK_Question_QuestionType" FromRole="QuestionType" ToRole="Question" />
         </EntityType>
         <EntityType Name="Result">
           <Key>
@@ -497,10 +572,10 @@
           <Property Name="ProjectId" Type="Int32" Nullable="false" />
           <Property Name="VoterId" Type="Int32" Nullable="false" />
           <Property Name="AnswerId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Answer" Relationship="Self.FK_Result_Answer" FromRole="Result" ToRole="Answer" />
-          <NavigationProperty Name="Project" Relationship="Self.FK_Result_Project" FromRole="Result" ToRole="Project" />
-          <NavigationProperty Name="ProjectAccessVoter" Relationship="Self.FK_Result_ProjectAccessVoters" FromRole="Result" ToRole="ProjectAccessVoters" />
-          <NavigationProperty Name="Question" Relationship="Self.FK_Result_Question" FromRole="Result" ToRole="Question" />
+          <NavigationProperty Name="Answer" Relationship="PollyDbModel.FK_Result_Answer" FromRole="Result" ToRole="Answer" />
+          <NavigationProperty Name="Project" Relationship="PollyDbModel.FK_Result_Project" FromRole="Result" ToRole="Project" />
+          <NavigationProperty Name="ProjectAccessVoter" Relationship="PollyDbModel.FK_Result_ProjectAccessVoters" FromRole="Result" ToRole="ProjectAccessVoter" />
+          <NavigationProperty Name="Question" Relationship="PollyDbModel.FK_Result_Question" FromRole="Result" ToRole="Question" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -514,18 +589,18 @@
           <Property Name="Salt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Logo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="PermissionId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Projects" Relationship="Self.FK_Project_User" FromRole="User" ToRole="Project" />
-          <NavigationProperty Name="UserPermission" Relationship="Self.FK_User_UserPermission" FromRole="User" ToRole="UserPermission" />
-          <NavigationProperty Name="UserSets" Relationship="Self.FK_UserSet_User" FromRole="User" ToRole="UserSet" />
+          <NavigationProperty Name="Projects" Relationship="PollyDbModel.FK_Project_User" FromRole="User" ToRole="Project" />
+          <NavigationProperty Name="UserPermission" Relationship="PollyDbModel.FK_User_UserPermission" FromRole="User" ToRole="UserPermission" />
+          <NavigationProperty Name="UserSets" Relationship="PollyDbModel.FK_UserSet_User" FromRole="User" ToRole="UserSet" />
         </EntityType>
         <EntityType Name="UserPermission">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="LevelPermission" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_User_UserPermission" FromRole="UserPermission" ToRole="User" />
+          <NavigationProperty Name="Users" Relationship="PollyDbModel.FK_User_UserPermission" FromRole="UserPermission" ToRole="User" />
         </EntityType>
         <EntityType Name="UserSet">
           <Key>
@@ -535,12 +610,24 @@
           <Property Name="UserId" Type="Int32" />
           <Property Name="IPAdrress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MACAdrress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="ProjectAccessVoters" Relationship="Self.FK_ProjectAccessVoters_CodeSet" FromRole="UserSet" ToRole="ProjectAccessVoters" />
-          <NavigationProperty Name="User" Relationship="Self.FK_UserSet_User" FromRole="UserSet" ToRole="User" />
+          <NavigationProperty Name="ProjectAccessVoters" Relationship="PollyDbModel.FK_ProjectAccessVoters_CodeSet" FromRole="UserSet" ToRole="ProjectAccessVoter" />
+          <NavigationProperty Name="User" Relationship="PollyDbModel.FK_UserSet_User" FromRole="UserSet" ToRole="User" />
         </EntityType>
+        <Association Name="Answer_QuestionId">
+          <End Type="PollyDbModel.Question" Role="Question" Multiplicity="1" />
+          <End Type="PollyDbModel.Answer" Role="Answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Question">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Answer">
+              <PropertyRef Name="QuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Result_Answer">
-          <End Role="Answer" Type="Self.Answer" Multiplicity="1" />
-          <End Role="Result" Type="Self.Result" Multiplicity="*" />
+          <End Type="PollyDbModel.Answer" Role="Answer" Multiplicity="1" />
+          <End Type="PollyDbModel.Result" Role="Result" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Answer">
               <PropertyRef Name="Id" />
@@ -551,32 +638,32 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ProjectAccessVoters_CodeSet1">
-          <End Role="CodeSet" Type="Self.CodeSet" Multiplicity="0..1" />
-          <End Role="ProjectAccessVoters" Type="Self.ProjectAccessVoter" Multiplicity="*" />
+          <End Type="PollyDbModel.CodeSet" Role="CodeSet" Multiplicity="0..1" />
+          <End Type="PollyDbModel.ProjectAccessVoter" Role="ProjectAccessVoter" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CodeSet">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="ProjectAccessVoters">
+            <Dependent Role="ProjectAccessVoter">
               <PropertyRef Name="CodeSetId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ProjectAccessVoters_PollAccess">
-          <End Role="PollAccess" Type="Self.PollAccess" Multiplicity="1" />
-          <End Role="ProjectAccessVoters" Type="Self.ProjectAccessVoter" Multiplicity="*" />
+        <Association Name="Project_AccessId_FK">
+          <End Type="PollyDbModel.PollAccess" Role="PollAccess" Multiplicity="1" />
+          <End Type="PollyDbModel.Project" Role="Project" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PollAccess">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="ProjectAccessVoters">
+            <Dependent Role="Project">
               <PropertyRef Name="AccessId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Project_PollShare">
-          <End Role="PollShare" Type="Self.PollShare" Multiplicity="0..1" />
-          <End Role="Project" Type="Self.Project" Multiplicity="*" />
+          <End Type="PollyDbModel.PollShare" Role="PollShare" Multiplicity="1" />
+          <End Type="PollyDbModel.Project" Role="Project" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PollShare">
               <PropertyRef Name="Id" />
@@ -587,8 +674,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Project_PollType">
-          <End Role="PollType" Type="Self.PollType" Multiplicity="0..1" />
-          <End Role="Project" Type="Self.Project" Multiplicity="*" />
+          <End Type="PollyDbModel.PollType" Role="PollType" Multiplicity="1" />
+          <End Type="PollyDbModel.Project" Role="Project" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PollType">
               <PropertyRef Name="Id" />
@@ -599,8 +686,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Project_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="Project" Type="Self.Project" Multiplicity="*" />
+          <End Type="PollyDbModel.User" Role="User" Multiplicity="1" />
+          <End Type="PollyDbModel.Project" Role="Project" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="Id" />
@@ -611,20 +698,20 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ProjectAccessVoters_Project">
-          <End Role="Project" Type="Self.Project" Multiplicity="1" />
-          <End Role="ProjectAccessVoters" Type="Self.ProjectAccessVoter" Multiplicity="*" />
+          <End Type="PollyDbModel.Project" Role="Project" Multiplicity="1" />
+          <End Type="PollyDbModel.ProjectAccessVoter" Role="ProjectAccessVoter" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Project">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="ProjectAccessVoters">
+            <Dependent Role="ProjectAccessVoter">
               <PropertyRef Name="ProjectId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Result_Project">
-          <End Role="Project" Type="Self.Project" Multiplicity="1" />
-          <End Role="Result" Type="Self.Result" Multiplicity="*" />
+          <End Type="PollyDbModel.Project" Role="Project" Multiplicity="1" />
+          <End Type="PollyDbModel.Result" Role="Result" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Project">
               <PropertyRef Name="Id" />
@@ -635,22 +722,22 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ProjectAccessVoters_CodeSet">
-          <End Role="UserSet" Type="Self.UserSet" Multiplicity="0..1" />
-          <End Role="ProjectAccessVoters" Type="Self.ProjectAccessVoter" Multiplicity="*" />
+          <End Type="PollyDbModel.UserSet" Role="UserSet" Multiplicity="0..1" />
+          <End Type="PollyDbModel.ProjectAccessVoter" Role="ProjectAccessVoter" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UserSet">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="ProjectAccessVoters">
+            <Dependent Role="ProjectAccessVoter">
               <PropertyRef Name="UserSetId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Result_ProjectAccessVoters">
-          <End Role="ProjectAccessVoters" Type="Self.ProjectAccessVoter" Multiplicity="1" />
-          <End Role="Result" Type="Self.Result" Multiplicity="*" />
+          <End Type="PollyDbModel.ProjectAccessVoter" Role="ProjectAccessVoter" Multiplicity="1" />
+          <End Type="PollyDbModel.Result" Role="Result" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="ProjectAccessVoters">
+            <Principal Role="ProjectAccessVoter">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Result">
@@ -659,8 +746,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Question_QuestionType">
-          <End Role="QuestionType" Type="Self.QuestionType" Multiplicity="1" />
-          <End Role="Question" Type="Self.Question" Multiplicity="*" />
+          <End Type="PollyDbModel.QuestionType" Role="QuestionType" Multiplicity="1" />
+          <End Type="PollyDbModel.Question" Role="Question" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="QuestionType">
               <PropertyRef Name="Id" />
@@ -671,8 +758,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Result_Question">
-          <End Role="Question" Type="Self.Question" Multiplicity="1" />
-          <End Role="Result" Type="Self.Result" Multiplicity="*" />
+          <End Type="PollyDbModel.Question" Role="Question" Multiplicity="1" />
+          <End Type="PollyDbModel.Result" Role="Result" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Question">
               <PropertyRef Name="Id" />
@@ -683,8 +770,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_User_UserPermission">
-          <End Role="UserPermission" Type="Self.UserPermission" Multiplicity="1" />
-          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <End Type="PollyDbModel.UserPermission" Role="UserPermission" Multiplicity="1" />
+          <End Type="PollyDbModel.User" Role="User" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UserPermission">
               <PropertyRef Name="Id" />
@@ -695,101 +782,14 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UserSet_User">
-          <End Role="User" Type="Self.User" Multiplicity="0..1" />
-          <End Role="UserSet" Type="Self.UserSet" Multiplicity="*" />
+          <End Type="PollyDbModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="PollyDbModel.UserSet" Role="UserSet" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="UserSet">
               <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Answers" EntityType="Self.Answer" />
-          <EntitySet Name="CodeSets" EntityType="Self.CodeSet" />
-          <EntitySet Name="PollAccesses" EntityType="Self.PollAccess" />
-          <EntitySet Name="PollShares" EntityType="Self.PollShare" />
-          <EntitySet Name="PollTypes" EntityType="Self.PollType" />
-          <EntitySet Name="Projects" EntityType="Self.Project" />
-          <EntitySet Name="ProjectAccessVoters" EntityType="Self.ProjectAccessVoter" />
-          <EntitySet Name="Questions" EntityType="Self.Question" />
-          <EntitySet Name="QuestionTypes" EntityType="Self.QuestionType" />
-          <EntitySet Name="Results" EntityType="Self.Result" />
-          <EntitySet Name="Users" EntityType="Self.User" />
-          <EntitySet Name="UserPermissions" EntityType="Self.UserPermission" />
-          <EntitySet Name="UserSets" EntityType="Self.UserSet" />
-          <AssociationSet Name="FK_Result_Answer" Association="Self.FK_Result_Answer">
-            <End Role="Answer" EntitySet="Answers" />
-            <End Role="Result" EntitySet="Results" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProjectAccessVoters_CodeSet1" Association="Self.FK_ProjectAccessVoters_CodeSet1">
-            <End Role="CodeSet" EntitySet="CodeSets" />
-            <End Role="ProjectAccessVoters" EntitySet="ProjectAccessVoters" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProjectAccessVoters_PollAccess" Association="Self.FK_ProjectAccessVoters_PollAccess">
-            <End Role="PollAccess" EntitySet="PollAccesses" />
-            <End Role="ProjectAccessVoters" EntitySet="ProjectAccessVoters" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Project_PollShare" Association="Self.FK_Project_PollShare">
-            <End Role="PollShare" EntitySet="PollShares" />
-            <End Role="Project" EntitySet="Projects" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Project_PollType" Association="Self.FK_Project_PollType">
-            <End Role="PollType" EntitySet="PollTypes" />
-            <End Role="Project" EntitySet="Projects" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Project_User" Association="Self.FK_Project_User">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Project" EntitySet="Projects" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProjectAccessVoters_Project" Association="Self.FK_ProjectAccessVoters_Project">
-            <End Role="Project" EntitySet="Projects" />
-            <End Role="ProjectAccessVoters" EntitySet="ProjectAccessVoters" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Result_Project" Association="Self.FK_Result_Project">
-            <End Role="Project" EntitySet="Projects" />
-            <End Role="Result" EntitySet="Results" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProjectAccessVoters_CodeSet" Association="Self.FK_ProjectAccessVoters_CodeSet">
-            <End Role="UserSet" EntitySet="UserSets" />
-            <End Role="ProjectAccessVoters" EntitySet="ProjectAccessVoters" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Result_ProjectAccessVoters" Association="Self.FK_Result_ProjectAccessVoters">
-            <End Role="ProjectAccessVoters" EntitySet="ProjectAccessVoters" />
-            <End Role="Result" EntitySet="Results" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Question_QuestionType" Association="Self.FK_Question_QuestionType">
-            <End Role="QuestionType" EntitySet="QuestionTypes" />
-            <End Role="Question" EntitySet="Questions" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Result_Question" Association="Self.FK_Result_Question">
-            <End Role="Question" EntitySet="Questions" />
-            <End Role="Result" EntitySet="Results" />
-          </AssociationSet>
-          <AssociationSet Name="FK_User_UserPermission" Association="Self.FK_User_UserPermission">
-            <End Role="UserPermission" EntitySet="UserPermissions" />
-            <End Role="User" EntitySet="Users" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserSet_User" Association="Self.FK_UserSet_User">
-            <End Role="User" EntitySet="Users" />
-            <End Role="UserSet" EntitySet="UserSets" />
-          </AssociationSet>
-          <AssociationSet Name="Answer_QuestionId" Association="PollyDbModel.Answer_QuestionId">
-            <End Role="Question" EntitySet="Questions" />
-            <End Role="Answer" EntitySet="Answers" />
-          </AssociationSet>
-        </EntityContainer>
-        <Association Name="Answer_QuestionId">
-          <End Type="PollyDbModel.Question" Role="Question" Multiplicity="1" />
-          <End Type="PollyDbModel.Answer" Role="Answer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Question">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Answer">
-              <PropertyRef Name="QuestionId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -803,134 +803,134 @@
             <EntityTypeMapping TypeName="PollyDbModel.Answer">
               <MappingFragment StoreEntitySet="Answer">
                 <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="AnswerValue" ColumnName="AnswerValue" />
                 <ScalarProperty Name="OrderValue" ColumnName="OrderValue" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CodeSets">
             <EntityTypeMapping TypeName="PollyDbModel.CodeSet">
               <MappingFragment StoreEntitySet="CodeSet">
-                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CodeText" ColumnName="CodeText" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PollAccesses">
             <EntityTypeMapping TypeName="PollyDbModel.PollAccess">
               <MappingFragment StoreEntitySet="PollAccess">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PollShares">
             <EntityTypeMapping TypeName="PollyDbModel.PollShare">
               <MappingFragment StoreEntitySet="PollShare">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PollTypes">
             <EntityTypeMapping TypeName="PollyDbModel.PollType">
               <MappingFragment StoreEntitySet="PollType">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Projects">
             <EntityTypeMapping TypeName="PollyDbModel.Project">
               <MappingFragment StoreEntitySet="Project">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="ShareId" ColumnName="ShareId" />
+                <ScalarProperty Name="AccessId" ColumnName="AccessId" />
                 <ScalarProperty Name="UrlCode" ColumnName="UrlCode" />
+                <ScalarProperty Name="ShareId" ColumnName="ShareId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ProjectAccessVoters">
             <EntityTypeMapping TypeName="PollyDbModel.ProjectAccessVoter">
               <MappingFragment StoreEntitySet="ProjectAccessVoters">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="IsUsed" ColumnName="IsUsed" />
-                <ScalarProperty Name="CodeSetId" ColumnName="CodeSetId" />
-                <ScalarProperty Name="UserSetId" ColumnName="UserSetId" />
                 <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
-                <ScalarProperty Name="AccessId" ColumnName="AccessId" />
+                <ScalarProperty Name="UserSetId" ColumnName="UserSetId" />
+                <ScalarProperty Name="CodeSetId" ColumnName="CodeSetId" />
+                <ScalarProperty Name="IsUsed" ColumnName="IsUsed" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Questions">
             <EntityTypeMapping TypeName="PollyDbModel.Question">
               <MappingFragment StoreEntitySet="Question">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="QuestionValue" ColumnName="QuestionValue" />
-                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
                 <ScalarProperty Name="QuestionTypeId" ColumnName="QuestionTypeId" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="QuestionValue" ColumnName="QuestionValue" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="QuestionTypes">
             <EntityTypeMapping TypeName="PollyDbModel.QuestionType">
               <MappingFragment StoreEntitySet="QuestionType">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Results">
             <EntityTypeMapping TypeName="PollyDbModel.Result">
               <MappingFragment StoreEntitySet="Result">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
-                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
-                <ScalarProperty Name="VoterId" ColumnName="VoterId" />
                 <ScalarProperty Name="AnswerId" ColumnName="AnswerId" />
+                <ScalarProperty Name="VoterId" ColumnName="VoterId" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="PollyDbModel.User">
               <MappingFragment StoreEntitySet="User">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Salt" ColumnName="Salt" />
-                <ScalarProperty Name="Logo" ColumnName="Logo" />
                 <ScalarProperty Name="PermissionId" ColumnName="PermissionId" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="Salt" ColumnName="Salt" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserPermissions">
             <EntityTypeMapping TypeName="PollyDbModel.UserPermission">
               <MappingFragment StoreEntitySet="UserPermission">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="LevelPermission" ColumnName="LevelPermission" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserSets">
             <EntityTypeMapping TypeName="PollyDbModel.UserSet">
               <MappingFragment StoreEntitySet="UserSet">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="IPAdrress" ColumnName="IPAdrress" />
                 <ScalarProperty Name="MACAdrress" ColumnName="MACAdrress" />
+                <ScalarProperty Name="IPAdrress" ColumnName="IPAdrress" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

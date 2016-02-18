@@ -71,15 +71,15 @@ namespace PollyApp.Account
     {
         private const int SaltValueSize = 4;
         private static String[] HashingAlgorithms = new String[] { "SHA256", "MD5" };
-        public static Boolean Login(String email, String password)
+        public static LoginStatus SignIn(String email, String password)
         {
             try
             {
                 var emailCheck = new EmailCheck();
                 if (String.IsNullOrWhiteSpace(email) || String.IsNullOrWhiteSpace(password))
-                    throw new Exception("Email or Password is not set");
+                    return LoginStatus.EmptyValue;
                 if (!emailCheck.IsValidEmail(email) || password.Length > 15 || password.Length < 5)
-                    throw new Exception("Email or Password is not valid");
+                    return LoginStatus.NotValid;
                 var rep = new GenericRepository.Repository();
                 var user = rep.Context.Users.Where(x => x.Email == email).FirstOrDefault();
                 if (user != null)
@@ -88,14 +88,15 @@ namespace PollyApp.Account
                     var userSalt = user.Salt;
                     using (MD5 md5Hash = MD5.Create())
                     {
-                        return VerifyMd5Hash(md5Hash, password + userSalt, userPass);
+                        if(VerifyMd5Hash(md5Hash, password + userSalt, userPass))
+                            return LoginStatus.Success;
                     }
                 }
-                return false;
+                return LoginStatus.UnexpectedError;
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                return LoginStatus.UnexpectedError;
             }
         }
         public static void AddUserCookie(HttpResponseBase response, string user, int timeOutHours)
@@ -112,20 +113,20 @@ namespace PollyApp.Account
         {
             FormsAuthentication.SignOut();
         }
-        public static bool Register(String password, String email, String firstName, String lastName)
+        public static RegisterStatus Register(String password, String email, String firstName, String lastName)
         {
             try
             {
                 var emailCheck = new EmailCheck();
                 if (String.IsNullOrWhiteSpace(email) || String.IsNullOrWhiteSpace(password) || String.IsNullOrWhiteSpace(firstName) || String.IsNullOrWhiteSpace(lastName))
-                    throw new Exception("Email or Password is not set");
+                   return RegisterStatus.EmptyValue;
                 if (!emailCheck.IsValidEmail(email) || password.Length > 15 || password.Length < 5)
-                    throw new Exception("Email or Password is not valid");
+                    return RegisterStatus.NotValid;
                 using (var rep = new GenericRepository.Repository())
                 {
                     if (rep.Context.Users.Where(x => x.Email == email).FirstOrDefault() != null)
                     {
-                        return false;
+                        return RegisterStatus.EmailExists;
                     }
                     String hash = String.Empty;
                     String salt = String.Empty;
@@ -136,12 +137,12 @@ namespace PollyApp.Account
                     }
                     rep.Add(new User { Email = email, Password = hash, Salt = salt, FirstName = firstName, LastName = lastName, PermissionId = 1 });
                     rep.Save();
-                    return true;
+                    return RegisterStatus.Success;
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                return RegisterStatus.UnexpectedError;
             }
         }
         private static String GetMd5Hash(MD5 md5Hash, String input)
@@ -165,6 +166,22 @@ namespace PollyApp.Account
         private static String GetSalt()
         {
             return Guid.NewGuid().ToString().Remove(SaltValueSize);
+        }
+
+       public enum RegisterStatus
+        {
+            Success =1,
+            EmptyValue=2,
+            NotValid=3,
+            UnexpectedError=4,
+            EmailExists=5
+        }
+        public enum LoginStatus
+        {
+            Success = 1,
+            EmptyValue = 2,
+            NotValid = 3,
+            UnexpectedError = 4
         }
     }
 }
