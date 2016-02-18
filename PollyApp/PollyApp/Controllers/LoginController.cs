@@ -50,13 +50,13 @@ namespace PollyApp.Controllers
                     case MemberWorker.RegisterStatus.Success:
                         {
                             MemberWorker.AddUserCookie(Response, email, 3600);
-                            return new JsonResult() { Data = "OK" };
+                            return new JsonResult() { Data = "Registration completed successfully" };
 
                         }
                     case MemberWorker.RegisterStatus.NotValid:
-                        return new JsonResult() { Data = "Invalid Email or Password" };
+                        return new JsonResult() { Data = "Password or login you've entered is invalid" };
                     case MemberWorker.RegisterStatus.EmailExists:
-                        return new JsonResult() { Data = "Email is exists" };
+                        return new JsonResult() { Data = "User with this email already exist" };
                     default:
                         return new HttpStatusCodeResult(400);
                 }
@@ -64,7 +64,7 @@ namespace PollyApp.Controllers
                 {
 
                     MemberWorker.AddUserCookie(Response, email, 3600);
-                    return new JsonResult() { Data = "OK" };
+                    return new JsonResult() { Data = "Registration completed successfully" };
                 }
                 else
                 {

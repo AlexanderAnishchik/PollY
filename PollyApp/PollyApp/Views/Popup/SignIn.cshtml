@@ -69,8 +69,11 @@
                 <form method="POST" name="registerForm" novalidate>
 
                     <div class="modal-body">
-                        <div class="alert alert-success" ng-show="isRegister">
-                            <small>Registration completed successfully</small>
+                        <div class="alert alert-success" ng-show="isRegister=='Registration completed successfully'">
+                            <small>{{isRegister}}</small>
+                        </div>
+                        <div class="alert alert-danger" ng-show="isRegister!='Registration completed successfully' && isRegister!=''">
+                            <small>{{isRegister}}</small>
                         </div>
                         
                         <div class="input-group input-group-lg textbox" ng-class="{ 'has-error' : !registerForm.first.$pristine && registerForm.first.$invalid, 'has-success' : !registerForm.first.$pristine && registerForm.first.$valid}">
@@ -106,7 +109,7 @@
                         </div>
 
                         
-                        <div class="input-group input-group-lg textbox" ng-class="{ 'has-error' : !registerForm.confirmpass.$pristine && !passValid, 'has-success' : !registerForm.confirmpass.$pristine && passValid }">
+                        <div class="input-group input-group-lg textbox" ng-class="{ 'has-error' : !registerForm.confirmpass.$pristine && registerForm.confirmpass.$invalid, 'has-success' : !registerForm.confirmpass.$pristine && !registerForm.confirmpass.$invalid }">
                             <span class="input-group-addon" id="sizing-addon1"><img src="~/Content/images/password.png" /></span>
                             <input type="password" class="form-control" name="confirmpass" ng-model="headCtrl.registr.confirmpass" compare-to="headCtrl.registr.pass"  placeholder="Confirm password">
                         </div>
