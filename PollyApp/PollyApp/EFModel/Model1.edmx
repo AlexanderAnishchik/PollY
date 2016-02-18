@@ -75,7 +75,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="QuestionValue" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Value" Type="nvarchar(max)" Nullable="false" />
           <Property Name="ProjectId" Type="int" Nullable="false" />
           <Property Name="QuestionTypeId" Type="int" Nullable="false" />
         </EntityType>
@@ -386,7 +386,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PollyDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="false">
           <EntitySet Name="Answers" EntityType="PollyDbModel.Answer" />
           <EntitySet Name="CodeSets" EntityType="PollyDbModel.CodeSet" />
           <EntitySet Name="PollAccesses" EntityType="PollyDbModel.PollAccess" />
@@ -547,12 +547,12 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="QuestionValue" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ProjectId" Type="Int32" Nullable="false" />
           <Property Name="QuestionTypeId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Answers" Relationship="PollyDbModel.Answer_QuestionId" FromRole="Question" ToRole="Answer" />
           <NavigationProperty Name="QuestionType" Relationship="PollyDbModel.FK_Question_QuestionType" FromRole="Question" ToRole="QuestionType" />
           <NavigationProperty Name="Results" Relationship="PollyDbModel.FK_Result_Question" FromRole="Question" ToRole="Result" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="QuestionType">
           <Key>
@@ -874,9 +874,9 @@
           <EntitySetMapping Name="Questions">
             <EntityTypeMapping TypeName="PollyDbModel.Question">
               <MappingFragment StoreEntitySet="Question">
+                <ScalarProperty Name="Value" ColumnName="Value" />
                 <ScalarProperty Name="QuestionTypeId" ColumnName="QuestionTypeId" />
                 <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
-                <ScalarProperty Name="QuestionValue" ColumnName="QuestionValue" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

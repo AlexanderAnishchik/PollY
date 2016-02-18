@@ -23,6 +23,7 @@ namespace PollyApp.EFModel
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+         
             throw new UnintentionalCodeFirstException();
         }
     
