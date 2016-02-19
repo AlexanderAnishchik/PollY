@@ -28,10 +28,10 @@ namespace PollyApp.Controllers
                 return null;
         }
         [HttpPost]
-        public ActionResult GetUserById(int id)
+        public ActionResult GetUserByEmail(string email)
         {
             Object user = null;
-            user = Db.Context.Users.Where(x => x.Id == id).Select(x => new
+            user = Db.Context.Users.Where(x => x.Email == email).Select(x => new
             {
                 x.Id,
                 x.Email,

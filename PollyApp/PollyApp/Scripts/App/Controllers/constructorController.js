@@ -90,48 +90,47 @@
     }
     $scope.error = null;
     $scope.loader = false;
-    $scope.addNewField = function (id_textbox) {
-        $scope.tmp = false;
-        for (i = 0; i < $scope.userGotAccess.length; i++) {
-            if($scope.userGotAccess[i].Id == id_textbox)
-            {
-                $scope.tmp = true;
-                break;
+    $scope.addNewField = function (email) {
+        if (email != "") {
+            $scope.tmp = false;
+            if ($scope.userGotAccess.length > 0) {
+                for (i = 0; i < $scope.userGotAccess.length; i++) {
+                    if ($scope.userGotAccess[i].Email == email) {
+                        $scope.tmp = true;
+                        break;
+                    }
+                }
             }
-        }
-        if ($scope.tmp) {
-            $scope.error = "User already exist";
+            
+            if ($scope.tmp) {
+                $scope.error = "User already exist";
+            }
+            else {
+                $scope.loader = true;
+                $http.post("Account/GetUserByEmail", { email: email }).then(function (response) {
+                    $scope.loader = false;
+                    var data = response.data;
+                    if (data.user == null) {
+                        $scope.tmp = true;
+                        $scope.error = "The user does not exist";
+
+                    }
+                    else {
+                        if (data.user.Logo == null) {
+                            data.user.Logo = 'nophoto.png';
+                        }
+                        $scope.userGotAccess.push(data.user);
+                        $scope.tmp = false;
+                    }
+
+                })
+            }
+            
         }
         else {
-            $scope.loader = true;
-            $http.post("Account/GetUserById", { id: id_textbox }).then(function (response) {
-                $scope.loader = false;
-                var data = response.data;
-                if (data.user == null) {
-                    $scope.tmp = true;
-                    $scope.error = "The user does not exist";
-                    
-                }
-                else {
-                    if (data.user.Logo == null) {
-                        data.user.Logo = 'nophoto.png';
-                    }
-                    $scope.userGotAccess.push(data.user);
-                    $scope.tmp = false;
-                }
-                
-                
-            },
-            function (response) {
-                
-                   
-                    
-                
-            });
+            $scope.error = "Please enter email";
         }
         
-
-        $scope.data.user_id_textbox = null;
         
     }
     
