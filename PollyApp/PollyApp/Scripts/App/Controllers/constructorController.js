@@ -50,8 +50,14 @@
         $scope.currentBlock = $scope.builderData.poll[0];
     };
     $scope.setPollType = function (type) {
-        pollBuilderService.setType(type.value);
-        $scope.step = $scope.settingsView.step2;
+        if (type.value == 2) {
+            pollBuilderService.setType(type.value);
+            $scope.step = $scope.settingsView.step2;
+        }
+        else {
+            
+        }
+       
     }
     $scope.setAccess = function (type) {
         $scope.choosed = type.label;
