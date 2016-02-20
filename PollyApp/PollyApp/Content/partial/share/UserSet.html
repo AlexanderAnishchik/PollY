@@ -1,4 +1,4 @@
-﻿<div class="text-center">
+﻿<div class="text-center add-user-access">
     <p>This type of access allows you to leave the answers only to a certain circle of registered users.</p>
     <p>Please enter ID of user</p>
     <div class="text-justify added-user row" ng-repeat="user in userGotAccess">
@@ -12,9 +12,11 @@
     <div class="alert alert-danger" ng-show="tmp">
         {{error}}
     </div>
-
-    <div class="input-group">
-        <span class="input-group-addon" id="">https://polly.com/users/</span>
-        <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" ng-enter="addNewField(data.user_id_textbox)" ng-model="data.user_id_textbox" placeholder="user id">
+    <div class="">
+        <div class="input-group">
+            <span class="input-group-addon" id="">Polly user</span>
+            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" ng-model="data.user_id_textbox" placeholder="user email">
+            <input type="button" class="add" value="" ng-click="addNewField(data.user_id_textbox)" />
+        </div>
     </div>
 </div>

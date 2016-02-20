@@ -1,7 +1,7 @@
 ﻿PollyApp.controller('constructorController', ['$scope', '$http', 'headerKeeperService', 'pollSettingsFactory', 'pollBuilderService', function ($scope, $http, headerKeeperService, pollSettingsFactory, pollBuilderService) {
     var me = this;
     $scope.headerData = headerKeeperService.data;
-    $scope.generated = "";
+    $scope.secureCodes = [];
     $scope.access_type = 'Content/partial/FreeAccess.html'
     $scope.template = 'Content/partial/ChooseType.html';
     if ($scope.template == 'Content/partial/ChooseType.html') {
@@ -74,15 +74,17 @@
             $scope.currentBlock = $scope.builderData.poll[0];
         }
     };
-    $scope.generateCode = function() {
-        var result = '';
-        var words = '0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM';
-        var max_position = words.length - 1;
-        for (i = 0; i < 5; ++i) {
-            position = Math.floor(Math.random() * max_position);
-            result = result + words.substring(position, position + 1);
+    $scope.generateCode = function(count) {
+        if (count > 0) {
+            $http.post("Constructor/GenerateCode", { count: count }).then(function (response) {
+                if (response.data.status) {
+                    $scope.secureCodes = response.data.codes;
+                }
+            })
         }
-        $scope.generated = result;
+        else {
+
+        }
     }
     
     $scope.savePoll = function () {

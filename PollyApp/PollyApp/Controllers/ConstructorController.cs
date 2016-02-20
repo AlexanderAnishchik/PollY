@@ -46,7 +46,22 @@ namespace PollyApp.Controllers
             {
                 return ex.Message;
             }
-
+        }
+        [HttpPost]
+        public ActionResult GenerateCode(int count)
+        {
+            string[] arr = new string[count];
+            if (count>0)
+            { 
+                
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    arr[i] = Guid.NewGuid().ToString().Replace("-", String.Empty).Substring(0, 10);
+                }
+                return new JsonResult() { Data = new { status = true, codes = arr } };
+            }
+            else
+                return new JsonResult() { Data = new { status = false} };
         }
     }
 }
