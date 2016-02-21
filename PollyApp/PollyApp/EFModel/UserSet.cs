@@ -9,9 +9,10 @@
 
 namespace PollyApp.EFModel
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+
     public partial class UserSet
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -26,7 +27,9 @@ namespace PollyApp.EFModel
         public string MACAdrress { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [JsonIgnore]
         public virtual ICollection<ProjectAccessVoter> ProjectAccessVoters { get; set; }
+        [JsonIgnore]
         public virtual User User { get; set; }
     }
 }

@@ -1,6 +1,8 @@
-﻿using PollyApp.Attributes;
+﻿using Newtonsoft.Json;
+using PollyApp.Attributes;
 using PollyApp.EFModel;
 using PollyApp.GenericRepository;
+using PollyApp.JsonConverters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +13,7 @@ namespace PollyApp.Controllers
 {
     public class AccountController : Controller
     {
-        public GenericRepository.Repository Db = new GenericRepository.Repository();
+        private GenericRepository.Repository Db = new GenericRepository.Repository();
         public ActionResult Index()
         {
             return View();
@@ -22,7 +24,7 @@ namespace PollyApp.Controllers
             if (Session["user"] != null)
             {
                 User user = (User)Session["user"];
-                return new JsonResult() { Data = user, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+                return new JsonResult() { Data = new { user = user } };
             }
             else
                 return null;
@@ -40,6 +42,11 @@ namespace PollyApp.Controllers
                 x.Logo
             }).FirstOrDefault();
             return new JsonResult() { Data = new { user = user } };
+        }
+        protected override void Dispose(bool disposing)
+        {
+            Db.Dispose();
+            base.Dispose(disposing);
         }
     }
 }

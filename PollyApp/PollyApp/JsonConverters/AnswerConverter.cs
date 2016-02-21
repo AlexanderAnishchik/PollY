@@ -8,20 +8,9 @@ using System.Web;
 
 namespace PollyApp.JsonConverters
 {
-    public class AnswerConverter
+    public class AnswerConverter : ConverterBase
     {
-        public string SerializeAnswer(Object vb)
-        {
-            try
-            {
-                return JsonConvert.SerializeObject(vb);
-            }
-            catch
-            {
-                return String.Empty;
-            }
-        }
-        public Object DeserializeAnswer(string json, string type)
+        public override Object Deserialize(string json, string type)
         {
             try
             {
