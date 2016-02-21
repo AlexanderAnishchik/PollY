@@ -12,8 +12,7 @@ namespace PollyApp.Controllers
 {
     public class ConstructorController : Controller
     {
-        //
-        // GET: /Constructor/
+        private GenericRepository.Repository Db = new GenericRepository.Repository();
 
         public ActionResult Index()
         {
@@ -39,7 +38,7 @@ namespace PollyApp.Controllers
             try
             {
                 newPoll.UserId = ((dynamic)Session["user"]).Id;
-                PollHelper.Save(newPoll);
+                ConstructorHelper.Save(newPoll);
                 return "S";
             }
             catch (Exception ex)
@@ -62,6 +61,11 @@ namespace PollyApp.Controllers
             }
             else
                 return new JsonResult() { Data = new { status = false} };
+        }
+        protected override void Dispose(bool disposing)
+        {
+            Db.Dispose();
+            base.Dispose(disposing);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PollyApp.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,13 +9,20 @@ namespace PollyApp.Controllers
 {
     public class PollController : Controller
     {
-        //
-        // GET: /Poll/
+        public GenericRepository.Repository Db = new GenericRepository.Repository();
 
-        public ActionResult Index()
+        public ActionResult Index(string poll)
         {
-            return View();
+            if (PollHelper.CheckUrlProjectCode(poll))
+            {
+                return View();
+            }
+            return Redirect("/");
         }
-
+        protected override void Dispose(bool disposing)
+        {
+            Db.Dispose();
+            base.Dispose(disposing);
+        }
     }
 }

@@ -82,5 +82,11 @@ namespace PollyApp.Controllers
             Session["user"] = null;
             return RedirectToAction("Index", "Home");
         }
+        protected override void Dispose(bool disposing)
+        {
+            Db.Dispose();
+            base.Dispose(disposing);
+        }
     }
+
 }
