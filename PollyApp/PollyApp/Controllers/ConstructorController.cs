@@ -39,7 +39,7 @@ namespace PollyApp.Controllers
             try
             {
                 newPoll.UserId = ((dynamic)Session["user"]).Id;
-                PollHelper.Save(newPoll);
+                ConstructorHelper.Save(newPoll);
                 return "S";
             }
             catch (Exception ex)

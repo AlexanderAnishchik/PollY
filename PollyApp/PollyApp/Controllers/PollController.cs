@@ -11,9 +11,10 @@ namespace PollyApp.Controllers
         //
         // GET: /Poll/
 
-        public ActionResult Index()
+        public ActionResult Index(string poll)
         {
-            return View();
+
+                return View();
         }
 
     }

@@ -200,8 +200,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\PollHelper.cs" />
+    <Compile Include="Helpers\ConstructorHelper.cs" />
     <Compile Include="Helpers\DbEnum.cs" />
+    <Compile Include="Helpers\PollHelper.cs" />
     <Compile Include="JsonConverters\AnswerConverter.cs" />
     <Compile Include="JsonConverters\Helpers\TextAnswer.cs" />
     <Compile Include="Models\PollUnit.cs" />
