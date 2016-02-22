@@ -19,6 +19,7 @@ namespace PollyApp.Controllers
             }
             return Redirect("/");
         }
+        
         protected override void Dispose(bool disposing)
         {
             Db.Dispose();
