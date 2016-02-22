@@ -24,7 +24,7 @@ namespace PollyApp.Controllers
             if (Session["user"] != null)
             {
                 User user = (User)Session["user"];
-                return new JsonResult() { Data = new { user = user } };
+                return new JsonResult() { Data =  user , JsonRequestBehavior=JsonRequestBehavior.AllowGet };
             }
             else
                 return null;

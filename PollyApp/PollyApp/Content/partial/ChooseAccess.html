@@ -21,7 +21,7 @@
                     </button>
                     <ul class="dropdown-menu">
                         <li>
-                        <a href="#" ng-repeat="type in access_types" ng-click="setAccess(type)">
+                        <a href="#" ng-repeat="type in access_types" ng-click="setAccess(type);">
                             {{type.label}}
                             </a>
                         </li>
@@ -44,5 +44,5 @@
     
 </div>
 <div class="text-center">
-    <a ng-href="" ng-click="setStep(settingsView.step3)"><button type="button" class="btn btn-install">Next</button></a>
+  <button type="button" ng-click="setStep(settingsView.step3)" ng-disabled="access_set_complete==null" class="btn btn-install">Next</button>
 </div>

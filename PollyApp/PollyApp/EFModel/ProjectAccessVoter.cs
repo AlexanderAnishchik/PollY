@@ -9,9 +9,10 @@
 
 namespace PollyApp.EFModel
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+
     public partial class ProjectAccessVoter
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -25,11 +26,15 @@ namespace PollyApp.EFModel
         public Nullable<int> CodeSetId { get; set; }
         public Nullable<int> UserSetId { get; set; }
         public int ProjectId { get; set; }
-    
+
+         
         public virtual CodeSet CodeSet { get; set; }
+         
         public virtual Project Project { get; set; }
+         
         public virtual UserSet UserSet { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+         
         public virtual ICollection<Result> Results { get; set; }
     }
 }

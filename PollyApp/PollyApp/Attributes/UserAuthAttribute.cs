@@ -27,6 +27,7 @@ namespace PollyApp.Attributes
                         var currUser = new User();
                         using (var Db = new Repository())
                         {
+                            Db.Context.Configuration.ProxyCreationEnabled = false;
                             currUser = Db.Context.Users.Where(x => x.Email == filterContext.HttpContext.User.Identity.Name).FirstOrDefault();
                         }
                         if (currUser != null)

@@ -33,19 +33,19 @@ namespace PollyApp.EFModel
         public string UrlCode { get; set; }
         public int AccessId { get; set; }
 
-        [JsonIgnore]
+         
         public virtual PollAccess PollAccess { get; set; }
-        [JsonIgnore]
+         
         public virtual PollShare PollShare { get; set; }
-        [JsonIgnore]
+         
         public virtual PollType PollType { get; set; }
-        [JsonIgnore]
+         
         public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        [JsonIgnore]
+         
         public virtual ICollection<ProjectAccessVoter> ProjectAccessVoters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        [JsonIgnore]
+         
         public virtual ICollection<Result> Results { get; set; }
     }
 }

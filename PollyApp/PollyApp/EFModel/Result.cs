@@ -20,13 +20,13 @@ namespace PollyApp.EFModel
         public int ProjectId { get; set; }
         public int VoterId { get; set; }
         public int AnswerId { get; set; }
-        [JsonIgnore]
+         
         public virtual Answer Answer { get; set; }
-        [JsonIgnore]
+         
         public virtual Project Project { get; set; }
-        [JsonIgnore]
+         
         public virtual ProjectAccessVoter ProjectAccessVoter { get; set; }
-        [JsonIgnore]
+         
         public virtual Question Question { get; set; }
     }
 }
