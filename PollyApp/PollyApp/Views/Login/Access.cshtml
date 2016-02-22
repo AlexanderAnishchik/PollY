@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Access to poll";
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/Content/bootstrap.css" />
+    <link rel="stylesheet" href="~/Content/css/style.css" />
+    <link rel="stylesheet" href="~/Content/css/animate.css" />
+    <link rel="icon" href="~/favicon.ico" type="image/x-icon">
+    <script src="~/Scripts/jquery-1.11.3.js"></script>
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/ui-bootstrap-tpls-1.0.3.js"></script>
+    <script src="~/Scripts/App/app.js"></script>
+    <script src="~/Scripts/App/Factory/pollSettingsFactory.js"></script>
+    <script src="~/Scripts/App/Services/headerKeeperService.js"></script>
+</head>
+<body ng-app="Polly" style="background: url(../Content/images/bgroad.png) !important; background-repeat:no-repeat; background-size:cover !important; background-position:center;">
+    <div class="container text-center access-page">
+        <div class="row">
+            <img src="~/Content/images/pollylogogreen.png" />
+        </div>
+        <div class="row text-uppercase title">
+            Enter an access code
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-4">
+                
+                    <input type="text" class="underline-control" placeholder="Access code"/>
+                    <span></span>
+                
+            </div>
+            
+        </div>
+        <p><button class="btn btn-success">HERE GOES</button></p>
+    </div>
+
+</body>
+</html>

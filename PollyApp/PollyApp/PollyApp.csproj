@@ -225,6 +225,7 @@
     <Content Include="Content\images\analitycs.png" />
     <Content Include="Content\images\api.png" />
     <Content Include="Content\images\ascending7.png" />
+    <Content Include="Content\images\bgroad.png" />
     <Content Include="Content\images\briefcase50.png" />
     <Content Include="Content\images\chart.png" />
     <Content Include="Content\images\cinema21.png" />
@@ -1240,6 +1241,7 @@
     <Content Include="Content\partial\ChooseAccess.html" />
     <Content Include="Views\Popup\Error.cshtml" />
     <Content Include="Views\Poll\Index.cshtml" />
+    <Content Include="Views\Login\Access.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
