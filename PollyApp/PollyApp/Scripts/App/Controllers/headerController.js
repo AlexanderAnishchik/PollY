@@ -8,7 +8,7 @@
 
         $http.get("Account/GetUser").then(function (response) {
 
-            headerKeeperService.data.user = response.data;
+            headerKeeperService.data.user = response.data.user;
         },
           function (response) {
 
@@ -34,8 +34,9 @@
                 if (response.data.status == "OK") {
                     $window.location.reload();
                 }
-                if(response.data.status == "Invalid Email or Password"){
-
+               
+                if (response.data.status == "Invalid Email or Password")
+                {
                     $scope.loader = false;
                     $scope.errorAuth = "The login or password you’ve entered is incorrect. Forgot password?";
                 }
