@@ -8,7 +8,7 @@
 
         $http.get("Account/GetUser").then(function (response) {
 
-            headerKeeperService.data.user = response.data.user;
+            headerKeeperService.data.user = response.data;
         },
           function (response) {
 
