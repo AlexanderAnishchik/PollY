@@ -406,6 +406,7 @@
     <Content Include="Scripts\App\Factory\answerTypeFactory.js" />
     <Content Include="Scripts\App\Route\constructorRoute.js" />
     <Content Include="Scripts\App\Services\headerKeeperService.js" />
+    <Content Include="Scripts\App\Services\JSONService.js" />
     <Content Include="Scripts\App\Services\pollBuilderService.js" />
     <Content Include="Scripts\bootstrap-modal.js" />
     <Content Include="Scripts\bootstrap.js" />

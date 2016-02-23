@@ -29,6 +29,7 @@
     $scope.setShare = function (type) {
         pollBuilderService.setShare(type.value);
         $scope.privacy = type.label;
+        $scope.share_set_complete = true;
         $scope.partialPath = 'Content/partial/share/' + type.logicalName + '.html';
     }
     $scope.access_types = null;
@@ -62,6 +63,7 @@
     $scope.setAccess = function (type) {
         $scope.choosed = type.label;
         $scope.partialPath = 'Content/partial/access/' + type.logicalName + '.html';
+        $scope.access_set_complete = true;
         pollBuilderService.setAccess(type.value);
     };
     $scope.changeAnswerState = function (block, index, isAdd) {

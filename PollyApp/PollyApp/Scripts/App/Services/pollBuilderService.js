@@ -1,5 +1,5 @@
 ﻿(function () {
-    PollyApp.service("pollBuilderService", ["pollSettingsFactory", "$http", function (pollSettingsFactory, $http) {
+    PollyApp.service("pollBuilderService", ["pollSettingsFactory","JSONService", "$http", function (pollSettingsFactory,JSONService, $http) {
         var self = this;
         self.pollData = {};
         self.pollData.poll = [];
@@ -38,8 +38,29 @@
             }
         };
         self.save = function () {
-
-            $http.post("Constructor/SavePoll", { newPoll: self.pollData }).then(function (response) {
+            debugger;
+            var poll_length = self.pollData.poll.length;
+            var validPollArray = jQuery.extend({},self.pollData);
+            validPollArray.poll = [];
+            while (poll_length--) {
+                if (self.pollData.poll[poll_length].question.value != null && self.pollData.poll[poll_length].question.value != "") {
+                    var answer_status = true;
+                    while (answer_status) {
+                         answer_status = false;
+                         for (var i = 0; i < self.pollData.poll[poll_length].answers.length; i++) {
+                             if (self.pollData.poll[poll_length].answers[i].value == null || self.pollData.poll[poll_length].answers[i].value == "") {
+                                self.pollData.poll[poll_length].answers.splice(i, 1);
+                                break;
+                                answer_status = true;
+                            }
+                        }
+                    }
+                    if (self.pollData.poll[poll_length].answers.length > 1) {
+                        validPollArray.poll.push(self.pollData.poll[poll_length]);
+                    }
+                }
+            }
+            $http.post("Constructor/SavePoll", { newPoll: validPollArray }).then(function (response) {
 
             }, function (response) {
 
