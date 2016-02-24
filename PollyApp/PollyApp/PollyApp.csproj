@@ -1243,6 +1243,7 @@
     <Content Include="Views\Popup\Error.cshtml" />
     <Content Include="Views\Poll\Index.cshtml" />
     <Content Include="Views\Login\Access.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

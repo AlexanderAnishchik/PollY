@@ -88,11 +88,14 @@ namespace PollyApp.Account
                     var userSalt = user.Salt;
                     using (MD5 md5Hash = MD5.Create())
                     {
-                        if(VerifyMd5Hash(md5Hash, password + userSalt, userPass))
+                        if (VerifyMd5Hash(md5Hash, password + userSalt, userPass))
                             return LoginStatus.Success;
+                        else
+                            return LoginStatus.NotValid;
                     }
                 }
-                return LoginStatus.UnexpectedError;
+                else
+                    return LoginStatus.UserDoesNotExist;
             }
             catch (Exception ex)
             {
@@ -181,7 +184,8 @@ namespace PollyApp.Account
             Success = 1,
             EmptyValue = 2,
             NotValid = 3,
-            UnexpectedError = 4
+            UnexpectedError = 4,
+            UserDoesNotExist = 5
         }
     }
 }

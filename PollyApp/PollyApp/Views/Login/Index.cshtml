@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Access to poll";
+    ViewBag.Title = "Enter your credentials";
     Layout = null;
 }
 <!DOCTYPE html>
@@ -20,27 +20,35 @@
     <script src="~/Scripts/App/app.js"></script>
     <script src="~/Scripts/App/Factory/pollSettingsFactory.js"></script>
     <script src="~/Scripts/App/Services/headerKeeperService.js"></script>
+    <script src="~/Scripts/App/Controllers/headerController.js"></script>
 </head>
 <body ng-app="Polly" style="background: url(../Content/images/bgroad.png) !important; background-repeat:no-repeat; background-size:cover !important; background-position:center;">
     <div class="container text-center access-page">
         <div class="row">
             <img src="~/Content/images/pollylogogreen.png" />
         </div>
-        <div class="row">
+        <div class="row" ng-controller="headerController as headCtrl">
             <div class="col-lg-4 col-md-4 col-sm-8 col-xs-10 col-lg-offset-4 col-md-offset-4 col-sm-offset-2 col-xs-offset-1 card">
+                <small class="text-danger" ng-show="errorAuth!=''">{{errorAuth}}</small>
                 <div class="title">
-                    Enter an access code
+                    Enter your credentials
                 </div>
+
                 <div class="content-card">
-                    <div class="form-group">
-                        <input class="form-control" placeholder="Access code" name="access_code"/>
-                    </div>
-                    <div class="">
-                        <button type="button" class="btn btn-success btn-lg btn-block"><img src="~/Content/images/unlocked-padlock.png" /></button>
-                    </div>
+                    <form name="login">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Email" name="email" ng-model="headCtrl.login.email" />
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="password" name="password" ng-model="headCtrl.login.password"/>
+                        </div>
+                        <div class="">
+                            <button type="button" class="btn btn-success btn-lg btn-block" ng-click="headCtrl.signIn()">Continue</button>
+                        </div>
+                    </form>
                 </div>
             </div>
-            
+
         </div>
     </div>
 

@@ -31,10 +31,11 @@ namespace PollyApp.Controllers
                         MemberWorker.AddUserCookie(Response, ((dynamic)user).Email, 3600);
                         Session["user"] = user;
                         return new JsonResult() { Data = new { status = "OK", user = user } };
-
                     }
                 case MemberWorker.LoginStatus.NotValid:
                     return new JsonResult() { Data = new { status = "Invalid Email or Password", user = user } };
+                case MemberWorker.LoginStatus.UserDoesNotExist:
+                    return new JsonResult() { Data = new { status = "User does not exist" } }; 
                 default:
                     return new HttpStatusCodeResult(400);
             }
@@ -85,6 +86,15 @@ namespace PollyApp.Controllers
         public ActionResult Access()
         {
             return View();
+        }
+        public ActionResult Index()
+        {
+            if (Request.IsAuthenticated)
+            {
+                return RedirectToAction("Index","Home");
+            }
+            else
+                return View();
         }
         protected override void Dispose(bool disposing)
         {

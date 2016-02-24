@@ -28,14 +28,16 @@
     $scope.errorAuth = "";
     $scope.loader = false;
     me.signIn = function () {
+        
         if (me.login.email && me.login.password) {
             $scope.loader = true;
-            $http.post("Login/SignIn", { login: me.login.email, pass: me.login.password }).then(function (response) {
+            $http.post("/Login/SignIn", { login: me.login.email, pass: me.login.password }).then(function (response) {
                 if (response.data.status == "OK") {
                     $window.location.reload();
                 }
-                if(response.data.status == "Invalid Email or Password"){
-
+               
+                if (response.data.status == "Invalid Email or Password")
+                {
                     $scope.loader = false;
                     $scope.errorAuth = "The login or password you’ve entered is incorrect. Forgot password?";
                 }
@@ -44,6 +46,9 @@
         function (response) {
 
         });
+        }
+        else {
+            $scope.errorAuth = "Please enter all field";
         }
     };
     $scope.isRegister = "";
