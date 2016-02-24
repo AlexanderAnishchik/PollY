@@ -90,12 +90,12 @@ namespace PollyApp.Account
                     {
                         if (VerifyMd5Hash(md5Hash, password + userSalt, userPass))
                             return LoginStatus.Success;
+                        else
+                            return LoginStatus.NotValid;
                     }
                 }
                 else
                     return LoginStatus.UserDoesNotExist;
-
-                return LoginStatus.UnexpectedError;
             }
             catch (Exception ex)
             {
