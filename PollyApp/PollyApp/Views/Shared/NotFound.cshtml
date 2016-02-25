@@ -1,0 +1,13 @@
+﻿@using System
+@{
+
+    ViewBag.Title = "Page Not Found";
+}
+
+<h1>Page Not Found</h1>
+
+<p>Could not find the page: @ViewBag.RequestedUrl</p>
+@if (ViewBag.ReferrerUrl != null)
+{
+    <p>Go back to the <a href="@ViewBag.ReferrerUrl">previous page</a>.</p>
+}

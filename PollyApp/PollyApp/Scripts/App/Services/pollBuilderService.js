@@ -61,9 +61,9 @@
                 }
             }
             $http.post("Constructor/SavePoll", { newPoll: validPollArray }).then(function (response) {
-
+                alert("Saved");
             }, function (response) {
-
+                alert("Error on server/Is not signIn");
             });
         };
         self.setType = function (type) {
