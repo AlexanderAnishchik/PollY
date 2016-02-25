@@ -5,7 +5,9 @@
     ViewBag.Title = "Polly - free service for poll and survey creating";
 
 }
-
+<growl-notifications>
+    <growl-notification>Hello</growl-notification>
+</growl-notifications>
 <div id="header" class="container-fluid">
     <div class="container header-block">
 
@@ -32,7 +34,7 @@
 </div>
 
 <div ng-controller="homeController as inpt" ng-init="inpt.init();">
-    
+    <div growl></div>
     <!--WRAPPER-->
     <section id="wrapper" class="container-fluid">
         <div class="container" id="wrapper-block">
