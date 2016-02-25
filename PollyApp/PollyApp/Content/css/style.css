@@ -824,10 +824,21 @@ box-shadow: 0px 0px 5px 1px rgba(204,204,204,1);
     outline:none;
 }
 .access-page{
-    
     padding:2% 0 2% 0; 
 }
-
+growl-notifications{
+  position: fixed;
+  top: 150px;
+  right: 10px;
+}
+growl-notification{
+  background:#fff;
+  color:#575757;
+  border: 1px solid #ccc;
+  border-left:3px solid #e74c3c;
+  padding: 15px 30px;
+  margin-bottom: 15px;
+}
 .access-page .card .title{
     
     font-family:Calibri;
@@ -844,7 +855,8 @@ box-shadow: 0px 0px 5px 1px rgba(204,204,204,1);
     padding-top:20px;
     padding-bottom:10px;
     border:none;
-    margin-top:17%;
+    margin-top:40%;
+    border-radius:2px;
 }
 .access-page .card .form-control{
     
