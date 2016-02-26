@@ -39,7 +39,15 @@
             return "add";
         return "delete";
     }
+    $scope.indexNotification = 0;
+    $scope.notifications = {};
     $scope.addBlock = function (last) {
+        var i;
+        if (!$scope.currentBlock.question.value) {
+            i = $scope.indexNotification++;
+            $scope.notifications[i] = "Question must be not null!";
+            return;
+        }
         pollBuilderService.addBlock();
         $scope.changeBlock($scope.builderData.poll.length-1);
     }
@@ -67,6 +75,14 @@
         pollBuilderService.setAccess(type.value);
     };
     $scope.changeAnswerState = function (block, index, isAdd) {
+        if (!block.answers[index].value)
+        {
+            var i;
+            i = $scope.indexNotification++;
+            $scope.notifications[i] = "Answer must be not null!";
+            return;
+            
+        }
         if (isAdd)
             pollBuilderService.addAnswer(block);
         else
@@ -167,7 +183,8 @@
         
     }
 
-
+   
+    
   
    
 }]);

@@ -830,14 +830,40 @@ growl-notifications{
   position: fixed;
   top: 150px;
   right: 10px;
+  z-index:999999999999;
 }
 growl-notification{
-  background:#fff;
-  color:#575757;
-  border: 1px solid #ccc;
-  border-left:3px solid #e74c3c;
-  padding: 15px 30px;
-  margin-bottom: 15px;
+    background-color: #e74c3c;
+    background-image: url(../images/warning-sign.png);
+    background-position-x:left;
+    background-position-y:center;
+    background-repeat:no-repeat;
+    color: #fff;
+    padding: 15px 30px;
+    width: 200px;
+    display: block;
+    border-radius: 5px;
+    border:1px solid #ccc;
+    border-left:3px solid #e74c3c;
+    margin-top: 15px;
+}
+growl-notification.fading.ng-move{
+    opacity: 0;
+    -webkit-transition: 1s linear all; /* Safari/Chrome */
+    transition: 1s linear all; /* All other modern browsers and IE10+ */
+}
+
+growl-notification.fading.ng-move.ng-move-active {
+    opacity: 1;
+}
+growl-notification.fading.ng-leave {
+    opacity: 1;
+    -webkit-transition: 1s linear all; /* Safari/Chrome */
+    transition: 1s linear all; /* All other modern browsers and IE10+ */
+}
+
+growl-notification.fading.ng-leave.ng-leave-active {
+    opacity: 0;
 }
 .access-page .card .title{
     

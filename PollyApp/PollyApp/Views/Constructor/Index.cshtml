@@ -7,6 +7,14 @@
 <script src="~/Scripts/App/Controllers/constructorController.js"></script>
 <script src="~/Scripts/App/Directives/enterDirective.js"></script>
 <div ng-controller="constructorController as mainCtrl" ng-init="mainCtrl.init();">
+    <growl-notifications></growl-notifications>
+    <div ng-repeat="notification in notifications">
+        <p>
+            <growl-notification class="fading">
+                {{notification}}
+            </growl-notification>
+        </p>
+    </div>
     @if (!Request.IsAuthenticated)
     {
         <div class="alert alert-info alert-dismissible information" role="alert">
