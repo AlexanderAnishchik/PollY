@@ -11,6 +11,7 @@ body {
     margin: 0;
     background: #f5f6f7;
     font-family: OpenSans;
+    
 }
 .number-input{
    text-align:center;
@@ -351,6 +352,9 @@ a {
     color:white;
     text-align:justify;
 }
+.footer-area{
+    
+}
 .footer-area  .btn-success{
     color:#1abc9c;
 }
@@ -451,7 +455,9 @@ a {
     
 }
 .add-poll{
-    margin-top:35px;
+    
+    padding-top:10%;
+
 
 }
 .btnAddQuestion{

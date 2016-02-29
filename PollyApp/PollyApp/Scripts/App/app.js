@@ -1,1 +1,1 @@
-﻿var PollyApp = angular.module('Polly', ['growlNotifications', 'ngAnimate']);
+﻿var PollyApp = angular.module('Polly', ['growlNotifications', 'ngAnimate', 'ngMaterial']);
