@@ -10,19 +10,21 @@ namespace PollyApp.Helpers
         public enum PollType
         {
             Single = 1,
-            Multiply = 2
+            Multiply = 2,
+            Quiz=3
         }
 
         public enum PollShare
         {
-            FreeLink = 1,
-            PasswordLink = 2,
-            CommunityLink = 3
+            Public = 1,
+            Private = 2
+            
         }
         public enum PollAccess
         {
-            Public = 1,
-            Anonymous = 2
+            FreeLink = 1,
+            UserSet = 2,
+            CodeSet = 3
         }
     }
 }

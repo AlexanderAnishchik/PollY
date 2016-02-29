@@ -9,6 +9,6 @@ namespace PollyApp.Models
     public class PollUnit
     {
         public Question Question { get; set; }
-        public List<Answer> Answers { get; set; }
+        public List<String> Answers { get; set; }
     }
 }

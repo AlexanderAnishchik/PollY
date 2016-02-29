@@ -27,6 +27,9 @@
                 answers: [{ value: null }, { value: null }]
             });
         }
+        self.saveCodeSet = function (codeSet) {
+            self.pollData.CodeSet = codeSet;
+        }
         self.setShare = function (share) {
             if (share && typeof share != "undefined") {
                 if (pollSettingsFactory.PollShare.some(function (el) {
@@ -38,33 +41,36 @@
             }
         };
         self.save = function () {
-            debugger;
-            var poll_length = self.pollData.poll.length;
-            var validPollArray = jQuery.extend({},self.pollData);
-            validPollArray.poll = [];
+            var validPollArray = JSON.parse(JSON.stringify(self.pollData));
+            var poll_length = validPollArray.poll.length;
             while (poll_length--) {
-                if (self.pollData.poll[poll_length].question.value != null && self.pollData.poll[poll_length].question.value != "") {
+                if (validPollArray.poll[poll_length].question.value != null && validPollArray.poll[poll_length].question.value != "") {
                     var answer_status = true;
                     while (answer_status) {
                          answer_status = false;
-                         for (var i = 0; i < self.pollData.poll[poll_length].answers.length; i++) {
-                             if (self.pollData.poll[poll_length].answers[i].value == null || self.pollData.poll[poll_length].answers[i].value == "") {
-                                self.pollData.poll[poll_length].answers.splice(i, 1);
+                         for (var i = 0; i < validPollArray.poll[poll_length].answers.length; i++) {
+                             if (validPollArray.poll[poll_length].answers[i].value == null || validPollArray.poll[poll_length].answers[i].value == "") {
+                                 validPollArray.poll[poll_length].answers.splice(i, 1);
                                 break;
                                 answer_status = true;
-                            }
+                             }
+                             else {
+                                 validPollArray.poll[poll_length].answers[i] = JSON.stringify(validPollArray.poll[poll_length].answers[i]);
+                             }
                         }
                     }
-                    if (self.pollData.poll[poll_length].answers.length > 1) {
-                        validPollArray.poll.push(self.pollData.poll[poll_length]);
-                    }
+
                 }
             }
+            debugger;
             $http.post("Constructor/SavePoll", { newPoll: validPollArray }).then(function (response) {
                 alert("Saved");
             }, function (response) {
                 alert("Error on server/Is not signIn");
             });
+        };
+        self.converterAnswer = function (validPollArray) {
+
         };
         self.setType = function (type) {
             if (type && typeof type != "undefined") {
