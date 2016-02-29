@@ -5,38 +5,24 @@
              {
                  logicalName: "Single",
                  value: 1,
-                 label: "Single"
+                 label: "Single",
+                 path: 'Content/partial/type/Single.html'
              },
                {
                    logicalName: "Multiply",
                    value: 2,
-                   label: "Multiply"
+                   label: "Multiply",
+                   path: 'Content/partial/type/Multiply.html'
                },
                {
                    logicalName: "quiz",
                    value: 3,
-                   label: "Quiz"
+                   label: "Quiz",
+                   path: 'Content/partial/type/Quiz.html'
                }
             ],
 
             PollShare: [
-               {
-                   logicalName: "FreeLink",
-                   value: 1,
-                   label: "Free Link"
-               },
-               {
-                   logicalName: "UserSet",
-                   value: 2,
-                   label: "User Set"
-               },
-               {
-                   logicalName: "CodeSet",
-                   value: 3,
-                   label: "Code Set"
-               }
-            ],
-            PollAccess: [
               {
                   logicalName: "Public",
                   value: 1,
@@ -47,7 +33,23 @@
                   value: 2,
                   label: "Private"
               }
-
+            ],
+            PollAccess: [
+                 {
+                     logicalName: "FreeLink",
+                     value: 1,
+                     label: "Free Link"
+                 },
+               {
+                   logicalName: "UserSet",
+                   value: 2,
+                   label: "User Set"
+               },
+               {
+                   logicalName: "CodeSet",
+                   value: 3,
+                   label: "Code Set"
+               }
             ]
 
         };
