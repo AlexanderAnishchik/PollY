@@ -358,6 +358,17 @@ a {
 .footer-area  .btn-success{
     color:#1abc9c;
 }
+.add-user-access .md-primary{
+    background:#338fff !important;
+}
+.add-user-access textarea,
+.add-user-access textarea:focus {
+    border:1px solid #cccccc;
+    outline:0;
+    box-shadow:none;
+    border-radius:2px !important;
+}
+
 .footer-area  .btn-success:hover,
 .footer-area  .btn-success:focus{
     color:#1abc9c;
@@ -624,6 +635,14 @@ a {
       filter: url(grayscale.svg#greyscale); /* Firefox 4+ */
       filter: gray;
       cursor:default
+}
+.disabled{
+    cursor:pointer !important;
+    pointer-events:none;
+    
+}
+.disabled:hover{
+    
 }
 .btn-install {
   outline:none;
