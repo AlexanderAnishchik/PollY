@@ -10,6 +10,24 @@ namespace PollyApp.Helpers
 {
     public static class ConstructorHelper
     {
+        public static void SetCodeArray(List<String>codes,int projectId)
+        {
+            using (var Db = new Repository())
+            {
+                List<CodeSet> codesList = new List<CodeSet>();
+                foreach (var code in codes)
+                {
+                    codesList.Add(new CodeSet() { CodeText = code });
+                }
+                Db.Context.CodeSets.AddRange(codesList);
+                Db.Save();
+                foreach (var code in codesList)
+                {
+                    Db.Context.ProjectAccessVoters.Add(new ProjectAccessVoter() { CodeSetId = code.Id, ProjectId = projectId, IsUsed = false });
+                }
+                Db.Save();
+            }
+        }
         public static void Save(PollWrapper poll)
         {
 
@@ -45,10 +63,13 @@ namespace PollyApp.Helpers
                                 Db.Add(el.Question);
                                 Db.Save();
                                 int order = 1;
-                                foreach (var an in el.Answers)
+                                List<Answer> answList = new List<Answer>();
+                                foreach (var answerString in el.Answers)
                                 {
-                                    an.QuestionId = el.Question.Id;
-                                    an.OrderValue = 1;
+                                    var answer = new Answer();
+                                    answer.QuestionId = el.Question.Id;
+                                    answer.OrderValue = 1;
+                                    answer.Value = answerString;
                                     order++;
                                 }
                                 Db.AddRange(el.Answers);
@@ -56,6 +77,7 @@ namespace PollyApp.Helpers
                             }
                         }
                         dbContextTransaction.Commit();
+                        SetCodeArray(poll.CodeSet, newProj.Id);
                     }
                     catch (Exception ex)
                     {

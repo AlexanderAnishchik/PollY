@@ -107,6 +107,7 @@
             $http.post("Constructor/GenerateCode", { count: count }).then(function (response) {
                 if (response.data.status) {
                     $scope.secureCodes = response.data.codes;
+                    pollBuilderService.saveCodeSet($scope.secureCodes);
                 }
             })
         }
