@@ -18,13 +18,13 @@
             self.pollData.PollAccess = 0;
             self.pollData.poll[0] = {
                 question: {value:null},
-                answers: [{ value: null }]
+                answers: [{ value: null }, { value: null }]
             };
         }
         self.addBlock = function (last) {
             self.pollData.poll.push({
                 question: { value: null },
-                answers: [{ value: null }]
+                answers: [{ value: null }, { value: null }]
             });
         }
         self.setShare = function (share) {

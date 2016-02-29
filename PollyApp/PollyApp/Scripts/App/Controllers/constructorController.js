@@ -2,6 +2,8 @@
     var me = this;
     $scope.headerData = headerKeeperService.data;
     $scope.secureCodes = [];
+    $scope.partialAccessPath = 'Content/partial/access/Default.html';
+    $scope.partialSharePath = 'Content/partial/share/Default.html';
     $scope.access_type = 'Content/partial/FreeAccess.html'
     $scope.template = 'Content/partial/ChooseType.html';
     if ($scope.template == 'Content/partial/ChooseType.html') {
@@ -30,16 +32,26 @@
         pollBuilderService.setShare(type.value);
         $scope.privacy = type.label;
         $scope.share_set_complete = true;
-        $scope.partialPath = 'Content/partial/share/' + type.logicalName + '.html';
+        $scope.partialSharePath = 'Content/partial/share/' + type.logicalName + '.html';
     }
     $scope.access_types = null;
     $scope.share_list = null;
-    $scope.answersSetCssClass = function (last) {
+    $scope.answersSetCssClass = function (last, index) {
         if (last)
             return "add";
+        if(index==0)
+            return "disabled delete";
         return "delete";
     }
+    $scope.indexNotification = 0;
+    $scope.notifications = {};
     $scope.addBlock = function (last) {
+        var i;
+        if (!$scope.currentBlock.question.value) {
+            i = $scope.indexNotification++;
+            $scope.notifications[i] = "Question can't be empty!";
+            return;
+        }
         pollBuilderService.addBlock();
         $scope.changeBlock($scope.builderData.poll.length-1);
     }
@@ -62,11 +74,12 @@
     }
     $scope.setAccess = function (type) {
         $scope.choosed = type.label;
-        $scope.partialPath = 'Content/partial/access/' + type.logicalName + '.html';
+        $scope.partialAccessPath = 'Content/partial/access/' + type.logicalName + '.html';
         $scope.access_set_complete = true;
         pollBuilderService.setAccess(type.value);
     };
     $scope.changeAnswerState = function (block, index, isAdd) {
+
         if (isAdd)
             pollBuilderService.addAnswer(block);
         else
@@ -167,7 +180,8 @@
         
     }
 
-
+   
+    
   
    
 }]);

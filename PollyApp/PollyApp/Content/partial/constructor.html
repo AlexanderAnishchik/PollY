@@ -1,11 +1,11 @@
 ﻿<div class="add-poll-content">
+    
     <div class="step-title">
         Time to create!
     </div>
     <div class="step-number">
         You can always change the access rights
     </div>
-
     <div class="row constructor">
         <div class="sidebar-left col-lg-2">
             <div class="title">
@@ -47,7 +47,7 @@
                                 <div class="form-group ">
                                     <input type="text" class="form-control-static" id=""  ng-model="answ.value" placeholder="Add answer">
                                 </div>
-                                <button type="button" ng-click="changeAnswerState(currentBlock,$index,$last)" ng-class="answersSetCssClass($last)"></button>
+                                <button type="button" ng-click="changeAnswerState(currentBlock,$index,$last)" ng-class="answersSetCssClass($last,$index)"></button>
                             </div>
                           
                         </div>
