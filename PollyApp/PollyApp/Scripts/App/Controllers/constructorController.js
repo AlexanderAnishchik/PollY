@@ -1,4 +1,4 @@
-﻿PollyApp.controller('constructorController', ['$scope', '$http', 'headerKeeperService', 'pollSettingsFactory', 'pollBuilderService', function ($scope, $http, headerKeeperService, pollSettingsFactory, pollBuilderService) {
+﻿PollyApp.controller('constructorController', ['$scope', '$http', 'headerKeeperService', 'pollSettingsFactory', 'pollBuilderService', '$mdDialog', function ($scope, $http, headerKeeperService, pollSettingsFactory, pollBuilderService, $mdDialog) {
     var me = this;
     $scope.headerData = headerKeeperService.data;
     $scope.secureCodes = [];
@@ -46,10 +46,21 @@
     $scope.indexNotification = 0;
     $scope.notifications = {};
     $scope.addBlock = function (last) {
+        
         var i;
         if (!$scope.currentBlock.question.value) {
-            i = $scope.indexNotification++;
-            $scope.notifications[i] = "Question can't be empty!";
+            var confirm = $mdDialog.confirm()
+            .title('Error')
+            .textContent('Question must be not null!')
+            .ariaLabel('YourPolly.com')
+            .targetEvent(event)
+            .ok('Yes')
+            .cancel('Cancel');
+            $mdDialog.show(confirm).then(function () {
+
+            }, function () {
+                
+            });
             return;
         }
         pollBuilderService.addBlock();
