@@ -79,7 +79,6 @@ E:\Projects\PollY\PollyApp\TestConsole\bin\Debug\ru\System.Web.Http.WebHost.reso
 E:\Projects\PollY\PollyApp\TestConsole\bin\Debug\ru\System.Web.Razor.resources.dll
 E:\Projects\PollY\PollyApp\TestConsole\bin\Debug\ru\System.Web.WebPages.Razor.resources.dll
 E:\Projects\PollY\PollyApp\TestConsole\bin\Debug\ru\System.Web.WebPages.resources.dll
-E:\Projects\PollY\PollyApp\TestConsole\bin\Debug\ru\System.Net.Http.Formatting.resources.dll
 E:\Projects\PollY\PollyApp\TestConsole\bin\Debug\ru\System.Web.WebPages.Deployment.resources.dll
 E:\Projects\PollY\PollyApp\TestConsole\obj\Debug\TestConsole.csprojResolveAssemblyReference.cache
 D:\Новая папка\PollY\PollyApp\TestConsole\bin\Debug\TestConsole.exe.config
@@ -127,3 +126,6 @@ D:\Новая папка\PollY\PollyApp\TestConsole\bin\Debug\ru\System.Web.WebP
 D:\Новая папка\PollY\PollyApp\TestConsole\bin\Debug\ru\System.Web.WebPages.Deployment.resources.dll
 D:\Новая папка\PollY\PollyApp\TestConsole\obj\Debug\TestConsole.csprojResolveAssemblyReference.cache
 D:\Новая папка\PollY\PollyApp\TestConsole\obj\Debug\TestConsole.csproj.TestConsole.exe.config
+E:\Projects\PollY\PollyApp\TestConsole\bin\Debug\SendGrid.dll
+E:\Projects\PollY\PollyApp\TestConsole\bin\Debug\SendGrid.SmtpApi.dll
+E:\Projects\PollY\PollyApp\TestConsole\bin\Debug\SendGridMail.dll
