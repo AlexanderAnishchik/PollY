@@ -367,14 +367,23 @@ a {
     outline:0;
     box-shadow:none;
     border-radius:2px !important;
+    resize:vertical;
 }
-
+md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolbar){
+    background:#202023 !important;
+}
+md-dialog{
+    max-width: 55% !important;
+}
 .footer-area  .btn-success:hover,
 .footer-area  .btn-success:focus{
     color:#1abc9c;
     outline:none;
 }
-
+.add-poll .card .btn-danger{
+    background:#009788 !important;
+    border-color:#009788 !important;
+}
 .work-space{
     border:1px solid #f2f3f3;
     padding:10px;

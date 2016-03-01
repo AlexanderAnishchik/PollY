@@ -1,11 +1,14 @@
 ﻿PollyApp.controller('constructorController', ['$scope', '$http', 'headerKeeperService', 'modalService', 'pollSettingsFactory', 'pollBuilderService', '$mdDialog', function ($scope, $http, headerKeeperService, modalService, pollSettingsFactory, pollBuilderService, $mdDialog) {
     var me = this;
+    
     $scope.headerData = headerKeeperService.data;
     $scope.secureCodes = [];
+
     me.singleOrMultiply = true;
     $scope.partialAccessPath = 'Content/partial/access/Default.html';
     $scope.partialSharePath = 'Content/partial/share/Default.html';
-    $scope.access_type = 'Content/partial/FreeAccess.html'
+
+    $scope.access_type = 'Content/partial/FreeAccess.html';
     $scope.template = 'Content/partial/ChooseType.html';
     if ($scope.template == 'Content/partial/ChooseType.html') {
         $scope.next_template = 'Content/partial/ChooseAccess.html';
@@ -19,9 +22,16 @@
         step3: 'Content/partial/ChooseShare.html',
         step4: 'Content/partial/constructor.html',
     };
+    $scope.isBuilder = false;
     $scope.setStep = function (stepValue) {
         $scope.step = stepValue;
+        if ($scope.step == $scope.settingsView.step4) {
+            pollBuilderService.isBuilder = true;
+            $scope.isBuilder = pollBuilderService.isBuilder;
+        }
+        
     }
+    
     $scope.step = $scope.settingsView.step1;
     $scope.data = {};
     $scope.builderData = pollBuilderService.pollData;
@@ -40,25 +50,27 @@
     $scope.answersSetCssClass = function (last, index) {
         if (last)
             return "add";
+
         if (index == 0)
             return "disabled delete";
         return "delete";
     }
     $scope.indexNotification = 0;
     $scope.notifications = {};
+
     $scope.addBlock = function (event, last) {
         if (!$scope.currentBlock.question.value) {
             var modalObject = {
                 title: "Error",
                 textContent: "Question must be not empty!",
                 ariaLabel: "yourpolly.com",
-                event: event
+                event:event
             };
             modalService.showAlert(modalObject, function () { }, function () { });
             return;
         }
         pollBuilderService.addBlock();
-        $scope.changeBlock($scope.builderData.poll.length - 1);
+        $scope.changeBlock($scope.builderData.poll.length-1);
     }
     me.init = function () {
         $scope.access_types = pollSettingsFactory.PollAccess;
@@ -76,6 +88,7 @@
 
         }
 
+
     }
     $scope.setAccess = function (type) {
         $scope.choosed = type.label;
@@ -88,7 +101,7 @@
         if (isAdd)
             pollBuilderService.addAnswer(block);
         else
-            pollBuilderService.deleteAnswer(block, index);
+            pollBuilderService.deleteAnswer(block,index);
 
     }
     $scope.changeBlock = function (index) {
@@ -135,8 +148,31 @@
     }
 
 
-    $scope.savePoll = function () {
-        pollBuilderService.save();
+    $scope.openCustomDialog = function (event) {
+        var object = {
+            controller: 'dialogController',
+            template: 'pollsavetype.tmpl.html',
+            outerClose:false,
+            event: event
+        };
+        modalService.showCustomDialog(object, function () { }, function () { });
+    };
+    $scope.savePoll = function (event) {
+        var modalObject = {
+            title: "Confirmation",
+            textContent: "Are you sure that you want to save your project?",
+            ariaLabel: "yourpolly.com / Save project",
+            event: event
+        };
+        modalService.showConfirm(modalObject,
+            function () {
+                pollBuilderService.save(function () {
+                    $scope.openCustomDialog(event);
+                })
+            },
+        function () { });
+        
+        
     }
     $scope.error = null;
     $scope.loader = false;
@@ -144,6 +180,7 @@
         $scope.tmp = null;
         if (email != "") {
             $scope.tmp = false;
+
             if (me.userGotAccess.length > 0) {
                 for (i = 0; i < me.userGotAccess.length; i++) {
                     if (me.userGotAccess[i].Email == email) {
@@ -170,6 +207,7 @@
                         if (data.user.Logo == null) {
                             data.user.Logo = 'nophoto.png';
                         }
+             
                         me.userGotAccess.push(data.user);
                         $scope.tmp = false;
                     }
@@ -186,6 +224,7 @@
     }
 
     $scope.deleteRow = function (idUser, index) {
+    
         me.userGotAccess.splice(index, 1);
     }
 

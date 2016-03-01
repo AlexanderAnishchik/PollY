@@ -1,4 +1,64 @@
-﻿<div class="add-poll-content">
+﻿
+<script type="text/ng-template" id="pollsavetype.tmpl.html">
+    <md-dialog aria-label="Save poll" ng-cloak>
+        <form>
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <h2>Poll save</h2>
+                    <span flex></span>
+                </div>
+            </md-toolbar>
+
+            <md-dialog-content>
+                <div class="md-dialog-content">
+                    <div class="">
+                        <div class="col-lg-6">
+                            <md-card>
+                                <img ng-src="Content/images/dashboardmini.png" class="md-card-image" alt="Washed Out">
+                                <md-card-title>
+                                    <md-card-title-text>
+                                        <span class="md-headline">Save with account</span>
+                                    </md-card-title-text>
+                                </md-card-title>
+                                <md-card-content>
+                                    <p>
+                                        The titles of Washed Out's breakthrough song and the first single from Paracosm share the
+                                        two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+                                    </p>
+                                </md-card-content>
+                                <md-card-actions layout="column" layout-align="start">
+                                    <md-button ng-click="">Save</md-button>
+                                </md-card-actions>
+                            </md-card>
+                        </div>
+                        <div class="col-lg-6">
+                            <md-card>
+                                <img ng-src="https://material.angularjs.org/latest/img/washedout.png" class="md-card-image" alt="Washed Out">
+                                <md-card-title>
+                                    <md-card-title-text>
+                                        <span class="md-headline">Save with link</span>
+                                    </md-card-title-text>
+                                </md-card-title>
+                                <md-card-content>
+                                    <p>
+                                        The titles of Washed Out's breakthrough song and the first single from Paracosm share the
+                                        two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+                                    </p>
+                                </md-card-content>
+                                <md-card-actions layout="column" layout-align="start">
+                                    <md-button ng-click="">Save</md-button>
+                                </md-card-actions>
+                            </md-card>
+                        </div>
+                    </div>
+
+                </div>
+            </md-dialog-content>
+            
+        </form>
+    </md-dialog>
+</script>
+<div class="add-poll-content">
 
     <div class="step-title">
         Time to create!
@@ -87,5 +147,5 @@
 
 </div>
 <div class="text-center footer-area">
-    <a ng-href=""><button type="button" ng-click="savePoll()" class="btn btn-success">SAVE POLL</button></a>
+    <a ng-href=""><button type="button" ng-click="savePoll($event)" class="btn btn-success">SAVE POLL</button></a>
 </div>
