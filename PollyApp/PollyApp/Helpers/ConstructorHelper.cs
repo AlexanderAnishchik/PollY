@@ -12,6 +12,7 @@ namespace PollyApp.Helpers
     {
         public static void SetCodeArray(List<String>codes,int projectId)
         {
+            codes = codes.Select(x => x.Trim()).ToList();
             using (var Db = new Repository())
             {
                 List<CodeSet> codesList = new List<CodeSet>();
@@ -30,6 +31,7 @@ namespace PollyApp.Helpers
         }
         public static void SetUserArray(List<String> users, int projectId)
         {
+            users = users.Select(x => x.Trim()).ToList();
             using (var Db = new Repository())
             {
                 var usersList = Db.Context.Users.Where(x => users.Contains(x.Email)).Select(x => x.Id).ToList();
@@ -57,6 +59,8 @@ namespace PollyApp.Helpers
                 {
                     try
                     {
+                        if (poll.Poll == null)
+                            throw new Exception("Poll null");
                         var questionType = Db.Context.QuestionTypes.Where(x => x.Id == 1).Select(x => x.Id).First();
                         var pollShare = Db.Context.PollShares.Where(x => x.Value == poll.PollShare).Select(x => x.Id).First();
                         var pollAccess = Db.Context.PollAccesses.Where(x => x.Value == poll.PollAccess).Select(x => x.Id).First();

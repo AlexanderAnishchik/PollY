@@ -31,6 +31,9 @@
         self.saveCodeSet = function (codeSet) {
             self.pollData.CodeSet = codeSet;
         }
+        self.saveUserSet = function (userSet) {
+            self.pollData.UserSet = userSet;
+        }
         self.setShare = function (share) {
             if (share && typeof share != "undefined") {
                 if (pollSettingsFactory.PollShare.some(function (el) {
