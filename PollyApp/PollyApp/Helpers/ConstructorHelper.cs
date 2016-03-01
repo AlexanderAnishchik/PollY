@@ -28,6 +28,25 @@ namespace PollyApp.Helpers
                 Db.Save();
             }
         }
+        public static void SetUserArray(List<String> users, int projectId)
+        {
+            using (var Db = new Repository())
+            {
+                var usersList = Db.Context.Users.Where(x => users.Contains(x.Email)).Select(x => x.Id).ToList();
+                List<UserSet> userSets= new List<UserSet>();
+                foreach (var user in usersList)
+                {
+                    userSets.Add(new UserSet() { UserId = user});
+                }
+                Db.Context.UserSets.AddRange(userSets);
+                Db.Save();
+                foreach (var user in userSets)
+                {
+                    Db.Context.ProjectAccessVoters.Add(new ProjectAccessVoter() { UserSetId = user.Id, ProjectId = projectId, IsUsed = false });
+                }
+                Db.Save();
+            }
+        }
         public static void Save(PollWrapper poll)
         {
 
@@ -68,16 +87,17 @@ namespace PollyApp.Helpers
                                 {
                                     var answer = new Answer();
                                     answer.QuestionId = el.Question.Id;
-                                    answer.OrderValue = 1;
+                                    answer.OrderValue = order;
                                     answer.Value = answerString;
                                     order++;
+                                    answList.Add(answer);
                                 }
-                                Db.AddRange(el.Answers);
+                                Db.AddRange(answList);
                                 Db.Save();
                             }
                         }
                         dbContextTransaction.Commit();
-                        SetCodeArray(poll.CodeSet, newProj.Id);
+                        SetAccess(poll, newProj.Id);
                     }
                     catch (Exception ex)
                     {
@@ -86,6 +106,20 @@ namespace PollyApp.Helpers
                 }
             }
 
+        }
+        public static void SetAccess(PollWrapper poll,int projectId)
+        {
+            var id = poll.PollAccess;
+            using (var Db = new Repository())
+            {
+                var access = Db.Context.PollAccesses.Where(x => x.Id == id).Select(x => x.Value).FirstOrDefault();
+                
+                if(access== (Int32)DbEnum.PollAccess.CodeSet)
+                    SetCodeArray(poll.CodeSet, projectId);
+                else
+                      if (access == (Int32)DbEnum.PollAccess.UserSet)
+                    SetUserArray(poll.UserSet, projectId);
+            }
         }
         public static String GenerateProjectCode()
         {
