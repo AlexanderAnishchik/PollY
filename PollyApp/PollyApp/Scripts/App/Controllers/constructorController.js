@@ -2,7 +2,7 @@
     var me = this;
     $scope.headerData = headerKeeperService.data;
     $scope.secureCodes = [];
-    $scope.singleOrMultiply = true;
+    me.singleOrMultiply = true;
     $scope.partialAccessPath = 'Content/partial/access/Default.html';
     $scope.partialSharePath = 'Content/partial/share/Default.html';
     $scope.access_type = 'Content/partial/FreeAccess.html'
@@ -11,7 +11,7 @@
         $scope.next_template = 'Content/partial/ChooseAccess.html';
     }
     $scope.userGotAccess = [
-    
+
     ];
     $scope.settingsView = {
         step1: 'Content/partial/ChooseType.html',
@@ -40,27 +40,25 @@
     $scope.answersSetCssClass = function (last, index) {
         if (last)
             return "add";
-        if(index==0)
+        if (index == 0)
             return "disabled delete";
         return "delete";
     }
     $scope.indexNotification = 0;
     $scope.notifications = {};
-    $scope.addBlock = function (event,last) {
-        
-        var i;
+    $scope.addBlock = function (event, last) {
         if (!$scope.currentBlock.question.value) {
             var modalObject = {
                 title: "Error",
                 textContent: "Question must be not empty!",
                 ariaLabel: "yourpolly.com",
-                event:event
+                event: event
             };
             modalService.showAlert(modalObject, function () { }, function () { });
             return;
         }
         pollBuilderService.addBlock();
-        $scope.changeBlock($scope.builderData.poll.length-1);
+        $scope.changeBlock($scope.builderData.poll.length - 1);
     }
     me.init = function () {
         $scope.access_types = pollSettingsFactory.PollAccess;
@@ -75,9 +73,9 @@
             $scope.step = $scope.settingsView.step2;
         }
         else {
-            
+
         }
-       
+
     }
     $scope.setAccess = function (type) {
         $scope.choosed = type.label;
@@ -90,7 +88,7 @@
         if (isAdd)
             pollBuilderService.addAnswer(block);
         else
-            pollBuilderService.deleteAnswer(block,index);
+            pollBuilderService.deleteAnswer(block, index);
 
     }
     $scope.changeBlock = function (index) {
@@ -102,7 +100,12 @@
             $scope.currentBlock = $scope.builderData.poll[0];
         }
     };
-    $scope.generateCode = function(count) {
+    me.multiplyResults = [];
+    $scope.parseMultiplyUsers = function () {
+        var res = me.multiplyResults.split(";");
+        me.multiplyResults = res;
+    };
+    $scope.generateCode = function (count) {
         if (count > 0) {
             $http.post("Constructor/GenerateCode", { count: count }).then(function (response) {
                 if (response.data.status) {
@@ -115,24 +118,41 @@
 
         }
     }
-    
+
+    $scope.saveUserSet = function () {
+        debugger;
+        if (me.singleOrMultiply) {
+            var users = [];
+            var i = me.userGotAccess.length;
+            while (i--) {
+                users.push(me.userGotAccess[i].Email)
+            }
+            pollBuilderService.saveUserSet(users);
+        } else {
+            $scope.parseMultiplyUsers();
+            pollBuilderService.saveUserSet(me.multiplyResults);
+        }
+    }
+
+
     $scope.savePoll = function () {
         pollBuilderService.save();
     }
     $scope.error = null;
     $scope.loader = false;
     $scope.addNewField = function (email) {
+        $scope.tmp = null;
         if (email != "") {
             $scope.tmp = false;
-            if ($scope.userGotAccess.length > 0) {
-                for (i = 0; i < $scope.userGotAccess.length; i++) {
-                    if ($scope.userGotAccess[i].Email == email) {
+            if (me.userGotAccess.length > 0) {
+                for (i = 0; i < me.userGotAccess.length; i++) {
+                    if (me.userGotAccess[i].Email == email) {
                         $scope.tmp = true;
                         break;
                     }
                 }
             }
-            
+
             if ($scope.tmp) {
                 $scope.error = "User already exist";
             }
@@ -150,27 +170,27 @@
                         if (data.user.Logo == null) {
                             data.user.Logo = 'nophoto.png';
                         }
-                        $scope.userGotAccess.push(data.user);
+                        me.userGotAccess.push(data.user);
                         $scope.tmp = false;
                     }
 
                 })
             }
-            
+
         }
         else {
             $scope.error = "Please enter email";
         }
-        
-        
+
+
     }
-    
+
     $scope.deleteRow = function (idUser, index) {
-        $scope.userGotAccess.splice(index,1);
+        me.userGotAccess.splice(index, 1);
     }
 
 
-    
+
     $scope.changeTemplate = function () {
         if ($scope.step == 1) {
             $scope.next_template = 'Content/partial/ChoosePermission.html';
@@ -185,12 +205,12 @@
             $scope.template = $scope.next_template;
             $scope.step++;
         }
-        
+
     }
 
-   
-    
-  
-   
+
+
+
+
 }]);
 
