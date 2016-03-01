@@ -1,7 +1,8 @@
-﻿PollyApp.controller('constructorController', ['$scope', '$http', 'headerKeeperService', 'pollSettingsFactory', 'pollBuilderService', '$mdDialog', function ($scope, $http, headerKeeperService, pollSettingsFactory, pollBuilderService, $mdDialog) {
+﻿PollyApp.controller('constructorController', ['$scope', '$http', 'headerKeeperService', 'modalService', 'pollSettingsFactory', 'pollBuilderService', '$mdDialog', function ($scope, $http, headerKeeperService, modalService, pollSettingsFactory, pollBuilderService, $mdDialog) {
     var me = this;
     $scope.headerData = headerKeeperService.data;
     $scope.secureCodes = [];
+    $scope.singleOrMultiply = true;
     $scope.partialAccessPath = 'Content/partial/access/Default.html';
     $scope.partialSharePath = 'Content/partial/share/Default.html';
     $scope.access_type = 'Content/partial/FreeAccess.html'
@@ -45,22 +46,17 @@
     }
     $scope.indexNotification = 0;
     $scope.notifications = {};
-    $scope.addBlock = function (last) {
+    $scope.addBlock = function (event,last) {
         
         var i;
         if (!$scope.currentBlock.question.value) {
-            var confirm = $mdDialog.confirm()
-            .title('Error')
-            .textContent('Question must be not null!')
-            .ariaLabel('YourPolly.com')
-            .targetEvent(event)
-            .ok('Yes')
-            .cancel('Cancel');
-            $mdDialog.show(confirm).then(function () {
-
-            }, function () {
-                
-            });
+            var modalObject = {
+                title: "Error",
+                textContent: "Question must be not empty!",
+                ariaLabel: "yourpolly.com",
+                event:event
+            };
+            modalService.showAlert(modalObject, function () { }, function () { });
             return;
         }
         pollBuilderService.addBlock();

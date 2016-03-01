@@ -1,22 +1,47 @@
 ﻿<div class="text-center add-user-access">
     <p>This type of access allows you to leave the answers only to a certain circle of registered users.</p>
-    <p>Please enter ID of user</p>
-    <div class="text-justify added-user row" ng-repeat="user in userGotAccess">
-        <div class="col-lg-1"><img src="/Content/images/Users/{{user.Logo}}" class="img-rounded foto-small" /></div>
-        <div class="col-lg-10 title">{{user.FirstName}} {{user.LastName}}</div>
-        <div class="col-lg-1"><button type="button" class="close" ng-click="deleteRow(user.id, $index)"><span aria-hidden="true">&times;</span></button></div>
-    </div>
-    <div class="loader text-center" ng-show="loader">
-        <img src="/Content/images/loader.gif" />
-    </div>
-    <div class="alert alert-danger" ng-show="tmp">
-        {{error}}
-    </div>
-    <div class="">
-        <div class="input-group">
-            <span class="input-group-addon" id="">Polly user</span>
-            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" ng-model="data.user_id_textbox" placeholder="user email">
-            <input type="button" class="add" value="" ng-click="addNewField(data.user_id_textbox)" />
+    <div ng-show="singleOrMultiply">
+        <p>Please enter ID of user</p>
+        <div class="text-justify added-user row" ng-repeat="user in userGotAccess">
+            <div class="col-lg-1"><img src="/Content/images/Users/{{user.Logo}}" class="img-rounded foto-small" /></div>
+            <div class="col-lg-10 title">{{user.FirstName}} {{user.LastName}}</div>
+            <div class="col-lg-1"><button type="button" class="close" ng-click="deleteRow(user.id, $index)"><span aria-hidden="true">&times;</span></button></div>
         </div>
+        <div class="loader text-center" ng-show="loader">
+            <img src="/Content/images/loader.gif" />
+        </div>
+        <div class="alert alert-danger" ng-show="tmp">
+            {{error}}
+        </div>
+        <div class="">
+            <div class="input-group">
+                <span class="input-group-addon" id="">Polly user</span>
+                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" ng-model="data.user_id_textbox" placeholder="user email">
+                <input type="button" class="add" value="" ng-click="addNewField(data.user_id_textbox)" />
+            </div>
+        </div>
+        <p>
+            or <br />
+            <md-button class="md-raised md-primary" ng-click="singleOrMultiply = false">Multiply input</md-button>
+        </p>
+    </div>
+    <div ng-show="!singleOrMultiply">
+        <p>Please enter emails from ";" <br />
+        <small>example@yourpolly.com; example1@yourpolly.com</small></p>
+        <div class="loader text-center" ng-show="loader">
+            <img src="/Content/images/loader.gif" />
+        </div>
+        <div class="alert alert-danger" ng-show="tmp">
+            {{error}}
+        </div>
+
+        <div class="form-group form-group-lg">
+            <textarea class="form-control" rows="5"></textarea>
+        </div>
+
+        <p>
+            or <br />
+            <md-button class="md-raised md-primary" ng-click="singleOrMultiply = true">Single input</md-button>
+        </p>
     </div>
 </div>
