@@ -14,11 +14,10 @@ namespace PollyApp.GenericRepository
     {
         public Entities Context { get; set; }
 
-        public DbEnum DbEnum { get; set; }
-
         public Repository()
         {
             Context = new Entities();
+       
         }
 
         public IEnumerable<TEntity> GetListRecords<TEntity>() where TEntity : class
