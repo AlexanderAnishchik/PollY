@@ -1,19 +1,13 @@
-﻿
-PollyApp.controller('dialogController', ['$scope', '$mdDialog', function ($scope, $mdDialog) {
+﻿PollyApp.controller('dialogController', ['$scope', 'headerKeeperService', 'pollBuilderService', '$mdDialog' , function ($scope, headerKeeperService, pollBuilderService, $mdDialog) {
+    var me = this;
+    me.init = function () {
 
-    $scope.showConfirm = function (event) {
-        var confirm = $mdDialog.confirm()
-           .title('Error')
-           .textContent('Question must be not null!')
-           .ariaLabel('YourPolly.com')
-           .targetEvent(event)
-           .ok('Yes')
-           .cancel('Cancel');
-        $mdDialog.show(confirm).then(function () {
-
-        }, function () {
-
-        });
     };
     
+    $scope.cancel = function () {
+        $mdDialog.cancel();
+    }
+    $scope.hide = function () {
+        $mdDialog.hide();
+    }
 }]);

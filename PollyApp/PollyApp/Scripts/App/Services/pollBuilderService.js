@@ -1,6 +1,7 @@
 ﻿(function () {
-    PollyApp.service("pollBuilderService", ["pollSettingsFactory","JSONService", "$http", function (pollSettingsFactory,JSONService, $http) {
+    PollyApp.service("pollBuilderService", ["pollSettingsFactory","JSONService","modalService", "$http", function (pollSettingsFactory,JSONService,modalService, $http) {
         var self = this;
+        self.isBuilder = false;
         self.pollData = {};
         self.pollData.poll = [];
         self.addAnswer = function (block) {
@@ -40,7 +41,7 @@
 
             }
         };
-        self.save = function () {
+        self.save = function (success) {
             var validPollArray = JSON.parse(JSON.stringify(self.pollData));
             var poll_length = validPollArray.poll.length;
             while (poll_length--) {
@@ -64,7 +65,7 @@
             }
             debugger;
             $http.post("Constructor/SavePoll", { newPoll: validPollArray }).then(function (response) {
-                alert("Saved");
+                success();
             }, function (response) {
                 alert("Error on server/Is not signIn");
             });
