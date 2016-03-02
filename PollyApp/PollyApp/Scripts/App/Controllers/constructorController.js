@@ -170,7 +170,7 @@
             function () {
                 pollBuilderService.save(function () {
                     $scope.openCustomDialog(event);
-                })
+                }, function () { modalService.showAlert({ title: "Error", textContent: "You can not save the poll, check your data", ariaLabel: "yourpolly.com / Confirm save", event: event }) }, function () { });
             },
         function () { });
         
