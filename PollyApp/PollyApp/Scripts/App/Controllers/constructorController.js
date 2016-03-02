@@ -210,8 +210,7 @@
                             data.user.Logo = 'nophoto.png';
                         }
              
-                        me.userGotAccess.push(data.user);
-                        
+                        me.userGotAccess.push(data.user);                      
                         $scope.data.user_id_textbox = "";
                         $scope.tmp = false;
                     }
