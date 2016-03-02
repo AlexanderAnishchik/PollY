@@ -358,7 +358,8 @@ a {
 .footer-area  .btn-success{
     color:#1abc9c;
 }
-.add-user-access .md-primary{
+.add-user-access .md-primary,
+.add-poll-content .md-primary{
     background:#338fff !important;
 }
 .add-user-access textarea,
