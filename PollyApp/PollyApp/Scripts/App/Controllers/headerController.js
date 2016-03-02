@@ -4,6 +4,8 @@
     me.registr = null;
     $scope.RegisterModalShowState = false;
     $scope.headerData = headerKeeperService.data;
+    
+    
     me.init = function () {
 
         $http.get("Account/GetUser").then(function (response) {
@@ -14,7 +16,6 @@
 
           });
     };
-
     //===VALIDATION===
     $scope.passConfirm = true;
     $scope.checkPasswordConfirmation = function (first,second) {

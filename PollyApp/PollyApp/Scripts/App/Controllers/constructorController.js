@@ -13,7 +13,7 @@
     if ($scope.template == 'Content/partial/ChooseType.html') {
         $scope.next_template = 'Content/partial/ChooseAccess.html';
     }
-    $scope.userGotAccess = [
+    me.userGotAccess = [
 
     ];
     $scope.settingsView = {
@@ -31,6 +31,7 @@
         }
         
     }
+
     
     $scope.step = $scope.settingsView.step1;
     $scope.data = {};
@@ -91,6 +92,7 @@
 
     }
     $scope.setAccess = function (type) {
+      
         $scope.choosed = type.label;
         $scope.partialAccessPath = 'Content/partial/access/' + type.logicalName + '.html';
         $scope.access_set_complete = true;
@@ -178,7 +180,7 @@
     $scope.loader = false;
     $scope.addNewField = function (email) {
         $scope.tmp = null;
-        if (email != "") {
+        if (email != undefined && email!="") {
             $scope.tmp = false;
 
             if (me.userGotAccess.length > 0) {
@@ -209,6 +211,8 @@
                         }
              
                         me.userGotAccess.push(data.user);
+                        
+                        $scope.data.user_id_textbox = "";
                         $scope.tmp = false;
                     }
 
@@ -218,11 +222,12 @@
         }
         else {
             $scope.error = "Please enter email";
+            $scope.tmp = true;
         }
 
 
     }
-
+    
     $scope.deleteRow = function (idUser, index) {
     
         me.userGotAccess.splice(index, 1);

@@ -2,6 +2,8 @@
 <div class="text-center">
     <p>This type of access allowed to participate in the vote or poll only to those users who have the access code generated at random.</p>
     <p><input type="text" ng-model="codesCount" class="number-input" placeholder="Count codes" /></p>
-    <div class="text-uppercase secure_code" ng-show="secureCodes.length > 0"><h3 ng-repeat="codes in secureCodes">{{codes}}</h3></div>
+    <div class="scrollbar" id="scrollbar" ng-show="secureCodes.length > 0">
+        <div class="force-overflow"><p ng-repeat="codes in secureCodes">{{codes}}</p></div>
+    </div>
     <p><button type="button" class="btn btn-install" ng-click="generateCode(codesCount)">GENERATE</button></p>
 </div>

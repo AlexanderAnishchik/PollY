@@ -301,6 +301,7 @@
     <Content Include="Content\images\Users\julia_pomazkina.png" />
     <Content Include="Content\images\Users\nophoto.png" />
     <Content Include="Content\images\Users\sanya_axel.jpg" />
+    <Content Include="Content\ng-scrollbar.min.css" />
     <Content Include="Content\partial\share\Default.html" />
     <Content Include="Content\partial\share\Private.html" />
     <Content Include="Content\partial\share\Public.html" />
@@ -1237,6 +1238,7 @@
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Scripts\ng-scrollbar.js" />
     <Content Include="Scripts\ui-bootstrap-1.0.3.min.js" />
     <Content Include="Scripts\ui-bootstrap-tpls-1.0.3.js" />
     <Content Include="Scripts\_references.js" />
