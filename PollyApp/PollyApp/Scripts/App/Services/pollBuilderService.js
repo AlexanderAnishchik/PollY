@@ -1,5 +1,5 @@
 ﻿(function () {
-    PollyApp.service("pollBuilderService", ["pollSettingsFactory","JSONService","modalService", "$http", function (pollSettingsFactory,JSONService,modalService, $http) {
+    PollyApp.service("pollBuilderService", ["pollSettingsFactory", "JSONService", "modalService", "$http", function (pollSettingsFactory, JSONService, modalService, $http) {
         var self = this;
         self.isBuilder = false;
         self.pollData = {};
@@ -18,7 +18,7 @@
             self.pollData.PollShare = 0;
             self.pollData.PollAccess = 0;
             self.pollData.poll[0] = {
-                question: {value:null},
+                question: { value: null },
                 answers: [{ value: null }, { value: null }]
             };
         }
@@ -39,38 +39,51 @@
                 if (pollSettingsFactory.PollShare.some(function (el) {
                    return el.value == share;
                 })) {
-                     self.pollData.PollShare = share;
+                    self.pollData.PollShare = share;
                 }
 
             }
         };
-        self.save = function (success) {
+        self.save = function (success, errorValidation, serverError) {
+            var hasError = false;
             var validPollArray = JSON.parse(JSON.stringify(self.pollData));
             var poll_length = validPollArray.poll.length;
             while (poll_length--) {
                 if (validPollArray.poll[poll_length].question.value != null && validPollArray.poll[poll_length].question.value != "") {
                     var answer_status = true;
                     while (answer_status) {
-                         answer_status = false;
-                         for (var i = 0; i < validPollArray.poll[poll_length].answers.length; i++) {
-                             if (validPollArray.poll[poll_length].answers[i].value == null || validPollArray.poll[poll_length].answers[i].value == "") {
-                                 validPollArray.poll[poll_length].answers.splice(i, 1);
+                        answer_status = false;
+                        for (var i = 0; i < validPollArray.poll[poll_length].answers.length; i++) {
+                            if (validPollArray.poll[poll_length].answers[i].value == null || validPollArray.poll[poll_length].answers[i].value == "") {
+
+                                validPollArray.poll[poll_length].answers.splice(i, 1);
                                 break;
                                 answer_status = true;
-                             }
-                             else {
-                                 validPollArray.poll[poll_length].answers[i] = JSON.stringify(validPollArray.poll[poll_length].answers[i]);
-                             }
+                            }
+                            else {
+                                validPollArray.poll[poll_length].answers[i] = JSON.stringify(validPollArray.poll[poll_length].answers[i]);
+                            }
+                        }
+                        if (validPollArray.poll[poll_length].answers < 2) {
+                            validPollArray.poll.splice(poll_length, 1);
+                            hasError = true;
                         }
                     }
-
+                } else {
+                    hasError = true;
+                    validPollArray.poll.splice(poll_length, 1);
                 }
+               
             }
-            debugger;
+            if (validPollArray.poll.length == 0 ||  hasError == true) {
+                errorValidation();
+                return;
+            }
+
             $http.post("Constructor/SavePoll", { newPoll: validPollArray }).then(function (response) {
                 success();
             }, function (response) {
-                alert("Error on server/Is not signIn");
+                serverError();
             });
         };
         self.converterAnswer = function (validPollArray) {
