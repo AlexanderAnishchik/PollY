@@ -10,7 +10,9 @@
                .ariaLabel(object.ariaLabel)
                .targetEvent(object.event)
                .ok('Ok')
+               .escapeToClose(false)
                .cancel('Cancel');
+
             $mdDialog.show(confirm).then(success,
                 cancel);
         };
