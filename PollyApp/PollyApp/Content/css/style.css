@@ -18,6 +18,7 @@ body {
     height:34px;
     border:none;
     border-bottom:2px solid #a5b5c5;
+    
 }
 
 .number-input:focus{
@@ -375,6 +376,35 @@ md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolb
 }
 md-dialog{
     max-width: 55% !important;
+}
+md-dialog.md-default-theme{
+    padding-top:15px;
+}
+md-dialog.md-default-theme .md-dialog-content{
+    padding:0;
+}
+md-dialog.md-default-theme .md-dialog-content h2{
+    font-family: Calibri;
+    color: #575757;
+    font-size: 35px;
+    padding: 0px 0px 0px 5px;
+    border-left: 10px solid #f1c40f;
+    text-align: left;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+md-dialog.md-default-theme[role="alertdialog"] .md-dialog-content h2{
+    font-family: Calibri;
+    color: #575757;
+    font-size: 35px;
+    padding: 0px 0px 0px 5px;
+    border-left: 10px solid #e74c3c;
+    text-align: left;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+md-dialog.md-default-theme .md-dialog-content p{
+    padding:15px;
 }
 .footer-area  .btn-success:hover,
 .footer-area  .btn-success:focus{
