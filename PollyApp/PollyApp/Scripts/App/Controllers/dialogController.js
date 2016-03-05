@@ -1,4 +1,4 @@
-﻿PollyApp.controller('dialogController', ['$scope', 'headerKeeperService', 'modalService', '$mdDialog', function ($scope, headerKeeperService, modalService, $mdDialog) {
+﻿PollyApp.controller('dialogController', ['$scope', 'headerKeeperService', 'modalService','pollBuilderService', '$mdDialog', function ($scope, headerKeeperService, modalService,pollBuilderService, $mdDialog) {
     var me = this;
     me.init = function () {
 
@@ -10,12 +10,12 @@
     $scope.hide = function () {
         $mdDialog.hide();
     }
-    $scope.openModalWithLink = function(event){
+    $scope.openModalWithLink = function (event, modalObject) {
         
         var modalObject = {
             title: "Link to poll",
-            textContent: "http://yourpolly.com/poll/1eR21ju",
-            ariaLabel: "Poll / http://yourpolly.com/poll/1eR21ju",
+            textContent: window.location.origin + "/" + pollBuilderService.lastSavedProject,
+            ariaLabel: window.location.origin + "/" + pollBuilderService.lastSavedProject,
             event: event
         };
         modalService.showConfirm(modalObject, function () { window.location.href = "/"; }, function () {

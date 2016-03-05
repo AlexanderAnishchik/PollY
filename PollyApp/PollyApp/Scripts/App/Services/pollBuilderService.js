@@ -3,6 +3,7 @@
         var self = this;
         self.isBuilder = false;
         self.pollData = {};
+        self.lastSavedProject = null;
         self.pollData.poll = [];
         self.addAnswer = function (block) {
             block.answers.push({ value: "" });
@@ -82,11 +83,13 @@
             }
 
             $http.post("Constructor/SavePoll", { newPoll: validPollArray }).then(function (response) {
+                self.lastSavedProject = response.data.UrlCode;
                 success();
             }, function (response) {
                 serverError();
             });
         };
+
         self.converterAnswer = function (validPollArray) {
 
         };
