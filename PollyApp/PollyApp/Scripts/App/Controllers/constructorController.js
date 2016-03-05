@@ -162,7 +162,7 @@
     $scope.savePoll = function (event) {
         var modalObject = {
             title: "Confirmation",
-            textContent: "Are you sure that you want to save your project?",
+            textContent: "Do you want to save this project?",
             ariaLabel: "yourpolly.com / Save project",
             event: event
         };
@@ -170,7 +170,7 @@
             function () {
                 pollBuilderService.save(function () {
                     $scope.openCustomDialog(event);
-                }, function () { modalService.showAlert({ title: "Error", textContent: "You can not save the poll, check your data", ariaLabel: "yourpolly.com / Confirm save", event: event }) }, function () { });
+                }, function () { modalService.showAlert({ title: "Error", textContent: "You can't save the project, check your data", ariaLabel: "yourpolly.com / Confirm save", event: event }) }, function () { });
             },
         function () { });
         

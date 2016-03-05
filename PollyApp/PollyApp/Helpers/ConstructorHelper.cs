@@ -3,6 +3,7 @@ using PollyApp.GenericRepository;
 using PollyApp.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Web;
 
@@ -49,12 +50,16 @@ namespace PollyApp.Helpers
                 Db.Save();
             }
         }
-        public static void Save(PollWrapper poll)
+        /// <summary>
+        /// Save new project and return  Project data
+        /// </summary>
+        public static Project Save(PollWrapper poll)
         {
 
             
             using (var Db = new Repository())
             {
+                Db.Context.Configuration.ProxyCreationEnabled = false;
                 using (var dbContextTransaction = Db.Context.Database.BeginTransaction())
                 {
                     try
@@ -102,10 +107,12 @@ namespace PollyApp.Helpers
                         }
                         dbContextTransaction.Commit();
                         SetAccess(poll, newProj.Id);
+                        return newProj;
                     }
                     catch (Exception ex)
                     {
                         dbContextTransaction.Rollback();
+                        return null;
                     }
                 }
             }

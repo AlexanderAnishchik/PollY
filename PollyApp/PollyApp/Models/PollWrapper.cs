@@ -18,5 +18,6 @@ namespace PollyApp.Models
         public List<PollUnit> Poll { get; set; }
         public List<String> CodeSet { get; set; }
         public List<String> UserSet { get; set; }
+
     }
 }

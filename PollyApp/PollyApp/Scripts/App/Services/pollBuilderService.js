@@ -3,6 +3,7 @@
         var self = this;
         self.isBuilder = false;
         self.pollData = {};
+        self.lastSavedProject = null;
         self.pollData.poll = [];
         self.addAnswer = function (block) {
             block.answers.push({ value: "" });
@@ -55,18 +56,19 @@
                         answer_status = false;
                         for (var i = 0; i < validPollArray.poll[poll_length].answers.length; i++) {
                             if (validPollArray.poll[poll_length].answers[i].value == null || validPollArray.poll[poll_length].answers[i].value == "") {
-
                                 validPollArray.poll[poll_length].answers.splice(i, 1);
-                                break;
                                 answer_status = true;
+                                break;
                             }
                             else {
                                 validPollArray.poll[poll_length].answers[i] = JSON.stringify(validPollArray.poll[poll_length].answers[i]);
+                               
                             }
                         }
                         if (validPollArray.poll[poll_length].answers < 2) {
                             validPollArray.poll.splice(poll_length, 1);
                             hasError = true;
+                            var answer_status = false;
                         }
                     }
                 } else {
@@ -75,17 +77,19 @@
                 }
                
             }
-            if (validPollArray.poll.length == 0 ||  hasError == true) {
+            if (validPollArray.poll.length <2 ||  hasError == true) {
                 errorValidation();
                 return;
             }
 
             $http.post("Constructor/SavePoll", { newPoll: validPollArray }).then(function (response) {
+                self.lastSavedProject = response.data.UrlCode;
                 success();
             }, function (response) {
                 serverError();
             });
         };
+
         self.converterAnswer = function (validPollArray) {
 
         };

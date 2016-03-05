@@ -33,17 +33,18 @@ namespace PollyApp.Controllers
 
 //                });
         [UserAuth]
-        public string SavePoll(PollWrapper newPoll)
+        public ActionResult SavePoll(PollWrapper newPoll)
         {
             try
             {
                 newPoll.UserId = ((dynamic)Session["user"]).Id;
-                ConstructorHelper.Save(newPoll);
-                return "S";
+              var project=  ConstructorHelper.Save(newPoll);
+               return new JsonResult() { Data = project };
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                Response.StatusCode = 400;
+                return new JsonResult() { Data = null };
             }
         }
         [HttpPost]
