@@ -15,11 +15,14 @@ namespace PollyApp.Controllers
         {
             if (PollHelper.CheckUrlProjectCode(poll))
             {
-                return View();
+                var valid = (SafeAdmission)Session["admission"];
+                if (valid != null && valid.Status && valid.projectUrl== poll)
+                    return View();
+                return RedirectToAction("RouteAccess", "Admission", new { projectUrl = poll });
             }
             return Redirect("/");
         }
-        
+
         protected override void Dispose(bool disposing)
         {
             Db.Dispose();

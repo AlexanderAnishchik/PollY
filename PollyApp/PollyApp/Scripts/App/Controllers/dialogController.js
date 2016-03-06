@@ -14,8 +14,8 @@
         
         var modalObject = {
             title: "Link to poll",
-            textContent: window.location.origin + "/" + pollBuilderService.lastSavedProject,
-            ariaLabel: window.location.origin + "/" + pollBuilderService.lastSavedProject,
+            textContent: window.location.origin + "/poll/" + pollBuilderService.lastSavedProject,
+            ariaLabel: window.location.origin + "/poll/" + pollBuilderService.lastSavedProject,
             event: event
         };
         modalService.showConfirm(modalObject, function () { window.location.href = "/"; }, function () {

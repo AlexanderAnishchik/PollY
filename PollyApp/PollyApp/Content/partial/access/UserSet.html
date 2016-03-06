@@ -1,8 +1,8 @@
 ﻿<div class="text-center add-user-access">
     <p>This type of access allows you to leave the answers only to a certain circle of registered users.</p>
-    <div ng-show="mainCtrl.singleOrMultiply">
+    <div ng-show="accessData.singleOrMultiply">
         <p>Please enter ID of user</p>
-        <div class="text-justify added-user row" ng-repeat="user in mainCtrl.userGotAccess">
+        <div class="text-justify added-user row" ng-repeat="user in  accessData.userGotAccess">
             <div class="col-lg-1"><img src="/Content/images/Users/{{user.Logo}}" class="img-rounded foto-small" /></div>
             <div class="col-lg-10 title">{{user.FirstName}} {{user.LastName}}</div>
             <div class="col-lg-1"><button type="button" class="close" ng-click="deleteRow(user.id, $index)"><span aria-hidden="true">&times;</span></button></div>
@@ -22,10 +22,10 @@
         </div>
         <p>
             or <br />
-            <md-button class="md-raised md-primary" ng-click="mainCtrl.userGotAccess=null;mainCtrl.singleOrMultiply = false;">Multiply input</md-button>
+            <md-button class="md-raised md-primary" ng-click="accessData.userGotAccess=null;accessData.singleOrMultiply = false;">Multiply input</md-button>
         </p>
     </div>
-    <div ng-show="!mainCtrl.singleOrMultiply">
+    <div ng-show="!accessData.singleOrMultiply">
         <p>Please enter emails from ";" <br />
         <small>example@yourpolly.com; example1@yourpolly.com</small></p>
         <div class="loader text-center" ng-show="loader">
@@ -36,12 +36,12 @@
         </div>
 
         <div class="form-group form-group-lg">
-            <textarea ng-model="mainCtrl.multiplyResults" class="form-control" rows="5"></textarea>
+            <textarea ng-model="accessData.multiplyResults" class="form-control" rows="5"></textarea>
         </div>
 
         <p>
             or <br />
-            <md-button class="md-raised md-primary" ng-click="mainCtrl.singleOrMultiply = true">Single input</md-button>
+            <md-button class="md-raised md-primary" ng-click="accessData.singleOrMultiply = true">Single input</md-button>
         </p>
     </div>
     <md-button ng-click="saveUserSet();">Save people</md-button>

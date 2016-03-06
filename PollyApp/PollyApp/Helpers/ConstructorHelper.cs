@@ -53,7 +53,7 @@ namespace PollyApp.Helpers
         /// <summary>
         /// Save new project and return  Project data
         /// </summary>
-        public static Project Save(PollWrapper poll)
+        public static Project Save(PollWrapper configPoll, List<PollUnit> poll)
         {
 
             
@@ -64,15 +64,15 @@ namespace PollyApp.Helpers
                 {
                     try
                     {
-                        if (poll.Poll == null)
+                        if (configPoll == null)
                             throw new Exception("Poll null");
                         var questionType = Db.Context.QuestionTypes.Where(x => x.Id == 1).Select(x => x.Id).First();
-                        var pollShare = Db.Context.PollShares.Where(x => x.Value == poll.PollShare).Select(x => x.Id).First();
-                        var pollAccess = Db.Context.PollAccesses.Where(x => x.Value == poll.PollAccess).Select(x => x.Id).First();
-                        var pollTypes = Db.Context.PollTypes.Where(x => x.Value == poll.PollType).Select(x => x.Id).First();
+                        var pollShare = Db.Context.PollShares.Where(x => x.Value == configPoll.PollShare).Select(x => x.Id).First();
+                        var pollAccess = Db.Context.PollAccesses.Where(x => x.Value == configPoll.PollAccess).Select(x => x.Id).First();
+                        var pollTypes = Db.Context.PollTypes.Where(x => x.Value == configPoll.PollType).Select(x => x.Id).First();
                         Project newProj = new Project();
-                        newProj.UserId = (int)poll.UserId;
-                        newProj.Name = poll.PollName;
+                        newProj.UserId = (int)configPoll.UserId;
+                        newProj.Name = configPoll.PollName;
                         newProj.ShareId = pollShare;
                         newProj.AccessId = pollAccess;
                         newProj.TypeId = pollTypes;
@@ -82,9 +82,9 @@ namespace PollyApp.Helpers
                         newProj.UrlCode = GenerateProjectCode();
                         Db.Add(newProj);
                         Db.Save();
-                        if (poll.Poll != null)
+                        if (poll != null)
                         {
-                            foreach (var el in poll.Poll)
+                            foreach (var el in poll)
                             {
                                 el.Question.ProjectId = newProj.Id;
                                 el.Question.QuestionTypeId = questionType;
@@ -106,7 +106,7 @@ namespace PollyApp.Helpers
                             }
                         }
                         dbContextTransaction.Commit();
-                        SetAccess(poll, newProj.Id);
+                        SetAccess(configPoll, newProj.Id);
                         return newProj;
                     }
                     catch (Exception ex)

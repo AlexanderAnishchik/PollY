@@ -1,20 +1,22 @@
 ﻿(function () {
     PollyApp.service("pollBuilderService", ["pollSettingsFactory", "JSONService", "modalService", "$http", function (pollSettingsFactory, JSONService, modalService, $http) {
         var self = this;
-        self.isBuilder = false;
         self.pollData = {};
         self.lastSavedProject = null;
         self.pollData.poll = [];
+        self.pollData.CodeSet = [];
         self.addAnswer = function (block) {
             block.answers.push({ value: "" });
         }
+
         self.deleteAnswer = function (block, index) {
             block.answers.splice(index, 1);
         }
+
         self.deleteQuestion = function (block, index) {
             self.pollData.poll.splice(index, 1);
         }
-        self.testData = function () {
+        self.initData = function () {
             self.pollData.PollType = 0;
             self.pollData.PollShare = 0;
             self.pollData.PollAccess = 0;
@@ -83,7 +85,7 @@
                 return;
             }
 
-            $http.post("Constructor/SavePoll", { newPoll: validPollArray }).then(function (response) {
+            $http.post("Constructor/SavePoll", { configPoll: validPollArray, poll: validPollArray.poll }).then(function (response) {
                 self.lastSavedProject = response.data.UrlCode;
                 success();
             }, function (response) {

@@ -1,10 +1,32 @@
-﻿PollyApp.controller('constructorController', ['$scope', '$http', 'headerKeeperService', 'modalService', 'pollSettingsFactory', 'pollBuilderService', '$mdDialog', function ($scope, $http, headerKeeperService, modalService, pollSettingsFactory, pollBuilderService, $mdDialog) {
+﻿PollyApp.controller('constructorController', ['$scope', '$http', 'headerKeeperService', 'modalService', 'pollSettingsFactory', 'recoveryService', 'pollBuilderService', '$mdDialog', function ($scope, $http, headerKeeperService, modalService, pollSettingsFactory, recoveryService, pollBuilderService, $mdDialog) {
     var me = this;
-    
-    $scope.headerData = headerKeeperService.data;
-    $scope.secureCodes = [];
 
-    me.singleOrMultiply = true;
+    $scope.headerData = headerKeeperService.data;
+    $scope.accessData = {
+        secureCodes: [],
+        choosedLabel:"Choose access",
+        path: 'Content/partial/access/Default.html',
+        access_types:null,
+        set_complete: false,
+        singleOrMultiply: true,
+        multiplyResults: [],
+        userGotAccess: [],
+        codesCount: null,
+
+    }
+    $scope.privacyData = {
+        share_list: [],
+        choosedLabel: "Choose privacy",
+        path: 'Content/partial/share/Default.html',
+        access_types: null,
+        set_complete: false,
+        singleOrMultiply: true,
+        multiplyResults: [],
+        userGotAccess: [],
+        codesCount: null,
+
+    }
+    $scope.saved = false;
     $scope.partialAccessPath = 'Content/partial/access/Default.html';
     $scope.partialSharePath = 'Content/partial/share/Default.html';
 
@@ -13,9 +35,31 @@
     if ($scope.template == 'Content/partial/ChooseType.html') {
         $scope.next_template = 'Content/partial/ChooseAccess.html';
     }
-    me.userGotAccess = [
-
-    ];
+   var intr= setInterval(function () {
+        var saveData = {
+            builderData: $scope.builderData,
+            isBuilder: $scope.isBuilder,
+            accessData: $scope.accessData,
+            privacyData: $scope.privacyData,
+            saved:$scope.saved
+        };
+        var data = recoveryService.getRecoveryPollData();
+        if (data != null && data.saved) {
+            recoveryService.clearRecoveryPollData();
+            clearInterval(intr);
+        }
+        else {
+            recoveryService.setRecoveryPollData(saveData);
+        }
+    }, 5000);
+    me.loadPoll = function () {
+        var data = recoveryService.getRecoveryPollData();
+        if (data == null) return false;
+        for(var field in data){
+            $scope[field] = data[field];
+        }
+        return true;
+    }
     $scope.settingsView = {
         step1: 'Content/partial/ChooseType.html',
         step2: 'Content/partial/ChooseAccess.html',
@@ -26,28 +70,25 @@
     $scope.setStep = function (stepValue) {
         $scope.step = stepValue;
         if ($scope.step == $scope.settingsView.step4) {
-            pollBuilderService.isBuilder = true;
-            $scope.isBuilder = pollBuilderService.isBuilder;
+            $scope.isBuilder = true;
         }
-        
+
     }
 
-    
+
     $scope.step = $scope.settingsView.step1;
     $scope.data = {};
-    $scope.builderData = pollBuilderService.pollData;
+    $scope.builderData = {};
     $scope.currentBlock = null;
-    $scope.choosed = "Choose access";
-    $scope.privacy = "Choose privacy";
+
     $scope.description = "Please choose type of privacy. Be careful when you will be choosing type and think carefully before you make a choice, because this may depend on the number of voting.";
     $scope.setShare = function (type) {
+        $scope.privacyData.choosedLabel = type.label;
         pollBuilderService.setShare(type.value);
         $scope.privacy = type.label;
         $scope.share_set_complete = true;
-        $scope.partialSharePath = 'Content/partial/share/' + type.logicalName + '.html';
+        $scope.privacyData.path = 'Content/partial/share/' + type.logicalName + '.html';
     }
-    $scope.access_types = null;
-    $scope.share_list = null;
     $scope.answersSetCssClass = function (last, index) {
         if (last)
             return "add";
@@ -65,19 +106,26 @@
                 title: "Error",
                 textContent: "Question must be not empty!",
                 ariaLabel: "yourpolly.com",
-                event:event
+                event: event
             };
             modalService.showAlert(modalObject, function () { }, function () { });
             return;
         }
         pollBuilderService.addBlock();
-        $scope.changeBlock($scope.builderData.poll.length-1);
+        $scope.changeBlock($scope.builderData.poll.length - 1);
     }
     me.init = function () {
-        $scope.access_types = pollSettingsFactory.PollAccess;
-        $scope.share_list = pollSettingsFactory.PollShare;
+        var status = me.loadPoll();
+        if (status) {
+            pollBuilderService.pollData = $scope.builderData;
+            $scope.step = $scope.settingsView.step4;
+        } else {
+            pollBuilderService.initData();
+            $scope.builderData = pollBuilderService.pollData;
+        }
+        $scope.accessData.access_types = pollSettingsFactory.PollAccess;
+        $scope.privacyData.share_list = pollSettingsFactory.PollShare;
         $scope.poll_type = pollSettingsFactory.PollType;
-        pollBuilderService.testData();
         $scope.currentBlock = $scope.builderData.poll[0];
     };
     $scope.setPollType = function (type) {
@@ -91,11 +139,11 @@
 
 
     }
+
     $scope.setAccess = function (type) {
-      
-        $scope.choosed = type.label;
-        $scope.partialAccessPath = 'Content/partial/access/' + type.logicalName + '.html';
-        $scope.access_set_complete = true;
+        $scope.accessData.choosedLabel = type.label;
+        $scope.accessData.path = 'Content/partial/access/' + type.logicalName + '.html';
+        $scope.accessData.set_complete = true;
         pollBuilderService.setAccess(type.value);
     };
     $scope.changeAnswerState = function (block, index, isAdd) {
@@ -103,7 +151,7 @@
         if (isAdd)
             pollBuilderService.addAnswer(block);
         else
-            pollBuilderService.deleteAnswer(block,index);
+            pollBuilderService.deleteAnswer(block, index);
 
     }
     $scope.changeBlock = function (index) {
@@ -115,17 +163,15 @@
             $scope.currentBlock = $scope.builderData.poll[0];
         }
     };
-    me.multiplyResults = [];
     $scope.parseMultiplyUsers = function () {
-        var res = me.multiplyResults.split(";");
-        me.multiplyResults = res;
+        return $scope.accessData.multiplyResults.split(";");
     };
     $scope.generateCode = function (count) {
         if (count > 0) {
             $http.post("Constructor/GenerateCode", { count: count }).then(function (response) {
                 if (response.data.status) {
-                    $scope.secureCodes = response.data.codes;
-                    pollBuilderService.saveCodeSet($scope.secureCodes);
+                    $scope.accessData.secureCodes = response.data.codes;
+                    pollBuilderService.saveCodeSet($scope.accessData.secureCodes);
                 }
             })
         }
@@ -135,17 +181,16 @@
     }
 
     $scope.saveUserSet = function () {
-        debugger;
-        if (me.singleOrMultiply) {
+        if ($scope.accessData.singleOrMultiply) {
             var users = [];
-            var i = me.userGotAccess.length;
+            var i = $scope.accessData.userGotAccess.length;
             while (i--) {
-                users.push(me.userGotAccess[i].Email)
+                users.push($scope.accessData.userGotAccess[i].Email)
             }
             pollBuilderService.saveUserSet(users);
         } else {
             $scope.parseMultiplyUsers();
-            pollBuilderService.saveUserSet(me.multiplyResults);
+            pollBuilderService.saveUserSet($scope.parseMultiplyUsers());
         }
     }
 
@@ -154,51 +199,39 @@
         var object = {
             controller: 'dialogController',
             template: 'pollsavetype.tmpl.html',
-            outerClose:false,
+            outerClose: false,
             event: event
         };
         modalService.showCustomDialog(object, function () { }, function () { });
     };
-    $scope.invalidPolldata = false;
     $scope.savePoll = function (event) {
-        
-            var modalObject = {
-                title: "Confirmation",
-                textContent: "Do you want to save this project?",
-                ariaLabel: "yourpolly.com / Save project",
-                event: event
-            };
-            modalService.showConfirm(modalObject,
-                function () {
-                    pollBuilderService.save(function () {
-                        $scope.openCustomDialog(event);
-                    }, function (message) {
-                        if (message == null) {
-                            message = "You can't save the project, check your data";
-                        }
-                        modalService.showAlert(
-                            {
-                                title: "Error",
-                                textContent: message,
-                                ariaLabel: "yourpolly.com / Confirm save",
-                                event: event
-                            })
-                    }, function () { });
-                },
-            function () { });
+        var modalObject = {
+            title: "Confirmation",
+            textContent: "Do you want to save this project?",
+            ariaLabel: "yourpolly.com / Save project",
+            event: event
+        };
+        modalService.showConfirm(modalObject,
+            function () {
+                pollBuilderService.save(function () {
+                    $scope.saved = true;
+                    $scope.openCustomDialog(event);
+                }, function () { modalService.showAlert({ title: "Error", textContent: "You can't save the project, check your data", ariaLabel: "yourpolly.com / Confirm save", event: event }) }, function () { });
+            },
+        function () { });
 
-        
+
     }
     $scope.error = null;
     $scope.loader = false;
     $scope.addNewField = function (email) {
         $scope.tmp = null;
-        if (email != undefined && email!="") {
+        if (email != undefined && email != "") {
             $scope.tmp = false;
 
-            if (me.userGotAccess.length > 0) {
-                for (i = 0; i < me.userGotAccess.length; i++) {
-                    if (me.userGotAccess[i].Email == email) {
+            if   ($scope.accessData.userGotAccess.length > 0) {
+                for (i = 0; i <   $scope.accessData.userGotAccess.length; i++) {
+                    if ($scope.accessData.userGotAccess[i].Email == email) {
                         $scope.tmp = true;
                         break;
                     }
@@ -222,8 +255,8 @@
                         if (data.user.Logo == null) {
                             data.user.Logo = 'nophoto.png';
                         }
-             
-                        me.userGotAccess.push(data.user);                      
+
+                        $scope.accessData.userGotAccess.push(data.user);
                         $scope.data.user_id_textbox = "";
                         $scope.tmp = false;
                     }
@@ -239,10 +272,10 @@
 
 
     }
-    
+
     $scope.deleteRow = function (idUser, index) {
-    
-        me.userGotAccess.splice(index, 1);
+
+        $scope.accessData.userGotAccess.splice(index, 1);
     }
 
 
