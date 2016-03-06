@@ -92,13 +92,15 @@
         </div>
         <div class="card col-lg-6 col-lg-offset-1">
             <div class="header-card">
-                <div class="form-group">
+                Builder
+            </div>
+            <div class="content-card">
+                <div class="form-group" ng-class="{ 'has-error' : invalidPollData}">
                     <label for="titlePoll">Title</label>
                     <input type="text" class="form-control" id="titlePoll" ng-model="builderData.PollName" placeholder="Poll title">
                 </div>
+                <small ng-show="invalidPollData" class="text-danger">Title must be entered</small>
                 <hr />
-            </div>
-            <div class="content-card">
                 <div class="row">
                     <div class="col-lg-12">
                         <label for="addNewQuestion">Question</label>

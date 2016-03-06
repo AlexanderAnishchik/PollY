@@ -77,8 +77,9 @@
                 }
                
             }
-            if (validPollArray.poll.length <2 ||  hasError == true) {
-                errorValidation();
+            if (validPollArray.poll.length < 2 || hasError == true) {
+                var messageError = "In this type of poll must be more then 1 question";
+                errorValidation(messageError);
                 return;
             }
 

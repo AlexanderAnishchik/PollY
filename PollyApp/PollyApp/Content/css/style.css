@@ -9,7 +9,7 @@
 body {
     padding: 0;
     margin: 0;
-    background: #f5f6f7;
+    background: #F7F7F7;
     font-family: OpenSans;
     
 }
@@ -17,7 +17,7 @@ body {
    text-align:center;
     height:34px;
     border:none;
-    border-bottom:2px solid #a5b5c5;
+    border-bottom:2px solid #e6e9ed;
     
 }
 
@@ -30,11 +30,22 @@ body {
 a {
     color: #ffffff;
 }
+.fullpage{
+    
+    height:100vh;
+}
+.page404{
+    padding-top:7%;
+    background:url(../images/404.png);
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+}
 .loader > img{
 
 }
 .constructor > .card{
-    
+    padding:0 15px;
 }
 
 .row.constructor > .card input{
@@ -308,6 +319,7 @@ a {
     border:1px solid #1abc9c;
    
 }
+
 #footer textarea{
     background:#fff;
     border-radius:2px;
@@ -361,7 +373,13 @@ a {
 }
 .add-user-access .md-primary,
 .add-poll-content .md-primary{
-    background:#338fff !important;
+    background:#34495e !important;
+}
+.add-poll-content .card .header-card{
+    border-bottom:2px solid #e6e9ed;
+    color:#73879c !important;
+    font-size:25px;
+    font-weight:500;
 }
 .add-user-access textarea,
 .add-user-access textarea:focus {
@@ -379,6 +397,7 @@ md-dialog{
 }
 md-dialog.md-default-theme{
     padding-top:15px;
+    border-radius:2px;
 }
 md-dialog.md-default-theme .md-dialog-content{
     padding:0;
@@ -412,8 +431,8 @@ md-dialog.md-default-theme .md-dialog-content p{
     outline:none;
 }
 .add-poll .card .btn-danger{
-    background:#009788 !important;
-    border-color:#009788 !important;
+    background:#1abc9c !important;
+    border-color:#1abc9c !important;
 }
 .work-space{
     border:1px solid #f2f3f3;
@@ -429,11 +448,11 @@ md-dialog.md-default-theme .md-dialog-content p{
     margin-top:50px;
     margin-bottom:50px;
     background:#ffffff;
-    border:1px solid #dce5eb;
+    border:1px solid #e6e9ed;
     padding:0px;
     font-family:Calibri;
     font-weight:bold;
-    color:#a5b5c5;
+    color:#cccccc;
 }
 .card-md{
     height:300px;
@@ -445,7 +464,7 @@ md-dialog.md-default-theme .md-dialog-content p{
 .card-md:focus,
 .card-md:active{
     cursor:pointer;
-    border: 1px solid #2980b9;
+    border: 1px solid #34495e;
 }
 .header-card{
     
@@ -457,9 +476,8 @@ md-dialog.md-default-theme .md-dialog-content p{
 .content-card{
     padding:10px;
     font-size:14px;
-  
     overflow:hidden;
-    color:#7b7b7b;
+    color:#73879c;
 }
 .content-card-md{
     height:150px;
@@ -468,7 +486,7 @@ md-dialog.md-default-theme .md-dialog-content p{
     
     margin-top:22px;
     padding:10px;
-    border-top:1px solid #dfe1e2;
+    border-top:2px solid #e6e9ed;
 }
 .sidebar-left,
 .sidebar-right{
@@ -479,23 +497,23 @@ md-dialog.md-default-theme .md-dialog-content p{
     padding:10px;
     font-family:Calibri;
     font-weight:bold;
-    color:#a5b5c5;
+    color:#cccccc;
 }
 .sidebar-left .content{
-    border-right:1px solid #dce5eb;
-    border-bottom:1px solid #dce5eb;
+    border-right:1px solid #e6e9ed;
+    border-bottom:1px solid #e6e9ed;
     border-bottom-left-radius:5px;
     border-bottom-right-radius:5px;
 }
 .sidebar-right .content{
-    border-left:1px solid #dce5eb;
-    border-bottom:1px solid #dce5eb;
+    border-left:1px solid #e6e9ed;
+    border-bottom:1px solid #e6e9ed;
     border-bottom-left-radius:5px;
     border-bottom-right-radius:5px;
 }
 .step-number{
     margin-top:25px;
-    color:#a5b5c5;
+    color:#cccccc;
     text-align:center;
     font-size:16px;
     font-family:Calibri;
@@ -503,14 +521,10 @@ md-dialog.md-default-theme .md-dialog-content p{
 .step-title{
     text-align:center;
     font-size:24px;
-    color: #404040;
+    color: #73879c;
     
 }
 .add-poll{
-    
-    padding-top:10%;
-
-
 }
 .btnAddQuestion{
     background:url(../images/add.png);
@@ -642,7 +656,7 @@ md-dialog.md-default-theme .md-dialog-content p{
     margin-left: 12.33333333%;
 }
 .constructor .card > .content-card{
-    margin-top:-25px;
+   
 }
 .footer-card > .row > .orange{
     color:#e67e22;
@@ -663,6 +677,7 @@ md-dialog.md-default-theme .md-dialog-content p{
     padding-left:5px;
     width:350px;
     margin-bottom:10px;
+    height:45px;
 }
 .content-card > .row .btn-group{
     margin-bottom:10px;
@@ -687,9 +702,9 @@ md-dialog.md-default-theme .md-dialog-content p{
 }
 .btn-install {
   outline:none;
-  color: #a5b5c5;
+  color: #cccccc;
   background-color: #ffffff;
-  border-color: #a5b5c5;
+  border-color: #cccccc;
 }
 .btn-install:focus,
 .btn-install.focus {
@@ -747,16 +762,16 @@ fieldset[disabled] .btn-primary.focus {
   border-color: #d7dce0;
 }
 .btn-install .badge {
-  color: #a5b5c5;
+  color: #cccccc;
   background:none;
 }
 #footer .btn-lg.btn-install:focus,
 #footer .btn-lg.btn-install.focus {
-  color: #a5b5c5;
+  color: #cccccc;
  
 }
 #footer .btn-lg.btn-install:hover {
-  color: #a5b5c5;
+  color: #cccccc;
   
 }
 
@@ -1304,4 +1319,74 @@ label.css-labelr {
     color:#5c5146;
     font-weight:lighter;
     
+}
+
+.wizard_horizontal{
+    padding:8% 0 0 0;
+    margin-bottom:5%;
+    
+    
+}
+
+.wizard_steps{
+    
+    position:absolute;
+    width:100%;
+    list-style:none;
+    margin:0;
+    padding:0;
+    left:0;
+    display:table;
+}
+.wizard_steps li{
+    
+    display:inline-table;
+    position:relative;
+    text-align:center;
+    padding:0;
+    margin:0;
+    width:25%;
+}
+.wizard_steps li a{
+    display:table-cell;
+    text-align:center; 
+    color:#34495e;
+}
+.wizard_steps li a .step_no{
+    display:block;
+    text-align:center;
+    width:100%;
+    line-height:40px;
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    background:#34495e;
+    color:#fff;
+    position:relative;
+    margin:0 auto;
+    z-index:5;
+}
+.wizard_steps li a:before{
+    content: "";
+    position: absolute;
+    height: 4px;
+    background: #ccc;
+    top: 20px;
+    width: 100%;
+    z-index: 4;
+    left: 0;
+}
+.wizard_steps li:hover a:before{
+    background:#34495e;
+}
+.wizard_steps li:first-child a:before{
+    width: 50%;
+    left:50%; 
+}
+.wizard_steps li:last-child a:before{
+    width: 50%;
+    right:50%; 
+}
+.wizard_steps li a.selected:before{
+    background:#34495e;
 }

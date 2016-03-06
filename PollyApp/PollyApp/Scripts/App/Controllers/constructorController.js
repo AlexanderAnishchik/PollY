@@ -159,21 +159,34 @@
         };
         modalService.showCustomDialog(object, function () { }, function () { });
     };
+    $scope.invalidPolldata = false;
     $scope.savePoll = function (event) {
-        var modalObject = {
-            title: "Confirmation",
-            textContent: "Do you want to save this project?",
-            ariaLabel: "yourpolly.com / Save project",
-            event: event
-        };
-        modalService.showConfirm(modalObject,
-            function () {
-                pollBuilderService.save(function () {
-                    $scope.openCustomDialog(event);
-                }, function () { modalService.showAlert({ title: "Error", textContent: "You can't save the project, check your data", ariaLabel: "yourpolly.com / Confirm save", event: event }) }, function () { });
-            },
-        function () { });
         
+            var modalObject = {
+                title: "Confirmation",
+                textContent: "Do you want to save this project?",
+                ariaLabel: "yourpolly.com / Save project",
+                event: event
+            };
+            modalService.showConfirm(modalObject,
+                function () {
+                    pollBuilderService.save(function () {
+                        $scope.openCustomDialog(event);
+                    }, function (message) {
+                        if (message == null) {
+                            message = "You can't save the project, check your data";
+                        }
+                        modalService.showAlert(
+                            {
+                                title: "Error",
+                                textContent: message,
+                                ariaLabel: "yourpolly.com / Confirm save",
+                                event: event
+                            })
+                    }, function () { });
+                },
+            function () { });
+
         
     }
     $scope.error = null;

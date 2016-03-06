@@ -4,10 +4,11 @@
     ViewBag.Title = "Page Not Found";
 }
 
-<h1>Page Not Found</h1>
+<section class="fullpage page404 container-fluid text-center">
 
-<p>Could not find the page: @ViewBag.RequestedUrl</p>
-@if (ViewBag.ReferrerUrl != null)
-{
-    <p>Go back to the <a href="@ViewBag.ReferrerUrl">previous page</a>.</p>
-}
+    <h1>Could not find the page<br /><br /><br />@ViewBag.RequestedUrl</h1>
+    @if (ViewBag.ReferrerUrl != null)
+    {
+        <p>Go back to the <a href="@ViewBag.ReferrerUrl">previous page</a>.</p>
+    }
+</section>
