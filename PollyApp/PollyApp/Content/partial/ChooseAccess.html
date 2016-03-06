@@ -14,14 +14,14 @@
         <div class="col-lg-6 col-lg-offset-3 card">
             <div class="header-card text-center">
                 <div class="btn-group">
-                    <button type="button" class="btn btn-danger" >{{choosed}}</button>
+                    <button type="button" class="btn btn-danger" >{{accessData.choosedLabel}}</button>
                     <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="caret"></span>
                         <span class="sr-only">Toggle Dropdown</span>
                     </button>
                     <ul class="dropdown-menu">
                         <li>
-                        <a href="#" ng-repeat="type in access_types" ng-click="setAccess(type);">
+                        <a href="#" ng-repeat="type in accessData.access_types" ng-click="setAccess(type);">
                             {{type.label}}
                             </a>
                         </li>
@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="content-card">
-                <div ng-include src="partialAccessPath">
+                <div ng-include src="accessData.path">
                 </div>          
             </div>
            
@@ -43,6 +43,6 @@
 </div>
 <div class="text-center">
     <button type="button" ng-click="setStep(settingsView.step1);" ng-show="!isBuilder" class="btn btn-install">Prev</button>
-    <button type="button" ng-click="setStep(settingsView.step3);" ng-show="!isBuilder" ng-disabled="access_set_complete==null" class="btn btn-install">Next</button>
+    <button type="button" ng-click="setStep(settingsView.step3);" ng-show="!isBuilder" ng-disabled="accessData.set_complete==null" class="btn btn-install">Next</button>
     <md-button class="md-raised" ng-show="isBuilder" ng-click="setStep(settingsView.step4)">To builder</md-button>
 </div>

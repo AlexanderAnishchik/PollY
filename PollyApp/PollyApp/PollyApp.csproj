@@ -137,6 +137,7 @@
     <Compile Include="Account\MemberWorker.cs" />
     <Compile Include="Attributes\UserAuthAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdmissionController.cs" />
     <Compile Include="Controllers\APIController.cs" />
     <Compile Include="Controllers\ConstructorController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -207,6 +208,7 @@
     <Compile Include="Helpers\ConstructorHelper.cs" />
     <Compile Include="Helpers\DbEnum.cs" />
     <Compile Include="Helpers\PollHelper.cs" />
+    <Compile Include="Helpers\SafeAdmission.cs" />
     <Compile Include="JsonConverters\AnswerConverter.cs" />
     <Compile Include="JsonConverters\Helpers\TextAnswer.cs" />
     <Compile Include="JsonConverters\IConverter.cs" />
@@ -428,6 +430,7 @@
     <Content Include="Scripts\App\Services\headerKeeperService.js" />
     <Content Include="Scripts\App\Services\JSONService.js" />
     <Content Include="Scripts\App\Services\modalService.js" />
+    <Content Include="Scripts\App\Services\recoveryService.js" />
     <Content Include="Scripts\App\Services\pollBuilderService.js" />
     <Content Include="Scripts\bootstrap-modal.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -1268,12 +1271,13 @@
     <Content Include="Content\partial\ChooseAccess.html" />
     <Content Include="Views\Popup\Error.cshtml" />
     <Content Include="Views\Poll\Index.cshtml" />
-    <Content Include="Views\Login\Access.cshtml" />
-    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Admission\SetCode.cshtml" />
+    <Content Include="Views\Admission\SetUser.cshtml" />
     <Content Include="Views\Shared\NotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Login\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
