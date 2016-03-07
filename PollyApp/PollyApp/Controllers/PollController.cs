@@ -17,7 +17,11 @@ namespace PollyApp.Controllers
             {
                 var valid = (SafeAdmission)Session["admission"];
                 if (valid != null && valid.Status && valid.projectUrl== poll)
+                {
+                    valid.Status = false;
                     return View();
+                }
+                   
                 return RedirectToAction("RouteAccess", "Admission", new { projectUrl = poll });
             }
             return Redirect("/");
