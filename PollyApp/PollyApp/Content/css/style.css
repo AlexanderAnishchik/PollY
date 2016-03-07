@@ -3,6 +3,7 @@
     font-family: OpenSans;
     src: url(../../fonts/OpenSans-Regular.ttf);
 }
+
 .description{
     margin-bottom:5%;
 }
@@ -74,7 +75,9 @@ a {
 .center {
     text-align: center;
 }
-
+#navigation .caret{
+    border-color:aliceblue;
+}
 
 #about, #feedback, #wrapper {
     padding-top: 2%;
@@ -454,6 +457,9 @@ md-dialog.md-default-theme .md-dialog-content p{
     font-weight:bold;
     color:#cccccc;
 }
+.choose-type .card{
+    border:2px solid #e6e9ed;
+}
 .card-md{
     height:300px;
 }
@@ -464,7 +470,7 @@ md-dialog.md-default-theme .md-dialog-content p{
 .card-md:focus,
 .card-md:active{
     cursor:pointer;
-    border: 1px solid #34495e;
+    border: 2px solid #34495e;
 }
 .header-card{
     
@@ -1376,8 +1382,14 @@ label.css-labelr {
     z-index: 4;
     left: 0;
 }
-.wizard_steps li:hover a:before{
-    background:#34495e;
+.wizard_steps li:hover a,
+.wizard_steps li:focus a
+.wizard_steps li:hover a:before,
+.wizard_steps li:hover a.done .step_no,
+.wizard_steps li:hover a.done .description,
+.wizard_steps li:hover a.done:before{
+    text-decoration:none;
+    pointer-events:none;
 }
 .wizard_steps li:first-child a:before{
     width: 50%;
@@ -1388,5 +1400,13 @@ label.css-labelr {
     right:50%; 
 }
 .wizard_steps li a.selected:before{
+    background:#34495e;
+}
+.wizard_steps li a.done .step_no,
+.wizard_steps li a.done:before{
+    background:#1abc9c;
+}
+.wizard_steps li a.done.selected .step_no,
+.wizard_steps li a.done.selected:before{
     background:#34495e;
 }

@@ -13,30 +13,15 @@
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <ul class="wizard_steps">
-                    <li>
-                        <a href="#step-1" class="selected">
-                            <span class="step_no">1</span>
-                            
+                    <li ng-repeat="steps in steps">
+                        <a href="" ng-class="{'done' : steps.isDone, 'selected' : steps.step == step}">
+                            <span class="step_no">{{$index + 1}}</span>
+                            <span class="description">
+                                <small>{{steps.title}}</small>
+                            </span>
                         </a>
                     </li>
-                    <li>
-                        <a href="#step-2" class="done">
-                            <span class="step_no">2</span>
-                            
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#step-3" class="done">
-                            <span class="step_no">3</span>
-                           
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#step-4" class="done">
-                            <span class="step_no">4</span>
-                            
-                        </a>
-                    </li>
+                    
                 </ul>
             </div>
         </div>

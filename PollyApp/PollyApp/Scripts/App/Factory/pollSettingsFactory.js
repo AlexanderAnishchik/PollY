@@ -50,6 +50,29 @@
                    value: 3,
                    label: "Code Set"
                }
+            ],
+            PollSteps: [
+                {
+                    step: 'Content/partial/ChooseType.html',
+                    isDone: false,
+                    title: "Choose type"
+                },
+                {
+                    step: 'Content/partial/ChooseAccess.html',
+                    isDone: false,
+                    title: "Choose access"
+                },
+                {
+                    step: 'Content/partial/ChooseShare.html',
+                    isDone: false,
+                    title: "Choose share"
+                },
+                {
+                    step: 'Content/partial/constructor.html',
+                    isDone: false,
+                    title: "Builder"
+                },
+                
             ]
 
         };

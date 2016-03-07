@@ -66,9 +66,21 @@
         step3: 'Content/partial/ChooseShare.html',
         step4: 'Content/partial/constructor.html',
     };
+    $scope.steps = pollSettingsFactory.PollSteps;
     $scope.isBuilder = false;
+    $scope.step = $scope.settingsView.step1;
     $scope.setStep = function (stepValue) {
         $scope.step = stepValue;
+        for (var i = 1; i < $scope.steps.length; i++) {
+            if ($scope.step == $scope.steps[i].step) {
+                $scope.steps[i - 1].isDone = true;
+            }
+        }
+        if ($scope.builderData.poll.length >= 2 && $scope.builderData.PollName) {
+            $scope.steps[$scope.steps.length - 1].isDone = true;
+        }
+        else
+            $scope.steps[$scope.steps.length - 1].isDone = false;
         if ($scope.step == $scope.settingsView.step4) {
             $scope.isBuilder = true;
         }
@@ -76,7 +88,7 @@
     }
 
 
-    $scope.step = $scope.settingsView.step1;
+    
     $scope.data = {};
     $scope.builderData = {};
     $scope.currentBlock = null;
@@ -86,7 +98,7 @@
         $scope.privacyData.choosedLabel = type.label;
         pollBuilderService.setShare(type.value);
         $scope.privacy = type.label;
-        $scope.share_set_complete = true;
+        $scope.privacyData.set_complete = true;
         $scope.privacyData.path = 'Content/partial/share/' + type.logicalName + '.html';
     }
     $scope.answersSetCssClass = function (last, index) {
@@ -111,6 +123,7 @@
             modalService.showAlert(modalObject, function () { }, function () { });
             return;
         }
+       
         pollBuilderService.addBlock();
         $scope.changeBlock($scope.builderData.poll.length - 1);
     }
@@ -128,14 +141,45 @@
         $scope.poll_type = pollSettingsFactory.PollType;
         $scope.currentBlock = $scope.builderData.poll[0];
     };
-    $scope.setPollType = function (type) {
-        if (type.value == 2) {
-            pollBuilderService.setType(type.value);
-            $scope.step = $scope.settingsView.step2;
+    $scope.setPollType = function (type,event) {
+        var data = recoveryService.getRecoveryPollData();
+        if (data == null)
+        {
+            $scope.steps[0].isDone = true;
+            if (type.value == 2) {
+                pollBuilderService.setType(type.value);
+                $scope.step = $scope.settingsView.step2;
+            }
+            else {
+
+            }
         }
         else {
+            var modalObject = {
+                title: "Confirmation",
+                textContent: "Do you want create new project?",
+                ariaLabel: "Do you want create new project?",
+                event: event
+            };
 
+            modalService.showConfirm(modalObject, function () {
+                recoveryService.clearRecoveryPollData();
+                $scope.steps[0].isDone = true;
+                if (type.value == 2) {
+                    pollBuilderService.setType(type.value);
+                    $scope.step = $scope.settingsView.step2;
+                }
+
+            },
+            function () {
+                $scope.steps[0].isDone = true;
+                if (type.value == 2) {
+                    pollBuilderService.setType(type.value);
+                    $scope.step = $scope.settingsView.step2;
+                }
+            });
         }
+        
 
 
     }
