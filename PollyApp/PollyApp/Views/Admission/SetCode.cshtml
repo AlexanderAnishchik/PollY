@@ -17,11 +17,8 @@
     <script src="~/Scripts/angular.js"></script>
     <script src="~/Scripts/bootstrap.js"></script>
     <script src="~/Scripts/ui-bootstrap-tpls-1.0.3.js"></script>
-    <script src="~/Scripts/App/app.js"></script>
-    <script src="~/Scripts/App/Factory/pollSettingsFactory.js"></script>
-    <script src="~/Scripts/App/Services/headerKeeperService.js"></script>
 </head>
-<body ng-app="Polly" style="background: url(../Content/images/bgroad.png) !important; background-repeat:no-repeat; background-size:cover !important; background-position:center;">
+<body style="background: url(../Content/images/bgroad.png) !important; background-repeat:no-repeat; background-size:cover !important; background-position:center;">
     <div class="container text-center access-page">
         <div class="row">
             <img src="~/Content/images/pollylogogreen.png" />
@@ -33,12 +30,15 @@
                         Enter an access code
                     </div>
                     <div class="content-card">
+                        @using (Html.BeginForm("ValidateCode","Admission"))
+                        {
                         <div class="form-group">
                             <input class="form-control" placeholder="Access code" name="access_code" />
                         </div>
                         <div class="">
-                            <button type="button" class="btn btn-success btn-lg btn-block"><img src="~/Content/images/unlocked-padlock.png" /></button>
+                            <button type="submit" class="btn btn-success btn-lg btn-block"><img src="~/Content/images/unlocked-padlock.png" /></button>
                         </div>
+                        }
                     </div>
                 </div>
             </div>

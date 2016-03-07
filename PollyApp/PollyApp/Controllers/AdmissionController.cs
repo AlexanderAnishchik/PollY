@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
+using PollyApp.Account;
 
 namespace PollyApp.Controllers
 {
@@ -31,8 +33,7 @@ namespace PollyApp.Controllers
             Session["admission"] = new SafeAdmission
             {
                 projectUrl = projectUrl,
-                AccessType = project.PollAccess.Value,
-                Status=true
+                AccessType = project.PollAccess.Value
             };
             if (!String.IsNullOrEmpty(route))
                 return RedirectToAction(route);
@@ -66,7 +67,57 @@ namespace PollyApp.Controllers
             }
             return RedirectToAction("/", "Home");
         }
+        public ActionResult ValidateCode(string access_code)
+        {
+            
+            var valid = (SafeAdmission)Session["admission"];
+            if(valid!=null && valid.AccessType == (Int32)DbEnum.PollAccess.CodeSet)
+            {
+                var project = Db.Context.Projects
+                    .Join(Db.Context.ProjectAccessVoters, p => p.Id, pav => pav.ProjectId, (p, pav) => new { p, pav })
+                    .Join(Db.Context.CodeSets, z => z.pav.CodeSetId, c => c.Id, (z, c) => new { z, c })
+                    .Where(x => x.c.CodeText.Equals(access_code))
+                    .Where(x => x.z.p.UrlCode.Equals(valid.projectUrl))
+                    .Select(x => new { x.z.pav.Id })
+                    .FirstOrDefault();
+                if (project!=null)
+                {
+                    valid.Status = true;
+                    valid.UserIdentity=project.Id;
+                    return RedirectToAction("Index", "Poll", new { poll = valid.projectUrl });
+                }
+                    
+            }
+            return Redirect("/");
+        }
+        public ActionResult ValidateUser(string email,string pass)
+        {
 
+            var valid = (SafeAdmission)Session["admission"];
+            if (valid != null && valid.AccessType == (Int32)DbEnum.PollAccess.UserSet)
+            {
+                var project = Db.Context.Projects
+                    .Join(Db.Context.ProjectAccessVoters, p => p.Id, pav => pav.ProjectId, (p, pav) => new { p, pav })
+                    .Join(Db.Context.UserSets, z => z.pav.UserSetId, c => c.Id, (z, c) => new { z, c })
+                     .Join(Db.Context.Users, u => u.c.UserId, s => s.Id, (z, c) => new { z, c })
+                    .Where(x => x.c.Email.Equals(email))
+                    .Where(x => x.z.z.p.UrlCode.Equals(valid.projectUrl))
+                    .Select(x => new { UserSetId = x.z.z.pav.Id, User = x.c })
+                    .FirstOrDefault();
+                if (project!=null)
+                {
+                    var hasUser = MemberWorker.SignIn(email, pass);
+                    if (hasUser== MemberWorker.LoginStatus.Success)
+                    {
+                        valid.Status = true;
+                        valid.UserIdentity = project.UserSetId;
+                        return RedirectToAction("Index", "Poll", new { poll = valid.projectUrl });
+                    }
+                }
+
+            }
+            return Redirect("/");
+        }
         protected override void Dispose(bool disposing)
         {
             Db.Dispose();

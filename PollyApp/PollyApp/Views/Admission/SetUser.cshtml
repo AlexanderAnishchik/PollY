@@ -17,36 +17,34 @@
     <script src="~/Scripts/angular.js"></script>
     <script src="~/Scripts/bootstrap.js"></script>
     <script src="~/Scripts/ui-bootstrap-tpls-1.0.3.js"></script>
-    <script src="~/Scripts/App/app.js"></script>
-    <script src="~/Scripts/App/Factory/pollSettingsFactory.js"></script>
-    <script src="~/Scripts/App/Services/headerKeeperService.js"></script>
-    <script src="~/Scripts/App/Controllers/headerController.js"></script>
+
 </head>
-<body ng-app="Polly" style="background: url(../Content/images/bgroad.png) !important; background-repeat:no-repeat; background-size:cover !important; background-position:center;">
+<body style="background: url(../Content/images/bgroad.png) !important; background-repeat:no-repeat; background-size:cover !important; background-position:center;">
     <div class="container text-center access-page">
         <div class="row">
             <img src="~/Content/images/pollylogogreen.png" />
         </div>
-        <div class="row" ng-controller="headerController as headCtrl">
+        <div class="row">
             <div class="col-lg-6 col-md-4 col-sm-8 col-xs-10 col-lg-offset-3 col-md-offset-4 col-sm-offset-2 col-xs-offset-1">
                 <div class="card col-lg-10 col-lg-offset-1">
-                    <small class="text-danger" ng-show="errorAuth!=''">{{errorAuth}}</small>
+                    <small class="text-danger"></small>
                     <div class="title">
                         Enter your credentials
                     </div>
 
                     <div class="content-card">
-                        <form name="login">
+                        @using (Html.BeginForm("ValidateUser", "Admission"))
+                        {
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Email" name="email" ng-model="headCtrl.login.email" />
+                                <input type="text" class="form-control" placeholder="Email" name="email" />
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" placeholder="Password" name="password" ng-model="headCtrl.login.password" />
+                                <input type="password" class="form-control" placeholder="Password" name="pass" />
                             </div>
                             <div class="">
-                                <button type="button" class="btn btn-success btn-lg btn-block" ng-click="headCtrl.signIn()">Continue</button>
+                                <button type="submit" class="btn btn-success btn-lg btn-block">Continue</button>
                             </div>
-                        </form>
+                        }
                     </div>
                 </div>
             </div>
