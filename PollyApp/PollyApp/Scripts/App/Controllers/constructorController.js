@@ -4,9 +4,9 @@
     $scope.headerData = headerKeeperService.data;
     $scope.accessData = {
         secureCodes: [],
-        choosedLabel:"Choose access",
+        choosedLabel: "Choose access",
         path: 'Content/partial/access/Default.html',
-        access_types:null,
+        access_types: null,
         set_complete: false,
         singleOrMultiply: true,
         multiplyResults: [],
@@ -35,13 +35,13 @@
     if ($scope.template == 'Content/partial/ChooseType.html') {
         $scope.next_template = 'Content/partial/ChooseAccess.html';
     }
-   var intr= setInterval(function () {
+    var intr = setInterval(function () {
         var saveData = {
             builderData: $scope.builderData,
             isBuilder: $scope.isBuilder,
             accessData: $scope.accessData,
             privacyData: $scope.privacyData,
-            saved:$scope.saved
+            saved: $scope.saved
         };
         var data = recoveryService.getRecoveryPollData();
         if (data != null && data.saved) {
@@ -49,13 +49,14 @@
             clearInterval(intr);
         }
         else {
-            recoveryService.setRecoveryPollData(saveData);
+            if ($scope.builderData.PollName != null & $scope.builderData.PollName != "")
+                recoveryService.setRecoveryPollData(saveData);
         }
-    }, 5000);
+    }, 2000);
     me.loadPoll = function () {
         var data = recoveryService.getRecoveryPollData();
         if (data == null) return false;
-        for(var field in data){
+        for (var field in data) {
             $scope[field] = data[field];
         }
         return true;
@@ -88,7 +89,7 @@
     }
 
 
-    
+
     $scope.data = {};
     $scope.builderData = {};
     $scope.currentBlock = null;
@@ -123,7 +124,7 @@
             modalService.showAlert(modalObject, function () { }, function () { });
             return;
         }
-       
+
         pollBuilderService.addBlock();
         $scope.changeBlock($scope.builderData.poll.length - 1);
     }
@@ -141,10 +142,10 @@
         $scope.poll_type = pollSettingsFactory.PollType;
         $scope.currentBlock = $scope.builderData.poll[0];
     };
-    $scope.setPollType = function (type,event) {
+    $scope.setPollType = function (type, event) {
+        pollBuilderService.initData();
         var data = recoveryService.getRecoveryPollData();
-        if (data == null)
-        {
+        if (data == null) {
             $scope.steps[0].isDone = true;
             if (type.value == 2) {
                 pollBuilderService.setType(type.value);
@@ -179,7 +180,7 @@
                 }
             });
         }
-        
+
 
 
     }
@@ -273,8 +274,8 @@
         if (email != undefined && email != "") {
             $scope.tmp = false;
 
-            if   ($scope.accessData.userGotAccess.length > 0) {
-                for (i = 0; i <   $scope.accessData.userGotAccess.length; i++) {
+            if ($scope.accessData.userGotAccess.length > 0) {
+                for (i = 0; i < $scope.accessData.userGotAccess.length; i++) {
                     if ($scope.accessData.userGotAccess[i].Email == email) {
                         $scope.tmp = true;
                         break;
