@@ -13,6 +13,7 @@ namespace PollyApp.Controllers
 
         public ActionResult Index(string poll)
         {
+
             if (PollHelper.CheckUrlProjectCode(poll))
             {
                 var valid = (SafeAdmission)Session["admission"];
