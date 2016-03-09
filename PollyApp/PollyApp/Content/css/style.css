@@ -10,7 +10,7 @@
 body {
     padding: 0;
     margin: 0;
-    background: #F7F7F7;
+    background: #ffffff;
     font-family: OpenSans;
     
 }
@@ -585,7 +585,7 @@ md-dialog.md-default-theme .md-dialog-content p{
 }
 .add-user-access .add{
     position:absolute;
-    top:0;
+    top:5.5px;
     z-index:99999;
     right:-40px;
 }
@@ -1095,20 +1095,39 @@ growl-notification.fading.ng-leave.ng-leave-active {
     }
 }
 @media all and (max-width: 480px) {
+    .wizard_horizontal {
+        padding: 15% 0 0 0;
+        margin-bottom: 15%;
+    }
     #footer .form-inline > .form-group{
         display:inline-table;
+        width:100% !important;
     }
-    .pluces .col-lg-4{
-        padding-top:10px !important;
+    .pluses .col-xs-12{
+        margin-top:10px !important;
     }
     .button-create{
         margin-top:-40px;
     }
     .navbar-collapse {
-        background: rgba(44,62,80,0.7);
+        background: none;
     }
     #logo{
         margin-top:-10px;
+    }
+    .answer{
+        position:relative;
+    }
+    .answer .delete,
+    .answer .add{
+        position:absolute;
+        z-index:999999;
+        left:89.5%;
+        margin:0;
+        top:5.5px;
+    }
+    .answer .form-control-static{
+        width:100%;
     }
     #header {
         height: 100vh;
@@ -1116,6 +1135,9 @@ growl-notification.fading.ng-leave.ng-leave-active {
     .header-block {
         margin-top: 20%;
         margin-bottom:10%;
+    }
+    .choose-type .col-lg-offset-1 {
+        margin-left: 0%;
     }
     .big{
         font-size: 45px;
@@ -1139,20 +1161,40 @@ growl-notification.fading.ng-leave.ng-leave-active {
         text-align: center;
         position: initial;
     }
+    .wizard_horizontal {
+        padding-top: 20% !important;
+        margin-bottom: 5%;
+    }
+    .add-poll-content{
+        margin-top:75px;
+    }
 }
 
-@media all and (min-width: 481px) and (max-width: 767px) {
+@media all and (min-width: 481px) and (max-width: 768px) {
+    .wizard_horizontal {
+        padding: 15% 0 0 0;
+        margin-bottom: 15%;
+    }
     .pluces .col-lg-4{
-    padding-top:10px !important;
+        padding-top:10px !important;
+    }
+    .choose-type .col-lg-offset-1 {
+        margin-left: 0;
+    }
+    .container-fluid {
+        padding-right: 0px;
+        padding-left: 0px;
+        margin-right: auto;
+        margin-left: auto;
     }
     .button-create{
         margin-top:-40px;
     }
    .navbar-collapse {
-        background: rgba(44,62,80,0.7);
+        
     }
     #logo{
-        margin-top:-10px;
+        margin-top:-6.5px;
     }
     #header {
         height: 100vh;
