@@ -68,7 +68,7 @@
         step4: 'Content/partial/constructor.html',
     };
     $scope.steps = pollSettingsFactory.PollSteps;
-    $scope.isBuilder = false;
+    $scope.isBuilder = $scope.steps[$scope.steps.length-1].isDone;
     $scope.step = $scope.settingsView.step1;
     $scope.setStep = function (stepValue) {
         $scope.step = stepValue;
@@ -133,6 +133,10 @@
         if (status) {
             pollBuilderService.pollData = $scope.builderData;
             $scope.step = $scope.settingsView.step4;
+            for (var i = 0 ; i < $scope.steps.length - 1; i++) {
+                $scope.steps[i].isDone = true;
+            }
+            
         } else {
             pollBuilderService.initData();
             $scope.builderData = pollBuilderService.pollData;
@@ -165,6 +169,10 @@
 
             modalService.showConfirm(modalObject, function () {
                 recoveryService.clearRecoveryPollData();
+                for (var i = 0 ; i < $scope.steps.length; i++) {
+                    $scope.steps[i].isDone = false;
+                }
+                $scope.isBuilder = false;
                 $scope.steps[0].isDone = true;
                 if (type.value == 2) {
                     pollBuilderService.setType(type.value);
