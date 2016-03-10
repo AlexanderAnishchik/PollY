@@ -136,18 +136,16 @@
             for (var i = 0 ; i < $scope.steps.length - 1; i++) {
                 $scope.steps[i].isDone = true;
             }
-            
-        } else {
-            pollBuilderService.initData();
-            $scope.builderData = pollBuilderService.pollData;
+            $scope.currentBlock = $scope.builderData.poll[0];
         }
         $scope.accessData.access_types = pollSettingsFactory.PollAccess;
         $scope.privacyData.share_list = pollSettingsFactory.PollShare;
         $scope.poll_type = pollSettingsFactory.PollType;
-        $scope.currentBlock = $scope.builderData.poll[0];
     };
     $scope.setPollType = function (type, event) {
         pollBuilderService.initData();
+        $scope.builderData = pollBuilderService.pollData;
+        $scope.currentBlock = $scope.builderData.poll[0];
         var data = recoveryService.getRecoveryPollData();
         if (data == null) {
             $scope.steps[0].isDone = true;

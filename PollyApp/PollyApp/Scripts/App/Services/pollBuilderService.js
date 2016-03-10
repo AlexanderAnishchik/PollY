@@ -13,7 +13,7 @@
             block.answers.splice(index, 1);
         }
 
-        self.deleteQuestion = function (block, index) {
+        self.deleteQuestion = function (index) {
             self.pollData.poll.splice(index, 1);
         }
         self.initData = function () {
