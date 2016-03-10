@@ -45,7 +45,7 @@ namespace PollyApp.Controllers
         {
             try
             {
-                var result = MemberWorker.Register(pass, email, firstName, lastName);
+                var result = MemberWorker.SignUp(pass, email, firstName, lastName);
                 switch (result)
                 {
                     case MemberWorker.RegisterStatus.Success:

@@ -9,10 +9,9 @@
 
 namespace PollyApp.EFModel
 {
-    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-
+    
     public partial class Result
     {
         public int Id { get; set; }
@@ -20,13 +19,10 @@ namespace PollyApp.EFModel
         public int ProjectId { get; set; }
         public int VoterId { get; set; }
         public int AnswerId { get; set; }
-         
+    
         public virtual Answer Answer { get; set; }
-         
         public virtual Project Project { get; set; }
-         
         public virtual ProjectAccessVoter ProjectAccessVoter { get; set; }
-         
         public virtual Question Question { get; set; }
     }
 }
