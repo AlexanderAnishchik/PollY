@@ -226,17 +226,22 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\animate.css" />
+    <Content Include="Content\css\custom.css" />
     <Content Include="Content\css\dashboard.css" />
+    <Content Include="Content\css\font-awesome.css" />
     <Content Include="Content\css\style.css" />
+    <Content Include="Content\images\404.png" />
     <Content Include="Content\images\about.png" />
     <Content Include="Content\images\access.png" />
     <Content Include="Content\images\add.png" />
     <Content Include="Content\images\air-scene0-right_GEO_US.png" />
     <Content Include="Content\images\analitycs.png" />
     <Content Include="Content\images\api.png" />
+    <Content Include="Content\images\arrows.png" />
     <Content Include="Content\images\ascending7.png" />
     <Content Include="Content\images\bgroad.png" />
     <Content Include="Content\images\briefcase50.png" />
+    <Content Include="Content\images\builder.png" />
     <Content Include="Content\images\chart.png" />
     <Content Include="Content\images\cinema21.png" />
     <Content Include="Content\images\cloud79.png" />
@@ -245,6 +250,7 @@
     <Content Include="Content\images\connection31.png" />
     <Content Include="Content\images\currency-icon.png" />
     <Content Include="Content\images\dashboard.png" />
+    <Content Include="Content\images\dashboardmini.png" />
     <Content Include="Content\images\delete.png" />
     <Content Include="Content\images\deleteX.png" />
     <Content Include="Content\images\email.png" />
@@ -297,12 +303,14 @@
     <Content Include="Content\images\speaker.jpg" />
     <Content Include="Content\images\text lines15.png" />
     <Content Include="Content\images\tv monitor2.png" />
+    <Content Include="Content\images\unlocked-padlock.png" />
     <Content Include="Content\images\user.png" />
     <Content Include="Content\images\Users\artem_mozharov.jpg" />
     <Content Include="Content\images\Users\dima_ivlev.jpg" />
     <Content Include="Content\images\Users\julia_pomazkina.png" />
     <Content Include="Content\images\Users\nophoto.png" />
     <Content Include="Content\images\Users\sanya_axel.jpg" />
+    <Content Include="Content\images\warning-sign.png" />
     <Content Include="Content\partial\share\Default.html" />
     <Content Include="Content\partial\share\Private.html" />
     <Content Include="Content\partial\share\Public.html" />
@@ -1262,8 +1270,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\version.json" />
-    <Content Include="Views\Shared\_Dashboard.cshtml" />
-    <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Header.cshtml" />
     <Content Include="Views\Popup\SignIn.cshtml" />
     <Content Include="Views\Popup\SignOut.cshtml" />
@@ -1276,6 +1282,7 @@
     <Content Include="Views\Admission\SetCode.cshtml" />
     <Content Include="Views\Admission\SetUser.cshtml" />
     <Content Include="Views\Shared\NotFound.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

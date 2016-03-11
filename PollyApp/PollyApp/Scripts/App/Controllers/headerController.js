@@ -8,9 +8,11 @@
     
     me.init = function () {
 
-        $http.get("Account/GetUser").then(function (response) {
+        $http.get("/Account/GetUser").then(function (response) {
 
             headerKeeperService.data.user = response.data;
+            if (headerKeeperService.data.user.logo == null)
+                headerKeeperService.data.user.logo = "nophoto.png";
         },
           function (response) {
 

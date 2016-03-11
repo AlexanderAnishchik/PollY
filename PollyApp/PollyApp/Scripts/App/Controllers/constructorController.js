@@ -26,6 +26,23 @@
         codesCount: null,
 
     }
+    $scope.resetValues = function () {
+        $scope.accessData.secureCodes = [];
+        $scope.accessData.choosedLabel = "Choose access";
+        $scope.accessData.path = 'Content/partial/access/Default.html';
+        $scope.accessData.set_complete = false;
+        $scope.accessData.singleOrMultiply = true;
+        $scope.accessData.multiplyResults = [];
+        $scope.accessData.userGotAccess = [];
+        $scope.accessData.codesCount = null;
+        $scope.privacyData.choosedLabel = "Choose access";
+        $scope.privacyData.path = 'Content/partial/access/Default.html';
+        $scope.privacyData.set_complete = false;
+        $scope.privacyData.singleOrMultiply = true;
+        $scope.privacyData.multiplyResults = [];
+        $scope.privacyData.userGotAccess = [];
+        $scope.privacyData.codesCount = null;
+    }
     $scope.saved = false;
     $scope.partialAccessPath = 'Content/partial/access/Default.html';
     $scope.partialSharePath = 'Content/partial/share/Default.html';
@@ -171,6 +188,7 @@
                     $scope.steps[i].isDone = false;
                 }
                 $scope.isBuilder = false;
+                $scope.resetValues();
                 $scope.steps[0].isDone = true;
                 if (type.value == 2) {
                     pollBuilderService.setType(type.value);
