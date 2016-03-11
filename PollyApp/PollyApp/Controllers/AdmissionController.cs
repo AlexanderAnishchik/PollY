@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Net;
 using System.Data.Entity;
 using PollyApp.Account;
+using System.Net.Http.Headers;
 
 namespace PollyApp.Controllers
 {
@@ -63,7 +65,26 @@ namespace PollyApp.Controllers
             var valid = (SafeAdmission)Session["admission"];
             if (valid != null && valid.AccessType == (Int32)DbEnum.PollAccess.FreeLink)
             {
-                return RedirectToAction("Index", "Poll", new { poll= valid.projectUrl });
+                HttpCookie cookie = Request.Cookies[MemberWorker.GetAnonymousCookieName()];
+                if (cookie == null)
+                {
+                    Response.SetCookie(MemberWorker.SetAnonymousCookie());
+                }
+                else {
+                    var cookieData = cookie["Data"];
+                    var project = Db.Context.Projects
+                        .Join(Db.Context.ProjectAccessVoters, p => p.Id, pav => pav.ProjectId, (p, pav) => new { p, pav })
+                        .Join(Db.Context.UserSets, z => z.pav.UserSetId, c => c.Id, (z, c) => new { z, c })
+                        .Where(x => x.c.CookieValue.Equals(cookieData))
+                        .Where(x => x.z.p.UrlCode.Equals(valid.projectUrl))
+                        .Select(x => new { x.z.pav.Id })
+                        .FirstOrDefault();
+                    if (project == null)
+                    {
+                        valid.Status = true;
+                        return RedirectToAction("Index", "Poll", new { poll = valid.projectUrl });
+                    }
+                }
             }
             return RedirectToAction("/", "Home");
         }

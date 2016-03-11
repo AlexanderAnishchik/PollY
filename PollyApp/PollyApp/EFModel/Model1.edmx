@@ -126,6 +126,7 @@
           <Property Name="UserId" Type="int" />
           <Property Name="IPAdrress" Type="nvarchar" MaxLength="50" />
           <Property Name="MACAdrress" Type="nvarchar" MaxLength="50" />
+          <Property Name="CookieValue" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <Association Name="Answer_QuestionId">
           <End Role="Question" Type="Self.Question" Multiplicity="1" />
@@ -612,6 +613,7 @@
           <Property Name="MACAdrress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ProjectAccessVoters" Relationship="PollyDbModel.FK_ProjectAccessVoters_CodeSet" FromRole="UserSet" ToRole="ProjectAccessVoter" />
           <NavigationProperty Name="User" Relationship="PollyDbModel.FK_UserSet_User" FromRole="UserSet" ToRole="User" />
+          <Property Name="CookieValue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="Answer_QuestionId">
           <End Type="PollyDbModel.Question" Role="Question" Multiplicity="1" />
@@ -927,6 +929,7 @@
           <EntitySetMapping Name="UserSets">
             <EntityTypeMapping TypeName="PollyDbModel.UserSet">
               <MappingFragment StoreEntitySet="UserSet">
+                <ScalarProperty Name="CookieValue" ColumnName="CookieValue" />
                 <ScalarProperty Name="MACAdrress" ColumnName="MACAdrress" />
                 <ScalarProperty Name="IPAdrress" ColumnName="IPAdrress" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />

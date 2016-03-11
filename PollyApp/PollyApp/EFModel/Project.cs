@@ -9,10 +9,9 @@
 
 namespace PollyApp.EFModel
 {
-    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-
+    
     public partial class Project
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -32,20 +31,14 @@ namespace PollyApp.EFModel
         public int ShareId { get; set; }
         public string UrlCode { get; set; }
         public int AccessId { get; set; }
-
-         
+    
         public virtual PollAccess PollAccess { get; set; }
-         
         public virtual PollShare PollShare { get; set; }
-         
         public virtual PollType PollType { get; set; }
-         
         public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-         
         public virtual ICollection<ProjectAccessVoter> ProjectAccessVoters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-         
         public virtual ICollection<Result> Results { get; set; }
     }
 }

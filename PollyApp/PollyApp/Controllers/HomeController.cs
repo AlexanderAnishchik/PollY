@@ -20,13 +20,6 @@ namespace PollyApp.Controllers
         [UserAuth]
         public ActionResult Index()
         {
-            //User product = new User();
-            //product.Email = "Apple";
-            //product.Password = "fsdfsdf";
-            //var b = new AnswerConverter();
-            // b.Serializer(product);
-
-            PollHelper.CheckUrlProjectCode("f5fb4d5c3e");
             return View();
         }
         protected override void Dispose(bool disposing)

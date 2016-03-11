@@ -116,7 +116,7 @@ namespace PollyApp.Account
         {
             FormsAuthentication.SignOut();
         }
-        public static RegisterStatus Register(String password, String email, String firstName, String lastName)
+        public static RegisterStatus SignUp(String password, String email, String firstName, String lastName)
         {
             try
             {
@@ -156,7 +156,17 @@ namespace PollyApp.Account
                 sBuilder.Append(data[i].ToString("x2"));
             return sBuilder.ToString();
         }
-
+        public static HttpCookie SetAnonymousCookie()
+        {
+            HttpCookie myCookie = new HttpCookie("ASPUSERAUTHSYSTEMCOOKIE");
+            myCookie["Data"] = Guid.NewGuid().ToString().Replace("-", String.Empty).Substring(0, 10);
+            myCookie.Expires = DateTime.Now.AddYears(1);
+            return myCookie;
+        }
+        public static String GetAnonymousCookieName()
+        {
+            return "ASPUSERAUTHSYSTEMCOOKIE";
+        }
         private static bool VerifyMd5Hash(MD5 md5Hash, String input, String hash)
         {
             String hashOfInput = GetMd5Hash(md5Hash, input);
