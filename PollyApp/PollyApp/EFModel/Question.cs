@@ -22,14 +22,15 @@ namespace PollyApp.EFModel
         }
     
         public int Id { get; set; }
+        public string Value { get; set; }
         public int ProjectId { get; set; }
         public int QuestionTypeId { get; set; }
-        public string Value { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Answer> Answers { get; set; }
         public virtual QuestionType QuestionType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Result> Results { get; set; }
+        public virtual Project Project { get; set; }
     }
 }

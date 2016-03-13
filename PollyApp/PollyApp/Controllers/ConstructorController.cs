@@ -18,20 +18,6 @@ namespace PollyApp.Controllers
         {
             return View();
         }
-//        var Question = { value:"xcvxcv" }
-//                var Answer = { value:"xcvxcv" }
-//               var Answers =[Answer, Answer, Answer]
-//             var PollUnits =[{Question, Answers},{Question,Answers
-//},{Question,Answers}]
-
-//               jQuery.ajax({
-//                 method: "POST",
-//                 url: "/Constructor/SavePoll",
-
-//                          data: JSON.stringify({PollUnits,PollName:"zxcxc"}),
-//                          contentType: 'application/json; charset=utf-8',
-
-//                });
         [UserAuth]
         public ActionResult SavePoll(PollWrapper configPoll, List<PollUnit> poll)
         {
@@ -62,6 +48,19 @@ namespace PollyApp.Controllers
             }
             else
                 return new JsonResult() { Data = new { status = false} };
+        }
+        public ActionResult GetPoll(string poll)
+        {
+            if (PollHelper.CheckUrlProjectCode(poll))
+            {
+                var valid = (SafeAdmission)Session["admission"];
+                if (valid.projectUrl == poll)
+                {
+                    var data = PollHelper.GetPoll(poll);
+                    return new JsonResult() { Data = data };
+                }
+            }
+            return new JsonResult() { Data = null };
         }
         protected override void Dispose(bool disposing)
         {

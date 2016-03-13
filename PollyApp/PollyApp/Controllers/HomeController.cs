@@ -9,6 +9,7 @@ using System.Linq;
 using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 using System.Web.Security;
 
 namespace PollyApp.Controllers
