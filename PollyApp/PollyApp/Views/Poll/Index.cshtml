@@ -14,82 +14,39 @@
     <link rel="stylesheet" href="~/Content/css/animate.css" />
     <link rel="icon" href="~/favicon.ico" type="image/x-icon">
     <script src="~/Scripts/jquery-1.11.3.js"></script>
-    <script src="~/Scripts/angular.min.js"></script>
     <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/angular-animate.js"></script>
+    <script src="~/Scripts/angular-aria/angular-aria.js"></script>
+    <script src="~/Scripts/angular-material/angular-material.js"></script>
     <script src="~/Scripts/angular-route.min.js"></script>
-    <script src="~/Scripts/animate-colors.js"></script>
-    <!--<script src="~/Scripts/front-end/navigation-scroll.js"></script>-->
     <script src="~/Scripts/bootstrap.js"></script>
-    <script src="~/Scripts/ui-bootstrap-tpls-1.0.3.js"></script>
     <script src="~/Scripts/App/app.js"></script>
     <script src="~/Scripts/App/Factory/pollSettingsFactory.js"></script>
-    <script src="~/Scripts/App/Services/headerKeeperService.js"></script>
-    <script src="~/Scripts/App/Controllers/headerController.js"></script>
-
+    <script src="~/Scripts/App/Controllers/pollController.js"></script>
 
 </head>
-<body ng-app="Polly" style="background-image: url(Content/images/page-background.png) !important; background-repeat:repeat;">
+<body ng-app="Polly" ng-controller="pollController as ctrl" ng-init="ctrl.init()" style="background-image: url(Content/images/page-background.png) !important; background-repeat:repeat;">
     <div class="poll-page">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center logo">
             <a href="/"><img src="~/Content/images/pollylogo2.png" /></a>
         </div>
 
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center logo text-uppercase poll-title">
-            choice among large companies
+           {{data.Project.Name}}
         </div>
         <div class="container">
-            <div class="row">
+            <div class="row" ng-repeat="it in data.Questions">      
                 <div class="col-lg-4 col-sm-12 col-md-6">
                     <div class="thumbnail">
                         <img src="~/Content/images/Polls/polly.jpg" alt="...">
                         <div class="caption">
-                            <h2>Apple or orange?</h2>
-
-                            <p>
-                                <form name="appleororange" method="post">
-                                    <input type="checkbox" name="apple" id="apple" class="css-checkbox" /> <label for="apple" class="css-label">Apple</label><br />
-                                    <input type="checkbox" name="orange" id="orange" class="css-checkbox" /> <label for="orange" class="css-label">Orange</label><br />
-                                </form>
-
+                            <h2>{{it.Question.Value}}</h2>
+                            <p ng-repeat="answ in it.Answers">
+                                    <input type="radio" name="1234567" id="microsoft1234567" class="css-radio" /> <label for="microsoft1234567" class="css-labelr">{{answ.Value}}</label><br />
                             </p>
-                            
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-sm-12 col-md-6">
-                    <div class="thumbnail">
-                        <img src="~/Content/images/Polls/polly.jpg" alt="...">
-                        <div class="caption">
-                            <h2>Apple or Microsoft?</h2>
-                            <p>
-                                <form name="appleormicrosoft" method="post">
-                                    <input type="radio" name="1234567" id="apple1234567" class="css-radio" /> <label for="apple1234567" class="css-labelr">Apple</label><br />
-                                    <input type="radio" name="1234567" id="microsoft1234567" class="css-radio" /> <label for="microsoft1234567" class="css-labelr">Microsoft</label><br />
-                                </form>
-
-                            </p>
-                            
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-12 col-md-6">
-                    <div class="thumbnail">
-                        <img src="~/Content/images/Polls/polly.jpg" alt="...">
-                        <div class="caption">
-                            <h2>Android vs iOS?</h2>
-
-                            <p>
-                                <form name="appleororange" method="post">
-                                    <input type="radio" name="12345678" id="android12345678" class="css-radio" /> <label for="android12345678" class="css-labelr">Android</label><br />
-                                    <input type="radio" name="12345678" id="apple12345678" class="css-radio" /> <label for="apple12345678" class="css-labelr">Apple</label><br />
-                                </form>
-
-                            </p>
-                           
-                        </div>
-                    </div>
-                </div>
-
             </div>
             <div class="row text-center">
                 <button class="btn-vote">SAVE ANSWER</button>

@@ -62,6 +62,7 @@ namespace PollyApp.Controllers
         }
         public ActionResult FreeLink()
         {
+
             var valid = (SafeAdmission)Session["admission"];
             if (valid != null && valid.AccessType == (Int32)DbEnum.PollAccess.FreeLink)
             {
@@ -69,6 +70,7 @@ namespace PollyApp.Controllers
                 if (cookie == null)
                 {
                     Response.SetCookie(MemberWorker.SetAnonymousCookie());
+                    return RedirectToAction("Index", "Poll", new { poll = valid.projectUrl });
                 }
                 else {
                     var cookieData = cookie["Data"];

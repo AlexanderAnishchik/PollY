@@ -432,6 +432,7 @@
     <Content Include="Scripts\App\Controllers\dialogController.js" />
     <Content Include="Scripts\App\Controllers\headerController.js" />
     <Content Include="Scripts\App\Controllers\homeController.js" />
+    <Content Include="Scripts\App\Controllers\pollController.js" />
     <Content Include="Scripts\App\Directives\enterDirective.js" />
     <Content Include="Scripts\App\Factory\answerTypeFactory.js" />
     <Content Include="Scripts\App\Route\constructorRoute.js" />

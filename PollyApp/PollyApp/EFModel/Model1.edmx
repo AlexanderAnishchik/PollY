@@ -140,6 +140,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Question__Projec__2A164134">
+          <End Role="Project" Type="Self.Project" Multiplicity="1" />
+          <End Role="Question" Type="Self.Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Question">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Project_PollShare">
           <End Role="PollShare" Type="Self.PollShare" Multiplicity="1" />
           <End Role="Project" Type="Self.Project" Multiplicity="*" />
@@ -326,6 +338,10 @@
             <End Role="Question" EntitySet="Question" />
             <End Role="Answer" EntitySet="Answer" />
           </AssociationSet>
+          <AssociationSet Name="FK__Question__Projec__2A164134" Association="Self.FK__Question__Projec__2A164134">
+            <End Role="Project" EntitySet="Project" />
+            <End Role="Question" EntitySet="Question" />
+          </AssociationSet>
           <AssociationSet Name="FK_Project_PollShare" Association="Self.FK_Project_PollShare">
             <End Role="PollShare" EntitySet="PollShare" />
             <End Role="Project" EntitySet="Project" />
@@ -395,16 +411,11 @@
           <EntitySet Name="PollTypes" EntityType="PollyDbModel.PollType" />
           <EntitySet Name="Projects" EntityType="PollyDbModel.Project" />
           <EntitySet Name="ProjectAccessVoters" EntityType="PollyDbModel.ProjectAccessVoter" />
-          <EntitySet Name="Questions" EntityType="PollyDbModel.Question" />
           <EntitySet Name="QuestionTypes" EntityType="PollyDbModel.QuestionType" />
           <EntitySet Name="Results" EntityType="PollyDbModel.Result" />
           <EntitySet Name="Users" EntityType="PollyDbModel.User" />
           <EntitySet Name="UserPermissions" EntityType="PollyDbModel.UserPermission" />
           <EntitySet Name="UserSets" EntityType="PollyDbModel.UserSet" />
-          <AssociationSet Name="Answer_QuestionId" Association="PollyDbModel.Answer_QuestionId">
-            <End Role="Question" EntitySet="Questions" />
-            <End Role="Answer" EntitySet="Answers" />
-          </AssociationSet>
           <AssociationSet Name="FK_Result_Answer" Association="PollyDbModel.FK_Result_Answer">
             <End Role="Answer" EntitySet="Answers" />
             <End Role="Result" EntitySet="Results" />
@@ -445,14 +456,6 @@
             <End Role="ProjectAccessVoter" EntitySet="ProjectAccessVoters" />
             <End Role="Result" EntitySet="Results" />
           </AssociationSet>
-          <AssociationSet Name="FK_Question_QuestionType" Association="PollyDbModel.FK_Question_QuestionType">
-            <End Role="QuestionType" EntitySet="QuestionTypes" />
-            <End Role="Question" EntitySet="Questions" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Result_Question" Association="PollyDbModel.FK_Result_Question">
-            <End Role="Question" EntitySet="Questions" />
-            <End Role="Result" EntitySet="Results" />
-          </AssociationSet>
           <AssociationSet Name="FK_User_UserPermission" Association="PollyDbModel.FK_User_UserPermission">
             <End Role="UserPermission" EntitySet="UserPermissions" />
             <End Role="User" EntitySet="Users" />
@@ -461,7 +464,24 @@
             <End Role="User" EntitySet="Users" />
             <End Role="UserSet" EntitySet="UserSets" />
           </AssociationSet>
-        </EntityContainer>
+          <EntitySet Name="Questions" EntityType="PollyDbModel.Question" />
+          <AssociationSet Name="Answer_QuestionId" Association="PollyDbModel.Answer_QuestionId">
+            <End Role="Question" EntitySet="Questions" />
+            <End Role="Answer" EntitySet="Answers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Question_QuestionType" Association="PollyDbModel.FK_Question_QuestionType">
+            <End Role="QuestionType" EntitySet="QuestionTypes" />
+            <End Role="Question" EntitySet="Questions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Result_Question" Association="PollyDbModel.FK_Result_Question">
+            <End Role="Question" EntitySet="Questions" />
+            <End Role="Result" EntitySet="Results" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Question__Projec__2A164134" Association="PollyDbModel.FK__Question__Projec__2A164134">
+            <End Role="Project" EntitySet="Projects" />
+            <End Role="Question" EntitySet="Questions" />
+          </AssociationSet>
+          </EntityContainer>
         <EntityType Name="Answer">
           <Key>
             <PropertyRef Name="Id" />
@@ -470,8 +490,8 @@
           <Property Name="Value" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="OrderValue" Type="Int32" Nullable="false" />
           <Property Name="QuestionId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Question" Relationship="PollyDbModel.Answer_QuestionId" FromRole="Answer" ToRole="Question" />
           <NavigationProperty Name="Results" Relationship="PollyDbModel.FK_Result_Answer" FromRole="Answer" ToRole="Result" />
+          <NavigationProperty Name="Question" Relationship="PollyDbModel.Answer_QuestionId" FromRole="Answer" ToRole="Question" />
         </EntityType>
         <EntityType Name="CodeSet">
           <Key>
@@ -528,6 +548,7 @@
           <NavigationProperty Name="User" Relationship="PollyDbModel.FK_Project_User" FromRole="Project" ToRole="User" />
           <NavigationProperty Name="ProjectAccessVoters" Relationship="PollyDbModel.FK_ProjectAccessVoters_Project" FromRole="Project" ToRole="ProjectAccessVoter" />
           <NavigationProperty Name="Results" Relationship="PollyDbModel.FK_Result_Project" FromRole="Project" ToRole="Result" />
+          <NavigationProperty Name="Questions" Relationship="PollyDbModel.FK__Question__Projec__2A164134" FromRole="Project" ToRole="Question" />
         </EntityType>
         <EntityType Name="ProjectAccessVoter">
           <Key>
@@ -542,18 +563,6 @@
           <NavigationProperty Name="Project" Relationship="PollyDbModel.FK_ProjectAccessVoters_Project" FromRole="ProjectAccessVoter" ToRole="Project" />
           <NavigationProperty Name="UserSet" Relationship="PollyDbModel.FK_ProjectAccessVoters_CodeSet" FromRole="ProjectAccessVoter" ToRole="UserSet" />
           <NavigationProperty Name="Results" Relationship="PollyDbModel.FK_Result_ProjectAccessVoters" FromRole="ProjectAccessVoter" ToRole="Result" />
-        </EntityType>
-        <EntityType Name="Question">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ProjectId" Type="Int32" Nullable="false" />
-          <Property Name="QuestionTypeId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Answers" Relationship="PollyDbModel.Answer_QuestionId" FromRole="Question" ToRole="Answer" />
-          <NavigationProperty Name="QuestionType" Relationship="PollyDbModel.FK_Question_QuestionType" FromRole="Question" ToRole="QuestionType" />
-          <NavigationProperty Name="Results" Relationship="PollyDbModel.FK_Result_Question" FromRole="Question" ToRole="Result" />
-          <Property Name="Value" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="QuestionType">
           <Key>
@@ -615,18 +624,6 @@
           <NavigationProperty Name="User" Relationship="PollyDbModel.FK_UserSet_User" FromRole="UserSet" ToRole="User" />
           <Property Name="CookieValue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
-        <Association Name="Answer_QuestionId">
-          <End Type="PollyDbModel.Question" Role="Question" Multiplicity="1" />
-          <End Type="PollyDbModel.Answer" Role="Answer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Question">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Answer">
-              <PropertyRef Name="QuestionId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Result_Answer">
           <End Type="PollyDbModel.Answer" Role="Answer" Multiplicity="1" />
           <End Type="PollyDbModel.Result" Role="Result" Multiplicity="*" />
@@ -747,30 +744,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Question_QuestionType">
-          <End Type="PollyDbModel.QuestionType" Role="QuestionType" Multiplicity="1" />
-          <End Type="PollyDbModel.Question" Role="Question" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="QuestionType">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Question">
-              <PropertyRef Name="QuestionTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Result_Question">
-          <End Type="PollyDbModel.Question" Role="Question" Multiplicity="1" />
-          <End Type="PollyDbModel.Result" Role="Result" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Question">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Result">
-              <PropertyRef Name="QuestionId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_User_UserPermission">
           <End Type="PollyDbModel.UserPermission" Role="UserPermission" Multiplicity="1" />
           <End Type="PollyDbModel.User" Role="User" Multiplicity="*" />
@@ -795,7 +768,68 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <EntityType Name="Question">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProjectId" Type="Int32" Nullable="false" />
+          <Property Name="QuestionTypeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Answers" Relationship="PollyDbModel.Answer_QuestionId" FromRole="Question" ToRole="Answer" />
+          <NavigationProperty Name="QuestionType" Relationship="PollyDbModel.FK_Question_QuestionType" FromRole="Question" ToRole="QuestionType" />
+          <NavigationProperty Name="Results" Relationship="PollyDbModel.FK_Result_Question" FromRole="Question" ToRole="Result" />
+          <NavigationProperty Name="Project" Relationship="PollyDbModel.FK__Question__Projec__2A164134" FromRole="Question" ToRole="Project" />
+        </EntityType>
+        <Association Name="Answer_QuestionId">
+          <End Type="PollyDbModel.Question" Role="Question" Multiplicity="1" />
+          <End Type="PollyDbModel.Answer" Role="Answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Question">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Answer">
+              <PropertyRef Name="QuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Question_QuestionType">
+          <End Type="PollyDbModel.QuestionType" Role="QuestionType" Multiplicity="1" />
+          <End Type="PollyDbModel.Question" Role="Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuestionType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Question">
+              <PropertyRef Name="QuestionTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Result_Question">
+          <End Type="PollyDbModel.Question" Role="Question" Multiplicity="1" />
+          <End Type="PollyDbModel.Result" Role="Result" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Question">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Result">
+              <PropertyRef Name="QuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Question__Projec__2A164134">
+          <End Type="PollyDbModel.Project" Role="Project" Multiplicity="1" />
+          <End Type="PollyDbModel.Question" Role="Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Question">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -873,16 +907,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Questions">
-            <EntityTypeMapping TypeName="PollyDbModel.Question">
-              <MappingFragment StoreEntitySet="Question">
-                <ScalarProperty Name="Value" ColumnName="Value" />
-                <ScalarProperty Name="QuestionTypeId" ColumnName="QuestionTypeId" />
-                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="QuestionTypes">
             <EntityTypeMapping TypeName="PollyDbModel.QuestionType">
               <MappingFragment StoreEntitySet="QuestionType">
@@ -933,6 +957,16 @@
                 <ScalarProperty Name="MACAdrress" ColumnName="MACAdrress" />
                 <ScalarProperty Name="IPAdrress" ColumnName="IPAdrress" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Questions">
+            <EntityTypeMapping TypeName="PollyDbModel.Question">
+              <MappingFragment StoreEntitySet="Question">
+                <ScalarProperty Name="QuestionTypeId" ColumnName="QuestionTypeId" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

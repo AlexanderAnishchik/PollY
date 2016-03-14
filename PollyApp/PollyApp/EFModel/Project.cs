@@ -19,6 +19,7 @@ namespace PollyApp.EFModel
         {
             this.ProjectAccessVoters = new HashSet<ProjectAccessVoter>();
             this.Results = new HashSet<Result>();
+            this.Questions = new HashSet<Question>();
         }
     
         public int Id { get; set; }
@@ -40,5 +41,7 @@ namespace PollyApp.EFModel
         public virtual ICollection<ProjectAccessVoter> ProjectAccessVoters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Result> Results { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Question> Questions { get; set; }
     }
 }

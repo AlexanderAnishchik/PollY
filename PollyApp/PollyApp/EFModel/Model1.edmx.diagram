@@ -4,21 +4,19 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="bd7224acedd04834bfa83985a4a6f7d8" Name="Diagram1">
-        <EntityTypeShape EntityType="PollyDbModel.Answer" Width="1.5" PointX="7.5" PointY="14.125" />
-        <EntityTypeShape EntityType="PollyDbModel.CodeSet" Width="1.5" PointX="5.25" PointY="0.75" />
-        <EntityTypeShape EntityType="PollyDbModel.PollAccess" Width="1.5" PointX="3" PointY="1.125" />
-        <EntityTypeShape EntityType="PollyDbModel.PollShare" Width="1.5" PointX="3" PointY="8.75" />
-        <EntityTypeShape EntityType="PollyDbModel.PollType" Width="1.5" PointX="3" PointY="11.25" />
-        <EntityTypeShape EntityType="PollyDbModel.Project" Width="1.5" PointX="5.25" PointY="3.5" />
-        <EntityTypeShape EntityType="PollyDbModel.ProjectAccessVoter" Width="1.5" PointX="7.5" PointY="6.125" />
-        <EntityTypeShape EntityType="PollyDbModel.Question" Width="1.5" PointX="5.25" PointY="14" />
-        <EntityTypeShape EntityType="PollyDbModel.QuestionType" Width="1.5" PointX="3" PointY="14.375" />
-        <EntityTypeShape EntityType="PollyDbModel.Result" Width="1.5" PointX="9.75" PointY="4.875" />
-        <EntityTypeShape EntityType="PollyDbModel.User" Width="1.5" PointX="3" PointY="4" />
-        <EntityTypeShape EntityType="PollyDbModel.UserPermission" Width="1.5" PointX="0.75" PointY="4.75" />
-        <EntityTypeShape EntityType="PollyDbModel.UserSet" Width="1.5" PointX="5.25" PointY="9.375" />
-        <AssociationConnector Association="PollyDbModel.Answer_QuestionId" />
+      <Diagram DiagramId="bd7224acedd04834bfa83985a4a6f7d8" Name="Diagram1" DisplayType="true">
+        <EntityTypeShape EntityType="PollyDbModel.Answer" Width="1.5" PointX="7.5" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PollyDbModel.CodeSet" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PollyDbModel.PollAccess" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PollyDbModel.PollShare" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PollyDbModel.PollType" Width="1.5" PointX="3" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PollyDbModel.Project" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PollyDbModel.ProjectAccessVoter" Width="1.5" PointX="7.5" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PollyDbModel.QuestionType" Width="1.5" PointX="3" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PollyDbModel.Result" Width="1.5" PointX="9.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PollyDbModel.User" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="PollyDbModel.UserPermission" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PollyDbModel.UserSet" Width="1.5" PointX="5.25" PointY="9.375" IsExpanded="true" />
         <AssociationConnector Association="PollyDbModel.FK_Result_Answer" />
         <AssociationConnector Association="PollyDbModel.FK_ProjectAccessVoters_CodeSet1" />
         <AssociationConnector Association="PollyDbModel.Project_AccessId_FK" />
@@ -29,11 +27,14 @@
         <AssociationConnector Association="PollyDbModel.FK_Result_Project" />
         <AssociationConnector Association="PollyDbModel.FK_ProjectAccessVoters_CodeSet" />
         <AssociationConnector Association="PollyDbModel.FK_Result_ProjectAccessVoters" />
-        <AssociationConnector Association="PollyDbModel.FK_Question_QuestionType" />
-        <AssociationConnector Association="PollyDbModel.FK_Result_Question" />
         <AssociationConnector Association="PollyDbModel.FK_User_UserPermission" />
         <AssociationConnector Association="PollyDbModel.FK_UserSet_User" />
-      </Diagram>
+        <EntityTypeShape EntityType="PollyDbModel.Question" Width="1.5" PointX="5.375" PointY="13.25" />
+        <AssociationConnector Association="PollyDbModel.Answer_QuestionId" />
+        <AssociationConnector Association="PollyDbModel.FK_Question_QuestionType" />
+        <AssociationConnector Association="PollyDbModel.FK_Result_Question" />
+        <AssociationConnector Association="PollyDbModel.FK__Question__Projec__2A164134" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>
