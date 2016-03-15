@@ -25,7 +25,7 @@ namespace PollyApp.Controllers
             {
                 configPoll.UserId = ((dynamic)Session["user"]).Id;
               var project=  ConstructorHelper.Save(configPoll, poll);
-               return new JsonResult() { Data = project };
+               return new JsonResult() { Data =new {project.UrlCode } };
             }
             catch (Exception ex)
             {
