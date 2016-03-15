@@ -35,14 +35,14 @@
            {{data.Project.Name}}
         </div>
         <div class="container">
-            <div class="row" ng-repeat="it in data.Questions">      
-                <div class="col-lg-4 col-sm-12 col-md-6">
+            <div class="row">      
+                <div class="col-lg-4 col-sm-12 col-md-6" ng-repeat="it in data.Questions">
                     <div class="thumbnail">
                         <img src="~/Content/images/Polls/polly.jpg" alt="...">
                         <div class="caption">
                             <h2>{{it.Question.Value}}</h2>
                             <p ng-repeat="answ in it.Answers">
-                                    <input type="radio" name="1234567" id="microsoft1234567" class="css-radio" /> <label for="microsoft1234567" class="css-labelr">{{answ.Value}}</label><br />
+                                    <input type="radio" name="asdfg" id="{{answ.Id}}" class="css-radio" /> <label for="{{answ.Id}}" class="css-labelr">{{answ.Value}}</label><br />
                             </p>
                         </div>
                     </div>

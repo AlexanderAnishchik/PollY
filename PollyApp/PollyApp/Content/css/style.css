@@ -1037,6 +1037,14 @@ growl-notification.fading.ng-leave.ng-leave-active {
 .access-page .card .btn-success:focus {
     outline:0;
 }
+.poll-settings-block:first-child{
+    text-align:left;
+    padding:0 0 10px 0;
+}
+.poll-settings-block:last-child{
+    text-align:right;
+    padding:1.45% 0 5px 0;
+}
 
 /*---------------------------------------------*/
 /*----------------MOBILE DESIGN----------------*/
