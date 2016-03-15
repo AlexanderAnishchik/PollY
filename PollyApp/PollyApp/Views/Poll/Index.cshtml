@@ -42,7 +42,7 @@
                         <div class="caption">
                             <h2>{{it.Question.Value}}</h2>
                             <p ng-repeat="answ in it.Answers">
-                                    <input type="radio" name="asdfg" id="{{answ.Id}}" class="css-radio" /> <label for="{{answ.Id}}" class="css-labelr">{{answ.Value}}</label><br />
+                                    <input type="radio" name="{{it.Question.Id}}" id="{{answ.Id}}" class="css-radio" /> <label for="{{answ.Id}}" class="css-labelr">{{answ.Value}}</label><br />
                             </p>
                         </div>
                     </div>
