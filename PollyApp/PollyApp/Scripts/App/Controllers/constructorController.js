@@ -141,6 +141,24 @@
             modalService.showAlert(modalObject, function () { }, function () { });
             return;
         }
+        var countEmptyAnswers = 0;
+        for (var i in $scope.currentBlock.answers)
+        {
+            
+            if (!$scope.currentBlock.answers[i].value) {
+                countEmptyAnswers++;
+            }
+        }
+        if ($scope.currentBlock.answers.length - countEmptyAnswers < 2) {
+            var modalObject = {
+                title: "Error",
+                textContent: "Question must have more then one answers",
+                ariaLabel: "Question must have more then one answers",
+                event: event
+            };
+            modalService.showAlert(modalObject, function () { }, function () { });
+            return;
+        }
 
         pollBuilderService.addBlock();
         $scope.changeBlock($scope.builderData.poll.length - 1);
@@ -285,7 +303,19 @@
                 pollBuilderService.save(function () {
                     $scope.saved = true;
                     $scope.openCustomDialog(event);
-                }, function () { modalService.showAlert({ title: "Error", textContent: "You can't save the project, check your data", ariaLabel: "yourpolly.com / Confirm save", event: event }) }, function () { });
+                }, function (message) {
+                    if (!message) {
+                        message = "You can't save the project, check your data";
+                    }
+                    modalService.showAlert(
+                        {
+                            title: "Error",
+                            textContent: message,
+                            ariaLabel: "yourpolly.com / Confirm save",
+                            event: event
+                        }
+                    )
+                }, function () { });
             },
         function () { });
 
