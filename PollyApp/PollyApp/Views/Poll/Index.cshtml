@@ -42,14 +42,14 @@
                         <div class="caption">
                             <h2>{{it.Question.Value}}</h2>
                             <p ng-repeat="answ in it.Answers">
-                                    <input type="radio" name="{{it.Question.Id}}" id="{{answ.Id}}" class="css-radio" /> <label for="{{answ.Id}}" class="css-labelr">{{answ.Value}}</label><br />
+                                    <input type="radio" ng-value="{{answ.Id}}"  ng-model="ctrl.result[it.Question.Id][answ.Id]" name="{{it.Question.Id}}" id="{{answ.Id}}" class="css-radio" /> <label for="{{answ.Id}}" class="css-labelr">{{answ.Value}}</label><br />
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row text-center">
-                <button class="btn-vote">SAVE ANSWER</button>
+                <button ng-click="ctrl.save()" class="btn-vote">SAVE ANSWER</button>
             </div>
         </div>
         
