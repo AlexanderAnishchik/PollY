@@ -127,13 +127,27 @@
             </div>
 
             <div class="footer-card">
-                <div class="col-lg-11 col-md-11 col-xs-11 col-sm-11 poll-settings-block">
+                <div class="col-lg-10 col-md-10 col-xs-7 col-sm-7 poll-settings-block">
                     <md-button class="md-primary md-raised" ng-click="addBlock($event)" flex="100" flex-gt-md="auto">
                         ADD QUEISTION
                     </md-button>
                 </div>
-                <div class="col-lg-1 col-md-1 col-xs-1 col-sm-1 poll-settings-block">
-                    <img src="/Content/images/cogwheel.png" />
+                <div class="col-lg-2 col-md-2 col-xs-5 col-sm-5 poll-settings-block">
+                    <div class="img-settings">
+                        <label for="settings"><small>Type question</small></label>
+                        <img src="/Content/images/cogwheel.png" ng-click="showSettingsBlock()" id="settings"/>
+                        
+                        <div class="settings-card animated " ng-show="showSettings" ng-class="{ 'fadeInUp' : showSettings, 'fadeOutDown' : !showSettings} ">
+                            <p>
+                                <input type="radio" name="singormult" id="multiple" class="css-radio" ng-checked="true"/> <label for="multiple" class="css-labelr">Multiple choice</label><br />
+                                <input type="radio" name="singormult" id="single" class="css-radio" /> <label for="single" class="css-labelr">Single choice</label>
+                            </p>
+                            <md-button class="md-raised" flex="100" flex-gt-md="auto">
+                                change type
+                            </md-button>
+                        </div>
+                    </div>
+                    
                 </div>
 
             </div>
