@@ -396,8 +396,13 @@
 
     }
 
-
-
+    $scope.showSettings = false;
+    $scope.showSettingsBlock = function () {
+        if ($scope.showSettings)
+            $scope.showSettings = false;
+        else
+            $scope.showSettings = true;
+    }
 
 
 }]);

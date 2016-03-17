@@ -1043,7 +1043,44 @@ growl-notification.fading.ng-leave.ng-leave-active {
 }
 .poll-settings-block:last-child{
     text-align:right;
-    padding:1.45% 0 5px 0;
+    padding:0 0 5px 0;
+    position:relative;
+    height:24px;
+    margin-top:1.45%
+
+}
+.img-settings #settings{
+   
+    width:16px;
+    height:16px;
+}
+.img-settings{
+    float:right;
+}
+.img-settings img:focus{
+    outline:0;
+}
+.img-settings label{
+    color:#73879c;
+}
+.settings-card{
+    border-radius:3px;
+    background:#ffffff;
+    border:1px solid #cccccc;
+    color:#34495e;
+    position:absolute;
+    text-align:left;
+    right:0%;
+    z-index:999999999;
+    padding:10px;
+    bottom:100%;
+    min-width:250px;
+    -webkit-box-shadow: 3px 3px 9px -1px rgba(135,135,135,1);
+    -moz-box-shadow: 3px 3px 9px -1px rgba(135,135,135,1);
+    box-shadow: 3px 3px 9px -1px rgba(135,135,135,1);
+}
+.show-settings-card{
+   
 }
 
 /*---------------------------------------------*/
