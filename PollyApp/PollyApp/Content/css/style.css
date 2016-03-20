@@ -1140,6 +1140,9 @@ growl-notification.fading.ng-leave.ng-leave-active {
     }
 }
 @media all and (max-width: 480px) {
+    md-dialog{
+        max-width: 95% !important;
+    }
     .wizard_horizontal {
         padding: 15% 0 0 0;
         margin-bottom: 15%;
