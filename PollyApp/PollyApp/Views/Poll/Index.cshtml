@@ -10,6 +10,8 @@
     <meta name="viewport" content="width=device-width; initial-scale=1.0">
     <title>@ViewBag.Title</title>
     <link rel="stylesheet" href="~/Content/bootstrap.css" />
+    <link href="~/Content/angular-material.min.css" rel="stylesheet" />
+    <link href="~/Content/angular-material.layouts.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/Content/css/style.css" />
     <link rel="stylesheet" href="~/Content/css/animate.css" />
     <link rel="icon" href="~/favicon.ico" type="image/x-icon">
@@ -21,6 +23,7 @@
     <script src="~/Scripts/angular-route.min.js"></script>
     <script src="~/Scripts/bootstrap.js"></script>
     <script src="~/Scripts/App/app.js"></script>
+    <script src="~/Scripts/App/Services/modalService.js"></script>
     <script src="~/Scripts/App/Factory/pollSettingsFactory.js"></script>
     <script src="~/Scripts/App/Controllers/pollController.js"></script>
 
@@ -49,7 +52,7 @@
                 </div>
             </div>
             <div class="row text-center">
-                <button ng-click="ctrl.save()" class="btn-vote">SAVE ANSWER</button>
+                <button ng-click="ctrl.save($event)" ng-disabled="ctrl.isVote" class="btn-vote">SAVE ANSWER</button>
             </div>
         </div>
         

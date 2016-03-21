@@ -767,6 +767,17 @@ fieldset[disabled] .btn-primary.focus {
   outline:none;
   border-color: #d7dce0;
 }
+.btn-vote.disabled:hover,
+.btn-vote[disabled]:hover,
+.btn-vote.disabled:focus,
+.btn-vote[disabled]:focus,
+.btn-vote.disabled.focus,
+.btn-vote[disabled].focus {
+  background-color: #1abc9c;
+  outline:none;
+  border-color: #d7dce0;
+  filter:alpha(opacity=100);
+}
 .btn-install .badge {
   color: #cccccc;
   background:none;

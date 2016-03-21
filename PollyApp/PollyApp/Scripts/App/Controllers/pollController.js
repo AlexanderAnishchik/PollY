@@ -1,4 +1,4 @@
-﻿PollyApp.controller('pollController', ['$scope', 'pollSettingsFactory', '$http', function ($scope, pollSettingsFactory, $http) {
+﻿PollyApp.controller('pollController', ['$scope', 'pollSettingsFactory', 'modalService', '$http', function ($scope, pollSettingsFactory, modalService, $http) {
     var me = this;
     $scope.data = null;
     me.result = [];
@@ -11,10 +11,26 @@
 
         });
     };
-    me.save = function () {
+    me.isVote = false;
+    me.save = function (event) {
         debugger;
         var sendData = me.prepareData();
-    };
+        var modalObject = {
+            title: "Thank you!",
+            textContent: "Your answers have been saved.",
+            ariaLabel: "Your answers have been saved.",
+            event: event
+        };
+
+        modalService.showConfirm(modalObject, function () {
+            me.isVote = true;
+            window.location.href = "/";
+        },
+        function () {
+            me.isVote = true;
+            window.location.href = "/";
+        });
+    }
     me.prepareData = function () {
         var finishData = [];
         for (var qw in me.result) {
@@ -36,4 +52,4 @@
         });
         return data;
     };
-}]);
+ } ]);
