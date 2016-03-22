@@ -10,6 +10,7 @@ body.nav-sm .container.body .right_col {
     padding: 10px 20px;
     margin-left: 70px;
     z-index: 2;
+    
 }
 body.nav-sm .navbar.nav_title {
     width: 70px;
@@ -211,6 +212,7 @@ body .container.body .right_col {
 body.nav-md .container.body .right_col {
     padding: 10px 20px 0;
     margin-left: 230px;
+    min-height:100vh;
 }
 
 .nav_title {

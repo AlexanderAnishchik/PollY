@@ -48,5 +48,28 @@ namespace PollyApp.Controllers
             Db.Dispose();
             base.Dispose(disposing);
         }
+        [HttpGet]
+        public ActionResult Profile(int id)
+        {
+            User user = (User)Session["user"];
+            
+                if (user != null)
+                {
+                    if (user.Id == id)
+                    {
+                        ViewBag.user = user;
+                        return View(ViewBag.user);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Profile", new { id = user.Id });
+                    }
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+
+        }
     }
 }
