@@ -186,7 +186,14 @@ a {
     text-align: center;
 }
 
-
+#macbook,
+#desc_small,
+#desc_button,
+.anim,
+.animatedesc,
+form[name="contact"]{
+    opacity:0;
+}
 /*---------------------------------------------*/
 /*--------------MACBOOK SECTION----------------*/
 /*---------------------------------------------*/
@@ -201,6 +208,7 @@ a {
     border-bottom:3px solid #1abc9c;
     padding-bottom:5px;
 }
+
 .pluses{
     margin-top:4%;
     margin-bottom:5%;
@@ -344,6 +352,10 @@ a {
 }
 #footer .btn-lg{
     height:70px;
+}
+#footer .description small{
+    border-bottom:3px solid #1abc9c;
+    padding-bottom:5px;
 }
 .intro {
     background-color: #34495e;
