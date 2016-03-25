@@ -186,13 +186,14 @@ a {
     text-align: center;
 }
 
-#macbook,
-#desc_small,
-#desc_button,
-.anim,
-.animatedesc,
-form[name="contact"]{
-    opacity:0;
+
+.anim
+{
+    opacity:0 !important;
+}
+.animDone
+{
+    opacity:1 !important;
 }
 /*---------------------------------------------*/
 /*--------------MACBOOK SECTION----------------*/
