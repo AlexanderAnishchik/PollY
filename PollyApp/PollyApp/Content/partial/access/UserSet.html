@@ -22,7 +22,7 @@
         </div>
         <p>
             or <br />
-            <md-button class="md-raised md-primary" ng-click="accessData.userGotAccess=null;accessData.singleOrMultiply = false;">Multiply input</md-button>
+            <md-button class="md-raised md-primary" ng-click="accessData.userGotAccess.splice(0,accessData.userGotAccess.length);accessData.singleOrMultiply = false;">Multiply input</md-button>
         </p>
     </div>
     <div ng-show="!accessData.singleOrMultiply">

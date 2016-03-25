@@ -187,6 +187,14 @@ a {
 }
 
 
+.anim
+{
+    opacity:0 !important;
+}
+.animDone
+{
+    opacity:1 !important;
+}
 /*---------------------------------------------*/
 /*--------------MACBOOK SECTION----------------*/
 /*---------------------------------------------*/
@@ -201,6 +209,7 @@ a {
     border-bottom:3px solid #1abc9c;
     padding-bottom:5px;
 }
+
 .pluses{
     margin-top:4%;
     margin-bottom:5%;
@@ -344,6 +353,10 @@ a {
 }
 #footer .btn-lg{
     height:70px;
+}
+#footer .description small{
+    border-bottom:3px solid #1abc9c;
+    padding-bottom:5px;
 }
 .intro {
     background-color: #34495e;
@@ -767,6 +780,17 @@ fieldset[disabled] .btn-primary.focus {
   outline:none;
   border-color: #d7dce0;
 }
+.btn-vote.disabled:hover,
+.btn-vote[disabled]:hover,
+.btn-vote.disabled:focus,
+.btn-vote[disabled]:focus,
+.btn-vote.disabled.focus,
+.btn-vote[disabled].focus {
+  background-color: #1abc9c;
+  outline:none;
+  border-color: #d7dce0;
+  filter:alpha(opacity=100);
+}
 .btn-install .badge {
   color: #cccccc;
   background:none;
@@ -1140,6 +1164,9 @@ growl-notification.fading.ng-leave.ng-leave-active {
     }
 }
 @media all and (max-width: 480px) {
+    md-dialog{
+        max-width: 95% !important;
+    }
     .wizard_horizontal {
         padding: 15% 0 0 0;
         margin-bottom: 15%;

@@ -437,7 +437,9 @@
     <Content Include="Scripts\App\Controllers\homeController.js" />
     <Content Include="Scripts\App\Controllers\pollController.js" />
     <Content Include="Scripts\App\Directives\enterDirective.js" />
+    <Content Include="Scripts\App\Directives\scrollDirective.js" />
     <Content Include="Scripts\App\Factory\answerTypeFactory.js" />
+    <Content Include="Scripts\App\Modules\ngAnimation.js" />
     <Content Include="Scripts\App\Route\constructorRoute.js" />
     <Content Include="Scripts\App\Services\headerKeeperService.js" />
     <Content Include="Scripts\App\Services\JSONService.js" />
@@ -1287,6 +1289,7 @@
     <Content Include="Views\Admission\SetUser.cshtml" />
     <Content Include="Views\Shared\NotFound.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Account\Profile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
