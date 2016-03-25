@@ -17,9 +17,9 @@ namespace PollyApp.Controllers
             if (PollHelper.CheckUrlProjectCode(poll))
             {
                 var valid = (SafeAdmission)Session["admission"];
-                if (valid != null && valid.Status && valid.projectUrl== poll)
+                if (valid != null && !valid.Status && valid.projectUrl== poll)
                 {
-                    valid.Status = false;
+                    valid.Status = true;
                     return View();
                 }
                    

@@ -36,6 +36,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -212,6 +213,8 @@
     <Compile Include="JsonConverters\AnswerConverter.cs" />
     <Compile Include="JsonConverters\Helpers\TextAnswer.cs" />
     <Compile Include="JsonConverters\IConverter.cs" />
+    <Compile Include="Models\PollResult.cs" />
+    <Compile Include="Models\PollResultQuestion.cs" />
     <Compile Include="Models\PollUnit.cs" />
     <Compile Include="Models\PollWrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

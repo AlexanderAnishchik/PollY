@@ -14,6 +14,13 @@
     me.save = function () {
         debugger;
         var sendData = me.prepareData();
+        $http.post("/Constructor/SaveResults", { poll: { PollResultQuestions: sendData } }).then(function (response) {
+            alert("Success");
+            $scope.data = me.parseAnswer(response.data);
+        })
+       .then(function (response) {
+           alert("Error");
+       });
     };
     me.prepareData = function () {
         var finishData = [];
