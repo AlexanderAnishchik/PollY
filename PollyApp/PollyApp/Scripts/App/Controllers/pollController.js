@@ -30,7 +30,7 @@
             me.isVote = true;
             window.location.href = "/";
         });
-    }
+  
      $http.post("/Constructor/SaveResults", { poll: { PollResultQuestions: sendData } }).then(function (response) {
             alert("Success");
             $scope.data = me.parseAnswer(response.data);
