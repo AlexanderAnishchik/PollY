@@ -43,9 +43,10 @@
         var finishData = [];
         for (var qw in me.result) {
             var quest = { Id: qw };
+            quest.Answers = [];
             for (var an in me.result[qw]) {
-                quest.Answers = [];
-                quest.Answers.push(an);
+                if (me.result[qw][an])
+                quest.Answers.push(me.result[qw][an]);
             }
             finishData.push(quest);
         }

@@ -66,7 +66,6 @@ namespace PollyApp.Helpers
                     {
                         if (configPoll == null)
                             throw new Exception("Poll null");
-                        var questionType = Db.Context.QuestionTypes.Where(x => x.Id == 1).Select(x => x.Id).First();
                         var pollShare = Db.Context.PollShares.Where(x => x.Value == configPoll.PollShare).Select(x => x.Id).First();
                         var pollAccess = Db.Context.PollAccesses.Where(x => x.Value == configPoll.PollAccess).Select(x => x.Id).First();
                         var pollTypes = Db.Context.PollTypes.Where(x => x.Value == configPoll.PollType).Select(x => x.Id).First();
@@ -86,6 +85,7 @@ namespace PollyApp.Helpers
                         {
                             foreach (var el in poll)
                             {
+                                var questionType = Db.Context.QuestionTypes.Where(x => x.Value == el.QuestionType).Select(x => x.Id).First();
                                 el.Question.ProjectId = newProj.Id;
                                 el.Question.QuestionTypeId = questionType;
                                 Db.Add(el.Question);

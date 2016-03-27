@@ -493,6 +493,7 @@
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\App\Factory\pollSettingsFactory.js" />
     <Content Include="Scripts\front-end\animate.js" />
+    <Content Include="Scripts\front-end\custom.js" />
     <Content Include="Scripts\front-end\navigation-scroll.js" />
     <Content Include="Scripts\front-end\scroll-to.js" />
     <Content Include="Scripts\holder.min.js" />

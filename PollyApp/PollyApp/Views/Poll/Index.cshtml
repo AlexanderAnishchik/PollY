@@ -41,13 +41,28 @@
         <div class="container">
             <div class="row">      
                 <div class="col-lg-4 col-sm-12 col-md-6" ng-repeat="it in data.Questions">
-                    <div class="thumbnail">
-                        <img src="~/Content/images/Polls/polly.jpg" alt="...">
-                        <div class="caption">
-                            <h2>{{it.Question.Value}}</h2>
-                            <p ng-repeat="answ in it.Answers">
-                                    <input type="radio" ng-value="{{answ.Id}}"  ng-model="ctrl.result[it.Question.Id][answ.Id]" name="{{it.Question.Id}}" id="{{answ.Id}}" class="css-radio" /> <label for="{{answ.Id}}" class="css-labelr">{{answ.Value}}</label><br />
-                            </p>
+                    <div ng-switch on="it.Question.QuestionType">
+                        <div ng-switch-when="1">
+                            <div class="thumbnail">
+                                <img src="~/Content/images/Polls/polly.jpg" alt="...">
+                                <div class="caption">
+                                    <h2>{{it.Question.Value}}</h2>
+                                    <p ng-repeat="answ in it.Answers">
+                                        <input type="radio" ng-value="{{answ.Id}}" ng-model="ctrl.result[it.Question.Id][answ.Id]" name="{{it.Question.Id}}" id="{{answ.Id}}" class="css-radio" /> <label for="{{answ.Id}}" class="css-labelr">{{answ.Value}}</label><br />
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-switch-when="2">
+                            <div class="thumbnail">
+                                <img src="~/Content/images/Polls/polly.jpg" alt="...">
+                                <div class="caption">
+                                    <h2>{{it.Question.Value}}</h2>
+                                    <p ng-repeat="answ in it.Answers">
+                                        <input type="checkbox"   ng-true-value="{{answ.Id}}" ng-false-value=null   ng-model="ctrl.result[it.Question.Id][answ.Id]" name="{{it.Question.Id}}" id="{{answ.Id}}" class="css-checkbox" /> <label for="{{answ.Id}}" class="css-label">{{answ.Value}}</label><br />
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

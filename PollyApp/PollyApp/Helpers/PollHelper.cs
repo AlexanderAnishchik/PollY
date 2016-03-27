@@ -45,7 +45,8 @@ namespace PollyApp.Helpers
                            Question = new
                            {
                                Value = x.Key.Value,
-                               Id = x.Key.Id
+                               Id = x.Key.Id,
+                               QuestionType=x.Key.QuestionType.Value
                            },
                            Answers = x.Select(k => new { Value = k.Answers.Value, Id = k.Answers.Id }).ToList()
                        })
