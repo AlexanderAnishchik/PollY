@@ -86,13 +86,16 @@
                 errorValidation(messageError);
                 return;
             }
-
-            $http.post("Constructor/SavePoll", { configPoll: validPollArray, poll: validPollArray.poll }).then(function (response) {
-                self.lastSavedProject = response.data.UrlCode;
-                success();
-            }, function (response) {
-                serverError();
-            });
+            
+                
+            if (success !== null) {
+                $http.post("Constructor/SavePoll", { configPoll: validPollArray, poll: validPollArray.poll }).then(function (response) {
+                    self.lastSavedProject = response.data.UrlCode;
+                    success();
+                }, function (response) {
+                    serverError();
+                });
+            }
         };
 
         self.converterAnswer = function (validPollArray) {

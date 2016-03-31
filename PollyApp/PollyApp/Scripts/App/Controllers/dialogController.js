@@ -1,4 +1,4 @@
-﻿PollyApp.controller('dialogController', ['$scope', 'headerKeeperService', 'modalService','pollBuilderService', '$mdDialog', function ($scope, headerKeeperService, modalService,pollBuilderService, $mdDialog) {
+﻿PollyApp.controller('dialogController', ['$scope', 'headerKeeperService', 'modalService', 'pollBuilderService', '$mdDialog', '$uibModal', function ($scope, headerKeeperService, modalService, pollBuilderService, $mdDialog, $uibModal) {
     var me = this;
     me.init = function () {
 
@@ -10,23 +10,25 @@
     $scope.hide = function () {
         $mdDialog.hide();
     }
-    $scope.openModalWithLink = function (event, modalObject) {
-        
-        var modalObject = {
-            title: "Link to poll",
-            textContent: window.location.origin + "/poll/" + pollBuilderService.lastSavedProject,
-            ariaLabel: window.location.origin + "/poll/" + pollBuilderService.lastSavedProject,
-            event: event
-        };
-        modalService.showConfirm(modalObject, function () { window.location.href = "/"; }, function () {
-            $mdDialog.hide();
-            var object = {
-                controller: 'dialogController',
-                template: 'pollsavetype.tmpl.html',
-                outerClose: false,
+    $scope.saveToAccount = function (event) {
+        pollBuilderService.save(function () {
+            var modalObject = {
+                title: "Link to poll",
+                textContent: window.location.origin + "/poll/" + pollBuilderService.lastSavedProject,
+                ariaLabel: window.location.origin + "/poll/" + pollBuilderService.lastSavedProject,
                 event: event
             };
-            modalService.showCustomDialog(object, function () { }, function () { });
-        })
+            modalService.showConfirm(modalObject, function () { window.location.href = "/"; }, function () { });
+
+        }, function () { }, function () { });
+            
+    };
+    $scope.openModalBt = function () {
+        var modalInstance = $uibModal.open({
+            animation: true,
+            templateUrl: 'loginregister.tmpl.html',
+            controller: 'headerController',
+            controllerAs: 'headCtrl'
+        });
     };
 }]);

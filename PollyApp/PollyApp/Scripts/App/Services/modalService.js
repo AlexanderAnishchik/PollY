@@ -33,7 +33,7 @@
                 parent: angular.element(document.body),
                 targetEvent: object.event,
                 clickOutsideToClose: object.outerClose,
-                escapeToClose : false
+                escapeToClose: object.escapeClose
             }).then(success, cancel);
         }
     }]);

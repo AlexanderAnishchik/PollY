@@ -230,6 +230,7 @@
     <Content Include="Content\css\dashboard.css" />
     <Content Include="Content\css\font-awesome.css" />
     <Content Include="Content\css\style.css" />
+    <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\images\404.png" />
     <Content Include="Content\images\about.png" />
     <Content Include="Content\images\access.png" />
@@ -246,6 +247,7 @@
     <Content Include="Content\images\cinema21.png" />
     <Content Include="Content\images\cloud79.png" />
     <Content Include="Content\images\coffee.png" />
+    <Content Include="Content\images\cogwheel.png" />
     <Content Include="Content\images\computer147.png" />
     <Content Include="Content\images\connection31.png" />
     <Content Include="Content\images\currency-icon.png" />
@@ -423,6 +425,10 @@
     <Content Include="Scripts\angular-scenario.js" />
     <Content Include="Scripts\angular-touch.js" />
     <Content Include="Scripts\angular-touch.min.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.min.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\App\app.js" />
@@ -434,7 +440,6 @@
     <Content Include="Scripts\App\Controllers\homeController.js" />
     <Content Include="Scripts\App\Controllers\pollController.js" />
     <Content Include="Scripts\App\Directives\enterDirective.js" />
-    <Content Include="Scripts\App\Directives\scrollDirective.js" />
     <Content Include="Scripts\App\Factory\answerTypeFactory.js" />
     <Content Include="Scripts\App\Modules\ngAnimation.js" />
     <Content Include="Scripts\App\Route\constructorRoute.js" />
@@ -479,6 +484,14 @@
     <Content Include="EFModel\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
+    <Content Include="fonts\ONEDAY.ttf" />
+    <Content Include="fonts\.DS_Store" />
+    <Content Include="fonts\ONEDAY.otf" />
+    <Content Include="Content\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\fonts\FontAwesome.otf" />
     <None Include="Properties\PublishProfiles\Publish.pubxml" />
     <None Include="Properties\PublishProfiles\thepolly - Web Deploy %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\thepolly - Web Deploy %283%29.pubxml" />

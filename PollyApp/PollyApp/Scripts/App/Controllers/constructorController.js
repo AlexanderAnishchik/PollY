@@ -286,41 +286,31 @@
         var object = {
             controller: 'dialogController',
             template: 'pollsavetype.tmpl.html',
-            outerClose: false,
+            outerClose: true,
+            escapeClose:true,
             event: event
         };
         modalService.showCustomDialog(object, function () { }, function () { });
     };
     $scope.savePoll = function (event) {
-        var modalObject = {
-            title: "Confirmation",
-            textContent: "Do you want to save this project?",
-            ariaLabel: "yourpolly.com / Save project",
-            event: event
-        };
-        modalService.showConfirm(modalObject,
-            function () {
-                pollBuilderService.save(function () {
-                    $scope.saved = true;
-                    $scope.openCustomDialog(event);
-                }, function (message) {
-                    if (!message) {
-                        message = "You can't save the project, check your data";
-                    }
-                    modalService.showAlert(
-                        {
-                            title: "Error",
-                            textContent: message,
-                            ariaLabel: "yourpolly.com / Confirm save",
-                            event: event
-                        }
-                    )
-                }, function () { });
-            },
-        function () { });
-
-
-    }
+        $scope.openCustomDialog(event);
+        //pollBuilderService.save(function () {
+        //    $scope.saved = true;
+        //   //$scope.openCustomDialog(event);
+        //}, function (message) {
+        //        if (!message) {
+        //            message = "You can't save the project, check your data";
+        //        }
+        //        modalService.showAlert(
+        //            {
+        //                title: "Error",
+        //                textContent: message,
+        //                ariaLabel: "yourpolly.com / Confirm save",
+        //                event: event
+        //            }
+        //        )
+        //    }, function () { });
+    } 
     $scope.error = null;
     $scope.loader = false;
     $scope.addNewField = function (email) {
