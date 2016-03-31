@@ -62,6 +62,12 @@ namespace PollyApp.Controllers
             }
             return new JsonResult() { Data = null };
         }
+        public ActionResult SaveResults(PollResult poll)
+        {
+            var valid = (SafeAdmission)Session["admission"];
+            PollHelper.SavePoll(poll, valid, Request);
+            return new JsonResult() { Data = null };
+        }
         protected override void Dispose(bool disposing)
         {
             Db.Dispose();

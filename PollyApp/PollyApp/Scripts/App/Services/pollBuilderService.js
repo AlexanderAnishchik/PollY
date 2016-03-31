@@ -24,13 +24,15 @@
             self.pollData.poll = [];
             self.pollData.poll[0] = {
                 question: { value: null },
-                answers: [{ value: null }, { value: null }]
+                answers: [{ value: null }, { value: null }],
+                questionType:1
             };
         }
         self.addBlock = function (last) {
             self.pollData.poll.push({
                 question: { value: null },
-                answers: [{ value: null }, { value: null }]
+                answers: [{ value: null }, { value: null }],
+                questionType: 1
             });
         }
         self.saveCodeSet = function (codeSet) {

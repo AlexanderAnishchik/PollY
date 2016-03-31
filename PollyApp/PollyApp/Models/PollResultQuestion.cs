@@ -1,15 +1,13 @@
-﻿using PollyApp.EFModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
 namespace PollyApp.Models
 {
-    public class PollUnit
+    public class PollResultQuestion
     {
-        public Question Question { get; set; }
-        public Int32? QuestionType { get; set; }
+        public String Id { get; set; }
         public List<String> Answers { get; set; }
     }
 }

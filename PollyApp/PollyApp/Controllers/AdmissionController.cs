@@ -83,7 +83,6 @@ namespace PollyApp.Controllers
                         .FirstOrDefault();
                     if (project == null)
                     {
-                        valid.Status = true;
                         return RedirectToAction("Index", "Poll", new { poll = valid.projectUrl });
                     }
                 }
@@ -105,7 +104,6 @@ namespace PollyApp.Controllers
                     .FirstOrDefault();
                 if (project!=null)
                 {
-                    valid.Status = true;
                     valid.UserIdentity=project.Id;
                     return RedirectToAction("Index", "Poll", new { poll = valid.projectUrl });
                 }
@@ -132,7 +130,6 @@ namespace PollyApp.Controllers
                     var hasUser = MemberWorker.SignIn(email, pass);
                     if (hasUser== MemberWorker.LoginStatus.Success)
                     {
-                        valid.Status = true;
                         valid.UserIdentity = project.UserSetId;
                         return RedirectToAction("Index", "Poll", new { poll = valid.projectUrl });
                     }

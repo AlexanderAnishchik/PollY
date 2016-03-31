@@ -36,6 +36,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -212,6 +213,8 @@
     <Compile Include="JsonConverters\AnswerConverter.cs" />
     <Compile Include="JsonConverters\Helpers\TextAnswer.cs" />
     <Compile Include="JsonConverters\IConverter.cs" />
+    <Compile Include="Models\PollResult.cs" />
+    <Compile Include="Models\PollResultQuestion.cs" />
     <Compile Include="Models\PollUnit.cs" />
     <Compile Include="Models\PollWrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -503,6 +506,7 @@
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\App\Factory\pollSettingsFactory.js" />
     <Content Include="Scripts\front-end\animate.js" />
+    <Content Include="Scripts\front-end\custom.js" />
     <Content Include="Scripts\front-end\navigation-scroll.js" />
     <Content Include="Scripts\front-end\scroll-to.js" />
     <Content Include="Scripts\holder.min.js" />

@@ -15,7 +15,7 @@
     me.save = function (event) {
         debugger;
         var sendData = me.prepareData();
-        var modalObject = {
+   var modalObject = {
             title: "Thank you!",
             textContent: "Your answers have been saved.",
             ariaLabel: "Your answers have been saved.",
@@ -30,14 +30,23 @@
             me.isVote = true;
             window.location.href = "/";
         });
-    }
+  
+     $http.post("/Constructor/SaveResults", { poll: { PollResultQuestions: sendData } }).then(function (response) {
+            alert("Success");
+            $scope.data = me.parseAnswer(response.data);
+        })
+       .then(function (response) {
+           alert("Error");
+       });
+    };
     me.prepareData = function () {
         var finishData = [];
         for (var qw in me.result) {
             var quest = { Id: qw };
+            quest.Answers = [];
             for (var an in me.result[qw]) {
-                quest.Answers = [];
-                quest.Answers.push(an);
+                if (me.result[qw][an])
+                quest.Answers.push(me.result[qw][an]);
             }
             finishData.push(quest);
         }
