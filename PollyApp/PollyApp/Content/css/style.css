@@ -1061,11 +1061,9 @@ growl-notification.fading.ng-leave.ng-leave-active {
 }
 .poll-settings-block:first-child{
     text-align:left;
-    padding:0 0 10px 0;
 }
 .poll-settings-block:last-child{
     text-align:right;
-    padding:0 0 5px 0;
     position:relative;
     height:24px;
     margin-top:1.45%
