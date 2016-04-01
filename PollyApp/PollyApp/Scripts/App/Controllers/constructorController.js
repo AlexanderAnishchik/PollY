@@ -282,7 +282,7 @@
     }
 
 
-    $scope.openCustomDialog = function (event) {
+    $scope.openCustomDialog = function (event, func) {
         var object = {
             controller: 'dialogController',
             template: 'pollsavetype.tmpl.html',
@@ -290,19 +290,31 @@
             escapeClose:true,
             event: event
         };
-        modalService.showCustomDialog(object, function () { }, function () { });
+        modalService.showCustomDialog(object, {clearPollData: func});
     };
     $scope.savePoll = function (event) {
         pollBuilderService.validatePoll(function (err, data) {
-            debugger;
             if (err) {
-                //show error popup
+                modalService.showAlert(
+                    {
+                        title: "Error",
+                        textContent: err,
+                        ariaLabel: "yourpolly.com / Confirm save",
+                        event: event
+                    }, function () { });
             } else {
                 //save after popup
-                $scope.openCustomDialog(event);
+                $scope.openCustomDialog(event, function(saved){
+                    var data = recoveryService.getRecoveryPollData();
+                    data.saved = saved;
+                    if (data != null && data.saved) {
+                        recoveryService.clearRecoveryPollData();
+                        clearInterval(intr);
+                    }
+                });
             }
         });
-            //pollBuilderService.save(function () {
+        //pollBuilderService.save(function () {
         //    $scope.saved = true;
         //   //$scope.openCustomDialog(event);
         //}, function (message) {

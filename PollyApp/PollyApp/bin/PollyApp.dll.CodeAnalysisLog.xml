@@ -6,19 +6,159 @@
    <Modules>
     <Module Name="pollyapp.dll">
      <Namespaces>
+      <Namespace Name="PollyApp.EFModel">
+       <Types>
+        <Type Name="Answer" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-04-01 16:23:17Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalWarning">'Answer.Answer()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;Answer..ctor()&#xD;&#xA;Answer.set_Results(ICollection&lt;Result&gt;):Void</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="CodeSet" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-04-01 16:23:17Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalWarning">'CodeSet.CodeSet()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;CodeSet..ctor()&#xD;&#xA;CodeSet.set_ProjectAccessVoters(ICollection&lt;ProjectAccessVoter&gt;):Void</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="PollAccess" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-04-01 16:23:17Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalWarning">'PollAccess.PollAccess()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;PollAccess..ctor()&#xD;&#xA;PollAccess.set_Projects(ICollection&lt;Project&gt;):Void</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="PollShare" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-04-01 16:23:17Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalWarning">'PollShare.PollShare()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;PollShare..ctor()&#xD;&#xA;PollShare.set_Projects(ICollection&lt;Project&gt;):Void</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="PollType" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-04-01 16:23:17Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalWarning">'PollType.PollType()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;PollType..ctor()&#xD;&#xA;PollType.set_Projects(ICollection&lt;Project&gt;):Void</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Project" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-04-01 16:23:17Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalWarning">'Project.Project()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;Project..ctor()&#xD;&#xA;Project.set_ProjectAccessVoters(ICollection&lt;ProjectAccessVoter&gt;):Void</Issue>
+             <Issue Certainty="95" Level="CriticalWarning">'Project.Project()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;Project..ctor()&#xD;&#xA;Project.set_Questions(ICollection&lt;Question&gt;):Void</Issue>
+             <Issue Certainty="95" Level="CriticalWarning">'Project.Project()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;Project..ctor()&#xD;&#xA;Project.set_Results(ICollection&lt;Result&gt;):Void</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="ProjectAccessVoter" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-04-01 16:23:17Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalWarning">'ProjectAccessVoter.ProjectAccessVoter()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;ProjectAccessVoter..ctor()&#xD;&#xA;ProjectAccessVoter.set_Results(ICollection&lt;Result&gt;):Void</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Question" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-04-01 16:23:17Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalWarning">'Question.Question()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;Question..ctor()&#xD;&#xA;Question.set_Answers(ICollection&lt;Answer&gt;):Void</Issue>
+             <Issue Certainty="95" Level="CriticalWarning">'Question.Question()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;Question..ctor()&#xD;&#xA;Question.set_Results(ICollection&lt;Result&gt;):Void</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="QuestionType" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-04-01 16:23:17Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalWarning">'QuestionType.QuestionType()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;QuestionType..ctor()&#xD;&#xA;QuestionType.set_Questions(ICollection&lt;Question&gt;):Void</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="User" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-04-01 16:23:17Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalWarning">'User.User()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;User..ctor()&#xD;&#xA;User.set_Projects(ICollection&lt;Project&gt;):Void</Issue>
+             <Issue Certainty="95" Level="CriticalWarning">'User.User()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;User..ctor()&#xD;&#xA;User.set_UserSets(ICollection&lt;UserSet&gt;):Void</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="UserPermission" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-04-01 16:23:17Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalWarning">'UserPermission.UserPermission()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;UserPermission..ctor()&#xD;&#xA;UserPermission.set_Users(ICollection&lt;User&gt;):Void</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="UserSet" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-04-01 16:23:17Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalWarning">'UserSet.UserSet()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;UserSet..ctor()&#xD;&#xA;UserSet.set_ProjectAccessVoters(ICollection&lt;ProjectAccessVoter&gt;):Void</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
       <Namespace Name="PollyApp.GenericRepository">
        <Types>
         <Type Name="Repository" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message TypeName="ImplementIDisposableCorrectly" Category="Microsoft.Design" CheckId="CA1063" Status="Active" Created="2016-04-01 09:59:39Z" FixCategory="Breaking">
+          <Message TypeName="ImplementIDisposableCorrectly" Category="Microsoft.Design" CheckId="CA1063" Status="Active" Created="2016-04-01 16:23:17Z" FixCategory="Breaking">
            <Issue Name="ProvideDisposeBool" Certainty="95" Level="Error">Provide an overridable implementation of Dispose(bool) on 'Repository' or mark the type as sealed. A call to Dispose(false) should only clean up native resources. A call to Dispose(true) should clean up both managed and native resources.</Issue>
           </Message>
          </Messages>
          <Members>
           <Member Name="#Dispose()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="ImplementIDisposableCorrectly" Category="Microsoft.Design" CheckId="CA1063" Status="Active" Created="2016-04-01 09:59:39Z" FixCategory="Breaking">
-             <Issue Name="DisposeImplementation" Certainty="95" Level="Error" Path="E:\Projects\PollY\PollyApp\PollyApp\GenericRepository" File="Repository.cs" Line="48">Modify 'Repository.Dispose()' so that it calls Dispose(true), then calls GC.SuppressFinalize on the current object instance ('this' or 'Me' in Visual Basic), and then returns.</Issue>
+            <Message TypeName="ImplementIDisposableCorrectly" Category="Microsoft.Design" CheckId="CA1063" Status="Active" Created="2016-04-01 16:23:17Z" FixCategory="Breaking">
+             <Issue Name="DisposeImplementation" Certainty="95" Level="Error">Modify 'Repository.Dispose()' so that it calls Dispose(true), then calls GC.SuppressFinalize on the current object instance ('this' or 'Me' in Visual Basic), and then returns.</Issue>
             </Message>
            </Messages>
           </Member>
@@ -32,6 +172,16 @@
   </Target>
  </Targets>
  <Rules>
+  <Rule TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214">
+   <Name>Do not call overridable methods in constructors</Name>
+   <Description>Virtual methods defined on the class should not be called from constructors. If a derived class has overridden the method, the derived class version will be called (before the derived class constructor is called).</Description>
+   <Resolution Name="Default">{0} contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: {1}</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182331.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">CriticalWarning</MessageLevel>
+   <File Name="usagerules.dll" Version="14.0.0.0" />
+  </Rule>
   <Rule TypeName="ImplementIDisposableCorrectly" Category="Microsoft.Design" CheckId="CA1063">
    <Name>Implement IDisposable correctly</Name>
    <Description>All IDisposable types should implement the Dispose pattern correctly.</Description>
@@ -68,4 +218,10 @@
   <String Key="Warnings">warning(s)</String>
   <String Key="ReportTitle">Code Analysis Report</String>
  </Localized>
+ <Exceptions>
+  <Exception Keyword="CA0068" Kind="Engine" TreatAsWarning="True">
+   <Type>Microsoft.FxCop.Sdk.FxCopException</Type>
+   <ExceptionMessage>Debug information could not be found for target assembly 'PollyApp.dll'. For best analysis results, include the .pdb file with debug information for 'PollyApp.dll' in the same directory as the target assembly.</ExceptionMessage>
+  </Exception>
+ </Exceptions>
 </FxCopReport>

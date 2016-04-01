@@ -85,8 +85,7 @@
 
             }
             if (self.validPollArray.poll.length < 2 || hasError == true) {
-                var messageError = "In this type of poll must be more then 1 question";
-                errorValidation(messageError);
+                var error = "In this type of poll must be more then 1 question";
                 return next(error, null);
             }
             return next(null, self.validPollArray);

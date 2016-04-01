@@ -26,7 +26,8 @@
             $mdDialog.show(alert).then(success,
                cancel);
         };
-        self.showCustomDialog = function (object, success, cancel) {
+        self.functions = {};
+        self.showCustomDialog = function (object, functions) {
             var alert = $mdDialog.show({
                 controller: object.controller,
                 templateUrl: object.template,
@@ -34,7 +35,8 @@
                 targetEvent: object.event,
                 clickOutsideToClose: object.outerClose,
                 escapeToClose: object.escapeClose
-            }).then(success, cancel);
+            });
+            self.functions = functions;
         }
     }]);
 })();
