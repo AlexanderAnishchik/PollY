@@ -5,6 +5,7 @@
         self.lastSavedProject = null;
         self.pollData.poll = [];
         self.pollData.CodeSet = [];
+        self.validPollArray = {};
         self.addAnswer = function (block) {
             block.answers.push({ value: "" });
         }
@@ -25,7 +26,7 @@
             self.pollData.poll[0] = {
                 question: { value: null },
                 answers: [{ value: null }, { value: null }],
-                questionType:1
+                questionType: 1
             };
         }
         self.addBlock = function (last) {
@@ -51,53 +52,52 @@
 
             }
         };
-        self.save = function (success, errorValidation, serverError) {
+        self.validatePoll = function (next) {
             var hasError = false;
-            var validPollArray = JSON.parse(JSON.stringify(self.pollData));
-            var poll_length = validPollArray.poll.length;
+            self.validPollArray = JSON.parse(JSON.stringify(self.pollData));
+            var poll_length = self.validPollArray.poll.length;
             while (poll_length--) {
-                if (validPollArray.poll[poll_length].question.value != null && validPollArray.poll[poll_length].question.value != "") {
+                if (self.validPollArray.poll[poll_length].question.value != null && self.validPollArray.poll[poll_length].question.value != "") {
                     var answer_status = true;
                     while (answer_status) {
                         answer_status = false;
-                        for (var i = 0; i < validPollArray.poll[poll_length].answers.length; i++) {
-                            if (validPollArray.poll[poll_length].answers[i].value == null || validPollArray.poll[poll_length].answers[i].value == "") {
-                                validPollArray.poll[poll_length].answers.splice(i, 1);
+                        for (var i = 0; i < self.validPollArray.poll[poll_length].answers.length; i++) {
+                            if (self.validPollArray.poll[poll_length].answers[i].value == null || self.validPollArray.poll[poll_length].answers[i].value == "") {
+                                self.validPollArray.poll[poll_length].answers.splice(i, 1);
                                 answer_status = true;
                                 break;
                             }
                             else {
-                                validPollArray.poll[poll_length].answers[i] = JSON.stringify(validPollArray.poll[poll_length].answers[i]);
-                               
+                                self.validPollArray.poll[poll_length].answers[i] = JSON.stringify(self.validPollArray.poll[poll_length].answers[i]);
+
                             }
                         }
-                        if (validPollArray.poll[poll_length].answers < 2) {
-                            validPollArray.poll.splice(poll_length, 1);
+                        if (self.validPollArray.poll[poll_length].answers < 2) {
+                            self.validPollArray.poll.splice(poll_length, 1);
                             hasError = true;
                             var answer_status = false;
                         }
                     }
                 } else {
                     hasError = true;
-                    validPollArray.poll.splice(poll_length, 1);
+                    self.validPollArray.poll.splice(poll_length, 1);
                 }
-               
+
             }
-            if (validPollArray.poll.length < 2 || hasError == true) {
+            if (self.validPollArray.poll.length < 2 || hasError == true) {
                 var messageError = "In this type of poll must be more then 1 question";
                 errorValidation(messageError);
-                return;
+                return next(error, null);
             }
-            
-                
-            if (success !== null) {
-                $http.post("Constructor/SavePoll", { configPoll: validPollArray, poll: validPollArray.poll }).then(function (response) {
-                    self.lastSavedProject = response.data.UrlCode;
-                    success();
-                }, function (response) {
-                    serverError();
-                });
-            }
+            return next(null, self.validPollArray);
+        };
+        self.save = function (success, serverError) {
+            $http.post("Constructor/SavePoll", { configPoll: self.validPollArray, poll: self.validPollArray.poll }).then(function (response) {
+                self.lastSavedProject = response.data.UrlCode;
+                success();
+            }, function (response) {
+                serverError();
+            });
         };
 
         self.converterAnswer = function (validPollArray) {

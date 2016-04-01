@@ -293,8 +293,16 @@
         modalService.showCustomDialog(object, function () { }, function () { });
     };
     $scope.savePoll = function (event) {
-        $scope.openCustomDialog(event);
-        //pollBuilderService.save(function () {
+        pollBuilderService.validatePoll(function (err, data) {
+            debugger;
+            if (err) {
+                //show error popup
+            } else {
+                //save after popup
+                $scope.openCustomDialog(event);
+            }
+        });
+            //pollBuilderService.save(function () {
         //    $scope.saved = true;
         //   //$scope.openCustomDialog(event);
         //}, function (message) {
