@@ -29,6 +29,17 @@ namespace PollyApp.Controllers
             else
                 return null;
         }
+        [UserAuth]
+        public ActionResult  GetUserPollInformation()
+        {
+            if (Session["user"] != null)
+            {
+                User user = (User)Session["user"];
+                
+            }
+            else
+                return null;
+        }
         [HttpPost]
         public ActionResult GetUserByEmail(string email)
         {

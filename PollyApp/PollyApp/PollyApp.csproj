@@ -206,6 +206,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\AccountHelper.cs" />
     <Compile Include="Helpers\ConstructorHelper.cs" />
     <Compile Include="Helpers\DbEnum.cs" />
     <Compile Include="Helpers\PollHelper.cs" />
