@@ -36,43 +36,22 @@
                             <li><a href="#">DOCS</a></li>
 
                         </ul>
-                        <ul class="nav navbar-nav navbar-right right-menu">
-                            @if (!Request.IsAuthenticated)
-                            {
-                                <li><button type="button" class="btn btn-success" id="signInBtn" data-toggle="modal" data-target="#login">SIGN IN</button></li>
-                            }
-                            @if (Request.IsAuthenticated)
-                            {
-
-
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span  ng-bind-template="{{ headerData.user.FirstName }} {{headerData.user.LastName}}"></span> <span class="fa fa-angle-down"></span></a>
-                                   
-                                    <ul class="dropdown-menu  animated fadeInDown">
-
-                                        <li class="text"><a href=""><b>{{  headerData.user.FirstName }} {{ headerData.user.LastName}}</b></a></li>
-
-                                        <li><a href=""><small>{{  headerData.user.Email }}</small></a></li>
-
-                                        <li role="separator" class="divider"></li>
-
-                                        <li><a href="Account/Index">Account center</a></li>
-
-                                        <li><a href="#">Settings</a></li>
-
-                                        <li role="separator" class="divider"></li>
-
-                                        <li><a href="#">Add poll</a></li>
-
-                                        <li role="separator" class="divider"></li>
-
-                                        <li><a href="Login/LogOut" id="logout">Log out</a></li>
-
-                                    </ul>
-
-                                </li>
-                            }
-
+                        <ul class="nav navbar-nav navbar-right right-menu" ng-switch="headerData.isLogged">
+                            <li class="dropdown" ng-switch-when="1">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span ng-bind-template="{{ headerData.user.FirstName }} {{headerData.user.LastName}}"></span> <span class="fa fa-angle-down"></span></a>
+                                <ul class="dropdown-menu  animated fadeInDown">
+                                    <li class="text"><a href=""><b>{{  headerData.user.FirstName }} {{ headerData.user.LastName}}</b></a></li>
+                                    <li><a href=""><small>{{  headerData.user.Email }}</small></a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="Account/Index">Account center</a></li>
+                                    <li><a href="#">Settings</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#">Add poll</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="Login/LogOut" id="logout">Log out</a></li>
+                                </ul>
+                            </li>
+                            <li ng-switch-default><button type="button" class="btn btn-success" id="signInBtn" ng-click="openModalBt()">SIGN IN</button></li>
                         </ul>
 
                     </div>

@@ -31,7 +31,7 @@
                                     </p>
                                 </md-card-content>
                                 <md-card-actions layout="column" layout-align="start">
-                                    <md-button ng-click="openModalWithLink($event)">Save</md-button>
+                                    <md-button ng-click="saveToAccount($event)">Save</md-button>
                                 </md-card-actions>
                             </md-card>
                         </div>
@@ -50,7 +50,7 @@
                                     </p>
                                 </md-card-content>
                                 <md-card-actions layout="column" layout-align="start">
-                                    <md-button ng-click="">Save</md-button>
+                                    <md-button ng-click="openModalBt()">Save</md-button>
                                 </md-card-actions>
                             </md-card>
                         </div>
@@ -127,29 +127,32 @@
             </div>
 
             <div class="footer-card">
-                <div class="col-lg-10 col-md-10 col-xs-7 col-sm-7 poll-settings-block">
-                    <md-button class="md-primary md-raised" ng-click="addBlock($event)" flex="100" flex-gt-md="auto">
-                        ADD QUEISTION
-                    </md-button>
-                </div>
-                <div class="col-lg-2 col-md-2 col-xs-5 col-sm-5 poll-settings-block">
-                    <div class="img-settings">
-                        <label for="settings"><small>Type question</small></label>
-                        <img src="/Content/images/cogwheel.png" ng-click="showSettingsBlock()" id="settings"/>
-                        
-                        <div class="settings-card animated " ng-show="showSettings" ng-class="{ 'fadeInUp' : showSettings, 'fadeOutDown' : !showSettings} ">
-                            <p>
-                                <input type="radio" ng-value="1" ng-model="currentBlock.questionType" name="singormult" id="single" ng-checked="true" class="css-radio" /> <label for="single" class="css-labelr">Single choice</label>
-                                <input type="radio" ng-value="2" ng-model="currentBlock.questionType" name="singormult" id="multiple" class="css-radio" /> <label for="multiple" class="css-labelr">Multiple choice</label><br />
-                            </p>
-                            <md-button  class="md-raised" flex="100" flex-gt-md="auto">
-                                Apply
-                            </md-button>
-                        </div>
+                <div class="row">
+                    <div class="col-lg-10 col-md-10 col-xs-7 col-sm-7 poll-settings-block">
+                        <md-button class="md-primary md-raised" ng-click="addBlock($event)" flex="100" flex-gt-md="auto">
+                            ADD QUEISTION
+                        </md-button>
                     </div>
-                    
-                </div>
 
+
+                    <div class="col-lg-2 col-md-2 col-xs-5 col-sm-5 poll-settings-block">
+                        <div class="img-settings">
+                            <label for="settings"><small>Type question</small></label>
+                            <img src="/Content/images/cogwheel.png" ng-click="showSettingsBlock()" id="settings" />
+
+                            <div class="settings-card animated " ng-show="showSettings" ng-class="{ 'fadeInUp' : showSettings, 'fadeOutDown' : !showSettings} ">
+                                <p>
+                                    <input type="radio" ng-value="1" ng-model="currentBlock.questionType" name="singormult" id="single" ng-checked="true" class="css-radio" /> <label for="single" class="css-labelr">Single choice</label>
+                                    <input type="radio" ng-value="2" ng-model="currentBlock.questionType" name="singormult" id="multiple" class="css-radio" /> <label for="multiple" class="css-labelr">Multiple choice</label><br />
+                                </p>
+                                <md-button class="md-raised" flex="100" flex-gt-md="auto">
+                                    Apply
+                                </md-button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </div>
         <div class="sidebar-right col-lg-2 col-lg-offset-1">
@@ -174,5 +177,5 @@
 
 </div>
 <div class="text-center footer-area">
-    <a ng-href=""><button type="button" ng-click="savePoll($event)" class="btn btn-success">SAVE POLL</button></a>
+    <button ng-click="savePoll($event)" class="btn btn-success">SAVE POLL</button>
 </div>

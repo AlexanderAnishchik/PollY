@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="e:\vs2015\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
+<?xml-stylesheet type="text/xsl" href="c:\program files (x86)\microsoft visual studio 14.0\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
 <FxCopReport Version="14.0">
  <Targets>
-  <Target Name="F:\PollY\PollyApp\PollyApp\bin\PollyApp.dll">
+  <Target Name="D:\PollY\PollyApp\PollyApp\bin\PollyApp.dll">
    <Modules>
     <Module Name="pollyapp.dll">
      <Namespaces>
@@ -10,15 +10,15 @@
        <Types>
         <Type Name="Repository" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message TypeName="ImplementIDisposableCorrectly" Category="Microsoft.Design" CheckId="CA1063" Status="Active" Created="2016-03-26 23:55:32Z" FixCategory="Breaking">
-           <Issue Name="ProvideDisposeBool" Certainty="95" Level="Error">Provide an overridable implementation of Dispose(bool) on 'Repository' or mark the type as sealed. A call to Dispose(false) should only clean up native resources. A call to Dispose(true) should clean up both managed and native resources.</Issue>
+          <Message TypeName="ImplementIDisposableCorrectly" Category="Microsoft.Design" CheckId="CA1063" Status="Active" Created="2016-04-07 07:00:27Z" FixCategory="Breaking">
+           <Issue Name="ProvideDisposeBool" Certainty="95" Level="Error">Предоставьте перегружаемую реализацию Dispose(bool) для 'Repository' или отметьте тип как запечатанный. При вызове Dispose(false) должны очищаться только машинные ресурсы. При вызове Dispose(true) должны очищаться и управляемые, и машинные ресурсы.</Issue>
           </Message>
          </Messages>
          <Members>
           <Member Name="#Dispose()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="ImplementIDisposableCorrectly" Category="Microsoft.Design" CheckId="CA1063" Status="Active" Created="2016-03-26 23:55:32Z" FixCategory="Breaking">
-             <Issue Name="DisposeImplementation" Certainty="95" Level="Error" Path="F:\PollY\PollyApp\PollyApp\GenericRepository" File="Repository.cs" Line="48">Modify 'Repository.Dispose()' so that it calls Dispose(true), then calls GC.SuppressFinalize on the current object instance ('this' or 'Me' in Visual Basic), and then returns.</Issue>
+            <Message TypeName="ImplementIDisposableCorrectly" Category="Microsoft.Design" CheckId="CA1063" Status="Active" Created="2016-04-07 07:00:27Z" FixCategory="Breaking">
+             <Issue Name="DisposeImplementation" Certainty="95" Level="Error" Path="D:\PollY\PollyApp\PollyApp\GenericRepository" File="Repository.cs" Line="48">Измените 'Repository.Dispose()', чтобы он вызывал Dispose(true), затем вызывал GC.SuppressFinalize для текущего экземпляра объекта ("this" или "Me" в Visual Basic), а затем возвращал результат.</Issue>
             </Message>
            </Messages>
           </Member>
@@ -33,10 +33,10 @@
  </Targets>
  <Rules>
   <Rule TypeName="ImplementIDisposableCorrectly" Category="Microsoft.Design" CheckId="CA1063">
-   <Name>Implement IDisposable correctly</Name>
-   <Description>All IDisposable types should implement the Dispose pattern correctly.</Description>
-   <Resolution Name="DisposeImplementation">Modify {0} so that it calls Dispose(true), then calls GC.SuppressFinalize on the current object instance ('this' or 'Me' in Visual Basic), and then returns.</Resolution>
-   <Resolution Name="ProvideDisposeBool">Provide an overridable implementation of Dispose(bool) on {0} or mark the type as sealed. A call to Dispose(false) should only clean up native resources. A call to Dispose(true) should clean up both managed and native resources.</Resolution>
+   <Name>Правильно реализуйте IDisposable</Name>
+   <Description>Во всех типах IDisposable шаблон Dispose должен быть реализован правильно.</Description>
+   <Resolution Name="DisposeImplementation">Измените {0}, чтобы он вызывал Dispose(true), затем вызывал GC.SuppressFinalize для текущего экземпляра объекта ("this" или "Me" в Visual Basic), а затем возвращал результат.</Resolution>
+   <Resolution Name="ProvideDisposeBool">Предоставьте перегружаемую реализацию Dispose(bool) для {0} или отметьте тип как запечатанный. При вызове Dispose(false) должны очищаться только машинные ресурсы. При вызове Dispose(true) должны очищаться и управляемые, и машинные ресурсы.</Resolution>
    <Owner />
    <Url>http://msdn.microsoft.com/library/ms244737.aspx</Url>
    <Email>[none]</Email>
@@ -45,27 +45,27 @@
   </Rule>
  </Rules>
  <Localized>
-  <String Key="Category">Category</String>
-  <String Key="Certainty">Certainty</String>
-  <String Key="CollapseAll">Collapse All</String>
-  <String Key="CheckId">Check Id</String>
-  <String Key="Error">Error</String>
-  <String Key="Errors">error(s)</String>
-  <String Key="ExpandAll">Expand All</String>
-  <String Key="Help">Help</String>
-  <String Key="Line">Line</String>
-  <String Key="Messages">message(s)</String>
-  <String Key="LocationNotStoredInPdb">[Location not stored in Pdb]</String>
-  <String Key="Project">Project</String>
-  <String Key="Resolution">Resolution</String>
-  <String Key="Rule">Rule</String>
-  <String Key="RuleFile">Rule File</String>
-  <String Key="RuleDescription">Rule Description</String>
-  <String Key="Source">Source</String>
-  <String Key="Status">Status</String>
-  <String Key="Target">Target</String>
-  <String Key="Warning">Warning</String>
-  <String Key="Warnings">warning(s)</String>
-  <String Key="ReportTitle">Code Analysis Report</String>
+  <String Key="Category">Категория</String>
+  <String Key="Certainty">Достоверность</String>
+  <String Key="CollapseAll">Свернуть все</String>
+  <String Key="CheckId">ИД проверки</String>
+  <String Key="Error">Ошибка</String>
+  <String Key="Errors">ошибки</String>
+  <String Key="ExpandAll">Развернуть все</String>
+  <String Key="Help">Справка</String>
+  <String Key="Line">Строка</String>
+  <String Key="Messages">сообщения</String>
+  <String Key="LocationNotStoredInPdb">[расположение не сохранено в PDB]</String>
+  <String Key="Project">Проект</String>
+  <String Key="Resolution">Разрешение</String>
+  <String Key="Rule">Правило</String>
+  <String Key="RuleFile">Файл правил</String>
+  <String Key="RuleDescription">Описание правила</String>
+  <String Key="Source">Источник</String>
+  <String Key="Status">Состояние</String>
+  <String Key="Target">Цель</String>
+  <String Key="Warning">Предупреждение</String>
+  <String Key="Warnings">предупреждения</String>
+  <String Key="ReportTitle">Отчет по анализу кода</String>
  </Localized>
 </FxCopReport>

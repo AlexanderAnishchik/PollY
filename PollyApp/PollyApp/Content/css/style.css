@@ -1,9 +1,10 @@
-﻿
+﻿/*@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);*/
+@import url(https://fonts.googleapis.com/css?family=Catamaran:400,100,200,300,500,600,700);
+/*@import url(https://fonts.googleapis.com/css?family=Ropa+Sans);*/
 @font-face {
     font-family: OpenSans;
     src: url(../../fonts/OpenSans-Regular.ttf);
 }
-
 .description{
     margin-bottom:5%;
 }
@@ -11,7 +12,7 @@ body {
     padding: 0;
     margin: 0;
     background: #ffffff;
-    font-family: OpenSans;
+    font-family: 'Catamaran', sans-serif;
     
 }
 .number-input{
@@ -68,6 +69,7 @@ a {
     color:#1abc9c;
 }
 .big {
+    font-family: 'Montserrat', sans-serif;
     font-size: 60px;
     font-weight: bold;
 }
@@ -303,7 +305,6 @@ a {
 
 #footer {
     background:#fff;
-    font-family:OpenSans-light;
     padding:2% 0px 2% 0px;
     
 }
@@ -314,7 +315,7 @@ a {
     margin-top:-1%;
 }
 #footer .form-inline > .form-group{
-    margin-right:3.5%;
+    margin-right:3.4%;
     margin-left:0;
     width:47.91%;
 }
@@ -372,10 +373,7 @@ a {
     margin-top:-2px;
     margin-right:10px;
 }
-  @font-face {
-    font-family: OpenSans-light;
-    src: url(../../fonts/OpenSans-Light.ttf);
-    }
+ 
 .feedback-form{
     
     color:white;
@@ -419,7 +417,7 @@ md-dialog.md-default-theme .md-dialog-content{
     padding:0;
 }
 md-dialog.md-default-theme .md-dialog-content h2{
-    font-family: Calibri;
+    font-family: 'Montserrat', sans-serif;
     color: #575757;
     font-size: 35px;
     padding: 0px 0px 0px 5px;
@@ -429,7 +427,7 @@ md-dialog.md-default-theme .md-dialog-content h2{
     font-weight: 500;
 }
 md-dialog.md-default-theme[role="alertdialog"] .md-dialog-content h2{
-    font-family: Calibri;
+    font-family: 'Montserrat', sans-serif;
     color: #575757;
     font-size: 35px;
     padding: 0px 0px 0px 5px;
@@ -466,7 +464,7 @@ md-dialog.md-default-theme .md-dialog-content p{
     background:#ffffff;
     border:1px solid #e6e9ed;
     padding:0px;
-    font-family:Calibri;
+    font-family: 'Montserrat', sans-serif;
     font-weight:bold;
     color:#cccccc;
 }
@@ -514,7 +512,7 @@ md-dialog.md-default-theme .md-dialog-content p{
     background:#ffffff;
     border-radius:5px;
     padding:10px;
-    font-family:Calibri;
+    font-family: 'Montserrat', sans-serif;
     font-weight:bold;
     color:#cccccc;
 }
@@ -535,7 +533,7 @@ md-dialog.md-default-theme .md-dialog-content p{
     color:#cccccc;
     text-align:center;
     font-size:16px;
-    font-family:Calibri;
+    font-family: 'Montserrat', sans-serif;
 }
 .step-title{
     text-align:center;
@@ -851,7 +849,7 @@ fieldset[disabled] .btn-primary.focus {
 }
 .poll-page{
     margin-top:57px;
-    font-family:Calibri;
+    font-family: 'Montserrat', sans-serif;
 }
 .poll-page .numerable{
     padding:8px 0;
@@ -1012,7 +1010,7 @@ growl-notification.fading.ng-leave.ng-leave-active {
 }
 .access-page .card .title{
     
-    font-family:Calibri;
+    font-family: 'Montserrat', sans-serif;
     color:#575757;
     font-size:35px;
     padding:0px 0px 0px 5px;
@@ -1063,11 +1061,9 @@ growl-notification.fading.ng-leave.ng-leave-active {
 }
 .poll-settings-block:first-child{
     text-align:left;
-    padding:0 0 10px 0;
 }
 .poll-settings-block:last-child{
     text-align:right;
-    padding:0 0 5px 0;
     position:relative;
     height:24px;
     margin-top:1.45%
@@ -1299,7 +1295,7 @@ growl-notification.fading.ng-leave.ng-leave-active {
     }
 }
 #feedback p{
-    font-family:Calibri;
+    font-family: 'Montserrat', sans-serif;
     color:#ccc;
     font-weight:lighter;
 }

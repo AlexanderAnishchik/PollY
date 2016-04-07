@@ -282,45 +282,55 @@
     }
 
 
-    $scope.openCustomDialog = function (event) {
+    $scope.openCustomDialog = function (event, func) {
         var object = {
             controller: 'dialogController',
             template: 'pollsavetype.tmpl.html',
-            outerClose: false,
+            outerClose: true,
+            escapeClose:true,
             event: event
         };
-        modalService.showCustomDialog(object, function () { }, function () { });
+        modalService.showCustomDialog(object, {clearPollData: func});
     };
     $scope.savePoll = function (event) {
-        var modalObject = {
-            title: "Confirmation",
-            textContent: "Do you want to save this project?",
-            ariaLabel: "yourpolly.com / Save project",
-            event: event
-        };
-        modalService.showConfirm(modalObject,
-            function () {
-                pollBuilderService.save(function () {
-                    $scope.saved = true;
-                    $scope.openCustomDialog(event);
-                }, function (message) {
-                    if (!message) {
-                        message = "You can't save the project, check your data";
+        pollBuilderService.validatePoll(function (err, data) {
+            if (err) {
+                modalService.showAlert(
+                    {
+                        title: "Error",
+                        textContent: err,
+                        ariaLabel: "yourpolly.com / Confirm save",
+                        event: event
+                    }, function () { });
+            } else {
+                //save after popup
+                $scope.openCustomDialog(event, function(saved){
+                    var data = recoveryService.getRecoveryPollData();
+                    data.saved = saved;
+                    if (data != null && data.saved) {
+                        recoveryService.clearRecoveryPollData();
+                        clearInterval(intr);
                     }
-                    modalService.showAlert(
-                        {
-                            title: "Error",
-                            textContent: message,
-                            ariaLabel: "yourpolly.com / Confirm save",
-                            event: event
-                        }
-                    )
-                }, function () { });
-            },
-        function () { });
-
-
-    }
+                });
+            }
+        });
+        //pollBuilderService.save(function () {
+        //    $scope.saved = true;
+        //   //$scope.openCustomDialog(event);
+        //}, function (message) {
+        //        if (!message) {
+        //            message = "You can't save the project, check your data";
+        //        }
+        //        modalService.showAlert(
+        //            {
+        //                title: "Error",
+        //                textContent: message,
+        //                ariaLabel: "yourpolly.com / Confirm save",
+        //                event: event
+        //            }
+        //        )
+        //    }, function () { });
+    } 
     $scope.error = null;
     $scope.loader = false;
     $scope.addNewField = function (email) {

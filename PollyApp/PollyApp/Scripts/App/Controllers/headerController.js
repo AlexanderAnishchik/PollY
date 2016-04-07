@@ -1,4 +1,4 @@
-﻿PollyApp.controller('headerController', ['$scope', '$http', '$window', 'headerKeeperService','$interval', function ($scope, $http, $window, headerKeeperService,$interval) {
+﻿PollyApp.controller('headerController', ['$scope', '$http', '$window', 'headerKeeperService', '$interval', '$uibModal', function ($scope, $http, $window, headerKeeperService, $interval, $uibModal) {
     var me = this;
     me.login = null;
     me.registr = null;
@@ -7,16 +7,28 @@
     
     
     me.init = function () {
-
         $http.get("/Account/GetUser").then(function (response) {
-
-            headerKeeperService.data.user = response.data;
-            if (headerKeeperService.data.user.logo == null)
-                headerKeeperService.data.user.logo = "nophoto.png";
+            if (response.data != '') {
+                headerKeeperService.data.isLogged = 1
+                headerKeeperService.data.user = response.data;
+                if (headerKeeperService.data.user.logo == null)
+                    headerKeeperService.data.user.logo = "nophoto.png";
+            }
         },
           function (response) {
 
           });
+    };
+    $scope.isModalOpened = false;
+    $scope.openModalBt = function () {
+        var modalInstance = $uibModal.open({
+            animation: true,
+            controller: 'headerController',
+            controllerAs: 'headCtrl',
+            templateUrl: 'loginregister.tmpl.html'
+        });
+        headerKeeperService.data.modalInstance = modalInstance;
+        
     };
     //===VALIDATION===
     $scope.passConfirm = true;
@@ -31,14 +43,15 @@
     $scope.errorAuth = "";
     $scope.loader = false;
     me.signIn = function () {
-        
         if (me.login.email && me.login.password) {
             $scope.loader = true;
             $http.post("/Login/SignIn", { login: me.login.email, pass: me.login.password }).then(function (response) {
                 if (response.data.status == "OK") {
-                    $window.location.reload();
+                    me.init();
+                    $scope.loader = false;
+                    headerKeeperService.data.modalInstance.close("");
+                   //$window.location.reload();
                 }
-               
                 if (response.data.status == "Invalid Email or Password")
                 {
                     $scope.loader = false;
@@ -83,6 +96,9 @@
         }
         
     };
+    
+   
 
     
 }]);
+
