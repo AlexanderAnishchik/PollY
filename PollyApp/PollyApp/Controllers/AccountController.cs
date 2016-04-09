@@ -35,7 +35,7 @@ namespace PollyApp.Controllers
             if (Session["user"] != null)
             {
                 User user = (User)Session["user"];
-                
+                return null;
             }
             else
                 return null;
