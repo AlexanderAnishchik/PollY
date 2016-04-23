@@ -1,8 +1,5 @@
 ﻿PollyApp.controller('accountController', ['$scope', '$http', 'headerKeeperService', function ($scope, $http, headerKeeperService) {
     var me = this;
-    me.activePollCount = null;
-    me.activePollPercent = null;
-    me.votersCount = null;
     me.init = function () {
         me.getPollinformation();
     };
@@ -21,6 +18,7 @@
             me.activePollPercent = Math.ceil(me.activePollCount / allPoll * 100);
             me.votersCount = votedProject;
             me.answerProjects = answerProjects;
+            me.lastProjectName = userProject[userProject.length-1].Name;
         }
     }
     me.currentTab = "/Content/partial/account_page/home/home.html"
