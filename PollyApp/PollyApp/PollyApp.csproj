@@ -206,6 +206,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\AccountHelper.cs" />
     <Compile Include="Helpers\ConstructorHelper.cs" />
     <Compile Include="Helpers\DbEnum.cs" />
     <Compile Include="Helpers\PollHelper.cs" />
@@ -217,6 +218,7 @@
     <Compile Include="Models\PollResultQuestion.cs" />
     <Compile Include="Models\PollUnit.cs" />
     <Compile Include="Models\PollWrapper.cs" />
+    <Compile Include="PreparedQueries\PollSetQuery.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -316,6 +318,7 @@
     <Content Include="Content\images\Users\nophoto.png" />
     <Content Include="Content\images\Users\sanya_axel.jpg" />
     <Content Include="Content\images\warning-sign.png" />
+    <Content Include="Content\partial\account_page\home\home.html" />
     <Content Include="Content\partial\share\Default.html" />
     <Content Include="Content\partial\share\Private.html" />
     <Content Include="Content\partial\share\Public.html" />
