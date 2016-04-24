@@ -17,10 +17,7 @@ namespace PollyApp.Helpers
                      .Join(db.Context.Projects, u => u.Id, p => p.UserId, (u, p) => new { u, p })
                      .Join(db.Context.Questions, u_p => u_p.p.Id, q => q.ProjectId, (u_p, q) => new { u_p, q })
                      .Join(db.Context.QuestionTypes, u_p_q => u_p_q.q.QuestionTypeId, qt => qt.Id, (u_p_q, qt) => new { u_p_q, qt })
-                     .Join(db.Context.Answers, u_p_q_qt => u_p_q_qt.u_p_q.q.Id, a => a.QuestionId, (u_p_q_qt, a) => new { u_p_q_qt, a })
-                     .Join(db.Context.PollAccesses, u_p_q_qt_a => u_p_q_qt_a.u_p_q_qt.u_p_q.u_p.p.AccessId, acc => acc.Id, (u_p_q_qt_a, acc) => new { u_p_q_qt_a, acc })
-                     .Join(db.Context.PollShares, u_p_q_qt_a_acc => u_p_q_qt_a_acc.u_p_q_qt_a.u_p_q_qt.u_p_q.u_p.p.ShareId, sh => sh.Id, (u_p_q_qt_a_acc, sh) => new { u_p_q_qt_a_acc, sh })
-                     .Join(db.Context.PollTypes, u_p_q_qt_a_acc_sh => u_p_q_qt_a_acc_sh.u_p_q_qt_a_acc.u_p_q_qt_a.u_p_q_qt.u_p_q.u_p.p.TypeId, t => t.Id, (u_p_q_qt_a_acc_sh, t) => new { u_p_q_qt_a_acc_sh, t });
+                     .Join(db.Context.Answers, u_p_q_qt => u_p_q_qt.u_p_q.q.Id, a => a.QuestionId, (u_p_q_qt, a) => new { u_p_q_qt, a });
             }
         }
         public IQueryable<Object> pollResult
