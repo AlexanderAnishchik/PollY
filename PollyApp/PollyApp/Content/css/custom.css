@@ -4,6 +4,7 @@ body.nav-sm .container.body .left_col {
     position: fixed;
     height: 100%;
     z-index: 200;
+    background:#2a3f54;
 }
 
 body.nav-sm .container.body .right_col {
@@ -13,6 +14,7 @@ body.nav-sm .container.body .right_col {
     
 }
 body.nav-sm .navbar.nav_title {
+    top:10px;
     width: 70px;
 }
 .profile{
@@ -85,7 +87,7 @@ body.nav-sm ul.nav.child_menu li a {
     margin-bottom:120px;
 }
 body.nav-sm .profile {
-    display: none;
+    display: block;
 }
 
 
@@ -115,9 +117,9 @@ body.nav-sm .profile {
 }
 
 .img-circle.profile_img {
-    width: 70%;
+    width: 65%;
     background: #fff;
-    margin-left: 15%;
+    /*margin-left: 15%;*/
     z-index: 1000;
     position: inherit;
     margin-top: 20px;
@@ -375,7 +377,7 @@ body.nav-md .container.body .right_col {
 
 body {
     color: #73879C;
-    background: #2A3F54;
+    background: #f7f7f7;
     /*#ECF0F1; #FCFCFC*/
 
     font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
@@ -782,7 +784,7 @@ li.current-page a {
     height: 55px;
     line-height:51px;
     margin: 0;
-    padding-left: 10px;
+    text-align:center;
 }
 
 .site_title:hover,

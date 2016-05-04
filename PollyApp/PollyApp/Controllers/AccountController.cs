@@ -2,6 +2,7 @@
 using PollyApp.Attributes;
 using PollyApp.EFModel;
 using PollyApp.GenericRepository;
+using PollyApp.Helpers;
 using PollyApp.JsonConverters;
 using System;
 using System.Collections.Generic;
@@ -24,7 +25,42 @@ namespace PollyApp.Controllers
             if (Session["user"] != null)
             {
                 User user = (User)Session["user"];
-                return new JsonResult() { Data =  user , JsonRequestBehavior=JsonRequestBehavior.AllowGet };
+                return new JsonResult() { Data = user, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            }
+            else
+                return null;
+        }
+        [UserAuth]
+        public ActionResult GetUserPollInformation()
+        {
+            if (Session["user"] != null)
+            {
+                User user = (User)Session["user"];
+                var pollSet = new PollSetQuery();
+                var userProject = Db.Context.Projects
+                    .Where(x => x.UserId == user.Id)
+                       .Select(x => new
+                       {
+                           x.Name,
+                           x.IsActive
+                       }).ToList();
+                var votedProject = Db.Context.Projects
+                    .Join(Db.Context.Results, p => p.Id, r => r.ProjectId, (p, r) => new { p, r })
+                    .Where(x => x.p.UserId == user.Id)
+                    .Select(x => new
+                    {
+                        x.r.VoterId
+                    })
+                    .Distinct().Count();
+                var answerProjects = Db.Context.Projects
+                  .Join(Db.Context.ProjectAccessVoters, p => p.Id, r => r.ProjectId, (p, r) => new { p, r })
+                  .Where(x => x.p.UserId == user.Id)
+                  .Where(x => x.r.IsUsed == true)
+                  .Select(x => new
+                  {
+                      x.r.Id
+                  }).Count();
+                return new JsonResult() { Data = new { userProject, votedProject, answerProjects }, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
             else
                 return null;
@@ -52,23 +88,23 @@ namespace PollyApp.Controllers
         public ActionResult Profile(int id)
         {
             User user = (User)Session["user"];
-            
-                if (user != null)
+
+            if (user != null)
+            {
+                if (user.Id == id)
                 {
-                    if (user.Id == id)
-                    {
-                        ViewBag.user = user;
-                        return View(ViewBag.user);
-                    }
-                    else
-                    {
-                        return RedirectToAction("Profile", new { id = user.Id });
-                    }
+                    ViewBag.user = user;
+                    return View(ViewBag.user);
                 }
                 else
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Profile", new { id = user.Id });
                 }
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
 
         }
         public ActionResult Results()
