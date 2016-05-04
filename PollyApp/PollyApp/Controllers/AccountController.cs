@@ -71,5 +71,9 @@ namespace PollyApp.Controllers
                 }
 
         }
+        public ActionResult Results()
+        {
+            return View();
+        }
     }
 }
