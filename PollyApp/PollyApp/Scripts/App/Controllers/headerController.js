@@ -6,6 +6,7 @@
     $scope.headerData = headerKeeperService.data;
     
     me.init = function () {
+        $scope.headerData.accountView = '/Content/partial/account_page/home/home.html';
         $http.get("/Account/GetUser").then(function (response) {
             if (response.data != '') {
                 headerKeeperService.data.isLogged = 1
@@ -17,6 +18,10 @@
           function (response) {
 
           });
+    };
+    me.updateView = function (view) {
+        debugger;
+        $scope.headerData.accountView = view;
     };
     $scope.isModalOpened = false;
     $scope.openModalBt = function () {
