@@ -52,12 +52,12 @@
                     
                     <!-- /menu prile quick info -->
                     <!-- sidebar menu -->
-                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                    <div ng-controller="headerController as headCtrl" ng-init="headCtrl.init()" id="sidebar-menu" class="main_menu_side hidden-print main_menu">
 
                         <div class="menu_section">
                             <h3>General</h3>
                             <ul class="nav side-menu">
-                                <li ng-controller="headerController as headCtrl" ng-init="headCtrl.init()">    
+                                <li >    
                                     <a href=""><img src="~/Content/images/Users/{{headerData.user.logo}}" alt="{{headerData.user.FirstName}} {{headerData.user.LastName}}" class="img-circle profile_img"></a>
                                     <ul class="nav child_menu" style="display: none !important">
                                         <li>
@@ -69,11 +69,11 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                                    <a ng-click="headCtrl.updateView('/Content/partial/account_page/home/home.html');"><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                                     
                                 </li>
                                 <li>
-                                    <a ng-click=""><i class="fa fa-edit"></i> Polls <span class="fa fa-chevron-down"></span></a>
+                                    <a ng-click="headCtrl.updateView('/Content/partial/account_page/polls/polls.html');"><i class="fa fa-edit"></i> Polls <span class="fa fa-chevron-down"></span></a>
                                    
                                 </li>
                                 <li>
@@ -101,7 +101,7 @@
             <!-- /top navigation -->
             <!-- page content -->
             <div ng-controller="accountController as mainCtrl" ng-init="mainCtrl.init()" class="right_col" role="main">
-                <div ng-include src="mainCtrl.currentTab">
+                <div ng-include src="headerData.accountView">
                 </div>
             </div>
             <!-- /page content -->
