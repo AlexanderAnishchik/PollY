@@ -21,5 +21,5 @@
             me.lastProjectName = userProject[userProject.length-1].Name;
         }
     }
-    me.currentTab = "/Content/partial/account_page/home/home.html"
+    me.currentTab = "/Content/partial/account_page/polls/polls.html"
 }]);

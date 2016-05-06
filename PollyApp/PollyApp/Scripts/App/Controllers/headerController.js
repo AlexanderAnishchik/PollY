@@ -5,7 +5,6 @@
     $scope.RegisterModalShowState = false;
     $scope.headerData = headerKeeperService.data;
     
-    
     me.init = function () {
         $http.get("/Account/GetUser").then(function (response) {
             if (response.data != '') {

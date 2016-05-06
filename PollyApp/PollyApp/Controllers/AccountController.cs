@@ -30,6 +30,7 @@ namespace PollyApp.Controllers
             else
                 return null;
         }
+
         [UserAuth]
         public ActionResult GetUserPollInformation()
         {
