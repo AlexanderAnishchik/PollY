@@ -184,7 +184,7 @@
         var data = recoveryService.getRecoveryPollData();
         if (data == null) {
             $scope.steps[0].isDone = true;
-            if (type.value == 2) {
+            if (type.value != 3) {
                 pollBuilderService.setType(type.value);
                 $scope.step = $scope.settingsView.step2;
             }
