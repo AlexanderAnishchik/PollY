@@ -4,6 +4,7 @@
         self.pollData = {};
         self.lastSavedProject = null;
         self.pollData.poll = [];
+        self.pollData.quizConfigurator = {};
         self.pollData.CodeSet = [];
         self.validPollArray = {};
         self.addAnswer = function (block) {

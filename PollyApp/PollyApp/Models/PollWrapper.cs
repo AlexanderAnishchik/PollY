@@ -18,6 +18,6 @@ namespace PollyApp.Models
  
         public List<String> CodeSet { get; set; }
         public List<String> UserSet { get; set; }
-
+        public QuizConfigurator QuizConfigurator { get; set; }
     }
 }

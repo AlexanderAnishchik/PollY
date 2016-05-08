@@ -34,6 +34,8 @@
         <AssociationConnector Association="PollyDbModel.FK_Question_QuestionType" />
         <AssociationConnector Association="PollyDbModel.FK_Result_Question" />
         <AssociationConnector Association="PollyDbModel.FK__Question__Projec__2A164134" />
+        <EntityTypeShape EntityType="PollyDbModel.QuizConfigurator" Width="1.5" PointX="7.375" PointY="0.875" />
+        <AssociationConnector Association="PollyDbModel.fk_Pr_QC" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

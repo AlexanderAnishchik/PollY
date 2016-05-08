@@ -82,6 +82,7 @@
         step1: 'Content/partial/ChooseType.html',
         step2: 'Content/partial/ChooseAccess.html',
         step3: 'Content/partial/ChooseShare.html',
+        step3Quiz: 'Content/partial/SetCountQuestion.html',
         step4: 'Content/partial/constructor.html',
     };
     $scope.steps = pollSettingsFactory.PollSteps;
@@ -183,13 +184,8 @@
         var data = recoveryService.getRecoveryPollData();
         if (data == null) {
             $scope.steps[0].isDone = true;
-            if (type.value != 3) {
-                pollBuilderService.setType(type.value);
-                $scope.step = $scope.settingsView.step2;
-            }
-            else {
-
-            }
+            pollBuilderService.setType(type.value);
+            $scope.step = $scope.settingsView.step2;
         }
         else {
             var modalObject = {

@@ -141,6 +141,7 @@
     <Compile Include="Controllers\AdmissionController.cs" />
     <Compile Include="Controllers\APIController.cs" />
     <Compile Include="Controllers\ConstructorController.cs" />
+    <Compile Include="Controllers\DocController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -188,6 +189,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="EFModel\QuestionType.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFModel\QuizConfigurator.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="EFModel\Result.cs">
@@ -320,6 +324,7 @@
     <Content Include="Content\images\warning-sign.png" />
     <Content Include="Content\partial\account_page\home\home.html" />
     <Content Include="Content\partial\account_page\polls\polls.html" />
+    <Content Include="Content\partial\SetCountQuestion.html" />
     <Content Include="Content\partial\share\Default.html" />
     <Content Include="Content\partial\share\Private.html" />
     <Content Include="Content\partial\share\Public.html" />
@@ -1310,6 +1315,7 @@
     <Content Include="Views\Shared\NotFound.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Account\Profile.cshtml" />
+    <Content Include="Views\Doc\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
