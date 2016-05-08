@@ -85,7 +85,7 @@
         step4: 'Content/partial/constructor.html',
     };
     $scope.steps = pollSettingsFactory.PollSteps;
-    $scope.isBuilder = $scope.steps[$scope.steps.length-1].isDone;
+    $scope.isBuilder = $scope.steps[$scope.steps.length - 1].isDone;
     $scope.step = $scope.settingsView.step1;
     $scope.setStep = function (stepValue) {
         $scope.step = stepValue;
@@ -142,9 +142,8 @@
             return;
         }
         var countEmptyAnswers = 0;
-        for (var i in $scope.currentBlock.answers)
-        {
-            
+        for (var i in $scope.currentBlock.answers) {
+
             if (!$scope.currentBlock.answers[i].value) {
                 countEmptyAnswers++;
             }
@@ -287,33 +286,38 @@
             controller: 'dialogController',
             template: 'pollsavetype.tmpl.html',
             outerClose: true,
-            escapeClose:true,
+            escapeClose: true,
             event: event
         };
-        modalService.showCustomDialog(object, {clearPollData: func});
+        modalService.showCustomDialog(object, { clearPollData: func });
     };
+    $scope.validateCallback = function (err, data) {
+        if (err) {
+            modalService.showAlert(
+                {
+                    title: "Error",
+                    textContent: err,
+                    ariaLabel: "yourpolly.com / Confirm save",
+                    event: event
+                }, function () { });
+        } else {
+            //save after popup
+            $scope.openCustomDialog(event, function (saved) {
+                var data = recoveryService.getRecoveryPollData();
+                data.saved = saved;
+                if (data != null && data.saved) {
+                    recoveryService.clearRecoveryPollData();
+                    clearInterval(intr);
+                }
+            });
+        }
+    }
     $scope.savePoll = function (event) {
-        pollBuilderService.validatePoll(function (err, data) {
-            if (err) {
-                modalService.showAlert(
-                    {
-                        title: "Error",
-                        textContent: err,
-                        ariaLabel: "yourpolly.com / Confirm save",
-                        event: event
-                    }, function () { });
-            } else {
-                //save after popup
-                $scope.openCustomDialog(event, function(saved){
-                    var data = recoveryService.getRecoveryPollData();
-                    data.saved = saved;
-                    if (data != null && data.saved) {
-                        recoveryService.clearRecoveryPollData();
-                        clearInterval(intr);
-                    }
-                });
-            }
-        });
+        if (pollBuilderService.pollData.PollType == 1) {
+            pollBuilderService.validatePoll($scope.validateCallback, true);
+        } else {
+            pollBuilderService.validatePoll($scope.validateCallback, false);
+        }
         //pollBuilderService.save(function () {
         //    $scope.saved = true;
         //   //$scope.openCustomDialog(event);
@@ -330,7 +334,7 @@
         //            }
         //        )
         //    }, function () { });
-    } 
+    }
     $scope.error = null;
     $scope.loader = false;
     $scope.addNewField = function (email) {

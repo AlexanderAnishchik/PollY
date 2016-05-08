@@ -52,7 +52,7 @@
 
             }
         };
-        self.validatePoll = function (next) {
+        self.validatePoll = function (next,isSingle) {
             var hasError = false;
             self.validPollArray = JSON.parse(JSON.stringify(self.pollData));
             var poll_length = self.validPollArray.poll.length;
@@ -72,7 +72,7 @@
 
                             }
                         }
-                        if (self.validPollArray.poll[poll_length].answers < 2) {
+                        if (self.validPollArray.poll[poll_length].answers < 2 && !isSingle) {
                             self.validPollArray.poll.splice(poll_length, 1);
                             hasError = true;
                             var answer_status = false;
@@ -84,7 +84,7 @@
                 }
 
             }
-            if (self.validPollArray.poll.length < 2 || hasError == true) {
+            if (self.validPollArray.poll.length < 2 && !isSingle || hasError == true) {
                 var error = "In this type of poll must be more then 1 question";
                 return next(error, null);
             }
