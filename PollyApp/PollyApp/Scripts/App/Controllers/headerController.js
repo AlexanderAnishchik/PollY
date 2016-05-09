@@ -20,7 +20,6 @@
           });
     };
     me.updateView = function (view) {
-        debugger;
         $scope.headerData.accountView = view;
     };
     $scope.isModalOpened = false;

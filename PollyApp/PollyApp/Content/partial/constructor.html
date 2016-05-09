@@ -31,7 +31,7 @@
                                     </p>
                                 </md-card-content>
                                 <md-card-actions layout="column" layout-align="start">
-                                    <md-button ng-click="saveToAccount($event)">Save</md-button>
+                                    <md-button ng-click="openModalBt()>Save</md-button>
                                 </md-card-actions>
                             </md-card>
                         </div>
@@ -50,7 +50,7 @@
                                     </p>
                                 </md-card-content>
                                 <md-card-actions layout="column" layout-align="start">
-                                    <md-button ng-click="openModalBt()">Save</md-button>
+                                    <md-button ng-click="saveToAccount($event)" ">Save</md-button>
                                 </md-card-actions>
                             </md-card>
                         </div>
@@ -129,7 +129,7 @@
             <div class="footer-card">
                 <div class="row">
                     <div class="col-lg-10 col-md-10 col-xs-7 col-sm-7 poll-settings-block">
-                        <md-button class="md-primary md-raised" ng-click="addBlock($event)" flex="100" flex-gt-md="auto">
+                        <md-button class="md-primary md-raised" ng-click="addBlock($event)" ng-show="builderData.PollType != 1" flex="100" flex-gt-md="auto">
                             ADD QUEISTION
                         </md-button>
                     </div>
@@ -155,7 +155,7 @@
                 </div>
             </div>
         </div>
-        <div class="sidebar-right col-lg-2 col-lg-offset-1">
+        <div class="sidebar-right col-lg-2 col-lg-offset-1" ng-show="builderData.PollType != 1">
             <div class="title">
                 QUESTIONS
             </div>

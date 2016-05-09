@@ -79,6 +79,10 @@ namespace PollyApp.Helpers
                         newProj.ModifiedOn= DateTime.Now;
                         newProj.IsActive = true;
                         newProj.UrlCode = GenerateProjectCode();
+                        if (pollTypes == (Int32)DbEnum.PollType.Quiz)
+                        {
+                            newProj.QuizConfigurator = configPoll.QuizConfigurator;
+                        }
                         Db.Add(newProj);
                         Db.Save();
                         if (poll != null)

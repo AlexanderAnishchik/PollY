@@ -1,0 +1,31 @@
+﻿
+
+
+
+<div class="container add-poll-content">
+    <div class="step-title">
+        Quiz Configuration
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6 col-lg-offset-3 card">
+            <div class="content-card">
+                <div class="text-center">
+                    <p>You can create many questions and set how many questions will be randomly selected and used in quiz. You can set a timer for quiz. Or just leave these fields blank. Then the test is created without a timer and all questions will be involved in the test</p>
+                    <p><input type="text" ng-model="builderData.quizConfigurator.countRandom" class="number-input" placeholder="Count used questions" /></p>
+                    <p><input type="text" ng-model="builderData.quizConfigurator.timer" class="number-input" placeholder="Minutes timer" /></p>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+</div>
+<div class="text-center">
+    <md-button ng-click="setStep(settingsView.step3);" ng-show="!isBuilder" class="md-raised">Prev</md-button>
+    <md-button ng-click="setStep(settingsView.step4);" ng-show="!isBuilder" class="md-raised">Next</md-button>
+    <md-button class="md-raised" ng-show="isBuilder" ng-click="setStep(settingsView.step4)">To builder</md-button>
+</div>

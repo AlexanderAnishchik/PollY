@@ -1,9 +1,10 @@
-﻿<div class="row">
-    <div class="col-md-2 col-xs-12">
+﻿
+<div ng-controller="accountPollController as pollCtrl" ng-init="pollCtrl.init()" class="row">
+    <div class="col-md-2 col-xs-12" ng-repeat="poll in pollCtrl.pollList">
         <md-card>
             <md-card-title>
                 <md-card-title-text>
-                    <span class="md-headline">In-card mixed actions</span>
+                    <span class="md-headline">{{poll.Name}}</span>
                 </md-card-title-text>
                 <ul class="nav navbar-right panel_toolbox">
                     <li>
@@ -32,20 +33,20 @@
                     <ul class="list-inline widget_tally">
                         <li>
                             <p>
-                                <span class="month">12 December 2014 </span>
-                                <span class="count">+12%</span>
+                                <span class="month">Project Type</span>
+                                <span class="count">Multiple</span>
                             </p>
                         </li>
                         <li>
                             <p>
-                                <span class="month">29 December 2014 </span>
-                                <span class="count">+12%</span>
+                                <span class="month">Project Status</span>
+                                <span class="count">{{poll.IsActive?"Active":"Deactive"}}</span>
                             </p>
                         </li>
                         <li>
                             <p>
-                                <span class="month">16 January 2015 </span>
-                                <span class="count">+12%</span>
+                                <span class="month">Users Have Voted</span>
+                                <span class="count">10</span>
                             </p>
                         </li>
                     </ul>

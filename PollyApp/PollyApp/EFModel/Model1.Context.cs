@@ -18,7 +18,7 @@ namespace PollyApp.EFModel
         public Entities()
             : base("name=Entities")
         {
-            
+            this.Configuration.LazyLoadingEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -39,5 +39,6 @@ namespace PollyApp.EFModel
         public virtual DbSet<UserPermission> UserPermissions { get; set; }
         public virtual DbSet<UserSet> UserSets { get; set; }
         public virtual DbSet<Question> Questions { get; set; }
+        public virtual DbSet<QuizConfigurator> QuizConfigurators { get; set; }
     }
 }
