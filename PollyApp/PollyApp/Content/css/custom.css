@@ -1,3 +1,9 @@
+.table-striped > tbody > tr:nth-of-type(odd){
+    background-color:#ffffff;
+}
+.table-striped > tbody > tr{
+    background-color:#ffffff;
+}
 body.nav-sm .container.body .left_col {
     width: 70px;
     padding: 0;
