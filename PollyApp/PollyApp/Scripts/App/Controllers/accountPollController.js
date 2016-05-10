@@ -17,4 +17,9 @@
     me.updatePollList = function (data) {
         me.pollList = data;
     };
+    
+    me.updateView = function (view) {
+        headerKeeperService.data.accountView = view;
+    };
+   
 }]);
