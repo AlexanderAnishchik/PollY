@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/xsl" href="c:\program files (x86)\microsoft visual studio 14.0\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
 <FxCopReport Version="14.0">
  <Targets>
-  <Target Name="E:\Projects\PollY\PollyApp\PollyApp\bin\PollyApp.dll">
+  <Target Name="D:\PollY\PollyApp\PollyApp\bin\PollyApp.dll">
    <Modules>
     <Module Name="pollyapp.dll">
      <Namespaces>
@@ -10,15 +10,15 @@
        <Types>
         <Type Name="Repository" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message TypeName="ImplementIDisposableCorrectly" Category="Microsoft.Design" CheckId="CA1063" Status="Active" Created="2016-04-24 09:22:35Z" FixCategory="Breaking">
-           <Issue Name="ProvideDisposeBool" Certainty="95" Level="Error">Provide an overridable implementation of Dispose(bool) on 'Repository' or mark the type as sealed. A call to Dispose(false) should only clean up native resources. A call to Dispose(true) should clean up both managed and native resources.</Issue>
+          <Message TypeName="ImplementIDisposableCorrectly" Category="Microsoft.Design" CheckId="CA1063" Status="Active" Created="2016-05-04 12:51:29Z" FixCategory="Breaking">
+           <Issue Name="ProvideDisposeBool" Certainty="95" Level="Error">Предоставьте перегружаемую реализацию Dispose(bool) для 'Repository' или отметьте тип как запечатанный. При вызове Dispose(false) должны очищаться только машинные ресурсы. При вызове Dispose(true) должны очищаться и управляемые, и машинные ресурсы.</Issue>
           </Message>
          </Messages>
          <Members>
           <Member Name="#Dispose()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="ImplementIDisposableCorrectly" Category="Microsoft.Design" CheckId="CA1063" Status="Active" Created="2016-04-24 09:22:35Z" FixCategory="Breaking">
-             <Issue Name="DisposeImplementation" Certainty="95" Level="Error" Path="E:\Projects\PollY\PollyApp\PollyApp\GenericRepository" File="Repository.cs" Line="48">Modify 'Repository.Dispose()' so that it calls Dispose(true), then calls GC.SuppressFinalize on the current object instance ('this' or 'Me' in Visual Basic), and then returns.</Issue>
+            <Message TypeName="ImplementIDisposableCorrectly" Category="Microsoft.Design" CheckId="CA1063" Status="Active" Created="2016-05-04 12:51:29Z" FixCategory="Breaking">
+             <Issue Name="DisposeImplementation" Certainty="95" Level="Error" Path="D:\PollY\PollyApp\PollyApp\GenericRepository" File="Repository.cs" Line="48">Измените 'Repository.Dispose()', чтобы он вызывал Dispose(true), затем вызывал GC.SuppressFinalize для текущего экземпляра объекта ("this" или "Me" в Visual Basic), а затем возвращал результат.</Issue>
             </Message>
            </Messages>
           </Member>
@@ -30,8 +30,8 @@
        <Types>
         <Type Name="PollSetQuery" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2016-04-24 09:22:35Z" FixCategory="DependsOnFix">
-           <Issue Name="DependsOnFix" Certainty="95" Level="CriticalError">Implement IDisposable on 'PollSetQuery' because it creates members of the following IDisposable types: 'Repository'. If 'PollSetQuery' has previously shipped, adding new members that implement IDisposable to this type is considered a breaking change to existing consumers.</Issue>
+          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2016-05-04 12:51:29Z" FixCategory="DependsOnFix">
+           <Issue Name="DependsOnFix" Certainty="95" Level="CriticalError">Реализуйте IDisposable для 'PollSetQuery', поскольку он создает члены следующих типов IDisposable: 'Repository'. Если 'PollSetQuery' ранее был доставлен, добавление в данный тип новых членов, реализующих IDisposable, считается критическим изменением для существующих потребителей.</Issue>
           </Message>
          </Messages>
         </Type>
@@ -44,10 +44,10 @@
  </Targets>
  <Rules>
   <Rule TypeName="ImplementIDisposableCorrectly" Category="Microsoft.Design" CheckId="CA1063">
-   <Name>Implement IDisposable correctly</Name>
-   <Description>All IDisposable types should implement the Dispose pattern correctly.</Description>
-   <Resolution Name="DisposeImplementation">Modify {0} so that it calls Dispose(true), then calls GC.SuppressFinalize on the current object instance ('this' or 'Me' in Visual Basic), and then returns.</Resolution>
-   <Resolution Name="ProvideDisposeBool">Provide an overridable implementation of Dispose(bool) on {0} or mark the type as sealed. A call to Dispose(false) should only clean up native resources. A call to Dispose(true) should clean up both managed and native resources.</Resolution>
+   <Name>Правильно реализуйте IDisposable</Name>
+   <Description>Во всех типах IDisposable шаблон Dispose должен быть реализован правильно.</Description>
+   <Resolution Name="DisposeImplementation">Измените {0}, чтобы он вызывал Dispose(true), затем вызывал GC.SuppressFinalize для текущего экземпляра объекта ("this" или "Me" в Visual Basic), а затем возвращал результат.</Resolution>
+   <Resolution Name="ProvideDisposeBool">Предоставьте перегружаемую реализацию Dispose(bool) для {0} или отметьте тип как запечатанный. При вызове Dispose(false) должны очищаться только машинные ресурсы. При вызове Dispose(true) должны очищаться и управляемые, и машинные ресурсы.</Resolution>
    <Owner />
    <Url>http://msdn.microsoft.com/library/ms244737.aspx</Url>
    <Email>[none]</Email>
@@ -55,9 +55,9 @@
    <File Name="designrules.dll" Version="14.0.0.0" />
   </Rule>
   <Rule TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001">
-   <Name>Types that own disposable fields should be disposable</Name>
-   <Description>Types that declare disposable members should also implement IDisposable. If the type does not own any unmanaged resources, do not implement a finalizer on it.</Description>
-   <Resolution Name="DependsOnFix">Implement IDisposable on {0} because it creates members of the following IDisposable types: {1}. If {0} has previously shipped, adding new members that implement IDisposable to this type is considered a breaking change to existing consumers.</Resolution>
+   <Name>Типы, которым принадлежат освобождаемые поля, должны быть освобождаемыми</Name>
+   <Description>Типы, объявляющие освобождаемые члены, также должны реализовывать IDisposable. Если типу не принадлежат какие-либо неуправляемые ресурсы, нет необходимости реализовывать для него метод завершения.</Description>
+   <Resolution Name="DependsOnFix">Реализуйте IDisposable для {0}, поскольку он создает члены следующих типов IDisposable: {1}. Если {0} ранее был доставлен, добавление в данный тип новых членов, реализующих IDisposable, считается критическим изменением для существующих потребителей.</Resolution>
    <Owner />
    <Url>http://msdn.microsoft.com/library/ms182172.aspx</Url>
    <Email>[none]</Email>
@@ -66,27 +66,27 @@
   </Rule>
  </Rules>
  <Localized>
-  <String Key="Category">Category</String>
-  <String Key="Certainty">Certainty</String>
-  <String Key="CollapseAll">Collapse All</String>
-  <String Key="CheckId">Check Id</String>
-  <String Key="Error">Error</String>
-  <String Key="Errors">error(s)</String>
-  <String Key="ExpandAll">Expand All</String>
-  <String Key="Help">Help</String>
-  <String Key="Line">Line</String>
-  <String Key="Messages">message(s)</String>
-  <String Key="LocationNotStoredInPdb">[Location not stored in Pdb]</String>
-  <String Key="Project">Project</String>
-  <String Key="Resolution">Resolution</String>
-  <String Key="Rule">Rule</String>
-  <String Key="RuleFile">Rule File</String>
-  <String Key="RuleDescription">Rule Description</String>
-  <String Key="Source">Source</String>
-  <String Key="Status">Status</String>
-  <String Key="Target">Target</String>
-  <String Key="Warning">Warning</String>
-  <String Key="Warnings">warning(s)</String>
-  <String Key="ReportTitle">Code Analysis Report</String>
+  <String Key="Category">Категория</String>
+  <String Key="Certainty">Достоверность</String>
+  <String Key="CollapseAll">Свернуть все</String>
+  <String Key="CheckId">ИД проверки</String>
+  <String Key="Error">Ошибка</String>
+  <String Key="Errors">ошибки</String>
+  <String Key="ExpandAll">Развернуть все</String>
+  <String Key="Help">Справка</String>
+  <String Key="Line">Строка</String>
+  <String Key="Messages">сообщения</String>
+  <String Key="LocationNotStoredInPdb">[расположение не сохранено в PDB]</String>
+  <String Key="Project">Проект</String>
+  <String Key="Resolution">Разрешение</String>
+  <String Key="Rule">Правило</String>
+  <String Key="RuleFile">Файл правил</String>
+  <String Key="RuleDescription">Описание правила</String>
+  <String Key="Source">Источник</String>
+  <String Key="Status">Состояние</String>
+  <String Key="Target">Цель</String>
+  <String Key="Warning">Предупреждение</String>
+  <String Key="Warnings">предупреждения</String>
+  <String Key="ReportTitle">Отчет по анализу кода</String>
  </Localized>
 </FxCopReport>
