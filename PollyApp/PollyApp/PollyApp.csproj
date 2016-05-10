@@ -323,6 +323,7 @@
     <Content Include="Content\images\Users\sanya_axel.jpg" />
     <Content Include="Content\images\warning-sign.png" />
     <Content Include="Content\partial\account_page\home\home.html" />
+    <Content Include="Content\partial\account_page\polls\poll.html" />
     <Content Include="Content\partial\account_page\polls\polls.html" />
     <Content Include="Content\partial\SetCountQuestion.html" />
     <Content Include="Content\partial\share\Default.html" />
