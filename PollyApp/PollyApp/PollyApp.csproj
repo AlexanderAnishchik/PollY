@@ -141,6 +141,7 @@
     <Compile Include="Controllers\AdmissionController.cs" />
     <Compile Include="Controllers\APIController.cs" />
     <Compile Include="Controllers\ConstructorController.cs" />
+    <Compile Include="Controllers\DocController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -188,6 +189,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="EFModel\QuestionType.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFModel\QuizConfigurator.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="EFModel\Result.cs">
@@ -319,6 +323,8 @@
     <Content Include="Content\images\Users\sanya_axel.jpg" />
     <Content Include="Content\images\warning-sign.png" />
     <Content Include="Content\partial\account_page\home\home.html" />
+    <Content Include="Content\partial\account_page\polls\polls.html" />
+    <Content Include="Content\partial\SetCountQuestion.html" />
     <Content Include="Content\partial\share\Default.html" />
     <Content Include="Content\partial\share\Private.html" />
     <Content Include="Content\partial\share\Public.html" />
@@ -439,6 +445,7 @@
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\App\app.js" />
     <Content Include="Scripts\App\Controllers\accountController.js" />
+    <Content Include="Scripts\App\Controllers\accountPollController.js" />
     <Content Include="Scripts\App\Controllers\apiController.js" />
     <Content Include="Scripts\App\Controllers\constructorController.js" />
     <Content Include="Scripts\App\Controllers\dialogController.js" />
@@ -446,6 +453,7 @@
     <Content Include="Scripts\App\Controllers\homeController.js" />
     <Content Include="Scripts\App\Controllers\pollController.js" />
     <Content Include="Scripts\App\Directives\enterDirective.js" />
+    <Content Include="Scripts\App\Factory\accountSettings.js" />
     <Content Include="Scripts\App\Factory\answerTypeFactory.js" />
     <Content Include="Scripts\App\Modules\ngAnimation.js" />
     <Content Include="Scripts\App\Route\constructorRoute.js" />
@@ -1307,8 +1315,7 @@
     <Content Include="Views\Shared\NotFound.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Account\Profile.cshtml" />
-    <Content Include="Views\Account\Results.cshtml" />
-    <Content Include="Views\Account\Polls.cshtml" />
+    <Content Include="Views\Doc\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

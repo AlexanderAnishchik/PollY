@@ -19,6 +19,8 @@ namespace PollyApp.EFModel
         public int ProjectId { get; set; }
         public int VoterId { get; set; }
         public int AnswerId { get; set; }
+        public Nullable<System.DateTime> ModifiedOn { get; set; }
+        public string Device { get; set; }
     
         public virtual Answer Answer { get; set; }
         public virtual Project Project { get; set; }

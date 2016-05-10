@@ -30,6 +30,7 @@ namespace PollyApp.Controllers
             else
                 return null;
         }
+
         [UserAuth]
         public ActionResult GetUserPollInformation()
         {
@@ -60,7 +61,10 @@ namespace PollyApp.Controllers
                   {
                       x.r.Id
                   }).Count();
-                return new JsonResult() { Data = new { userProject, votedProject, answerProjects }, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+                var monthAgo = DateTime.Now.AddMonths(-1);
+                var lastProjectAction = Db.Context.Projects.Where(x => x.ModifiedOn > monthAgo && x.UserId== user.Id).Select(x => new { ProjectName = x.Name, ModifiedOn = x.ModifiedOn, x.IsActive }).ToList();
+                var lastUserAction = Db.Context.ProjectAccessVoters.Where(x => x.ModifiedOn > monthAgo && x.Project.UserId== user.Id).Select(x => new { UserName = x.UserSet.User != null ? x.UserSet.User.Email : x.UserSet.IPAdrress, ModifiedOn = x.ModifiedOn, ProjectName = x.Project.Name}).ToList();
+                return new JsonResult() { Data = new { userProject, votedProject, answerProjects, lastProjectAction, lastUserAction }, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
             else
                 return null;
