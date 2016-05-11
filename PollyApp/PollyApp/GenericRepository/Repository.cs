@@ -55,7 +55,7 @@ namespace PollyApp.GenericRepository
                 Context.SaveChanges();
             }
             catch(Exception ex){
-
+                throw ex;
             }
         }
     }

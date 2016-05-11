@@ -12,7 +12,7 @@ namespace PollyApp.Controllers
         [HttpPost]
         public ActionResult AddTicket(String data)
         {
-            Db.Context.Tickets.Add(new EFModel.Ticket() { MessageJSON = data });
+            Db.Context.Tickets.Add(new EFModel.Ticket() { MessageJSON = DateTime.Now.ToShortTimeString() });
             Db.Save();
             return null;
         }
