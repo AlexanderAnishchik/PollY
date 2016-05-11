@@ -11,7 +11,28 @@
     </div>
 
     <div class="row choose-type">
-        <div class="col-lg-3 col-xs-12 col-lg-offset-1 col-xs-offset-0 col-sm-offset-0 card card-md" ng-repeat="val in poll_type" ng-click="setPollType(val, $event);" >
+        <md-card class="col-lg-3 col-xs-12 col-lg-offset-1 col-xs-offset-0 col-sm-offset-0" ng-repeat="val in poll_type" ng-click="setPollType(val, $event);">
+            <md-card-header>
+                <md-card-avatar>
+                    <img src="{{val.imagePath}}" />
+                </md-card-avatar>
+                <md-card-header-text>
+                    <span class="md-title">{{val.label}}</span>
+                    <span class="md-subhead">free</span>
+                </md-card-header-text>
+            </md-card-header>
+            
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">{{val.label}}</span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-content>
+                <div ng-include src="val.path">
+                </div>
+            </md-card-content>
+        </md-card>
+        <!--<div class="col-lg-3 col-xs-12 col-lg-offset-1 col-xs-offset-0 col-sm-offset-0 card card-md" ng-repeat="val in poll_type" ng-click="setPollType(val, $event);" >
             <div class="header-card">
                 <img src="/Content/images/layout22.png" class="img-thumbnail" />
             </div>
@@ -27,7 +48,7 @@
                    
                 
             </div>
-        </div>
+        </div>-->
         <div class="text-center">
             <md-button class="md-raised" ng-show="isBuilder" ng-click="setStep(settingsView.step4)">To builder</md-button>
         </div>

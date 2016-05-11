@@ -504,6 +504,16 @@ md-dialog.md-default-theme .md-dialog-content p{
     border-top:2px solid #e6e9ed;
     color:#1abc9c;
 }
+.choose-type{
+    margin-top:50px;
+}
+.choose-type md-card{
+    min-height:300px;
+    box-shadow: 0px 0px 38px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 0px rgba(0, 0, 0, 0.12);
+}
+.choose-type md-card md-card-title{
+    flex:0;
+}
 .sidebar-left,
 .sidebar-right{
     margin-top:51px;
@@ -529,7 +539,7 @@ md-dialog.md-default-theme .md-dialog-content p{
 }
 .step-number{
     margin-top:25px;
-    color:#cccccc;
+    color:#73879c;
     text-align:center;
     font-size:16px;
     font-family: 'Montserrat', sans-serif;
@@ -1452,6 +1462,7 @@ label.css-labelr {
     padding:0;
     left:0;
     display:table;
+    font-size:16px;
 }
 .wizard_steps li{
     
