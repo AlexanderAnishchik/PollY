@@ -87,7 +87,7 @@ namespace PollyApp.Helpers
                 using (var Db = new Repository())
                 {
                     UserSet user = new UserSet() { CookieValue = val };
-                    voter = new ProjectAccessVoter() { ProjectId = Db.Context.Projects.Where(x => x.UrlCode == admission.projectUrl).Select(x => x.Id).FirstOrDefault(), UserSet = user, IsUsed=true};
+                    voter = new ProjectAccessVoter() { ProjectId = Db.Context.Projects.Where(x => x.UrlCode == admission.projectUrl).Select(x => x.Id).FirstOrDefault(), UserSet = user, IsUsed=true,ModifiedOn=DateTime.Now};
                     Db.Context.ProjectAccessVoters.Add(voter);
                     Db.Save();
                 }

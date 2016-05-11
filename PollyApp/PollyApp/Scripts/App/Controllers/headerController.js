@@ -5,8 +5,8 @@
     $scope.RegisterModalShowState = false;
     $scope.headerData = headerKeeperService.data;
     
-    
     me.init = function () {
+        $scope.headerData.accountView = '/Content/partial/account_page/home/home.html';
         $http.get("/Account/GetUser").then(function (response) {
             if (response.data != '') {
                 headerKeeperService.data.isLogged = 1
@@ -18,6 +18,9 @@
           function (response) {
 
           });
+    };
+    me.updateView = function (view) {
+        $scope.headerData.accountView = view;
     };
     $scope.isModalOpened = false;
     $scope.openModalBt = function () {
@@ -60,7 +63,8 @@
 
             },
         function (response) {
-
+            $scope.loader = false;
+            $scope.errorAuth = "Sorry, server could not process your request!";
         });
         }
         else {

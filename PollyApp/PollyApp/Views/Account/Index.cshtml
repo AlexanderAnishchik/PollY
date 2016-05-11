@@ -10,6 +10,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Dashboard | Polly</title>
+    <link href="~/Content/angular-material.css" rel="stylesheet" />
+    <link href="~/Content/angular-material.layouts.css" rel="stylesheet" />
     <link href="~/Content/css/animate.css" rel="stylesheet">
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/css/custom.css" rel="stylesheet">
@@ -25,11 +27,11 @@
     <link href="~/Content/css/green.css" rel="stylesheet" />
     <script src="~/Scripts/angular-aria.js"></script>
     <script src="~/Scripts/angular-animate.js"></script>
-
     <script src="~/Scripts/App/app.js"></script>
     <script src="~/Scripts/App/Services/headerKeeperService.js"></script>
     <script src="~/Scripts/App/Controllers/headerController.js"></script>
     <script src="~/Scripts/App/Controllers/accountController.js"></script>
+    <script src="~/Scripts/App/Controllers/accountPollController.js"></script>
     <script src="~/Scripts/angular-material/angular-material-mocks.js"></script>
     <script src="~/Scripts/angular-material/angular-material.min.js"></script>
 </head>
@@ -51,12 +53,12 @@
                     
                     <!-- /menu prile quick info -->
                     <!-- sidebar menu -->
-                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                    <div ng-controller="headerController as headCtrl" ng-init="headCtrl.init()" id="sidebar-menu" class="main_menu_side hidden-print main_menu">
 
                         <div class="menu_section">
                             <h3>General</h3>
                             <ul class="nav side-menu">
-                                <li ng-controller="headerController as headCtrl" ng-init="headCtrl.init()">    
+                                <li >    
                                     <a href=""><img src="~/Content/images/Users/{{headerData.user.logo}}" alt="{{headerData.user.FirstName}} {{headerData.user.LastName}}" class="img-circle profile_img"></a>
                                     <ul class="nav child_menu" style="display: none !important">
                                         <li>
@@ -68,11 +70,11 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                                    <a ng-click="headCtrl.updateView('/Content/partial/account_page/home/home.html');"><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                                     
                                 </li>
                                 <li>
-                                    <a><i class="fa fa-edit"></i> Polls <span class="fa fa-chevron-down"></span></a>
+                                    <a ng-click="headCtrl.updateView('/Content/partial/account_page/polls/polls.html');"><i class="fa fa-edit"></i> Polls <span class="fa fa-chevron-down"></span></a>
                                    
                                 </li>
                                 <li>
@@ -100,7 +102,7 @@
             <!-- /top navigation -->
             <!-- page content -->
             <div ng-controller="accountController as mainCtrl" ng-init="mainCtrl.init()" class="right_col" role="main">
-                <div ng-include src="mainCtrl.currentTab">
+                <div ng-include src="headerData.accountView">
                 </div>
             </div>
             <!-- /page content -->

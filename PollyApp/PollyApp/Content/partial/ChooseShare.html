@@ -37,6 +37,6 @@
 </div>
 <div class="text-center">
     <md-button ng-click="setStep(settingsView.step2);" ng-show="!isBuilder" class="md-raised">Prev</md-button>
-    <md-button ng-click="setStep(settingsView.step4)" ng-disabled="!privacyData.set_complete" ng-show="!isBuilder" class="md-raised">Next</md-button>
+    <md-button ng-click="builderData.PollType==3?setStep(settingsView.step3Quiz):setStep(settingsView.step4)" ng-disabled="!privacyData.set_complete" ng-show="!isBuilder" class="md-raised">Next</md-button>
     <md-button class="md-raised" ng-show="isBuilder" ng-click="setStep(settingsView.step4)">To builder</md-button>
 </div>

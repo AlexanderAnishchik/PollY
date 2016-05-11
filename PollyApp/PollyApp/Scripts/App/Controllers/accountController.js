@@ -1,12 +1,12 @@
 ﻿PollyApp.controller('accountController', ['$scope', '$http', 'headerKeeperService', function ($scope, $http, headerKeeperService) {
     var me = this;
+    $scope.headerData = headerKeeperService.data;
     me.init = function () {
         me.getPollinformation();
     };
     me.getPollinformation = function () {
         $http.get("/Account/GetUserPollInformation")
             .then(function (response) {
-                debugger;
                 if (response.data)
                     me.setPollInf(response.data.userProject, response.data.votedProject, response.data.answerProjects);
             }, function (response) {
@@ -21,5 +21,5 @@
             me.lastProjectName = userProject[userProject.length-1].Name;
         }
     }
-    me.currentTab = "/Content/partial/account_page/home/home.html"
+    
 }]);
