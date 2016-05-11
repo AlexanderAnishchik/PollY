@@ -149,6 +149,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PollController.cs" />
+    <Compile Include="Controllers\TicketController.cs" />
     <Compile Include="EFModel\Answer.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -195,6 +196,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="EFModel\Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFModel\Ticket.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="EFModel\User.cs">
@@ -514,6 +518,7 @@
     <None Include="Properties\PublishProfiles\thepolly - Web Deploy %285%29.pubxml" />
     <None Include="Properties\PublishProfiles\thepolly - Web Deploy %286%29.pubxml" />
     <None Include="Properties\PublishProfiles\thepolly - Web Deploy %287%29.pubxml" />
+    <None Include="Properties\PublishProfiles\thepolly - Web Deploy %288%29.pubxml" />
     <None Include="Properties\PublishProfiles\thepolly - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\App\Factory\pollSettingsFactory.js" />

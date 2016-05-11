@@ -12,17 +12,12 @@ namespace PollyApp.EFModel
     using System;
     using System.Collections.Generic;
     
-    public partial class ProjectAccessVoter
+    public partial class Ticket
     {
         public int Id { get; set; }
-        public Nullable<bool> IsUsed { get; set; }
-        public Nullable<int> CodeSetId { get; set; }
-        public Nullable<int> UserSetId { get; set; }
-        public Nullable<int> ProjectId { get; set; }
-        public Nullable<System.DateTime> ModifiedOn { get; set; }
-    
-        public virtual CodeSet CodeSet { get; set; }
-        public virtual Project Project { get; set; }
-        public virtual UserSet UserSet { get; set; }
+        public string Email { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string MessageJSON { get; set; }
     }
 }

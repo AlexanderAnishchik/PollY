@@ -14,19 +14,11 @@ namespace PollyApp.EFModel
     
     public partial class Answer
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Answer()
-        {
-            this.Results = new HashSet<Result>();
-        }
-    
         public int Id { get; set; }
         public string Value { get; set; }
         public int OrderValue { get; set; }
-        public int QuestionId { get; set; }
+        public Nullable<int> QuestionId { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Result> Results { get; set; }
         public virtual Question Question { get; set; }
     }
 }
