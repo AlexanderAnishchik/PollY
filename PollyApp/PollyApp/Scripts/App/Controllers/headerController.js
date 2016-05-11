@@ -63,7 +63,8 @@
 
             },
         function (response) {
-
+            $scope.loader = false;
+            $scope.errorAuth = "Sorry, server could not process your request!";
         });
         }
         else {
