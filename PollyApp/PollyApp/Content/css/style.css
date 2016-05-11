@@ -465,8 +465,6 @@ md-dialog.md-default-theme .md-dialog-content p{
     border:1px solid #e6e9ed;
     padding:0px;
     font-family: 'Montserrat', sans-serif;
-    font-weight:bold;
-    color:#cccccc;
 }
 .choose-type .card{
     border:2px solid #e6e9ed;
@@ -500,10 +498,11 @@ md-dialog.md-default-theme .md-dialog-content p{
     height:150px;
 }
 .footer-card{
-    
+    font-weight:bold;
     margin-top:22px;
     padding:10px;
     border-top:2px solid #e6e9ed;
+    color:#1abc9c;
 }
 .sidebar-left,
 .sidebar-right{
