@@ -15,16 +15,11 @@ namespace PollyApp.EFModel
     public partial class Result
     {
         public int Id { get; set; }
-        public int QuestionId { get; set; }
-        public int ProjectId { get; set; }
-        public int VoterId { get; set; }
-        public int AnswerId { get; set; }
+        public Nullable<int> QuestionId { get; set; }
+        public Nullable<int> ProjectId { get; set; }
+        public Nullable<int> VoterId { get; set; }
+        public Nullable<int> AnswerId { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
         public string Device { get; set; }
-    
-        public virtual Answer Answer { get; set; }
-        public virtual Project Project { get; set; }
-        public virtual ProjectAccessVoter ProjectAccessVoter { get; set; }
-        public virtual Question Question { get; set; }
     }
 }
