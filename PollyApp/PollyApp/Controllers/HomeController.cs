@@ -12,6 +12,9 @@ using System.Web.Mvc;
 using System.Data.Entity;
 using System.Web.Security;
 using PollyApp.Models;
+using System.Threading.Tasks;
+using SendGrid;
+using System.Net.Mail;
 
 namespace PollyApp.Controllers
 {
@@ -27,7 +30,16 @@ namespace PollyApp.Controllers
         [HttpPost]
         public ActionResult SendEmail(EmailModel mail)
         {
-            return View();
+            SendGridMessage myMessage = new SendGridMessage();
+            myMessage.AddTo(mail.Email);
+            myMessage.From = new MailAddress("info@yourpolly.com");
+            myMessage.Subject = mail.Title;
+            myMessage.Text = mail.Message;
+
+            // Create a Web transport, using API Key
+            var transportWeb = new Web("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");
+            transportWeb.DeliverAsync(myMessage).RunSynchronously();
+            return new JsonResult() { Data = new { status = "True" } };
         }
         protected override void Dispose(bool disposing)
         {

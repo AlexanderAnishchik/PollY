@@ -1,4 +1,4 @@
-﻿PollyApp.controller('homeController', ['$scope', 'headerKeeperService', function ($scope, headerKeeperService) {
+﻿PollyApp.controller('homeController', ['$scope','$http', 'headerKeeperService', function ($scope, $http, headerKeeperService) {
     var me = this;
     me.init = function () {
 
