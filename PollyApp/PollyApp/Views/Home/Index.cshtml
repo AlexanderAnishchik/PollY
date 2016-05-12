@@ -201,7 +201,7 @@
                                     <button class="btn btn-lg btn-install" ng-click="inpt.sendFeedback()">CONTINUE <span class="badge"><img src="~/Content/images/origami9.png" /></span></button>
                                 </div>
                                 <div class="col-sm-8 col-xs-12">
-                                    <div ng-show='feedbackStatus!=null' ng-class="{ 'text-danger' : !feedbackStatus, 'text-success' : feedbackStatus}">
+                                    <div ng-show='feedbackStatus!==null' ng-class="{ 'text-danger' : !feedbackStatus, 'text-success' : feedbackStatus}">
                                         {{feedbackMessage}}
                                     </div>
                                 </div>
