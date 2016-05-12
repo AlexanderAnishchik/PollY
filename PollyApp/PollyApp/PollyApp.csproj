@@ -64,10 +64,6 @@
       <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="NotFoundMvc, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\NotFoundMvc.1.4.0\lib\net40\NotFoundMvc.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="SendGrid, Version=6.3.4.0, Culture=neutral, PublicKeyToken=4f047e93159395ca, processorArchitecture=MSIL">
       <HintPath>..\packages\Sendgrid.6.3.4\lib\SendGrid.dll</HintPath>
       <Private>True</Private>
