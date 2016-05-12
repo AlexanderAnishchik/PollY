@@ -13,8 +13,9 @@ namespace TestConsole
     {
         static void Main(string[] args)
         {
+            String route = String.Empty;
             SendGridMessage myMessage = new SendGridMessage();
-            myMessage.AddTo("help@yourpolly.com");
+            myMessage.AddTo("help3@yourpolly.com");
             myMessage.From = new MailAddress("info@yourpolly.com");
             myMessage.Subject = "Testing the SendGrid";
             myMessage.Text = "!It is working!!!!";
