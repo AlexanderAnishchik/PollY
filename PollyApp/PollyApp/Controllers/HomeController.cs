@@ -11,6 +11,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
 using System.Web.Security;
+using PollyApp.Models;
 
 namespace PollyApp.Controllers
 {
@@ -20,6 +21,11 @@ namespace PollyApp.Controllers
         // GET: Home
         [UserAuth]
         public ActionResult Index()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult SendEmail(EmailModel mail)
         {
             return View();
         }
