@@ -14,7 +14,7 @@
         <md-card class="col-lg-3 col-xs-12 col-lg-offset-1 col-xs-offset-0 col-sm-offset-0" ng-repeat="val in poll_type" ng-click="setPollType(val, $event);">
             <md-card-header>
                 <md-card-avatar>
-                    <img src="{{val.imagePath}}" />
+                    <img ng-src="{{val.imagePath}}" />
                 </md-card-avatar>
                 <md-card-header-text>
                     <span class="md-title">{{val.label}}</span>
