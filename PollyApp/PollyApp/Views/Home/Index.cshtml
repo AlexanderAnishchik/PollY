@@ -176,27 +176,38 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-6 col-lg-offset-3">
-                        <form name="contact" anim="flipInY">
+                        <form name="contact" anim="flipInY" novalidate>
                             <div class="form-inline">
                                 <div class="form-group">
-                                    <input type="text" class="form-control input-lg" placeholder="First name" name="first" />
+                                    <input type="text" class="form-control input-lg" placeholder="First name" name="first" ng-model="inpt.feedback.firstname" />
                                 </div>
                                 <div class="form-group last">
-                                    <input type="text" class="form-control input-lg " placeholder="Last name" name="second" />
+                                    <input type="text" class="form-control input-lg " placeholder="Last name" name="second" ng-model="inpt.feedback.lastname"/>
                                 </div>
                             </div>
 
                             <div class="form-group form-group-lg">
-                                <input type="email" class="form-control input-lg" placeholder="Email to which a reply" name="email" />
+                                <input type="email" class="form-control input-lg" placeholder="Email to which a reply" name="email" ng-model="inpt.feedback.email"/>
                             </div>
                             <div class="form-group form-group-lg">
-                                <input type="text" class="form-control input-lg" placeholder="Title" name="title" />
+                                <input type="text" class="form-control input-lg" placeholder="Title" name="title" ng-model="inpt.feedback.title" />
                             </div>
 
                             <div class="form-group form-group-lg">
-                                <textarea class="form-control" rows="5" placeholder="Your message"></textarea>
+                                <textarea class="form-control" rows="5" placeholder="Your message" name="message" ng-model="inpt.feedback.message"></textarea>
                             </div>
-                            <button class="btn btn-lg btn-install">CONTINUE <span class="badge"><img src="~/Content/images/origami9.png" /></span></button>
+                            <div class="row">
+                                <div class="col-sm-4 col-xs-12">
+                                    <button class="btn btn-lg btn-install" ng-click="inpt.sendFeedback()">CONTINUE <span class="badge"><img src="~/Content/images/origami9.png" /></span></button>
+                                </div>
+                                <div class="col-sm-8 col-xs-12">
+                                    <div ng-show='feedbackStatus!=null' ng-class="{ 'text-danger' : !feedbackStatus, 'text-success' : feedbackStatus}">
+                                        {{feedbackMessage}}
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            
                         </form>
                     </div>
                 </div>
