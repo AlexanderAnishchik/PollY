@@ -6,18 +6,21 @@
                  logicalName: "Single",
                  value: 1,
                  label: "Single",
+                 imagePath: '/Content/images/list.png',
                  path: 'Content/partial/type/Single.html'
              },
                {
                    logicalName: "Multiply",
                    value: 2,
                    label: "Multiply",
+                   imagePath: '/Content/images/layout22.png',
                    path: 'Content/partial/type/Multiply.html'
                },
                {
                    logicalName: "quiz",
                    value: 3,
                    label: "Quiz",
+                   imagePath: '/Content/images/chronometer.png',
                    path: 'Content/partial/type/Quiz.html'
                }
             ],
