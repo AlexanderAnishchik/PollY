@@ -12,9 +12,9 @@ using System.Web.Mvc;
 using System.Data.Entity;
 using System.Web.Security;
 using PollyApp.Models;
+using System.Threading.Tasks;
 using SendGrid;
 using System.Net.Mail;
-using System.Threading.Tasks;
 
 namespace PollyApp.Controllers
 {
@@ -28,17 +28,17 @@ namespace PollyApp.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<ActionResult> SendEmail(EmailModel mail)
+        public ActionResult SendEmail(EmailModel mail)
         {
             SendGridMessage myMessage = new SendGridMessage();
-            myMessage.AddTo("help3@yourpolly.com");
+            myMessage.AddTo(mail.Email);
             myMessage.From = new MailAddress("info@yourpolly.com");
-            myMessage.Subject = "Testing the SendGrid";
-            myMessage.Text = "!It is working!!!!";
+            myMessage.Subject = mail.Title;
+            myMessage.Text = mail.Message;
 
             // Create a Web transport, using API Key
             var transportWeb = new Web("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");
-            await transportWeb.DeliverAsync(myMessage);
+            transportWeb.DeliverAsync(myMessage).RunSynchronously();
             return new JsonResult() { Data = new { status = "True" } };
         }
         protected override void Dispose(bool disposing)
