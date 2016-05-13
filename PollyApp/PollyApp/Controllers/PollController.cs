@@ -16,18 +16,20 @@ namespace PollyApp.Controllers
 
             if (PollHelper.CheckUrlProjectCode(poll))
             {
-                var valid = (SafeAdmission)Session["admission"];
-                if (valid != null && !valid.Status && valid.projectUrl== poll)
+                if (Session["admissions"] == null)
+                    Session["admissions"] = new List<SafeAdmission>();
+                SafeAdmission valid = ((List<SafeAdmission>)Session["admissions"]).Where(x => x.projectUrl == poll).FirstOrDefault();
+                if (valid != null && valid.Status)
                 {
-                    valid.Status = true;
                     return View();
                 }
-                   
-                return RedirectToAction("RouteAccess", "Admission", new { projectUrl = poll });
+                else {
+                    return RedirectToAction("RouteAccess", "Admission", new { projectUrl = poll });
+                }
             }
             return Redirect("/");
         }
-      
+
 
         protected override void Dispose(bool disposing)
         {
