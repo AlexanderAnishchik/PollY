@@ -1028,6 +1028,11 @@ growl-notification.fading.ng-leave.ng-leave-active {
     margin-bottom:15px;
     font-weight:500;             
 }
+.access-page .card .title.text-danger{
+    color:#e7832b;
+    border-left:10px solid #e74c3c;
+}
+
 .access-page .card{
     
     padding-top:20px;
@@ -1060,6 +1065,21 @@ growl-notification.fading.ng-leave.ng-leave-active {
     background:#1abc9c;
     border:none;
     border-radius:4px;
+}
+.access-page .card .btn-success.error{
+    background:#e7832b;
+}
+.access-page .card a:hover{
+    text-decoration:none !important;
+}
+.row-timer{
+    height:5px;
+    width:50px;
+    background:#3498db;
+}
+.sad-smile{
+    height: 100px;
+    margin-bottom: 30px;
 }
 .access-page .card .btn-success img{
 

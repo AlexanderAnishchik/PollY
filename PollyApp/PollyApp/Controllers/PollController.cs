@@ -25,9 +25,9 @@ namespace PollyApp.Controllers
                    
                 return RedirectToAction("RouteAccess", "Admission", new { projectUrl = poll });
             }
-            return Redirect("/");
+            return Redirect("/admission/notexist");
         }
-      
+        
 
         protected override void Dispose(bool disposing)
         {

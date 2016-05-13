@@ -178,23 +178,38 @@
                     <div class="col-lg-6 col-lg-offset-3">
                         <form name="contact" anim="flipInY" novalidate>
                             <div class="form-inline">
-                                <div class="form-group">
-                                    <input type="text" class="form-control input-lg" placeholder="First name" name="first" ng-model="inpt.feedback.firstname" />
+                                <div class="form-group" ng-class="{ 'has-error' : !contact.first.$pristine && contact.first.$invalid, 'has-success' : !contact.first.$pristine && contact.first.$valid}">
+                                    <input type="text" class="form-control input-lg" placeholder="First name" name="first" ng-model="inpt.feedback.firstname" ng-minlength="4"/>
                                 </div>
-                                <div class="form-group last">
-                                    <input type="text" class="form-control input-lg " placeholder="Last name" name="second" ng-model="inpt.feedback.lastname"/>
+                                
+                                <div class="form-group last" ng-class="{ 'has-error' : !contact.second.$pristine && contact.second.$invalid, 'has-success' : !contact.second.$pristine && contact.second.$valid}">
+                                    <input type="text" class="form-control input-lg " placeholder="Last name" name="second" ng-model="inpt.feedback.lastname" ng-minlength="4"/>
                                 </div>
+                                
                             </div>
-
-                            <div class="form-group form-group-lg">
+                            <div class="text-danger" ng-show="contact.first.$touched  && contact.first.$invalid">
+                                <small>First name must be more then 3 sybmols!</small>
+                            </div>
+                            <div class="text-danger" ng-show="contact.second.$touched  && contact.second.$invalid">
+                                <small>Last name must be more then 3 sybmols!</small>
+                            </div>
+                            <div class="form-group form-group-lg" ng-class="{ 'has-error' : !contact.email.$pristine && contact.email.$invalid, 'has-success' : !contact.email.$pristine && contact.email.$valid}">
                                 <input type="email" class="form-control input-lg" placeholder="Email to which a reply" name="email" ng-model="inpt.feedback.email"/>
                             </div>
-                            <div class="form-group form-group-lg">
-                                <input type="text" class="form-control input-lg" placeholder="Title" name="title" ng-model="inpt.feedback.title" />
+                            <div class="text-danger" ng-show="contact.email.$touched  && contact.email.$invalid">
+                                <small>Please enter the correct email</small>
                             </div>
-
-                            <div class="form-group form-group-lg">
-                                <textarea class="form-control" rows="5" placeholder="Your message" name="message" ng-model="inpt.feedback.message"></textarea>
+                            <div class="form-group form-group-lg" ng-class="{ 'has-error' : !contact.title.$pristine && contact.title.$invalid, 'has-success' : !contact.title.$pristine && contact.title.$valid}">
+                                <input type="text" class="form-control input-lg" placeholder="Title" name="title" ng-model="inpt.feedback.title" ng-minlength="11"/>
+                            </div>
+                            <div class="text-danger" ng-show="contact.title.$touched  && contact.title.$invalid">
+                                <small>Title must be more then 10 sybmols!</small>
+                            </div>
+                            <div class="form-group form-group-lg" ng-class="{ 'has-error' : !contact.message.$pristine && contact.message.$invalid, 'has-success' : !contact.message.$pristine && contact.message.$valid}">
+                                <textarea class="form-control" rows="5" placeholder="Your message" name="message" ng-model="inpt.feedback.message" ng-minlength="31"></textarea>
+                            </div>
+                            <div class="text-danger" ng-show="contact.message.$touched  && contact.message.$invalid">
+                                <small>Your message must be more then 30 sybmols!</small>
                             </div>
                             <div class="row">
                                 <div class="col-sm-4 col-xs-12">

@@ -111,6 +111,10 @@ namespace PollyApp.Controllers
             }
             return Redirect("/");
         }
+        public ActionResult NotExist()
+        {
+            return View();
+        }
         public ActionResult ValidateUser(string email,string pass)
         {
 
