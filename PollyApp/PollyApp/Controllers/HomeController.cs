@@ -28,17 +28,20 @@ namespace PollyApp.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult SendEmail(EmailModel mail)
+
+
+        public async Task<ActionResult> SendEmail(EmailModel mail)
         {
             SendGridMessage myMessage = new SendGridMessage();
-            myMessage.AddTo(mail.Email);
+
+            myMessage.AddTo("pollyukraine@gmail.com");
             myMessage.From = new MailAddress("info@yourpolly.com");
-            myMessage.Subject = mail.Title;
+            myMessage.Subject = mail.Email;
             myMessage.Text = mail.Message;
 
             // Create a Web transport, using API Key
             var transportWeb = new Web("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");
-            transportWeb.DeliverAsync(myMessage).RunSynchronously();
+            await transportWeb.DeliverAsync(myMessage);
             return new JsonResult() { Data = new { status = "True" } };
         }
         protected override void Dispose(bool disposing)

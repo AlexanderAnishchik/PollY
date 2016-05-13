@@ -62,6 +62,22 @@ namespace PollyApp.Controllers
             }
             return new JsonResult() { Data = null };
         }
+        public ActionResult SetTimer(string poll)
+        {
+            if (PollHelper.CheckUrlProjectCode(poll))
+            {
+                var valid = (SafeAdmission)Session["admission"];
+                if (valid.projectUrl == poll)
+                {
+                    
+                    Project data = PollHelper.GetProjectByURL(poll);
+                    var timerValue= PollHelper.GetTimerValue(data.Id);
+                    //NEED TO IMPLEMENT
+                    return new JsonResult() { Data = data };
+                }
+            }
+            return new JsonResult() { Data = null };
+        }
         public ActionResult SaveResults(PollResult poll)
         {
             var valid = (SafeAdmission)Session["admission"];
