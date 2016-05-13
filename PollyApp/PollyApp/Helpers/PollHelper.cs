@@ -33,6 +33,7 @@ namespace PollyApp.Helpers
                    .Select(n => new
                    {
                        Project = n,
+                       QuizConfig=n.QuizConfigurator,
                        Questions = Db.Context.Questions
                        .Join(Db.Context.Answers, q => q.Id, a => a.QuestionId, (q, a) => new { q, a })
                        .Where(x => x.q.ProjectId == n.Id)
@@ -55,6 +56,24 @@ namespace PollyApp.Helpers
                    .FirstOrDefault();
             }
             return data;
+        }
+        public static Int32? GetTimerValue(Int32 projectId)
+        {
+            using (var Db = new Repository())
+            {
+                var quizConf= Db.Context.Projects.Where(x => x.Id == projectId).Select(x=>x.QuizConfigurator).FirstOrDefault();
+                if (quizConf == null)
+                    return null;
+                else
+                    return quizConf.Timer;
+            }
+        }
+        public static Project GetProjectByURL(String url)
+        {
+            using (var Db = new Repository())
+            {
+                return Db.Context.Projects.Where(x => x.UrlCode == url).FirstOrDefault();
+            }
         }
         public static Boolean SavePoll(PollResult poll, SafeAdmission admission, HttpRequestBase request)
         {

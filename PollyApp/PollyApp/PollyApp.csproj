@@ -289,6 +289,9 @@
     <Content Include="Content\css\custom.css" />
     <Content Include="Content\css\dashboard.css" />
     <Content Include="Content\css\font-awesome.css" />
+    <Content Include="Content\css\green%402x.png" />
+    <Content Include="Content\css\green.css" />
+    <Content Include="Content\css\green.png" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\images\404.png" />
@@ -304,6 +307,7 @@
     <Content Include="Content\images\briefcase50.png" />
     <Content Include="Content\images\builder.png" />
     <Content Include="Content\images\chart.png" />
+    <Content Include="Content\images\chronometer.png" />
     <Content Include="Content\images\cinema21.png" />
     <Content Include="Content\images\cloud79.png" />
     <Content Include="Content\images\coffee.png" />
@@ -334,6 +338,7 @@
     <Content Include="Content\images\layout.png" />
     <Content Include="Content\images\layout22 %281%29.png" />
     <Content Include="Content\images\layout22.png" />
+    <Content Include="Content\images\list.png" />
     <Content Include="Content\images\loader.gif" />
     <Content Include="Content\images\lock134.png" />
     <Content Include="Content\images\mac-830.png" />
@@ -354,6 +359,7 @@
     <Content Include="Content\images\pollylogo.png" />
     <Content Include="Content\images\pollylogo2.png" />
     <Content Include="Content\images\pollylogogreen.png" />
+    <Content Include="Content\images\pollylogogreensmall.png" />
     <Content Include="Content\images\pollyradio.png" />
     <Content Include="Content\images\privacy.png" />
     <Content Include="Content\images\question.png" />
