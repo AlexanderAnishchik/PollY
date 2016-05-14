@@ -3,7 +3,7 @@
     $scope.data = null;
     me.result = [];
     me.init = function () {
-        me.startTimer(20);
+        me.startTimer(2);
         var pathArray = window.location.pathname.split('/');
         $http.post("/Constructor/GetPoll", { poll: pathArray[pathArray.length - 1] }).then(function (response) {
             $scope.data = me.parseAnswer(response.data);
@@ -17,9 +17,17 @@
     };
 
     me.startTimer = function (data) {
-        
-
-
+        var timerlength = document.querySelector('.timer').clientWidth;
+        var row_timer = document.querySelector('.row-timer');
+        var pixels = (timerlength / (data * 60)) / 10;
+        pixels = parseFloat(pixels.toFixed(3));
+        row_timer.style.width = "1px";
+        var timer = setInterval(function () {
+            row_timer.style.width = row_timer.clientWidth + pixels + "px";
+            if (row_timer.clientWidth >= timerlength) {
+                clearInterval(timer);
+            }
+        },100);
         //$http.post("/Constructor/SetTimer", { poll: pathArray[pathArray.length - 1] }).then(function (response) {
         //    //data.Timer - time in minutes
         //    //StartTimer
