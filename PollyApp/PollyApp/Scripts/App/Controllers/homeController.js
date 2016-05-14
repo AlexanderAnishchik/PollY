@@ -5,7 +5,7 @@
     };
     me.feedback = {};
     $scope.feedbackMessage = "";
-    $scope.feedbackMessage = null;
+    $scope.feedbackStatus = null;
     me.sendFeedback = function () {
         if (me.feedback.firstname && me.feedback.lastname && me.feedback.email && me.feedback.title && me.feedback.message) {
             $http.post("/Home/SendEmail", { FirstName: me.feedback.firstname, LastName: me.feedback.lastname, Email: me.feedback.email, Title: me.feedback.title, Message: me.feedback.message }).then(function (response) {
