@@ -3,6 +3,7 @@
     $scope.data = null;
     me.result = [];
     me.init = function () {
+        me.startTimer(20);
         var pathArray = window.location.pathname.split('/');
         $http.post("/Constructor/GetPoll", { poll: pathArray[pathArray.length - 1] }).then(function (response) {
             $scope.data = me.parseAnswer(response.data);
@@ -14,17 +15,20 @@
 
         });
     };
-    me.startTimer = function (data) {
-        $http.post("/Constructor/SetTimer", { poll: pathArray[pathArray.length - 1] }).then(function (response) {
-            //data.Timer - time in minutes
-            //StartTimer
-        }, function (err) {
 
-        });
+    me.startTimer = function (data) {
+        
+
+
+        //$http.post("/Constructor/SetTimer", { poll: pathArray[pathArray.length - 1] }).then(function (response) {
+        //    //data.Timer - time in minutes
+        //    //StartTimer
+        //}, function (err) {
+
+        //});
     };
     me.endTimer = function () {
         
-
     };
     me.isVote = false;
     me.save = function (event) {

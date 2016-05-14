@@ -1073,8 +1073,7 @@ growl-notification.fading.ng-leave.ng-leave-active {
     text-decoration:none !important;
 }
 .row-timer{
-    height:5px;
-    width:50px;
+    font-size:24px;
     background:#3498db;
 }
 .sad-smile{
