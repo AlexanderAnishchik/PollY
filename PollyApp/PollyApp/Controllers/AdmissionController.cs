@@ -16,54 +16,79 @@ namespace PollyApp.Controllers
         public GenericRepository.Repository Db = new GenericRepository.Repository();
         public ActionResult RouteAccess(string projectUrl)
         {
-            String route = String.Empty;
-            var project = Db.Context.Projects.Where(x => x.UrlCode == projectUrl).FirstOrDefault();
-            switch (project.PollAccess.Value)
-            {
-                case (Int32)DbEnum.PollAccess.CodeSet:
-                    route = "SetCode";
-                    break;
-                case (Int32)DbEnum.PollAccess.UserSet:
-                    route = "SetUser";
-                    break;
-                case (Int32)DbEnum.PollAccess.FreeLink:
-                    route = "FreeLink";
-                    break;
-                default:
-                    break;
+            try {
+                String route = String.Empty;
+                var project = Db.Context.Projects.Where(x => x.UrlCode == projectUrl).First();
+                switch (project.PollAccess.Value)
+                {
+                    case (Int32)DbEnum.PollAccess.CodeSet:
+                        route = "SetCode";
+                        break;
+                    case (Int32)DbEnum.PollAccess.UserSet:
+                        route = "SetUser";
+                        break;
+                    case (Int32)DbEnum.PollAccess.FreeLink:
+                        route = "FreeLink";
+                        break;
+                    default:
+                        break;
+                }
+                SafeAdmission valid = ((List<SafeAdmission>)Session["admissions"]).Where(x => x.projectUrl == projectUrl).FirstOrDefault();
+                if (valid == null)
+                {
+                    ((List<SafeAdmission>)Session["admissions"]).Add(new SafeAdmission()
+                    {
+                        projectUrl = projectUrl,
+                        AccessType = project.PollAccess.Value
+                    });
+                }
+                if (!String.IsNullOrEmpty(route))
+                    return RedirectToAction(route, new { projectUrl = projectUrl });
+                return RedirectToAction("/", "Home");
             }
-            Session["admission"] = new SafeAdmission
+            catch(Exception ex)
             {
-                projectUrl = projectUrl,
-                AccessType = project.PollAccess.Value
-            };
-            if (!String.IsNullOrEmpty(route))
-                return RedirectToAction(route);
-            return RedirectToAction("/", "Home");
+                return RedirectToAction("/", "Home");
+            }
         }
 
-        public ActionResult SetCode()
+        public ActionResult SetCode(string projectUrl)
         {
-            var valid = (SafeAdmission)Session["admission"];
-            if (valid != null && valid.AccessType==(Int32)DbEnum.PollAccess.CodeSet)
+            try
             {
-                return View();
+                SafeAdmission valid = ((List<SafeAdmission>)Session["admissions"]).Where(x => x.projectUrl == projectUrl).First();
+                if (valid != null && valid.AccessType == (Int32)DbEnum.PollAccess.CodeSet)
+                {
+                    return View(valid);
+                }
+                return RedirectToAction("/", "Home");
             }
-            return RedirectToAction("/", "Home");
+            catch(Exception ex)
+            {
+                return RedirectToAction("/", "Home");
+            }
         }
-        public ActionResult SetUser()
+        public ActionResult SetUser(string projectUrl)
         {
-            var valid = (SafeAdmission)Session["admission"];
-            if (valid != null && valid.AccessType == (Int32)DbEnum.PollAccess.UserSet)
+            try
             {
-                return View();
+                SafeAdmission valid = ((List<SafeAdmission>)Session["admissions"]).Where(x => x.projectUrl == projectUrl).First();
+                if (valid != null && valid.AccessType == (Int32)DbEnum.PollAccess.UserSet)
+                {
+
+                    return View((object)projectUrl);
+                }
+                return RedirectToAction("/", "Home");
             }
-            return RedirectToAction("/", "Home");
+            catch (Exception ex)
+            {
+                return RedirectToAction("/", "Home");
+            }
         }
-        public ActionResult FreeLink()
+        public ActionResult FreeLink(string projectUrl)
         {
 
-            var valid = (SafeAdmission)Session["admission"];
+            SafeAdmission valid = ((List<SafeAdmission>)Session["admissions"]).Where(x => x.projectUrl == projectUrl).First();
             if (valid != null && valid.AccessType == (Int32)DbEnum.PollAccess.FreeLink)
             {
                 HttpCookie cookie = Request.Cookies[MemberWorker.GetAnonymousCookieName()];
@@ -83,17 +108,18 @@ namespace PollyApp.Controllers
                         .FirstOrDefault();
                     if (project == null)
                     {
+                        valid.Status = true;
                         return RedirectToAction("Index", "Poll", new { poll = valid.projectUrl });
                     }
                 }
             }
             return RedirectToAction("/", "Home");
         }
-        public ActionResult ValidateCode(string access_code)
+        public ActionResult ValidateCode(string access_code,string projectUrl)
         {
-            
-            var valid = (SafeAdmission)Session["admission"];
-            if(valid!=null && valid.AccessType == (Int32)DbEnum.PollAccess.CodeSet)
+
+            SafeAdmission valid = ((List<SafeAdmission>)Session["admissions"]).Where(x => x.projectUrl == projectUrl).First();
+            if (valid!=null && valid.AccessType == (Int32)DbEnum.PollAccess.CodeSet)
             {
                 var project = Db.Context.Projects
                     .Join(Db.Context.ProjectAccessVoters, p => p.Id, pav => pav.ProjectId, (p, pav) => new { p, pav })
@@ -105,20 +131,17 @@ namespace PollyApp.Controllers
                 if (project!=null)
                 {
                     valid.UserIdentity=project.Id;
+                    valid.Status = true;
                     return RedirectToAction("Index", "Poll", new { poll = valid.projectUrl });
                 }
                     
             }
             return Redirect("/");
         }
-        public ActionResult NotExist()
-        {
-            return View();
-        }
-        public ActionResult ValidateUser(string email,string pass)
+        public ActionResult ValidateUser(string email,string pass,string projectUrl)
         {
 
-            var valid = (SafeAdmission)Session["admission"];
+            SafeAdmission valid = ((List<SafeAdmission>)Session["admissions"]).Where(x => x.projectUrl == projectUrl).First();
             if (valid != null && valid.AccessType == (Int32)DbEnum.PollAccess.UserSet)
             {
                 var project = Db.Context.Projects
@@ -135,6 +158,7 @@ namespace PollyApp.Controllers
                     if (hasUser== MemberWorker.LoginStatus.Success)
                     {
                         valid.UserIdentity = project.UserSetId;
+                        valid.Status = true;
                         return RedirectToAction("Index", "Poll", new { poll = valid.projectUrl });
                     }
                 }

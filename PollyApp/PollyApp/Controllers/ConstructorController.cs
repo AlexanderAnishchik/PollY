@@ -53,7 +53,7 @@ namespace PollyApp.Controllers
         {
             if (PollHelper.CheckUrlProjectCode(poll))
             {
-                var valid = (SafeAdmission)Session["admission"];
+                SafeAdmission valid = ((List<SafeAdmission>)Session["admissions"]).Where(x => x.projectUrl == poll).FirstOrDefault();
                 if (valid.projectUrl == poll)
                 {
                     var data = PollHelper.GetPoll(poll);
@@ -66,7 +66,7 @@ namespace PollyApp.Controllers
         {
             if (PollHelper.CheckUrlProjectCode(poll))
             {
-                var valid = (SafeAdmission)Session["admission"];
+                SafeAdmission valid = ((List<SafeAdmission>)Session["admissions"]).Where(x => x.projectUrl == poll).FirstOrDefault();
                 if (valid.projectUrl == poll)
                 {
                     
@@ -78,10 +78,11 @@ namespace PollyApp.Controllers
             }
             return new JsonResult() { Data = null };
         }
-        public ActionResult SaveResults(PollResult poll)
+        public ActionResult SaveResults(PollResult poll,Project project)
         {
-            var valid = (SafeAdmission)Session["admission"];
+            SafeAdmission valid = ((List<SafeAdmission>)Session["admissions"]).Where(x => x.projectUrl == project.UrlCode).FirstOrDefault();
             PollHelper.SavePoll(poll, valid, Request);
+            ((List<SafeAdmission>)Session["admissions"]).Remove(valid);
             return new JsonResult() { Data = null };
         }
         protected override void Dispose(bool disposing)
