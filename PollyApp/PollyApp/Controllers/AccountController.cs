@@ -4,6 +4,7 @@ using PollyApp.EFModel;
 using PollyApp.GenericRepository;
 using PollyApp.Helpers;
 using PollyApp.JsonConverters;
+using PollyApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -62,9 +63,15 @@ namespace PollyApp.Controllers
                       x.r.Id
                   }).Count();
                 var monthAgo = DateTime.Now.AddMonths(-1);
-                var lastProjectAction = Db.Context.Projects.Where(x => x.ModifiedOn > monthAgo && x.UserId== user.Id).Select(x => new { ProjectName = x.Name, ModifiedOn = x.ModifiedOn, x.IsActive }).ToList();
-                var lastUserAction = Db.Context.ProjectAccessVoters.Where(x => x.ModifiedOn > monthAgo && x.Project.UserId== user.Id).Select(x => new { UserName = x.UserSet.User != null ? x.UserSet.User.Email : x.UserSet.IPAdrress, ModifiedOn = x.ModifiedOn, ProjectName = x.Project.Name}).ToList();
-                return new JsonResult() { Data = new { userProject, votedProject, answerProjects, lastProjectAction, lastUserAction }, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+                var lastProjectAction = Db.Context.Projects.Where(x => x.ModifiedOn > monthAgo && x.UserId== user.Id).Select(x => new ProjectActivity() { Name = x.Name,Type="Added/Modified Project", ModifiedOn = x.ModifiedOn!=null?x.ModifiedOn.ToString():null }).ToList();
+                var lastUserAction = Db.Context.ProjectAccessVoters.Where(x => x.ModifiedOn > monthAgo && x.Project.UserId== user.Id).Select(x => new ProjectActivity()
+                {
+                    Name = x.UserSet.User != null ? x.UserSet.User.Email : x.UserSet.IPAdrress!=null ? x.UserSet.IPAdrress:x.CodeSet.CodeText,
+                    Type = x.IsUsed==true? "User has voted in the project "+x.Project.Name:"Added User",
+                    ModifiedOn = x.IsUsed == true?x.VotedOn != null ? x.VotedOn.ToString() : null:x.ModifiedOn != null ? x.ModifiedOn.ToString() : null
+                }).ToList();
+                lastUserAction.AddRange(lastProjectAction);
+                return new JsonResult() { Data = new { userProject, votedProject, answerProjects, lastAction=lastUserAction }, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
             else
                 return null;

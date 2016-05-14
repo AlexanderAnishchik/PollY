@@ -20,6 +20,7 @@ namespace PollyApp.EFModel
         public Nullable<int> UserSetId { get; set; }
         public Nullable<int> ProjectId { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
+        public Nullable<System.DateTime> VotedOn { get; set; }
     
         public virtual CodeSet CodeSet { get; set; }
         public virtual Project Project { get; set; }

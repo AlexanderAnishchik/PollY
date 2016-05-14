@@ -71,6 +71,7 @@
           <Property Name="UserSetId" Type="int" />
           <Property Name="ProjectId" Type="int" />
           <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="VotedOn" Type="datetime" />
         </EntityType>
         <EntityType Name="Question">
           <Key>
@@ -553,6 +554,7 @@
           <NavigationProperty Name="CodeSet" Relationship="PollyDbModel.FK_ProjectAccessVoters_CodeSet1" FromRole="ProjectAccessVoter" ToRole="CodeSet" />
           <NavigationProperty Name="Project" Relationship="PollyDbModel.FK_ProjectAccessVoters_Project" FromRole="ProjectAccessVoter" ToRole="Project" />
           <NavigationProperty Name="UserSet" Relationship="PollyDbModel.fk_PrAc_US" FromRole="ProjectAccessVoter" ToRole="UserSet" />
+          <Property Name="VotedOn" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="Question">
           <Key>
@@ -894,6 +896,7 @@
           <EntitySetMapping Name="ProjectAccessVoters">
             <EntityTypeMapping TypeName="PollyDbModel.ProjectAccessVoter">
               <MappingFragment StoreEntitySet="ProjectAccessVoters">
+                <ScalarProperty Name="VotedOn" ColumnName="VotedOn" />
                 <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
                 <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
                 <ScalarProperty Name="UserSetId" ColumnName="UserSetId" />

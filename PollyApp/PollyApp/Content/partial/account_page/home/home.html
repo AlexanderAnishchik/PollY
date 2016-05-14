@@ -23,17 +23,18 @@
                     <thead>
                         <tr class="headings">
                             <th class="column-title">#</th>
-                            <th class="column-title">Action</th>
-                            <th class="column-title">Type</th>
+                            <th class="column-title">Type Action</th>
+                            <th class="column-title">Name</th>
                             <th class="column-title">Date</th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        <tr class="even pointer">
-                            <td class="">1</td>
-                            <td class="">Test poll</td>
-                            <td class="">May 23, 2014 11:47:56 PM</td>
+                        <tr ng-repeat="act in lastAction">
+                            <td class="">{{$index}}</td>
+                            <td class="">{{act.Type}}</td>
+                            <td class="">{{act.Name}}</td>
+                            <td class="">{{act.ModifiedOn}}</td>
                            
                         </tr>
                                         

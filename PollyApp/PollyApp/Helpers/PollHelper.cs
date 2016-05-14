@@ -78,26 +78,50 @@ namespace PollyApp.Helpers
         public static Boolean SavePoll(PollResult poll, SafeAdmission admission, HttpRequestBase request)
         {
             var voterId = GetVoterState(admission, request);
-            using (var Db = new Repository())
+            try
             {
-
-                poll.PollResultQuestions.ForEach(el =>
+                using (var Db = new Repository())
                 {
-                    el.Answers.ForEach(an =>
+
+                    poll.PollResultQuestions.ForEach(el =>
                     {
-                        Db.Context.Results.Add(new EFModel.Result() { AnswerId = Int32.Parse(an), QuestionId = Int32.Parse(el.Id), VoterId = (Int32)voterId, ProjectId = Db.Context.Projects.Where(x => x.UrlCode == admission.projectUrl).Select(x => x.Id).FirstOrDefault() });
+                        el.Answers.ForEach(an =>
+                        {
+                            Db.Context.Results.Add(new EFModel.Result() { AnswerId = Int32.Parse(an), QuestionId = Int32.Parse(el.Id), VoterId = (Int32)voterId, ProjectId = Db.Context.Projects.Where(x => x.UrlCode == admission.projectUrl).Select(x => x.Id).FirstOrDefault() });
+                        });
+
                     });
-                    
-                });
-                Db.Save();
+                    Db.Save();
+                }
+                return true;
             }
-            return false;
+            catch(Exception ex)
+            {
+                using (var Db = new Repository())
+                {
+
+                    var v = Db.Context.ProjectAccessVoters.Where(x => x.Id == voterId).FirstOrDefault();
+                    v.IsUsed = false;
+                    v.VotedOn = null;
+                    Db.Save();
+                }
+                return false;
+            }
         }
 
         private static Int32? GetVoterState(SafeAdmission admission, HttpRequestBase request)
         {
             if (admission.UserIdentity != null)
+            {
+                using (var Db = new Repository())
+                {
+                    var v = Db.Context.ProjectAccessVoters.Where(x => x.Id == admission.UserIdentity).FirstOrDefault();
+                    v.IsUsed = true;
+                    v.VotedOn = DateTime.Now;
+                    Db.Save();
+                }
                 return admission.UserIdentity;
+            }
             HttpCookie cookie = request.Cookies[MemberWorker.GetAnonymousCookieName()];
             if (cookie != null)
             {
@@ -107,6 +131,7 @@ namespace PollyApp.Helpers
                 {
                     UserSet user = new UserSet() { CookieValue = val };
                     voter = new ProjectAccessVoter() { ProjectId = Db.Context.Projects.Where(x => x.UrlCode == admission.projectUrl).Select(x => x.Id).FirstOrDefault(), UserSet = user, IsUsed=true,ModifiedOn=DateTime.Now};
+                    voter.VotedOn = DateTime.Now;
                     Db.Context.ProjectAccessVoters.Add(voter);
                     Db.Save();
                 }

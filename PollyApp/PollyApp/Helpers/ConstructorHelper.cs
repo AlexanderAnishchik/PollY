@@ -25,7 +25,7 @@ namespace PollyApp.Helpers
                 Db.Save();
                 foreach (var code in codesList)
                 {
-                    Db.Context.ProjectAccessVoters.Add(new ProjectAccessVoter() { CodeSetId = code.Id, ProjectId = projectId, IsUsed = false });
+                    Db.Context.ProjectAccessVoters.Add(new ProjectAccessVoter() { CodeSetId = code.Id, ProjectId = projectId, IsUsed = false,ModifiedOn=DateTime.Now });
                 }
                 Db.Save();
             }
@@ -45,7 +45,7 @@ namespace PollyApp.Helpers
                 Db.Save();
                 foreach (var user in userSets)
                 {
-                    Db.Context.ProjectAccessVoters.Add(new ProjectAccessVoter() { UserSetId = user.Id, ProjectId = projectId, IsUsed = false });
+                    Db.Context.ProjectAccessVoters.Add(new ProjectAccessVoter() { UserSetId = user.Id, ProjectId = projectId, IsUsed = false, ModifiedOn = DateTime.Now });
                 }
                 Db.Save();
             }

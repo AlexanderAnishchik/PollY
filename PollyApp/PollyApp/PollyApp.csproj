@@ -268,6 +268,7 @@
     <Compile Include="JsonConverters\AnswerConverter.cs" />
     <Compile Include="JsonConverters\Helpers\TextAnswer.cs" />
     <Compile Include="JsonConverters\IConverter.cs" />
+    <Compile Include="Models\ProjectActivity.cs" />
     <Compile Include="Models\PollResult.cs" />
     <Compile Include="Models\PollResultQuestion.cs" />
     <Compile Include="Models\PollUnit.cs" />
