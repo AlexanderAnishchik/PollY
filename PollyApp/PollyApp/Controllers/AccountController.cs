@@ -32,50 +32,7 @@ namespace PollyApp.Controllers
                 return null;
         }
 
-        [UserAuth]
-        public ActionResult GetUserPollInformation()
-        {
-            if (Session["user"] != null)
-            {
-                User user = (User)Session["user"];
-                var pollSet = new PollSetQuery();
-                var userProject = Db.Context.Projects
-                    .Where(x => x.UserId == user.Id)
-                       .Select(x => new
-                       {
-                           x.Name,
-                           x.IsActive
-                       }).ToList();
-                var votedProject = Db.Context.Projects
-                    .Join(Db.Context.Results, p => p.Id, r => r.ProjectId, (p, r) => new { p, r })
-                    .Where(x => x.p.UserId == user.Id)
-                    .Select(x => new
-                    {
-                        x.r.VoterId
-                    })
-                    .Distinct().Count();
-                var answerProjects = Db.Context.Projects
-                  .Join(Db.Context.ProjectAccessVoters, p => p.Id, r => r.ProjectId, (p, r) => new { p, r })
-                  .Where(x => x.p.UserId == user.Id)
-                  .Where(x => x.r.IsUsed == true)
-                  .Select(x => new
-                  {
-                      x.r.Id
-                  }).Count();
-                var monthAgo = DateTime.Now.AddMonths(-1);
-                var lastProjectAction = Db.Context.Projects.Where(x => x.ModifiedOn > monthAgo && x.UserId== user.Id).Select(x => new ProjectActivity() { Name = x.Name,Type="Added/Modified Project", ModifiedOn = x.ModifiedOn!=null?x.ModifiedOn.ToString():null }).ToList();
-                var lastUserAction = Db.Context.ProjectAccessVoters.Where(x => x.ModifiedOn > monthAgo && x.Project.UserId== user.Id).Select(x => new ProjectActivity()
-                {
-                    Name = x.UserSet.User != null ? x.UserSet.User.Email : x.UserSet.IPAdrress!=null ? x.UserSet.IPAdrress:x.CodeSet.CodeText,
-                    Type = x.IsUsed==true? "User has voted in the project "+x.Project.Name:"Added User",
-                    ModifiedOn = x.IsUsed == true?x.VotedOn != null ? x.VotedOn.ToString() : null:x.ModifiedOn != null ? x.ModifiedOn.ToString() : null
-                }).ToList();
-                lastUserAction.AddRange(lastProjectAction);
-                return new JsonResult() { Data = new { userProject, votedProject, answerProjects, lastAction=lastUserAction }, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
-            }
-            else
-                return null;
-        }
+      
         [HttpPost]
         public ActionResult GetUserByEmail(string email)
         {

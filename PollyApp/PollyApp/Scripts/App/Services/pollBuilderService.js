@@ -91,8 +91,8 @@
             }
             return next(null, self.validPollArray);
         };
-        self.save = function (success, serverError) {
-            $http.post("Constructor/SavePoll", { configPoll: self.validPollArray, poll: self.validPollArray.poll }).then(function (response) {
+        self.save = function (hasUser,success, serverError) {
+            $http.post("Constructor/SavePoll", { configPoll: self.validPollArray, poll: self.validPollArray.poll,hasUser:hasUser }).then(function (response) {
                 self.lastSavedProject = response.data.UrlCode;
                 success();
             }, function (response) {

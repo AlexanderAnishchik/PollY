@@ -5,7 +5,7 @@
         me.getPollinformation();
     };
     me.getPollinformation = function () {
-        $http.get("/Account/GetUserPollInformation")
+        $http.get("/ProjectManagment/GetUserPollInformation")
             .then(function (response) {
                 if (response.data)
                     me.setPollInf(response.data.userProject, response.data.votedProject, response.data.answerProjects);

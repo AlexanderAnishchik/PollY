@@ -17,15 +17,14 @@
                 </ul>
                 <div class="clearfix"></div>
             </md-card-title>
-            <img ng-src="/Content/images/Polls/polly.jpg" class="md-card-image" alt="Washed Out">
-           
-            
-            
+            <highchart id="chart1"
+                       config="poll.chart">
+            </highchart>
             <md-card-content>
                 <div style="text-align: center; margin-bottom: 15px;">
                     <md-card-actions layout="row" layout-align="center">
                         <md-button ng-click="pollCtrl.updateView('/Content/partial/account_page/polls/poll.html')">Open</md-button>
-                        <md-button>Delete</md-button>
+                        <md-button ng-click="pollCtrl.deletePoll(poll.Id)">Delete</md-button>
                     </md-card-actions>
                 </div>
 
@@ -34,7 +33,7 @@
                         <li>
                             <p>
                                 <span class="month">Project Type</span>
-                                <span class="count">Multiple</span>
+                                <span class="count">{{poll.Type}}</span>
                             </p>
                         </li>
                         <li>
@@ -46,12 +45,13 @@
                         <li>
                             <p>
                                 <span class="month">Users Have Voted</span>
-                                <span class="count">10</span>
+                                <span class="count">{{poll.Voted}}</span>
                             </p>
                         </li>
                     </ul>
                 </div>
             </md-card-content>
+          
         </md-card>
     </div>
 </div>

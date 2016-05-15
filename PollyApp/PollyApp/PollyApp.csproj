@@ -194,6 +194,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProjectManagmentController.cs" />
     <Compile Include="Controllers\PollController.cs" />
     <Compile Include="Controllers\TicketController.cs" />
     <Compile Include="EFModel\Answer.cs">
@@ -465,6 +466,9 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Scripts\3rd\dark-unica.js" />
+    <Content Include="Scripts\3rd\exporting.js" />
+    <Content Include="Scripts\3rd\highcharts.js" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-animate\angular-animate.js" />
@@ -512,6 +516,7 @@
     <Content Include="Scripts\App\Controllers\homeController.js" />
     <Content Include="Scripts\App\Controllers\pollController.js" />
     <Content Include="Scripts\App\Directives\enterDirective.js" />
+    <Content Include="Scripts\App\Directives\highcharts-ng.js" />
     <Content Include="Scripts\App\Factory\accountSettings.js" />
     <Content Include="Scripts\App\Factory\answerTypeFactory.js" />
     <Content Include="Scripts\App\Modules\ngAnimation.js" />
