@@ -23,17 +23,18 @@
                     <thead>
                         <tr class="headings">
                             <th class="column-title">#</th>
-                            <th class="column-title">Action</th>
-                            <th class="column-title">Type</th>
+                            <th class="column-title">Type Action</th>
+                            <th class="column-title">Name</th>
                             <th class="column-title">Date</th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        <tr class="even pointer">
-                            <td class="">1</td>
-                            <td class="">Test poll</td>
-                            <td class="">May 23, 2014 11:47:56 PM</td>
+                        <tr ng-repeat="act in lastAction">
+                            <td class="">{{$index}}</td>
+                            <td class="">{{act.Type}}</td>
+                            <td class="">{{act.Name}}</td>
+                            <td class="">{{act.ModifiedOn}}</td>
                            
                         </tr>
                                         
@@ -244,15 +245,6 @@
                             </li>
                         </ul>
 
-                        <div class="sidebar-widget">
-                            <h4>Profile Completion</h4>
-                            <canvas width="150" height="80" id="foo" class="" style="width: 160px; height: 100px;"></canvas>
-                            <div class="goal-wrapper">
-                                <span class="gauge-value pull-left">$</span>
-                                <span id="gauge-text" class="gauge-value pull-left">3,200</span>
-                                <span id="goal-text" class="goal-value pull-right">$5,000</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

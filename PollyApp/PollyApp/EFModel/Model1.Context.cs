@@ -18,6 +18,7 @@ namespace PollyApp.EFModel
         public Entities()
             : base("name=Entities")
         {
+            
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

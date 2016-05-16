@@ -1,4 +1,7 @@
-﻿@{
+﻿@using PollyApp.Helpers;
+@model SafeAdmission
+
+@{
     ViewBag.Title = "Access to poll";
     Layout = null;
 }
@@ -21,7 +24,7 @@
 <body style="background: url(../Content/images/bgroad.png) !important; background-repeat:no-repeat; background-size:cover !important; background-position:center;">
     <div class="container text-center access-page">
         <div class="row">
-            <img src="~/Content/images/pollylogogreen.png" />
+            <a href="/"><img src="~/Content/images/pollylogogreen.png" /></a>
         </div>
         <div class="row">
             <div class="col-lg-6 col-md-4 col-sm-8 col-xs-10 col-lg-offset-3 col-md-offset-4 col-sm-offset-2 col-xs-offset-1">
@@ -35,6 +38,7 @@
                         <div class="form-group">
                             <input class="form-control" placeholder="Access code" name="access_code" />
                         </div>
+                        @Html.HiddenFor(model => model.projectUrl, new { id = "projectUrl",name= "projectUrl" })
                         <div class="">
                             <button type="submit" class="btn btn-success btn-lg btn-block"><img src="~/Content/images/unlocked-padlock.png" /></button>
                         </div>

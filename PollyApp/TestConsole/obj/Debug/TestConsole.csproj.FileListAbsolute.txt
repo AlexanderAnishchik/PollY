@@ -42,3 +42,17 @@ D:\Новая папка\PollY\PollyApp\TestConsole\bin\Debug\ru\System.Web.WebP
 D:\Новая папка\PollY\PollyApp\TestConsole\bin\Debug\ru\System.Web.WebPages.Deployment.resources.dll
 D:\Новая папка\PollY\PollyApp\TestConsole\obj\Debug\TestConsole.exe
 D:\Новая папка\PollY\PollyApp\TestConsole\obj\Debug\TestConsole.pdb
+E:\Projects\PollY\PollyApp\TestConsole\bin\Debug\TestConsole.exe.config
+E:\Projects\PollY\PollyApp\TestConsole\bin\Debug\TestConsole.exe
+E:\Projects\PollY\PollyApp\TestConsole\bin\Debug\TestConsole.pdb
+E:\Projects\PollY\PollyApp\TestConsole\bin\Debug\Newtonsoft.Json.dll
+E:\Projects\PollY\PollyApp\TestConsole\bin\Debug\SendGrid.dll
+E:\Projects\PollY\PollyApp\TestConsole\bin\Debug\SendGrid.SmtpApi.dll
+E:\Projects\PollY\PollyApp\TestConsole\bin\Debug\SendGridMail.dll
+E:\Projects\PollY\PollyApp\TestConsole\bin\Debug\System.Net.Http.Formatting.dll
+E:\Projects\PollY\PollyApp\TestConsole\bin\Debug\Newtonsoft.Json.xml
+E:\Projects\PollY\PollyApp\TestConsole\bin\Debug\System.Net.Http.Formatting.xml
+E:\Projects\PollY\PollyApp\TestConsole\bin\Debug\ru\System.Net.Http.Formatting.resources.dll
+E:\Projects\PollY\PollyApp\TestConsole\obj\Debug\TestConsole.csprojResolveAssemblyReference.cache
+E:\Projects\PollY\PollyApp\TestConsole\obj\Debug\TestConsole.exe
+E:\Projects\PollY\PollyApp\TestConsole\obj\Debug\TestConsole.pdb

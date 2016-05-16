@@ -20,9 +20,36 @@
         headerKeeperService.data.modalInstance = modalInstance;
     };
     
-    $scope.saveToAccount = function (event) {
-        if (headerKeeperService.data.user) {
-            pollBuilderService.save(function () {
+    $scope.saveDataTo = function (event, toAccount) {
+        if (toAccount)
+        {
+            if (headerKeeperService.data.user) {
+                pollBuilderService.save(true, function () {
+                    var modalObject = {
+                        title: "Link to poll",
+                        textContent: window.location.origin + "/poll/" + pollBuilderService.lastSavedProject,
+                        ariaLabel: window.location.origin + "/poll/" + pollBuilderService.lastSavedProject,
+                        event: event
+                    };
+                    modalService.functions.clearPollData(true);
+                    modalService.showConfirm(modalObject, function () { window.location.href = "/"; }, function () { });
+
+                }, function () {
+                    var modalObject = {
+                        title: "Error",
+                        textContent: "Sorry, server have not done your request. Try again",
+                        ariaLabel: "Error",
+                        event: event
+                    }
+                    modalService.showAlert(modalObject, function () { });
+                });
+            }
+            else
+            {
+                $scope.openModalBt();
+            }
+        } else {
+            pollBuilderService.save(false,function () {
                 var modalObject = {
                     title: "Link to poll",
                     textContent: window.location.origin + "/poll/" + pollBuilderService.lastSavedProject,
@@ -30,7 +57,7 @@
                     event: event
                 };
                 modalService.functions.clearPollData(true);
-                modalService.showConfirm(modalObject, function () { window.location.href = "/";  }, function () { });
+                modalService.showConfirm(modalObject, function () { window.location.href = "/"; }, function () { });
 
             }, function () {
                 var modalObject = {
@@ -42,9 +69,30 @@
                 modalService.showAlert(modalObject, function () { });
             });
         }
-        else {
-            $scope.openModalBt();
-        }
+        //if (headerKeeperService.data.user) {
+        //    pollBuilderService.save(function () {
+        //        var modalObject = {
+        //            title: "Link to poll",
+        //            textContent: window.location.origin + "/poll/" + pollBuilderService.lastSavedProject,
+        //            ariaLabel: window.location.origin + "/poll/" + pollBuilderService.lastSavedProject,
+        //            event: event
+        //        };
+        //        modalService.functions.clearPollData(true);
+        //        modalService.showConfirm(modalObject, function () { window.location.href = "/";  }, function () { });
+
+        //    }, function () {
+        //        var modalObject = {
+        //            title: "Error",
+        //            textContent: "Sorry, server have not done your request. Try again",
+        //            ariaLabel: "Error",
+        //            event: event
+        //        }
+        //        modalService.showAlert(modalObject, function () { });
+        //    });
+        //}
+        //else {
+        //    $scope.openModalBt();
+        //}
        
             
     };

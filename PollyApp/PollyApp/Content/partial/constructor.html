@@ -31,7 +31,7 @@
                                     </p>
                                 </md-card-content>
                                 <md-card-actions layout="column" layout-align="start">
-                                    <md-button ng-click="saveToAccount($event)">Save</md-button>
+                                    <md-button ng-click="saveDataTo($event,true)">Save</md-button>
                                 </md-card-actions>
                             </md-card>
                         </div>
@@ -50,7 +50,7 @@
                                     </p>
                                 </md-card-content>
                                 <md-card-actions layout="column" layout-align="start">
-                                    <md-button ng-click="saveToAccount($event)">Save</md-button>
+                                    <md-button ng-click="saveDataTo($event,false)">Save</md-button>
                                 </md-card-actions>
                             </md-card>
                         </div>
@@ -91,7 +91,6 @@
             </div>
         </div>
         <div class="card col-lg-6 col-lg-offset-1">
-            <div class="text-center" ng-show="!headerData.user"><small class="text-danger">The project will not be saved until you will be logged in!</small></div>
             <div class="header-card">
                 Builder
             </div>

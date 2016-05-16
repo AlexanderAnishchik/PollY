@@ -19,11 +19,14 @@ namespace PollyApp.Controllers
             return View();
         }
         [UserAuth]
-        public ActionResult SavePoll(PollWrapper configPoll, List<PollUnit> poll)
+        public ActionResult SavePoll(PollWrapper configPoll, List<PollUnit> poll, Boolean? hasUser)
         {
             try
             {
-                configPoll.UserId = ((dynamic)Session["user"]).Id;
+                if (Session["user"] != null)
+                {
+                    configPoll.UserId = ((dynamic)Session["user"]).Id;
+                }
               var project=  ConstructorHelper.Save(configPoll, poll);
                return new JsonResult() { Data =new {project.UrlCode } };
             }
@@ -53,7 +56,7 @@ namespace PollyApp.Controllers
         {
             if (PollHelper.CheckUrlProjectCode(poll))
             {
-                var valid = (SafeAdmission)Session["admission"];
+                SafeAdmission valid = ((List<SafeAdmission>)Session["admissions"]).Where(x => x.projectUrl == poll).FirstOrDefault();
                 if (valid.projectUrl == poll)
                 {
                     var data = PollHelper.GetPoll(poll);
@@ -62,10 +65,27 @@ namespace PollyApp.Controllers
             }
             return new JsonResult() { Data = null };
         }
-        public ActionResult SaveResults(PollResult poll)
+        public ActionResult SetTimer(string poll)
         {
-            var valid = (SafeAdmission)Session["admission"];
+            if (PollHelper.CheckUrlProjectCode(poll))
+            {
+                SafeAdmission valid = ((List<SafeAdmission>)Session["admissions"]).Where(x => x.projectUrl == poll).FirstOrDefault();
+                if (valid.projectUrl == poll)
+                {
+                    
+                    Project data = PollHelper.GetProjectByURL(poll);
+                    var timerValue= PollHelper.GetTimerValue(data.Id);
+                    //NEED TO IMPLEMENT
+                    return new JsonResult() { Data = data };
+                }
+            }
+            return new JsonResult() { Data = null };
+        }
+        public ActionResult SaveResults(PollResult poll,Project project)
+        {
+            SafeAdmission valid = ((List<SafeAdmission>)Session["admissions"]).Where(x => x.projectUrl == project.UrlCode).FirstOrDefault();
             PollHelper.SavePoll(poll, valid, Request);
+            ((List<SafeAdmission>)Session["admissions"]).Remove(valid);
             return new JsonResult() { Data = null };
         }
         protected override void Dispose(bool disposing)
@@ -73,5 +93,6 @@ namespace PollyApp.Controllers
             Db.Dispose();
             base.Dispose(disposing);
         }
+
     }
 }

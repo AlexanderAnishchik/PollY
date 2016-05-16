@@ -194,6 +194,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProjectManagmentController.cs" />
     <Compile Include="Controllers\PollController.cs" />
     <Compile Include="Controllers\TicketController.cs" />
     <Compile Include="EFModel\Answer.cs">
@@ -268,6 +269,7 @@
     <Compile Include="JsonConverters\AnswerConverter.cs" />
     <Compile Include="JsonConverters\Helpers\TextAnswer.cs" />
     <Compile Include="JsonConverters\IConverter.cs" />
+    <Compile Include="Models\ProjectActivity.cs" />
     <Compile Include="Models\PollResult.cs" />
     <Compile Include="Models\PollResultQuestion.cs" />
     <Compile Include="Models\PollUnit.cs" />
@@ -289,6 +291,9 @@
     <Content Include="Content\css\custom.css" />
     <Content Include="Content\css\dashboard.css" />
     <Content Include="Content\css\font-awesome.css" />
+    <Content Include="Content\css\green%402x.png" />
+    <Content Include="Content\css\green.css" />
+    <Content Include="Content\css\green.png" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\images\404.png" />
@@ -304,6 +309,7 @@
     <Content Include="Content\images\briefcase50.png" />
     <Content Include="Content\images\builder.png" />
     <Content Include="Content\images\chart.png" />
+    <Content Include="Content\images\chronometer.png" />
     <Content Include="Content\images\cinema21.png" />
     <Content Include="Content\images\cloud79.png" />
     <Content Include="Content\images\coffee.png" />
@@ -334,6 +340,7 @@
     <Content Include="Content\images\layout.png" />
     <Content Include="Content\images\layout22 %281%29.png" />
     <Content Include="Content\images\layout22.png" />
+    <Content Include="Content\images\list.png" />
     <Content Include="Content\images\loader.gif" />
     <Content Include="Content\images\lock134.png" />
     <Content Include="Content\images\mac-830.png" />
@@ -354,6 +361,7 @@
     <Content Include="Content\images\pollylogo.png" />
     <Content Include="Content\images\pollylogo2.png" />
     <Content Include="Content\images\pollylogogreen.png" />
+    <Content Include="Content\images\pollylogogreensmall.png" />
     <Content Include="Content\images\pollyradio.png" />
     <Content Include="Content\images\privacy.png" />
     <Content Include="Content\images\question.png" />
@@ -458,6 +466,9 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Scripts\3rd\dark-unica.js" />
+    <Content Include="Scripts\3rd\exporting.js" />
+    <Content Include="Scripts\3rd\highcharts.js" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-animate\angular-animate.js" />
@@ -505,6 +516,7 @@
     <Content Include="Scripts\App\Controllers\homeController.js" />
     <Content Include="Scripts\App\Controllers\pollController.js" />
     <Content Include="Scripts\App\Directives\enterDirective.js" />
+    <Content Include="Scripts\App\Directives\highcharts-ng.js" />
     <Content Include="Scripts\App\Factory\accountSettings.js" />
     <Content Include="Scripts\App\Factory\answerTypeFactory.js" />
     <Content Include="Scripts\App\Modules\ngAnimation.js" />
@@ -1364,6 +1376,7 @@
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Account\Profile.cshtml" />
     <Content Include="Views\Doc\Index.cshtml" />
+    <Content Include="Views\Admission\NotExist.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

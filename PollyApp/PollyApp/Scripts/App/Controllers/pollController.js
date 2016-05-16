@@ -6,10 +6,31 @@
         var pathArray = window.location.pathname.split('/');
         $http.post("/Constructor/GetPoll", { poll: pathArray[pathArray.length - 1] }).then(function (response) {
             $scope.data = me.parseAnswer(response.data);
+            if ($scope.data.QuizConfig) {
+                me.startTimer($scope.data.QuizConfig);
+            }
         })
         .then(function (response) {
 
         });
+    };
+
+    me.startTimer = function (data) {
+        var timerlength = document.querySelector('.timer').clientWidth;
+        var row_timer = document.querySelector('.row-timer');
+        var pixels = (timerlength / (data * 60)) / 10;
+        pixels = parseFloat(pixels.toFixed(3));
+        row_timer.style.width = "1px";
+        var timer = setInterval(function () {
+            row_timer.style.width = row_timer.clientWidth + pixels + "px";
+            if (row_timer.clientWidth >= timerlength) {
+                clearInterval(timer);
+            }
+        },100);
+
+    };
+    me.endTimer = function () {
+        
     };
     me.isVote = false;
     me.save = function (event) {
@@ -31,7 +52,7 @@
             window.location.href = "/";
         });
   
-     $http.post("/Constructor/SaveResults", { poll: { PollResultQuestions: sendData } }).then(function (response) {
+        $http.post("/Constructor/SaveResults", { poll: { PollResultQuestions: sendData }, project: $scope.data.Project }).then(function (response) {
             alert("Success");
             $scope.data = me.parseAnswer(response.data);
         })
@@ -39,6 +60,7 @@
            alert("Error");
        });
     };
+    
     me.prepareData = function () {
         var finishData = [];
         for (var qw in me.result) {

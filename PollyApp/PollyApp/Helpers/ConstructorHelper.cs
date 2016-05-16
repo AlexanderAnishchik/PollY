@@ -25,7 +25,7 @@ namespace PollyApp.Helpers
                 Db.Save();
                 foreach (var code in codesList)
                 {
-                    Db.Context.ProjectAccessVoters.Add(new ProjectAccessVoter() { CodeSetId = code.Id, ProjectId = projectId, IsUsed = false });
+                    Db.Context.ProjectAccessVoters.Add(new ProjectAccessVoter() { CodeSetId = code.Id, ProjectId = projectId, IsUsed = false,ModifiedOn=DateTime.Now });
                 }
                 Db.Save();
             }
@@ -45,7 +45,7 @@ namespace PollyApp.Helpers
                 Db.Save();
                 foreach (var user in userSets)
                 {
-                    Db.Context.ProjectAccessVoters.Add(new ProjectAccessVoter() { UserSetId = user.Id, ProjectId = projectId, IsUsed = false });
+                    Db.Context.ProjectAccessVoters.Add(new ProjectAccessVoter() { UserSetId = user.Id, ProjectId = projectId, IsUsed = false, ModifiedOn = DateTime.Now });
                 }
                 Db.Save();
             }
@@ -70,7 +70,7 @@ namespace PollyApp.Helpers
                         var pollAccess = Db.Context.PollAccesses.Where(x => x.Value == configPoll.PollAccess).Select(x => x.Id).First();
                         var pollTypes = Db.Context.PollTypes.Where(x => x.Value == configPoll.PollType).Select(x => x.Id).First();
                         Project newProj = new Project();
-                        newProj.UserId = (int)configPoll.UserId;
+                        newProj.UserId = configPoll.UserId;
                         newProj.Name = configPoll.PollName;
                         newProj.ShareId = pollShare;
                         newProj.AccessId = pollAccess;
