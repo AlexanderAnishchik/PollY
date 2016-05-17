@@ -6399,3 +6399,23 @@ md-card .panel_toolbox{
     display:flex;
     justify-content:flex-end;
 }
+.row-table-head{
+    min-height:40px;
+    display:flex;
+    align-items:center;
+    font-weight:bold;
+     border-bottom:2px solid #E6E9ED;
+}
+.row-table{
+    min-height:40px;
+    display:flex;
+    align-items:center;
+    border-bottom:1px solid #E6E9ED;
+}
+.row-table:hover{
+    background: #E6E9ED;
+
+}
+.added-row{
+    display:none;
+}

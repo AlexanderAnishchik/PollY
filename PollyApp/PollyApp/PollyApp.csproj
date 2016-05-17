@@ -515,6 +515,7 @@
     <Content Include="Scripts\App\Controllers\headerController.js" />
     <Content Include="Scripts\App\Controllers\homeController.js" />
     <Content Include="Scripts\App\Controllers\pollController.js" />
+    <Content Include="Scripts\App\Directives\addRowDirective.js" />
     <Content Include="Scripts\App\Directives\enterDirective.js" />
     <Content Include="Scripts\App\Directives\highcharts-ng.js" />
     <Content Include="Scripts\App\Factory\accountSettings.js" />
