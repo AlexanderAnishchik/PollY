@@ -16,7 +16,6 @@
     };
     me.updatePollList = function (data) {
         me.updateChartsList(data);
-        debugger;
         me.pollList = data;
         
     };
