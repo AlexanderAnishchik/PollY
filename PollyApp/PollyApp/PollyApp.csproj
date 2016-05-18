@@ -468,6 +468,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Scripts\3rd\dark-unica.js" />
     <Content Include="Scripts\3rd\exporting.js" />
+    <Content Include="Scripts\3rd\FileSaver.min.js" />
     <Content Include="Scripts\3rd\highcharts.js" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
@@ -1339,6 +1340,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jquery1.8.2.min.js" />
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
@@ -1378,6 +1380,7 @@
     <Content Include="Views\Account\Profile.cshtml" />
     <Content Include="Views\Doc\Index.cshtml" />
     <Content Include="Views\Admission\NotExist.cshtml" />
+    <Content Include="Views\Account\Results.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

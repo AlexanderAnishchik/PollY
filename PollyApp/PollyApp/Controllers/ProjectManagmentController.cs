@@ -46,6 +46,7 @@ namespace PollyApp.Controllers
                            x.Id,
                            x.Name,
                            x.IsActive,
+                           x.UrlCode,
                            Type = x.PollType.Name,
                            Voted = Db.Context.ProjectAccessVoters.Where(z => z.ProjectId == x.Id).Count(),
                            DateVoters = Db.Context.ProjectAccessVoters.Where(z => z.ProjectId == x.Id && z.VotedOn > weekAgo).GroupBy(n => new { y = n.VotedOn.Value.Year, m = n.VotedOn.Value.Month, d = n.VotedOn.Value.Day }).Select(v => new
@@ -71,7 +72,8 @@ namespace PollyApp.Controllers
                       x.r.Id
                   }).Count();
                 var monthAgo = DateTime.Now.AddMonths(-1);
-                var lastProjectAction = Db.Context.Projects.Where(x => x.ModifiedOn > monthAgo && x.UserId == user.Id).Select(x => new ProjectActivity() { Name = x.Name, Type = "Added/Modified Project", ModifiedOn = x.ModifiedOn != null ? x.ModifiedOn.ToString() : null }).ToList();
+                var lastProjectAction = Db.Context.Projects.Where(x => x.ModifiedOn > monthAgo && x.UserId == user.Id).Select(x => new ProjectActivity()
+                                            { Name = x.Name, Type = "Added/Modified Project", ModifiedOn = x.ModifiedOn != null ? x.ModifiedOn.ToString() : null }).ToList();
                 var lastUserAction = Db.Context.ProjectAccessVoters.Where(x => x.ModifiedOn > monthAgo && x.Project.UserId == user.Id).Select(x => new ProjectActivity()
                 {
                     Name = x.UserSet.User != null ? x.UserSet.User.Email : x.UserSet.IPAdrress != null ? x.UserSet.IPAdrress : x.CodeSet.CodeText,

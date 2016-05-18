@@ -19,6 +19,9 @@
         me.pollList = data;
         
     };
+    me.getUrl = function (urlCode) {
+        return window.location.origin + "/poll/" + urlCode;
+    }
     me.updateChartsList = function (data) {
         data.forEach(function (el, ind) {
             data[ind].chart = {
