@@ -12,6 +12,7 @@
             }
         }
         var date = new Date(parseInt(newstring));
+        date = date.getDate() + " / " + "0" + (parseInt(date.getMonth()) + 1) + " / " + date.getFullYear() + " " + date.getHours() + ":" + date.getMinutes();
         return date;
     }
     me.updateQuestions = function(data) {
