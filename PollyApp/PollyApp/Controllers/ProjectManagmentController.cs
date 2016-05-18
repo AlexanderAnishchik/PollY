@@ -32,6 +32,24 @@ namespace PollyApp.Controllers
             return new JsonResult() { Data = "Bad Request" };
         }
         [UserAuth]
+        [HttpPost]
+        public ActionResult GetPollDataById(int Id)
+        {
+            if (Session["user"] != null)
+            {
+                User user = (User)Session["user"];
+                var userProject = Db.Context.Projects
+                    .Where(x => x.Id == Id)
+                    .Select(x =>x.UrlCode).FirstOrDefault();
+                if (userProject != null)
+                {
+                    var data = PollHelper.GetPoll(userProject);
+                    return new JsonResult() { Data = data };
+                }
+            }
+            return null;
+        }
+        [UserAuth]
         public ActionResult GetUserPollInformation()
         {
             if (Session["user"] != null)

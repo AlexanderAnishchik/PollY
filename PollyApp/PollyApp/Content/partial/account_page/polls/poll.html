@@ -1,7 +1,7 @@
-﻿<div ng-controller="accountPollResultController as pollCtrl">
+﻿<div ng-controller="accountPollResultController as pollCtrl" ng-init="pollCtrl.init()">
     <div class="page-title">
         <div class="title_left">
-            <h3>Project title <small> status</small></h3>
+            <h2>{{pollCtrl.project.Name}} <small> {{pollCtrl.project.IsActive?"Active":"Deactive"}}</small></h2>
         </div>
 
         <div class="title_right">
@@ -14,7 +14,7 @@
         <div class="col-md-12">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>New Partner Contracts Consultancy</h2>
+                    <h3>Poll information</h3>
 
                     <div class="clearfix"></div>
                 </div>
@@ -25,16 +25,16 @@
 
                         <ul class="stats-overview">
                             <li>
-                                <span class="name"> Estimated budget </span>
-                                <span class="value text-success"> 2300 </span>
+                                <span class="name"> Last changes  </span>
+                                <span class="value text-success"> {{pollCtrl.project.ModifiedOn}} </span>
                             </li>
                             <li>
-                                <span class="name"> Total amount spent </span>
-                                <span class="value text-success"> 2000 </span>
+                                <span class="name"> Date created </span>
+                                <span class="value text-success"> {{pollCtrl.project.ModifiedOn}} </span>
                             </li>
                             <li class="hidden-phone">
-                                <span class="name"> Estimated project duration </span>
-                                <span class="value text-success"> 20 </span>
+                                <span class="name"> Url </span>
+                                <span class="value text-success"> <a href="/poll/{{pollCtrl.project.Url}}">http://yourpolly.com/poll/{{pollCtrl.project.UrlCode}}</a></span>
                             </li>
                         </ul>
 
@@ -58,40 +58,23 @@
                                         <div class="col-xs-2">Actions</div>
 
                                     </div>
+                                    <div ng-repeat="question in pollCtrl.questionList">
+                                        <div class="row row-table" addrow >
+                                            <div class="col-xs-1">{{$index}}</div>
+                                            <div class="col-md-7 col-xs-5">{{question.Question.Value}}</div>
+                                            <div class="col-xs-2">{{question.Answers.length}}</div>
+                                            <div class="col-xs-2">View Edit Delete</div>
+                                        </div>
+                                        <div class="row added-row">
+                                            <div class="col-xs-12">
+                                                <highchart id="chart1"
+                                                           config="question.chart">
+                                                </highchart>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
 
-                                    <div class="row row-table" addrow>
-                                        <div class="col-xs-1">1</div>
-                                        <div class="col-md-7 col-xs-5">asdasd as dasd as dasdasd asd as d</div>
-                                        <div class="col-xs-2">250</div>
-                                        <div class="col-xs-2">View Edit Delete</div>
-                                    </div>
-                                    <div class="row added-row">
-                                        <div class="col-xs-12">
-                                            asdasd asdhasuidghasuig dasidu
-                                        </div>
-                                    </div>
-                                    <div class="row row-table" addrow>
-                                        <div class="col-xs-1">1</div>
-                                        <div class="col-md-7 col-xs-5">asdasd as dasd as dasdasd asd as d</div>
-                                        <div class="col-xs-2">250</div>
-                                        <div class="col-xs-2">View Edit Delete</div>
-                                    </div>
-                                    <div class="row added-row">
-                                        <div class="col-xs-12">
-                                            asdasd asdhasuidghasuig dasidu
-                                        </div>
-                                    </div>
-                                    <div class="row row-table" addrow>
-                                        <div class="col-xs-1">1</div>
-                                        <div class="col-md-7 col-xs-5">asdasd as dasd as dasdasd asd as d</div>
-                                        <div class="col-xs-2">250</div>
-                                        <div class="col-xs-2">View Edit Delete</div>
-                                    </div>
-                                    <div class="row added-row">
-                                        <div class="col-xs-12">
-                                            asdasd asdhasuidghasuig dasidu
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
