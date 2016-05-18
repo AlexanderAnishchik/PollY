@@ -194,6 +194,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PollResultController.cs" />
     <Compile Include="Controllers\ProjectManagmentController.cs" />
     <Compile Include="Controllers\PollController.cs" />
     <Compile Include="Controllers\TicketController.cs" />
@@ -1381,6 +1382,7 @@
     <Content Include="Views\Doc\Index.cshtml" />
     <Content Include="Views\Admission\NotExist.cshtml" />
     <Content Include="Views\Account\Results.cshtml" />
+    <Content Include="Views\PollResult\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

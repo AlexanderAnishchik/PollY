@@ -1,0 +1,205 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Dashboard | Polly</title>
+    <link href="~/Content/angular-material.css" rel="stylesheet" />
+    <link href="~/Content/angular-material.layouts.css" rel="stylesheet" />
+    <link href="~/Content/css/animate.css" rel="stylesheet">
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/css/custom.css" rel="stylesheet">
+    <link href="~/Content/css/font-awesome.css" rel="stylesheet" />
+    <link rel="icon" href="~/favicon.ico" type="image/x-icon">
+    <script src="~/Scripts/jquery-1.11.3.js"></script>
+    <script src="~/Scripts/3rd/highcharts.js"></script>
+    <script src="~/Scripts/3rd/exporting.js"></script>
+    <script src="~/Scripts/3rd/dark-unica.js"></script>
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/angular-ui/ui-bootstrap.js"></script>
+    <script src="~/Scripts/angular-ui/ui-bootstrap-tpls.min.js"></script>
+    <script src="~/Scripts/App/Modules/ngAnimation.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/front-end/custom.js"></script>
+    <link href="~/Content/css/green.css" rel="stylesheet" />
+    <script src="~/Scripts/angular-aria.js"></script>
+    <script src="~/Scripts/angular-animate.js"></script>
+    <script src="~/Scripts/App/app.js"></script>
+    <script src="~/Scripts/App/Directives/highcharts-ng.js"></script>
+    <script src="~/Scripts/App/Services/headerKeeperService.js"></script>
+    <script src="~/Scripts/App/Controllers/headerController.js"></script>
+    <script src="~/Scripts/App/Controllers/accountController.js"></script>
+    <script src="~/Scripts/App/Controllers/accountPollController.js"></script>
+    <script src="~/Scripts/App/Controllers/accountPollResultController.js"></script>
+    <script src="~/Scripts/angular-material/angular-material-mocks.js"></script>
+    <script src="~/Scripts/angular-material/angular-material.min.js"></script>
+    <script src="~/Scripts/App/Directives/addRowDirective.js"></script>
+</head>
+<body class="nav-sm" ng-app="Polly">
+    <div class="container body">
+
+
+        <div class="main_container">
+
+
+            <!-- page content -->
+
+            <div class="right_col" role="main">
+                <div class="page-title">
+                    <div class="title_left">
+                    </div>
+
+                    <div class="title_right">
+
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h3>TEST POLL<small> Deactivated</small></h3>
+
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="x_content">
+
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+
+                                    <ul class="stats-overview">
+                                        <li>
+                                            <span class="name"> Last changes  </span>
+                                            <span class="value text-success"> 24.07.16</span>
+                                        </li>
+                                        <li>
+                                            <span class="name"> Date created </span>
+                                            <span class="value text-success"> 24.07.15 </span>
+                                        </li>
+                                        <li class="hidden-phone">
+                                            <span class="name"> Url </span>
+                                            <span class="value text-success"> <a href="/poll/123bvh3126y">http://yourpolly.com/poll/</a></span>
+                                        </li>
+                                    </ul>
+
+                                    <div class="row">
+                                        <!--POLL SETINGS-->
+                                    </div>
+
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <div class="x_panel">
+                                            <div class="x_title">
+                                                <h2>Questions <small>500</small></h2>
+
+                                                <div class="clearfix"></div>
+                                            </div>
+                                            <div class="x_content">
+
+                                                <div class="row row-table-head">
+                                                    <div class="col-xs-1">#</div>
+                                                    <div class="col-md-7 col-xs-5">Title question</div>
+                                                    <div class="col-xs-2">Total answers</div>
+                                                    <div class="col-xs-2">Actions</div>
+
+                                                </div>
+                                                <div>
+                                                    <div class="row row-table" addrow>
+                                                        <div class="col-xs-1">1</div>
+                                                        <div class="col-md-7 col-xs-5">TEST</div>
+                                                        <div class="col-xs-2">10</div>
+                                                        <div class="col-xs-2">View Edit Delete</div>
+                                                    </div>
+
+                                                </div>
+                                                <div>
+                                                    <div class="row row-table" addrow>
+                                                        <div class="col-xs-1">1</div>
+                                                        <div class="col-md-7 col-xs-5">TEST</div>
+                                                        <div class="col-xs-2">10</div>
+                                                        <div class="col-xs-2">View Edit Delete</div>
+                                                    </div>
+
+                                                </div>
+                                                <div>
+                                                    <div class="row row-table" addrow>
+                                                        <div class="col-xs-1">1</div>
+                                                        <div class="col-md-7 col-xs-5">TEST</div>
+                                                        <div class="col-xs-2">10</div>
+                                                        <div class="col-xs-2">View Edit Delete</div>
+                                                    </div>
+
+                                                </div>
+                                                <div>
+                                                    <div class="row row-table" addrow>
+                                                        <div class="col-xs-1">1</div>
+                                                        <div class="col-md-7 col-xs-5">TEST</div>
+                                                        <div class="col-xs-2">10</div>
+                                                        <div class="col-xs-2">View Edit Delete</div>
+                                                    </div>
+
+                                                </div>
+                                                <div>
+                                                    <div class="row row-table" addrow>
+                                                        <div class="col-xs-1">1</div>
+                                                        <div class="col-md-7 col-xs-5">TEST</div>
+                                                        <div class="col-xs-2">10</div>
+                                                        <div class="col-xs-2">View Edit Delete</div>
+                                                    </div>
+
+                                                </div>
+                                                <div>
+                                                    <div class="row row-table" addrow>
+                                                        <div class="col-xs-1">1</div>
+                                                        <div class="col-md-7 col-xs-5">TEST</div>
+                                                        <div class="col-xs-2">10</div>
+                                                        <div class="col-xs-2">View Edit Delete</div>
+                                                    </div>
+
+                                                </div>
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="clearfix"></div>
+                                    <div class="col-xs-6">
+                                        <highchart id="chart1"
+                                                   config="question.chart">
+                                        </highchart>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <highchart id="chart1"
+                                                   config="question.chart">
+                                        </highchart>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /page content -->
+
+    </div>
+
+    <div id="custom_notifications" class="custom-notifications dsp_none">
+        <ul class="list-unstyled notifications clearfix" data-tabbed_notifications="notif-group"></ul>
+        <div class="clearfix"></div>
+        <div id="notif-group" class="tabbed_notifications"></div>
+    </div>
+
+</body>
+</html>
+
+

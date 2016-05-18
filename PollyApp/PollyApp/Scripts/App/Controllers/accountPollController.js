@@ -79,5 +79,9 @@
     me.updateView = function (view) {
         headerKeeperService.data.accountView = view;
     };
+    me.openPollResult = function (id) {
+        headerKeeperService.data.accountView = '/Content/partial/account_page/polls/poll.html';
+        headerKeeperService.data.pollId = id;
+    }
    
 }]);
