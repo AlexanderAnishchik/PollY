@@ -24,6 +24,18 @@
     }
     me.updateChartsList = function (data) {
         data.forEach(function (el, ind) {
+            var dateV = el.DateVoters;
+            if (dateV == null || dateV.length==0) {
+                var showPicture = $("#chartBlock" + ind);
+                return;
+            }
+            var result = [];
+            dateV.forEach(function (el, ind) {
+                var ob = [];
+                ob.push(Date.UTC(el.date.y, el.date.m, el.date.d));
+                ob.push(el.countVoters);
+                result.push(ob);
+            });
             data[ind].chart = {
                 options: {
                     chart: {
@@ -36,8 +48,9 @@
                     },
                     xAxis: {
                         type: 'datetime',
-                        dateTimeLabelFormats: {
-                            day: '%e %b'
+                        dateTimeLabelFormats: { // don't display the dummy year
+                            month: '%e. %b',
+                            year: '%b'
                         }
                     },
                     yAxis: {
@@ -57,10 +70,7 @@
                     loading: false
                 },
                 series: [{
-                    name: 'Voters',
-                    data: [3, 0, 3, 0,12, 1, 2],
-                    pointStart: Date.UTC(2016, 10, 5),
-                    pointInterval: 24 * 3600 * 1000 // one day
+                    data: result
                 }],
             };
         });
