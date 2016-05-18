@@ -13,5 +13,9 @@ namespace PollyApp.Controllers
         {
             return View();
         }
+        public ActionResult Credentials()
+        {
+            return View();
+        }
     }
 }
