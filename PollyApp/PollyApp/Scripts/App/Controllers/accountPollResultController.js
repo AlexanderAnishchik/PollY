@@ -21,8 +21,8 @@
             var result = [];
             el.Answers.forEach(function (el, ind) {
                 var ob = [];
-                // ob.push(JSON.parse(el.Value).value);
-                ob.push("dfgfsdg sdfg sdfoig spospodfhi g[s0erhg[0hser[80s[er0hsdfhb[sdifb[s9dufb[sf9g[-ser er- ger- 9ser-09gs]-0rgi]=seri0sg]-ir -g");
+                 ob.push(JSON.parse(el.Value).value);
+             
                 ob.push(el.CountVoted);
                 result.push(ob);
             });
