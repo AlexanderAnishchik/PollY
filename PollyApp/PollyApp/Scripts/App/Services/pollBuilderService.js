@@ -94,6 +94,8 @@
         self.save = function (hasUser,success, serverError) {
             $http.post("Constructor/SavePoll", { configPoll: self.validPollArray, poll: self.validPollArray.poll,hasUser:hasUser }).then(function (response) {
                 self.lastSavedProject = response.data.UrlCode;
+                var blob = new Blob(["Link to the survey - " + window.location.origin + "/poll/" + self.lastSavedProject], { type: "text/plain;charset=utf-8" });
+                saveAs(blob, self.pollData.PollName+".txt");
                 success();
             }, function (response) {
                 serverError();
