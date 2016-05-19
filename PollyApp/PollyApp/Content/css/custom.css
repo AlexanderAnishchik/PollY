@@ -6419,3 +6419,8 @@ md-card .panel_toolbox{
 .added-row{
     display:none;
 }
+.no-voters{
+    height:200px;
+    background:url(/Content/images/Polls/novoters.png);
+    background-position:center;
+}

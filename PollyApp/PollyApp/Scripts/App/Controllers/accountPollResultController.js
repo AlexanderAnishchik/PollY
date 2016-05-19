@@ -12,63 +12,178 @@
             }
         }
         var date = new Date(parseInt(newstring));
-        date = date.getDate() + " / " + "0" + (parseInt(date.getMonth()) + 1) + " / " + date.getFullYear() + " " + date.getHours() + ":" + date.getMinutes();
+        var hours = date.getHours();
+        var minutes = date.getMinutes();
+        var ampm = hours >= 12 ? 'pm' : 'am';
+        hours = hours % 12;
+        hours = hours ? hours : 12;
+        minutes = minutes < 10 ? '0' + minutes : minutes;
+        var strTime = hours + ':' + minutes + ' ' + ampm;
+        date = date.getDate() + " / " + "0" + (parseInt(date.getMonth()) + 1) + " / " + date.getFullYear() + " " + hours + ":" + minutes + " " + ampm;
+
         return date;
     }
-    me.updateQuestions = function(data) {
+    me.updateQuestions = function (data) {
+        me.chartTheme();
         data.forEach(function (el, ind) {
+            var result = [];
+            el.Answers.forEach(function (el, ind) {
+                var ob = [];
+                ob.push(JSON.parse(el.Value).value);
+
+                ob.push(el.CountVoted);
+                result.push(ob);
+            });
             data[ind].chart = {
                 options: {
                     chart: {
-                        type: 'area',
-                        inverted: true,
-                        height: 200,
+                        type: 'column'
+                    },
+                    title: {
+                        text: null
+                    },
+                    xAxis: {
+                        type: 'category',
+
+                    },
+                    yAxis: {
+                        allowDecimals: false,
+                        min: 0,
+                        title: {
+                            text: 'Answers rate (vote)'
+                        },
+                        stackLabels: {
+                            enabled: true,
+                            style: {
+                                fontWeight: 'bold',
+                                color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray',
+                            }
+                        }
+
                     },
                     legend: {
                         enabled: false
                     },
-                    xAxis: {
-                        type: 'datetime',
-                        dateTimeLabelFormats: {
-                            day: '%e %b'
+                    plotOptions: {
+                        column: {
+                            stacking: 'normal',
+                            dataLabels: {
+                                enabled: true,
+                                color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white',
+                                style: {
+                                    textShadow: '0 0 3px black'
+                                }
+                            }
                         }
                     },
-                    yAxis: {
-                        title: {
-                            text: 'Number of Voters'
-                        },
-                        min: 0,
-                        yAxis: {
-                            endOnTick: false,
-                            maxPadding: 0
-                        },
-                    },
 
-                    title: {
-                        text: null
-                    },
-                    loading: false
                 },
                 series: [{
-                    name: 'Voters',
-                    data: [3, 0, 3, 0, 12, 1, 2],
-                    pointStart: Date.UTC(2016, 10, 5),
-                    pointInterval: 24 * 3600 * 1000 // one day
-                }],
+                    name: 'Answers',
+                    data: result,
+
+                }]
             };
         });
     }
+    me.chartTheme = function () {
+        Highcharts.theme = {
+            colors: ["#17b092", "#8085e9", "#8d4654", "#7798BF", "#aaeeee", "#ff0066", "#eeaaee",
+      "#55BF3B", "#DF5353", "#7798BF", "#aaeeee"],
+            chart: {
+                backgroundColor: null,
+                style: {
+                    fontFamily: "Signika, serif"
+                }
+            },
+            title: {
+                style: {
+                    color: 'black',
+                    fontSize: '16px',
+                    fontWeight: 'bold'
+                }
+            },
+            subtitle: {
+                style: {
+                    color: 'black'
+                }
+            },
+            tooltip: {
+                borderWidth: 0
+            },
+            legend: {
+                itemStyle: {
+                    fontWeight: 'bold',
+                    fontSize: '13px'
+                }
+            },
+            xAxis: {
+                labels: {
+                    style: {
+                        color: '#6e6e70'
+                    }
+                }
+            },
+            yAxis: {
+                labels: {
+                    style: {
+                        color: '#6e6e70'
+                    }
+                }
+            },
+            plotOptions: {
+                series: {
+                    shadow: true
+                },
+                candlestick: {
+                    lineColor: '#404048'
+                },
+                map: {
+                    shadow: false
+                }
+            },
+
+            // Highstock specific
+            navigator: {
+                xAxis: {
+                    gridLineColor: '#D0D0D8'
+                }
+            },
+            rangeSelector: {
+                buttonTheme: {
+                    fill: 'white',
+                    stroke: '#C0C0C8',
+                    'stroke-width': 1,
+                    states: {
+                        select: {
+                            fill: '#D0D0D8'
+                        }
+                    }
+                }
+            },
+            scrollbar: {
+                trackBorderColor: '#C0C0C8'
+            },
+
+            // General
+            background2: '#E0E0E8'
+
+        };
+
+        // Apply the theme
+        Highcharts.setOptions(Highcharts.theme);
+    };
     me.init = function () {
-        $http.post("/ProjectManagment/GetPollDataById", {id:$scope.headerData.pollId})
+        $http.post("/ProjectManagment/GetPollDataById", { id: $scope.headerData.pollId })
             .then(function (response) {
                 me.project = response.data.Project;
                 me.project.ModifiedOn = $scope.parseToDate(me.project.ModifiedOn);
                 me.questionList = response.data.Questions;
                 me.updateQuestions(me.questionList);
-                
+
             }, function (response) {
 
             });
     };
-    
+
 }]);

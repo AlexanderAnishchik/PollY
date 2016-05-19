@@ -511,6 +511,7 @@
     <Content Include="Scripts\App\app.js" />
     <Content Include="Scripts\App\Controllers\accountController.js" />
     <Content Include="Scripts\App\Controllers\accountPollController.js" />
+    <Content Include="Scripts\App\Controllers\accountPollResultController.js" />
     <Content Include="Scripts\App\Controllers\apiController.js" />
     <Content Include="Scripts\App\Controllers\constructorController.js" />
     <Content Include="Scripts\App\Controllers\dialogController.js" />
