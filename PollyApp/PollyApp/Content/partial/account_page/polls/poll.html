@@ -1,20 +1,9 @@
 ﻿<div ng-controller="accountPollResultController as pollCtrl" ng-init="pollCtrl.init()">
-    <div class="page-title">
-        <div class="title_left">
-            <h2>{{pollCtrl.project.Name}} <small> {{pollCtrl.project.IsActive?"Active":"Deactive"}}</small></h2>
-        </div>
-
-        <div class="title_right">
-
-        </div>
-    </div>
-    <div class="clearfix"></div>
-
     <div class="row">
         <div class="col-md-12">
             <div class="x_panel">
                 <div class="x_title">
-                    <h3>Poll information</h3>
+                    <h3>{{pollCtrl.project.Name}} <small> {{pollCtrl.project.IsActive?"Active":"Deactive"}}</small></h3>
 
                     <div class="clearfix"></div>
                 </div>
@@ -45,7 +34,7 @@
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>Questions <small>500</small></h2>
+                                    <h2>Questions <small>{{pollCtrl.questionList.length}}</small></h2>
 
                                     <div class="clearfix"></div>
                                 </div>
