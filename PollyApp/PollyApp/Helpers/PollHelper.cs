@@ -57,6 +57,44 @@ namespace PollyApp.Helpers
             }
             return data;
         }
+        public static Object ChartPollData(string url)
+        {
+            Object data = null;
+            using (var Db = new Repository())
+            {
+                Db.Context.Configuration.LazyLoadingEnabled = false;
+                data = Db.Context.Projects
+                   .Where(f => f.UrlCode == url)
+                   .Select(n => new
+                   {
+                       Project = n,
+                       Questions = Db.Context.Questions
+                       .Join(Db.Context.Answers, q => q.Id, a => a.QuestionId, (q, a) => new { q, a })
+                       .Where(x => x.q.ProjectId == n.Id)
+                       .GroupBy(z => z.q, z => new
+                       {
+                           Answers = z.a
+                       })
+                       .Select(x => new
+                       {
+                           Question = new
+                           {
+                               Value = x.Key.Value,
+                               Id = x.Key.Id
+                           },
+                           Answers = x.Select(k => new
+                           {
+                               Value = k.Answers.Value,
+                               Id = k.Answers.Id,
+                               CountVoted=Db.Context.Results.Where(l=>l.AnswerId==k.Answers.Id).Count()
+                           }).ToList()
+                       })
+                       .ToList()
+                   })
+                   .FirstOrDefault();
+            }
+            return data;
+        }
         public static Int32? GetTimerValue(Int32 projectId)
         {
             using (var Db = new Repository())
