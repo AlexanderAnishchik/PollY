@@ -17,8 +17,14 @@
     me.updatePollList = function (data) {
         me.updateChartsList(data);
         me.pollList = data;
+        me.addPropertyIsHide(false, me.pollList);
         
     };
+    me.addPropertyIsHide = function (value, array) {
+        for (var i = 0; i < array.length; i++) {
+            array[i].isHide = value;
+        }
+    }
     me.getUrl = function (urlCode) {
         return window.location.origin + "/poll/" + urlCode;
     }
