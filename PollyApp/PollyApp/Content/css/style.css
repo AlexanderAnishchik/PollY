@@ -105,7 +105,9 @@ a {
     padding-top: 20px;
     color: white;
     padding-bottom: 20px;
-    height: auto;
+    height: 70vh;
+    display:flex;
+    align-items:center;
     background-color:#19283f;
     background-image: url(../images/met-stars.png), linear-gradient(#202023, #19283f);
     background-size: contain;
@@ -123,6 +125,7 @@ a {
     background-position-x: center;
     background-position-y: center;
     background-attachment: fixed;
+    min-height: 65px;
 }
 .has-error .input-group-addon {
   color: #a94442;
@@ -148,7 +151,7 @@ a {
 }
 
 #logo {
-    margin-right: 75px;
+    margin-right: 60px;
     margin-top: -5px;
     text-align: left;
 }
@@ -184,7 +187,7 @@ a {
 }
 
 .createpoll {
-    margin-top: 90px;
+    margin-top: 5%;
     text-align: center;
 }
 
@@ -1141,10 +1144,7 @@ growl-notification.fading.ng-leave.ng-leave-active {
         text-align: center;
     }
 
-    .header-block {
-        margin-top: 10%;
-        margin-bottom: 10%;
-    }
+   
     
 }
 
@@ -1152,10 +1152,7 @@ growl-notification.fading.ng-leave.ng-leave-active {
     .modal-dialog {
         margin: 5% auto;
     }
-    .header-block {
-        margin-top: 7%;
-        margin-bottom:7%;
-    }
+    
     .macbook {
         text-align: center;
     }
@@ -1168,10 +1165,7 @@ growl-notification.fading.ng-leave.ng-leave-active {
     .modal-dialog {
         margin: 5% auto;
     }
-    .header-block {
-        margin-top: 7%;
-        margin-bottom:7%;
-    }
+   
     .macbook {
         text-align: center;
     }
@@ -1181,10 +1175,7 @@ growl-notification.fading.ng-leave.ng-leave-active {
      .modal-dialog {
         margin: 5% auto;
      }
-     .header-block {
-        margin-top: 5%;
-        margin-bottom:5%;
-    }
+     
     .ipad {
         text-align: center;
     }
@@ -1230,10 +1221,7 @@ growl-notification.fading.ng-leave.ng-leave-active {
     #header {
         height: 100vh;
     }
-    .header-block {
-        margin-top: 20%;
-        margin-bottom:10%;
-    }
+    
     .choose-type .col-lg-offset-1 {
         margin-left: 0%;
     }
@@ -1297,10 +1285,7 @@ growl-notification.fading.ng-leave.ng-leave-active {
     #header {
         height: 100vh;
     }
-    .header-block {
-        margin-top: 20%;
-        margin-bottom:10%;
-    }
+   
     .big{
         font-size: 45px;
         font-weight: bold;
