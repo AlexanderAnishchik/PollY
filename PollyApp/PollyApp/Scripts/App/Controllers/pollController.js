@@ -53,7 +53,6 @@
         });
   
         $http.post("/Constructor/SaveResults", { poll: { PollResultQuestions: sendData }, project: $scope.data.Project }).then(function (response) {
-            alert("Success");
             $scope.data = me.parseAnswer(response.data);
         })
        .then(function (response) {

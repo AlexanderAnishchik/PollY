@@ -357,6 +357,7 @@
     <Content Include="Content\images\platform.png" />
     <Content Include="Content\images\poll.png" />
     <Content Include="Content\images\polls.png" />
+    <Content Include="Content\images\Polls\novoters.png" />
     <Content Include="Content\images\Polls\polly.jpg" />
     <Content Include="Content\images\pollycheckbox.png" />
     <Content Include="Content\images\pollylogo.png" />
@@ -368,6 +369,7 @@
     <Content Include="Content\images\question.png" />
     <Content Include="Content\images\quiz.png" />
     <Content Include="Content\images\right133.png" />
+    <Content Include="Content\images\sad.png" />
     <Content Include="Content\images\settings-big.png" />
     <Content Include="Content\images\settings.png" />
     <Content Include="Content\images\single.png" />
