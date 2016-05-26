@@ -97,8 +97,8 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Timer" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="CountRandom" Type="int" Nullable="false" />
+          <Property Name="Timer" Type="int" StoreGeneratedPattern="Identity" />
+          <Property Name="CountRandom" Type="int" />
         </EntityType>
         <EntityType Name="Result">
           <Key>
@@ -586,8 +586,8 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Timer" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CountRandom" Type="Int32" Nullable="false" />
+          <Property Name="Timer" Type="Int32" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountRandom" Type="Int32" />
           <NavigationProperty Name="Projects" Relationship="PollyDbModel.fk_Pr_QC" FromRole="QuizConfigurator" ToRole="Project" />
         </EntityType>
         <EntityType Name="Result">
