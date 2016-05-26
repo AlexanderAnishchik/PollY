@@ -32,6 +32,8 @@ namespace PollyApp.EFModel
         public string UrlCode { get; set; }
         public Nullable<int> AccessId { get; set; }
         public Nullable<int> QuizConfId { get; set; }
+        public string ProjectAccess { get; set; }
+        public string ProjectLink { get; set; }
     
         public virtual PollAccess PollAccess { get; set; }
         public virtual PollShare PollShare { get; set; }

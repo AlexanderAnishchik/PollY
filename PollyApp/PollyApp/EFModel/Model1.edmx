@@ -60,6 +60,8 @@
           <Property Name="UrlCode" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="AccessId" Type="int" />
           <Property Name="QuizConfId" Type="int" />
+          <Property Name="ProjectAccess" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProjectLink" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="ProjectAccessVoters">
           <Key>
@@ -94,8 +96,8 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Timer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Timer" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="CountRandom" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Result">
@@ -540,6 +542,8 @@
           <NavigationProperty Name="QuizConfigurator" Relationship="PollyDbModel.fk_Pr_QC" FromRole="Project" ToRole="QuizConfigurator" />
           <NavigationProperty Name="User" Relationship="PollyDbModel.FK_Project_User" FromRole="Project" ToRole="User" />
           <NavigationProperty Name="ProjectAccessVoters" Relationship="PollyDbModel.FK_ProjectAccessVoters_Project" FromRole="Project" ToRole="ProjectAccessVoter" />
+          <Property Name="ProjectAccess" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProjectLink" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="ProjectAccessVoter">
           <Key>
@@ -879,6 +883,8 @@
           <EntitySetMapping Name="Projects">
             <EntityTypeMapping TypeName="PollyDbModel.Project">
               <MappingFragment StoreEntitySet="Project">
+                <ScalarProperty Name="ProjectLink" ColumnName="ProjectLink" />
+                <ScalarProperty Name="ProjectAccess" ColumnName="ProjectAccess" />
                 <ScalarProperty Name="QuizConfId" ColumnName="QuizConfId" />
                 <ScalarProperty Name="AccessId" ColumnName="AccessId" />
                 <ScalarProperty Name="UrlCode" ColumnName="UrlCode" />
