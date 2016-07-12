@@ -254,6 +254,8 @@
                 if (response.data.status) {
                     $scope.accessData.secureCodes = response.data.codes;
                     pollBuilderService.saveCodeSet($scope.accessData.secureCodes);
+                    var blob = new Blob([response.data.codes], { type: "text/plain;charset=utf-8" });
+                    saveAs(blob, "codes.txt");
                 }
             })
         }

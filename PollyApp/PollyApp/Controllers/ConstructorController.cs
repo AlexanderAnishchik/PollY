@@ -36,7 +36,6 @@ namespace PollyApp.Controllers
                 return new JsonResult() { Data = null };
             }
         }
-        [HttpPost]
         public ActionResult GenerateCode(int count)
         {
             string[] arr = new string[count];
@@ -45,7 +44,7 @@ namespace PollyApp.Controllers
                 
                 for (int i = 0; i < arr.Length; i++)
                 {
-                    arr[i] = Guid.NewGuid().ToString().Replace("-", String.Empty).Substring(0, 10);
+                    arr[i] = Guid.NewGuid().ToString().Replace("-", String.Empty).Substring(1, 6);
                 }
                 return new JsonResult() { Data = new { status = true, codes = arr } };
             }
