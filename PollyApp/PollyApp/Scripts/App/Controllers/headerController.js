@@ -4,7 +4,7 @@
     me.registr = null;
     $scope.RegisterModalShowState = false;
     $scope.headerData = headerKeeperService.data;
-    
+
     me.init = function () {
         $scope.headerData.accountView = '/Content/partial/account_page/home/home.html';
         $http.get("/Account/GetUser").then(function (response) {
@@ -31,11 +31,11 @@
             templateUrl: 'loginregister.tmpl.html'
         });
         headerKeeperService.data.modalInstance = modalInstance;
-        
+
     };
     //===VALIDATION===
     $scope.passConfirm = true;
-    $scope.checkPasswordConfirmation = function (first,second) {
+    $scope.checkPasswordConfirmation = function (first, second) {
         if (first.$viewValue == second.$viewValue)
             $scope.passConfirm = true;
         else
@@ -53,10 +53,9 @@
                     me.init();
                     $scope.loader = false;
                     headerKeeperService.data.modalInstance.close("");
-                   //$window.location.reload();
+                    //$window.location.reload();
                 }
-                if (response.data.status == "Invalid Email or Password")
-                {
+                else {
                     $scope.loader = false;
                     $scope.errorAuth = "The login or password you’ve entered is incorrect. Forgot password?";
                 }
@@ -98,11 +97,11 @@
 
            });
         }
-        
-    };
-    
-   
 
-    
+    };
+
+
+
+
 }]);
 

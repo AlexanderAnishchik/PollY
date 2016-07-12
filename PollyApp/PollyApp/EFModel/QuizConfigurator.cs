@@ -21,8 +21,8 @@ namespace PollyApp.EFModel
         }
     
         public int Id { get; set; }
-        public int Timer { get; set; }
-        public int CountRandom { get; set; }
+        public Nullable<int> Timer { get; set; }
+        public Nullable<int> CountRandom { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Project> Projects { get; set; }
