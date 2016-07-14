@@ -27,7 +27,6 @@
                 clearInterval(timer);
             }
         },100);
-
     };
     me.endTimer = function () {
         

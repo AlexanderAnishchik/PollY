@@ -8,10 +8,11 @@
         <div class="col-md-2 col-xs-12" ng-repeat="poll in pollCtrl.pollList">
             <md-card>
                 <md-card-title>
-                    <md-card-title-text>
+                    <span class="hide tips">{{poll.Name}}</span>
+                    <md-card-title-text hide-title>
                         <span class="md-headline">{{poll.Name}}</span>
                     </md-card-title-text>
-                    <ul class="nav navbar-right panel_toolbox">
+                    <ul class="nav navbar-right panel_toolbox" >
                         <li>
                             <a class="collapse-link" ng-click="poll.isHide == true ? poll.isHide = false: poll.isHide = true"><i class="fa fa-chevron-up" ng-class="{'fa-chevron-down' : poll.isHide}"></i></a>
                         </li>

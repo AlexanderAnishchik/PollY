@@ -12,7 +12,27 @@ body.nav-sm .container.body .left_col {
     z-index: 200;
     background:#2a3f54;
 }
-
+.tips{
+    position:absolute;
+    top:-20px;
+    background:rgba(0,0,0,0.5);
+    padding:5px 10px;
+    max-width:180px;
+    color:#fff;
+    text-align:center;
+    border-radius:5px;
+}
+.tips:after{
+    position:absolute;
+    content:'';
+    border: 10px solid transparent;
+    border-top: 10px solid rgba(0,0,0,0.5);
+    display:block;
+    bottom:-20px;
+}
+.x_panel md-card-title{
+    height:90px;
+}
 body.nav-sm .container.body .right_col {
     padding: 10px 20px;
     margin-left: 70px;
@@ -291,7 +311,13 @@ body.nav-md .container.body .right_col {
 .dark {
     color: #34495E;
 }
+.hide-title:after{
+     content:"...";
 
+ }
+ .hide-title{
+
+ }
 .border-blue {
     border-color: #3498DB !important;
 }
