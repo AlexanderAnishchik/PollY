@@ -52,10 +52,14 @@ namespace PollyApp.Controllers
             }
         }
 
-        public ActionResult SetCode(string projectUrl)
+        public ActionResult SetCode(string projectUrl, string error)
         {
             try
             {
+				if (error != null && error != String.Empty)
+				{
+					ViewBag.Error = error;
+				}
                 SafeAdmission valid = ((List<SafeAdmission>)Session["admissions"]).Where(x => x.projectUrl == projectUrl).First();
                 if (valid != null && valid.AccessType == (Int32)DbEnum.PollAccess.CodeSet)
                 {
@@ -134,6 +138,10 @@ namespace PollyApp.Controllers
                     valid.Status = true;
                     return RedirectToAction("Index", "Poll", new { poll = valid.projectUrl });
                 }
+				else
+				{
+					return RedirectToAction("SetCode", "Admission", new { projectUrl = projectUrl, error = "Code has already been used or incorrect!" });
+				}
                     
             }
             return Redirect("/");
