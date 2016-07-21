@@ -125,10 +125,10 @@ namespace PollyApp.Controllers
                     .Join(Db.Context.ProjectAccessVoters, p => p.Id, pav => pav.ProjectId, (p, pav) => new { p, pav })
                     .Join(Db.Context.CodeSets, z => z.pav.CodeSetId, c => c.Id, (z, c) => new { z, c })
                     .Where(x => x.c.CodeText.Equals(access_code))
-                    .Where(x => x.z.p.UrlCode.Equals(valid.projectUrl) && x.z.pav.IsUsed==true)
+                    .Where(x => x.z.p.UrlCode.Equals(valid.projectUrl) && x.z.pav.IsUsed==false)
                     .Select(x => new { x.z.pav.Id })
                     .FirstOrDefault();
-                if (project==null)
+                if (project!=null)
                 {
                     valid.UserIdentity=project.Id;
                     valid.Status = true;
