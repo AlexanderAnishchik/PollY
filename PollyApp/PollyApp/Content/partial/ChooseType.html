@@ -1,54 +1,40 @@
-﻿<div class="step-number">
-    
-</div>
-
-<div class="container add-poll-content">
+﻿<div class="container">
     <div class="step-title">
         Let's get started
     </div>
     <div class="step-number">
         <strong>Choose type!</strong> Be careful, type cant't be changed, when poll have already created.
     </div>
-
     <div class="row choose-type">
-        <md-card class="col-lg-3 col-xs-12 col-lg-offset-1 col-xs-offset-0 col-sm-offset-0" ng-repeat="val in poll_type" ng-click="setPollType(val, $event);">
-            <md-card-header>
-                <md-card-avatar>
-                    <img ng-src="{{val.imagePath}}" />
-                </md-card-avatar>
-                <md-card-header-text>
-                    <span class="md-title">{{val.label}}</span>
-                    <span class="md-subhead">free</span>
-                </md-card-header-text>
-            </md-card-header>
-            
-            <md-card-title>
-                <md-card-title-text>
-                    <span class="md-headline">{{val.label}}</span>
-                </md-card-title-text>
-            </md-card-title>
-            <md-card-content>
-                <div ng-include src="val.path">
+        <div class="col-lg-12 col-xs-12">
+            <div class="row">
+                <div class="col-lg-4 col-xs-12 col-md-4 col-sm-4"  ng-repeat="val in poll_type">
+                    <md-card ng-click="setPollType(val, $event);">
+                        <md-card-header>
+                            <md-card-avatar>
+                                <img ng-src="{{val.imagePath}}" />
+                            </md-card-avatar>
+                            <md-card-header-text>
+                                <span class="md-title">{{val.label}}</span>
+                                <span class="md-subhead">free</span>
+                            </md-card-header-text>
+                        </md-card-header>
+
+                        <md-card-title>
+                            <md-card-title-text>
+                                <span class="md-headline">{{val.label}}</span>
+                            </md-card-title-text>
+                        </md-card-title>
+                        <md-card-content>
+                            <div ng-include src="val.path">
+                            </div>
+                        </md-card-content>
+                    </md-card>
                 </div>
-            </md-card-content>
-        </md-card>
-        <!--<div class="col-lg-3 col-xs-12 col-lg-offset-1 col-xs-offset-0 col-sm-offset-0 card card-md" ng-repeat="val in poll_type" ng-click="setPollType(val, $event);" >
-            <div class="header-card">
-                <img src="/Content/images/layout22.png" class="img-thumbnail" />
-            </div>
-            <div class="content-card-md content-card text-justify">
-                <div ng-include src="val.path">
-                </div>
-            </div>
-            <div class="footer-card">
-                
-                    <div class="col-lg-6 orange">
-                       {{val.label}}
-                    </div>
-                   
                 
             </div>
-        </div>-->
+        </div>
+        
         <div class="text-center">
             <md-button class="md-raised" ng-show="isBuilder" ng-click="setStep(settingsView.step4)">To builder</md-button>
         </div>

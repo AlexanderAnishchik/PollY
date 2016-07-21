@@ -638,10 +638,7 @@ md-dialog.md-default-theme .md-dialog-content p{
     font-weight:normal;
     letter-spacing:3px;
 }
-.sidebar-left.col-lg-2,
-.sidebar-right.col-lg-2{
-    padding:0;
-}
+
 .sidebar-right > .title{
     border-top-left-radius:5px;
     border-top-right-radius:5px;
@@ -682,9 +679,7 @@ md-dialog.md-default-theme .md-dialog-content p{
     color:#ffffff;
     background:#435e79;
 }
-.constructor .card > .content-card .col-lg-offset-1{
-    margin-left: 12.33333333%;
-}
+
 .constructor .card > .content-card{
    
 }
@@ -697,9 +692,7 @@ md-dialog.md-default-theme .md-dialog-content p{
 .footer-card > .row > .red{
     color:#e74c3c;
 }
-.choose-type  .col-lg-offset-1 {
-    margin-left: 6.3%;
-}
+
 .content-card > .row .form-group > .btn-group{
     margin-top:10px;
 }
