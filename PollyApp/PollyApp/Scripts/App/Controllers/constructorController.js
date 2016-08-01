@@ -77,7 +77,7 @@
     $scope.loader = false;
 
 
-    $scope.settings = { showSettings: false, notAppliedQuestionType: {} };
+    $scope.settings = { showSettings: false };
 
     var intr = setInterval(function () {
         var saveData = {
@@ -425,10 +425,6 @@
     		$scope.settings.showSettings = true;
     }
 
-    $scope.applySettings = function () {
-    	$scope.currentBlock.questionType = $scope.settings.notAppliedQuestionType;
-    	$scope.showSettingsBlock();
-    }
 
 }]);
 
