@@ -1103,6 +1103,8 @@ growl-notification.fading.ng-leave.ng-leave-active {
 }
 .img-settings{
     float:right;
+    position:absolute;
+    z-index: 8000;
 }
 .img-settings img:focus{
     outline:0;

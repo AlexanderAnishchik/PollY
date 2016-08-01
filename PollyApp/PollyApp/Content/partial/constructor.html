@@ -1,4 +1,4 @@
-﻿
+﻿<close-layer setting="settings" prop-name="showSettings" handler-name="showSettingsBlock"></close-layer>
 <script type="text/ng-template" id="pollsavetype.tmpl.html">
     <md-dialog aria-label="Save poll" ng-cloak>
         <form>
@@ -137,15 +137,16 @@
                             <label for="settings"><small>Type question</small></label>
                             <img src="/Content/images/cogwheel.png" ng-click="showSettingsBlock()" id="settings" />
 
-                            <div class="settings-card animated " ng-show="showSettings" ng-class="{ 'fadeInUp' : showSettings, 'fadeOutDown' : !showSettings} ">
+                            <div class="settings-card animated " ng-show="settings.showSettings" ng-class="{ 'fadeInUp' : settings.showSettings, 'fadeOutDown' : !settings.showSettings} ">
                                 <p>
-                                    <input type="radio" ng-value="1" ng-model="currentBlock.questionType" name="singormult" id="single" ng-checked="true" class="css-radio" /> <label for="single" class="css-labelr">Single choice</label>
-                                    <input type="radio" ng-value="2" ng-model="currentBlock.questionType" name="singormult" id="multiple" class="css-radio" /> <label for="multiple" class="css-labelr">Multiple choice</label><br />
+                                    <input type="radio" ng-value="1" ng-model="settings.notAppliedQuestionType" name="singormult" id="single" ng-checked="true" class="css-radio" /> <label for="single" class="css-labelr">Single choice</label>
+                                    <input type="radio" ng-value="2" ng-model="settings.notAppliedQuestionType" name="singormult" id="multiple" class="css-radio" /> <label for="multiple" class="css-labelr">Multiple choice</label><br />
                                 </p>
-                                <md-button class="md-raised" flex="100" flex-gt-md="auto" ng-click="showSettingsBlock()">
+                                <md-button class="md-raised" flex="100" flex-gt-md="auto" ng-click="applySettings()">
                                     Apply
                                 </md-button>
                             </div>
+                            
                         </div>
 
                     </div>
