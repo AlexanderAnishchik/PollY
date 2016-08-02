@@ -57,6 +57,47 @@ namespace PollyApp.Helpers
             }
             return data;
         }
+        public static Object GetFilteredPoll(int projectId,List<Int32> answers)
+        {
+            Object data = null;
+            using (var Db = new Repository())
+            {
+                Db.Context.Configuration.LazyLoadingEnabled = false;
+
+                var users = Db.Context.Projects
+                    .Join(Db.Context.ProjectAccessVoters, pr => pr.Id, pav => pav.ProjectId, (pr, pav) => new { pr, pav })
+                    .Join(Db.Context.Questions, pr_pav => pr_pav.pr.Id, q => q.ProjectId, (pr_pav, q) => new { pr_pav, q })
+                    .Join(Db.Context.Answers, pr_pav_q => pr_pav_q.q.Id, a => a.QuestionId, (pr_pav_q, a) => new { pr_pav_q, a })
+                    .Join(Db.Context.Results, pr_pav_q_a => pr_pav_q_a.pr_pav_q.pr_pav.pav.Id, r => r.VoterId, (pr_pav_q_a, r) => new { pr_pav_q_a, r })
+                    .Where(x => x.pr_pav_q_a.pr_pav_q.pr_pav.pr.Id == projectId)
+                    .Where(x => answers.Contains(x.pr_pav_q_a.a.Id));
+                   //.Select(n => new
+                   //{
+                   //    Project = n,
+                   //    QuizConfig = n.QuizConfigurator,
+                   //    Questions = Db.Context.Questions
+                   //    .Join(Db.Context.Answers, q => q.Id, a => a.QuestionId, (q, a) => new { q, a })
+                   //    .Where(x => x.q.ProjectId == n.Id)
+                   //    .GroupBy(z => z.q, z => new
+                   //    {
+                   //        Answers = z.a
+                   //    })
+                   //    .Select(x => new
+                   //    {
+                   //        Question = new
+                   //        {
+                   //            Value = x.Key.Value,
+                   //            Id = x.Key.Id,
+                   //            QuestionType = x.Key.QuestionType.Value
+                   //        },
+                   //        Answers = x.Select(k => new { Value = k.Answers.Value, Id = k.Answers.Id }).ToList()
+                   //    })
+                   //    .ToList()
+                   //})
+                   //.FirstOrDefault();
+            }
+            return data;
+        }
         public static Object ChartPollData(string url)
         {
             Object data = null;
