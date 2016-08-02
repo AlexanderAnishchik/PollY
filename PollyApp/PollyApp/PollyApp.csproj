@@ -265,6 +265,7 @@
     <Compile Include="Helpers\AccountHelper.cs" />
     <Compile Include="Helpers\ConstructorHelper.cs" />
     <Compile Include="Helpers\DbEnum.cs" />
+    <Compile Include="Helpers\LinqExtension.cs" />
     <Compile Include="Helpers\PollHelper.cs" />
     <Compile Include="Helpers\SafeAdmission.cs" />
     <Compile Include="JsonConverters\AnswerConverter.cs" />
