@@ -33,7 +33,7 @@ namespace PollyApp.Helpers
                    .Select(n => new
                    {
                        Project = n,
-                       QuizConfig=n.QuizConfigurator,
+                       QuizConfig=Db.Context.QuizConfigurators.Where(x=>x.Id==n.QuizConfId).Select(x=>new {x.Timer,x.CountRandom,x.Id }),
                        Questions = Db.Context.Questions
                        .Join(Db.Context.Answers, q => q.Id, a => a.QuestionId, (q, a) => new { q, a })
                        .Where(x => x.q.ProjectId == n.Id)
