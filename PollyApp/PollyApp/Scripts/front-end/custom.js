@@ -25,16 +25,16 @@ $(function () {
         		$('ul', this).slideDown();
         	}
         } else {
-            //if ($(this).is('.active')) {
-            //    $(this).removeClass('active');
-            //    $('ul', this).slideUp();
-            //} else {
-            //    $('#sidebar-menu li').removeClass('active');
-            //    $('#sidebar-menu li ul').slideUp();
+            if ($(this).is('.active')) {
+                $(this).removeClass('active');
+                $('ul', this).slideUp();
+            } else {
+                $('#sidebar-menu li').removeClass('active');
+                $('#sidebar-menu li ul').slideUp();
                 
-            //    $(this).addClass('active');
-            //    $('ul', this).slideDown();
-            //}
+                $(this).addClass('active');
+                $('ul', this).slideDown();
+            }
         }
     });
 
