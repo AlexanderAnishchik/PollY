@@ -1,4 +1,4 @@
-/* 
+-/* 
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -7,24 +7,34 @@
 /** ******  left menu  *********************** **/
 $(function () {
     $('#sidebar-menu li ul').slideUp();
-    $('#sidebar-menu li').removeClass('active');
+    //$('#sidebar-menu li').removeClass('active');
 
     $('#sidebar-menu li').on('click touchstart', function() {
         var link = $('a', this).attr('href');
 
-        if(link) { 
-            window.location.href = link;
+        if (link && window.location.href.indexOf(link) === -1) {
+        	//window.location.href = link;
+        	if ($(this).is('.active')) {
+        		$(this).removeClass('active');
+        		$('ul', this).slideUp();
+        	} else {
+        		$('#sidebar-menu li').removeClass('active');
+        		$('#sidebar-menu li ul').slideUp();
+
+        		$(this).addClass('active');
+        		$('ul', this).slideDown();
+        	}
         } else {
-            if ($(this).is('.active')) {
-                $(this).removeClass('active');
-                $('ul', this).slideUp();
-            } else {
-                $('#sidebar-menu li').removeClass('active');
-                $('#sidebar-menu li ul').slideUp();
+            //if ($(this).is('.active')) {
+            //    $(this).removeClass('active');
+            //    $('ul', this).slideUp();
+            //} else {
+            //    $('#sidebar-menu li').removeClass('active');
+            //    $('#sidebar-menu li ul').slideUp();
                 
-                $(this).addClass('active');
-                $('ul', this).slideDown();
-            }
+            //    $(this).addClass('active');
+            //    $('ul', this).slideDown();
+            //}
         }
     });
 

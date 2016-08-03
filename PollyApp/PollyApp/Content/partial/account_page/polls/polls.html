@@ -1,71 +1,72 @@
-﻿
-<div ng-controller="accountPollController as pollCtrl" ng-init="pollCtrl.init()" class="row">
-    <div class="x_panel">
-        <div class="x_title">
-            <h3>My polls<small> {{pollCtrl.pollList.length}}</small></h3>
-            <div class="clearfix"></div>
-        </div>
-        <div class="col-md-2 col-xs-12" ng-repeat="poll in pollCtrl.pollList">
-            <md-card>
-                <md-card-title>
-                    <span class="hide tips">{{poll.Name}}</span>
-                    <md-card-title-text hide-title>
-                        <span class="md-headline">{{poll.Name}}</span>
-                    </md-card-title-text>
-                    <ul class="nav navbar-right panel_toolbox" >
-                        <li>
-                            <a class="collapse-link" ng-click="poll.isHide == true ? poll.isHide = false: poll.isHide = true"><i class="fa fa-chevron-up" ng-class="{'fa-chevron-down' : poll.isHide}"></i></a>
-                        </li>
-                    </ul>
-                    <div class="clearfix"></div>
-                </md-card-title>
-                <div ng-show="!poll.isHide">
-                    <div ng-show="poll.DateVoters==null || poll.DateVoters.length==0" class="no-voters">
+﻿<div ng-init="mainCtrl.init()">
+    <div ng-controller="accountPollController as pollCtrl" ng-init="pollCtrl.init()" class="row">
+        <div class="x_panel">
+            <div class="x_title">
+                <h3>My polls<small> {{pollCtrl.pollList.length}}</small></h3>
+                <div class="clearfix"></div>
+            </div>
+            <div class="col-md-2 col-xs-12" ng-repeat="poll in pollCtrl.pollList">
+                <md-card>
+                    <md-card-title>
+                        <span class="hide tips">{{poll.Name}}</span>
+                        <md-card-title-text hide-title>
+                            <span class="md-headline">{{poll.Name}}</span>
+                        </md-card-title-text>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link" ng-click="poll.isHide == true ? poll.isHide = false: poll.isHide = true"><i class="fa fa-chevron-up" ng-class="{'fa-chevron-down' : poll.isHide}"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </md-card-title>
+                    <div ng-show="!poll.isHide">
+                        <div ng-show="poll.DateVoters==null || poll.DateVoters.length==0" class="no-voters">
 
-                    </div>
-                    <div ng-show="poll.DateVoters!=null && poll.DateVoters.length!=0">
-                        <highchart id="chart1"
-                                   config="poll.chart">
-                        </highchart>
-                    </div>
-                    <md-card-content>
-                        <div style="text-align: center; margin-bottom: 15px;">
-                            <md-card-actions layout="row" layout-align="center">
-                                <md-button ng-click="pollCtrl.openPollResult(poll.Id)">Open</md-button>
-                                <md-button ng-click="pollCtrl.deletePoll(poll.Id)">Delete</md-button>
-                            </md-card-actions>
                         </div>
+                        <div ng-show="poll.DateVoters!=null && poll.DateVoters.length!=0">
+                            <highchart id="chart1"
+                                       config="poll.chart">
+                            </highchart>
+                        </div>
+                        <md-card-content>
+                            <div style="text-align: center; margin-bottom: 15px;">
+                                <md-card-actions layout="row" layout-align="center">
+                                    <md-button ng-click="pollCtrl.openPollResult(poll.Id)">Open</md-button>
+                                    <md-button ng-click="pollCtrl.deletePoll(poll.Id)">Delete</md-button>
+                                </md-card-actions>
+                            </div>
 
-                        <div>
-                            <ul class="list-inline widget_tally">
-                                <li>
-                                    <p>
-                                        <span class="month">Project Type</span>
-                                        <span class="count">{{poll.Type}}</span>
-                                    </p>
-                                </li>
-                                <li>
-                                    <p>
-                                        <span class="month">Project Status</span>
-                                        <span class="count">{{poll.IsActive?"Active":"Deactive"}}</span>
-                                    </p>
-                                </li>
-                                <li>
-                                    <p>
-                                        <span class="month">Users Have Voted</span>
-                                        <span class="count">{{poll.Voted}}</span>
-                                    </p>
-                                </li>
-                                <li>
-                                    <p>
-                                        <span>{{pollCtrl.getUrl(poll.UrlCode)}}</span>
-                                    </p>
-                                </li>
-                            </ul>
-                        </div>
-                    </md-card-content>
-                </div>
-            </md-card>
+                            <div>
+                                <ul class="list-inline widget_tally">
+                                    <li>
+                                        <p>
+                                            <span class="month">Project Type</span>
+                                            <span class="count">{{poll.Type}}</span>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            <span class="month">Project Status</span>
+                                            <span class="count">{{poll.IsActive?"Active":"Deactive"}}</span>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            <span class="month">Users Have Voted</span>
+                                            <span class="count">{{poll.Voted}}</span>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            <span>{{pollCtrl.getUrl(poll.UrlCode)}}</span>
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </md-card-content>
+                    </div>
+                </md-card>
+            </div>
         </div>
     </div>
 </div>
