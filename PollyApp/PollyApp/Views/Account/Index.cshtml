@@ -29,7 +29,10 @@
     <link href="~/Content/css/green.css" rel="stylesheet" />
     <script src="~/Scripts/angular-aria.js"></script>
     <script src="~/Scripts/angular-animate.js"></script>
+    <script src="~/Scripts/angular-route.min.js"></script>
+    <script src="~/Scripts/angular-ui-router.min.js"></script>
     <script src="~/Scripts/App/app.js"></script>
+    <script src="~/Scripts/App/AccountPolly.js"></script>
     <script src="~/Scripts/App/Directives/highcharts-ng.js"></script>
     <script src="~/Scripts/App/Services/headerKeeperService.js"></script>
     <script src="~/Scripts/App/Controllers/headerController.js"></script>
@@ -40,8 +43,9 @@
     <script src="~/Scripts/angular-material/angular-material.min.js"></script>
     <script src="~/Scripts/App/Directives/addRowDirective.js"></script>
     <script src="~/Scripts/App/Directives/hideTitle.js"></script>
+    <base href="/Account/Index/">
 </head>
-<body class="nav-sm" ng-app="Polly">
+<body class="nav-sm" ng-app="AccountPolly">
     <div class="container body">
 
 
@@ -51,7 +55,7 @@
                 <div class="left_col scroll-view">
 
                     <div class="navbar nav_title site_title" style="border: 0;">
-                        <a href="/" class=""><img src="~/Content/images/pollylogogreensmall.png" /></a>
+                        <a href="~/" class=""><img src="~/Content/images/pollylogogreensmall.png" /></a>
                     </div>
                     <div class="clearfix"></div>
 
@@ -65,7 +69,7 @@
                             <h3>General</h3>
                             <ul class="nav side-menu">
                                 <li >    
-                                    <a href=""><img src="~/Content/images/Users/{{headerData.user.logo}}" alt="{{headerData.user.FirstName}} {{headerData.user.LastName}}" class="img-circle profile_img"></a>
+                                    <a><img src="~/Content/images/Users/{{headerData.user.logo}}" alt="{{headerData.user.FirstName}} {{headerData.user.LastName}}" class="img-circle profile_img"></a>
                                     <ul class="nav child_menu" style="display: none !important">
                                         <li>
                                             <a href="">Welcome,</a>
@@ -75,12 +79,12 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li>
-                                    <a ng-click="headCtrl.updateView('/Content/partial/account_page/home/home.html');"><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                                <li class="active">
+                                    <a ui-sref="home"><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                                     
                                 </li>
                                 <li>
-                                    <a ng-click="headCtrl.updateView('/Content/partial/account_page/polls/polls.html');"><i class="fa fa-edit"></i> Polls <span class="fa fa-chevron-down"></span></a>
+                                    <a ui-sref="polls"><i class="fa fa-edit"></i> Polls <span class="fa fa-chevron-down"></span></a>
                                    
                                 </li>
                                 <li>
@@ -107,8 +111,8 @@
             <!-- top navigation -->
             <!-- /top navigation -->
             <!-- page content -->
-            <div ng-controller="accountController as mainCtrl" ng-init="mainCtrl.init()" class="right_col" role="main">
-                <div ng-include src="headerData.accountView">
+            <div class="right_col" role="main">
+                <div ui-view ng-cloak>
                 </div>
             </div>
             <!-- /page content -->

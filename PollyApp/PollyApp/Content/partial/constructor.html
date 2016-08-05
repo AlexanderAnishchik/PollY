@@ -1,4 +1,4 @@
-﻿
+﻿<close-layer setting="settings" prop-name="showSettings" handler-name="showSettingsBlock"></close-layer>
 <script type="text/ng-template" id="pollsavetype.tmpl.html">
     <md-dialog aria-label="Save poll" ng-cloak>
         <form>
@@ -137,15 +137,19 @@
                             <label for="settings"><small>Type question</small></label>
                             <img src="/Content/images/cogwheel.png" ng-click="showSettingsBlock()" id="settings" />
 
-                            <div class="settings-card animated " ng-show="showSettings" ng-class="{ 'fadeInUp' : showSettings, 'fadeOutDown' : !showSettings} ">
-                                <p>
-                                    <input type="radio" ng-value="1" ng-model="currentBlock.questionType" name="singormult" id="single" ng-checked="true" class="css-radio" /> <label for="single" class="css-labelr">Single choice</label>
-                                    <input type="radio" ng-value="2" ng-model="currentBlock.questionType" name="singormult" id="multiple" class="css-radio" /> <label for="multiple" class="css-labelr">Multiple choice</label><br />
-                                </p>
-                                <md-button class="md-raised" flex="100" flex-gt-md="auto" ng-click="showSettingsBlock()">
-                                    Apply
-                                </md-button>
+                            <div class="settings-card animated container-fluid" ng-show="settings.showSettings" ng-class="{ 'fadeInUp' : settings.showSettings, 'fadeOutDown' : !settings.showSettings} ">
+                                <div class="col-lg-11 col-md-11 col-sm-11" style="display:inline-block;padding:0;">
+                                    <p >
+                                        <input type="radio" ng-value="1" ng-model="settings.notAppliedQuestionType" name="singormult" id="single" ng-checked="true" class="css-radio" /> <label for="single" class="css-labelr">Single choice</label>
+                                        <input type="radio" ng-value="2" ng-model="settings.notAppliedQuestionType" name="singormult" id="multiple" class="css-radio" /> <label for="multiple" class="css-labelr">Multiple choice</label><br />
+                                    </p>
+                                </div>
+                                
+                                <div class="col-lg-1 col-md-1 col-sm-1" style="display:inline-block; padding:0;">
+                                    <button class="btn btn-close" ng-click="showSettingsBlock()"></button>
+                                </div>
                             </div>
+                            
                         </div>
 
                     </div>

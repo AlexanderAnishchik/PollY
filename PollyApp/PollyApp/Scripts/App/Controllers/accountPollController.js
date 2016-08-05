@@ -93,13 +93,7 @@
 
            });
     }
-    me.updateView = function (view) {
-        headerKeeperService.data.accountView = view;
-    };
-    me.openPollResult = function (id) {
-        headerKeeperService.data.accountView = '/Content/partial/account_page/polls/poll.html';
-        headerKeeperService.data.pollId = id;
-    }
+
     me.chartTheme = function () {
         Highcharts.theme = {
             colors: ["#2b908f", "#90ee7e", "#f45b5b", "#7798BF", "#aaeeee", "#ff0066", "#eeaaee",

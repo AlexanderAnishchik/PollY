@@ -1,4 +1,4 @@
-﻿PollyApp.controller('accountPollResultController', ['$scope', '$http', 'headerKeeperService', function ($scope, $http, headerKeeperService) {
+﻿PollyApp.controller('accountPollResultController', ['$scope', '$http', 'headerKeeperService', '$stateParams', function ($scope, $http, headerKeeperService, $stateParams) {
     var me = this;
     $scope.headerData = headerKeeperService.data;
     me.project = {};
@@ -174,7 +174,8 @@
         Highcharts.setOptions(Highcharts.theme);
     };
     me.init = function () {
-        $http.post("/ProjectManagment/GetPollDataById", { id: $scope.headerData.pollId })
+    	$scope.headerData.pollId = $stateParams.pollId;
+    	$http.post("/ProjectManagment/GetPollDataById", { id: $stateParams.pollId })
             .then(function (response) {
                 me.project = response.data.Project;
                 me.project.ModifiedOn = $scope.parseToDate(me.project.ModifiedOn);
