@@ -784,17 +784,7 @@ fieldset[disabled] .btn-primary.focus {
   outline:none;
   border-color: #d7dce0;
 }
-.btn-vote.disabled:hover,
-.btn-vote[disabled]:hover,
-.btn-vote.disabled:focus,
-.btn-vote[disabled]:focus,
-.btn-vote.disabled.focus,
-.btn-vote[disabled].focus {
-  background-color: #1abc9c;
-  outline:none;
-  border-color: #d7dce0;
-  filter:alpha(opacity=100);
-}
+
 .btn-install .badge {
   color: #cccccc;
   background:none;
@@ -915,6 +905,24 @@ box-shadow: 0px 0px 5px 1px rgba(204,204,204,1);
      background:none;
      color:#1abc9c;
      border:1px solid #1abc9c;
+}
+.btn-vote.disabled,
+.btn-vote[disabled]{
+  background-color: #7f9a95;
+  outline:none;
+  border-color: #d7dce0;
+  filter:alpha(opacity=100);
+}
+.btn-vote.disabled:hover,
+.btn-vote[disabled]:hover,
+.btn-vote.disabled:focus,
+.btn-vote[disabled]:focus,
+.btn-vote.disabled.focus,
+.btn-vote[disabled].focus {
+  background-color: #7f9a95;
+  outline:none;
+  border-color: #d7dce0;
+  filter:alpha(opacity=100);
 }
 .secure_code{
     max-height:200px;
