@@ -32,7 +32,7 @@ namespace PollyApp.Controllers
             //918,922
            var users = PollHelper.GetFilteredPoll(237, new List<int>() { 918});
             PollHelper.ChartPollData("0057436918",users);
-
+			Logger.InfoFormat("Path {0} Method {1}",HttpContext.Request.Url,HttpContext.Request.HttpMethod);
             return View();
             
         }

@@ -579,6 +579,8 @@
     <Content Include="Metadata\deploymentTemplates\apiappconfig.azureresource.json" />
     <Content Include="apiapp.json" />
     <None Include="Properties\PublishProfiles\Publish.pubxml" />
+    <None Include="Properties\PublishProfiles\thepolly - Web Deploy %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\thepolly - Web Deploy %283%29.pubxml" />
     <None Include="Properties\PublishProfiles\thepolly - Web Deploy.pubxml" />
     <Content Include="Scripts\errors.json" />
     <Content Include="Scripts\angular.min.js.map" />
