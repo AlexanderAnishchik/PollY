@@ -19,9 +19,6 @@
 
           });
     };
-    me.updateView = function (view) {
-        $scope.headerData.accountView = view;
-    };
     $scope.isModalOpened = false;
     $scope.openModalBt = function () {
         var modalInstance = $uibModal.open({

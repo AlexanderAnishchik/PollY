@@ -52,6 +52,33 @@
     if ($scope.template == 'Content/partial/ChooseType.html') {
         $scope.next_template = 'Content/partial/ChooseAccess.html';
     }
+
+    $scope.settingsView = {
+    	step1: 'Content/partial/ChooseType.html',
+    	step2: 'Content/partial/ChooseAccess.html',
+    	step3: 'Content/partial/ChooseShare.html',
+    	step3Quiz: 'Content/partial/SetCountQuestion.html',
+    	step4: 'Content/partial/constructor.html',
+    };
+    $scope.steps = pollSettingsFactory.PollSteps;
+    $scope.isBuilder = $scope.steps[$scope.steps.length - 1].isDone;
+    $scope.step = $scope.settingsView.step1;
+
+    $scope.data = {};
+    $scope.builderData = {};
+    $scope.currentBlock = null;
+
+    $scope.description = "Please choose type of privacy. Be careful when you will be choosing type and think carefully before you make a choice, because this may depend on the number of voting.";
+
+    $scope.indexNotification = 0;
+    $scope.notifications = {};
+
+    $scope.error = null;
+    $scope.loader = false;
+
+
+    $scope.settings = { showSettings: false };
+
     var intr = setInterval(function () {
         var saveData = {
             builderData: $scope.builderData,
@@ -78,16 +105,7 @@
         }
         return true;
     }
-    $scope.settingsView = {
-        step1: 'Content/partial/ChooseType.html',
-        step2: 'Content/partial/ChooseAccess.html',
-        step3: 'Content/partial/ChooseShare.html',
-        step3Quiz: 'Content/partial/SetCountQuestion.html',
-        step4: 'Content/partial/constructor.html',
-    };
-    $scope.steps = pollSettingsFactory.PollSteps;
-    $scope.isBuilder = $scope.steps[$scope.steps.length - 1].isDone;
-    $scope.step = $scope.settingsView.step1;
+    
     $scope.setStep = function (stepValue) {
         $scope.step = stepValue;
         for (var i = 1; i < $scope.steps.length; i++) {
@@ -106,13 +124,7 @@
 
     }
 
-
-
-    $scope.data = {};
-    $scope.builderData = {};
-    $scope.currentBlock = null;
-
-    $scope.description = "Please choose type of privacy. Be careful when you will be choosing type and think carefully before you make a choice, because this may depend on the number of voting.";
+	  
     $scope.setShare = function (type) {
         $scope.privacyData.choosedLabel = type.label;
         pollBuilderService.setShare(type.value);
@@ -128,9 +140,7 @@
             return "disabled delete";
         return "delete";
     }
-    $scope.indexNotification = 0;
-    $scope.notifications = {};
-
+    
     $scope.addBlock = function (event, last) {
         if (!$scope.currentBlock.question.value) {
             var modalObject = {
@@ -333,8 +343,7 @@
         //        )
         //    }, function () { });
     }
-    $scope.error = null;
-    $scope.loader = false;
+    
     $scope.addNewField = function (email) {
         $scope.tmp = null;
         if (email != undefined && email != "") {
@@ -408,12 +417,12 @@
 
     }
 
-    $scope.showSettings = false;
+    
     $scope.showSettingsBlock = function () {
-        if ($scope.showSettings)
-            $scope.showSettings = false;
+    	if ($scope.settings.showSettings)
+    		$scope.settings.showSettings = false;
         else
-            $scope.showSettings = true;
+    		$scope.settings.showSettings = true;
     }
 
 

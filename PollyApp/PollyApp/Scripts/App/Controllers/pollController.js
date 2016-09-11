@@ -1,12 +1,14 @@
 ﻿PollyApp.controller('pollController', ['$scope', 'pollSettingsFactory', 'modalService', '$http', function ($scope, pollSettingsFactory, modalService, $http) {
     var me = this;
     $scope.data = null;
+    $scope.valid = true;
+    $scope.saved = false;
     me.result = [];
     me.init = function () {
         var pathArray = window.location.pathname.split('/');
         $http.post("/Constructor/GetPoll", { poll: pathArray[pathArray.length - 1] }).then(function (response) {
             $scope.data = me.parseAnswer(response.data);
-            if ($scope.data.QuizConfig) {
+            if (!_.isEmpty($scope.data.QuizConfig)) {
                 me.startTimer($scope.data.QuizConfig);
             }
         })
@@ -27,15 +29,21 @@
                 clearInterval(timer);
             }
         },100);
+
     };
     me.endTimer = function () {
         
     };
     me.isVote = false;
     me.save = function (event) {
-        debugger;
-        var sendData = me.prepareData();
-   var modalObject = {
+		//prevent second click
+    	me.isVote = true;
+
+    	var sendData = me.prepareData();
+		//if preparing data detected something wrong (Modal popups in callback)
+    	if (!$scope.valid) return;
+
+		var modalObject = {
             title: "Thank you!",
             textContent: "Your answers have been saved.",
             ariaLabel: "Your answers have been saved.",
@@ -64,12 +72,38 @@
         for (var qw in me.result) {
             var quest = { Id: qw };
             quest.Answers = [];
-            for (var an in me.result[qw]) {
-                if (me.result[qw][an])
-                quest.Answers.push(me.result[qw][an]);
+
+			//if chackbox
+            if (!_.isEmpty(me.result[qw]))
+				for (var an in me.result[qw]) {
+					if (me.result[qw][an])
+						quest.Answers.push(me.result[qw][an]);
+				}
+        	//if radiobutton or 1 checkbox selected 
+            if (_.isInteger(me.result[qw]))
+            	quest.Answers.push(me.result[qw]);
+
+            if (quest.Answers.length == 0) {
+            	$scope.valid = false;
+
+            	var modalObject = {
+            		title: "Attention!",
+            		textContent: "No answer have been chosen.",
+            		ariaLabel: "No answer have been chosen."
+            		//event: event
+            	};
+				//if some troubles heppens the Save button is enable again
+            	modalService.showAlert(modalObject, function () {
+            		me.isVote = false;
+            	}, function () {
+            		me.isVote = false;
+            	});
+            	return;
             }
-            finishData.push(quest);
+			else
+				finishData.push(quest);
         }
+        $scope.valid = true;
         return finishData;
     };
     me.parseAnswer = function (data) {

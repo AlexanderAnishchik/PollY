@@ -1,1 +1,1 @@
-﻿var PollyApp = angular.module('Polly', ['ngAnimate', 'ui.bootstrap', 'ngMaterial', 'ngAnimation', "highcharts-ng"]);
+﻿var PollyApp = angular.module('Polly', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'ngMaterial', 'ngAnimation', "highcharts-ng"]);

@@ -33,11 +33,18 @@
                         Enter an access code
                     </div>
                     <div class="content-card">
-                        @using (Html.BeginForm("ValidateCode","Admission"))
+                        @using (Html.BeginForm("ValidateCode", "Admission"))
                         {
-                        <div class="form-group">
-                            <input class="form-control" placeholder="Access code" name="access_code" />
-                        </div>
+                            if (ViewBag.Error != null)
+                            {
+                                <div class="text-danger">
+                                    <small>@ViewBag.Error</small>
+                                </div>
+}
+
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Access code" name="access_code" />
+                            </div>
                         @Html.HiddenFor(model => model.projectUrl, new { id = "projectUrl",name= "projectUrl" })
                         <div class="">
                             <button type="submit" class="btn btn-success btn-lg btn-block"><img src="~/Content/images/unlocked-padlock.png" /></button>

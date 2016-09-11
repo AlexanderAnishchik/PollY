@@ -29,6 +29,7 @@
     <script src="~/Scripts/angular-material/angular-material.js"></script>
     <script src="~/Scripts/angular-route.min.js"></script>
     <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/lodash.min.js"></script>
     <script src="~/Scripts/App/app.js"></script>
     <script src="~/Scripts/App/Directives/highcharts-ng.js"></script>
     <script src="~/Scripts/App/Services/modalService.js"></script>
@@ -62,7 +63,7 @@
                                 <div class="caption">
                                     <h2>{{it.Question.Value}}</h2>
                                     <p ng-repeat="answ in it.Answers">
-                                        <input type="radio" ng-value="{{answ.Id}}" ng-model="ctrl.result[it.Question.Id][answ.Id]" name="{{it.Question.Id}}" id="{{answ.Id}}" class="css-radio" /> <label for="{{answ.Id}}" class="css-labelr">{{answ.Value}}</label><br />
+                                        <input type="radio" ng-value="{{answ.Id}}" ng-model="ctrl.result[it.Question.Id]" name="{{it.Question.Id}}" id="{{answ.Id}}" class="css-radio" /> <label for="{{answ.Id}}" class="css-labelr">{{answ.Value}}</label><br />
                                     </p>
                                 </div>
                             </div>
@@ -82,7 +83,7 @@
                 </div>
             </div>
             <div class="row text-center">
-                <button ng-click="ctrl.save($event)" ng-disabled="ctrl.isVote" class="btn-vote">SAVE ANSWER</button>
+                <button ng-click="ctrl.save($event)" ng-disabled="ctrl.isVote" class="btn-vote" ng-class="{'disabled' : ctrl.isVote}">SAVE ANSWER</button>
             </div>
         </div>
         

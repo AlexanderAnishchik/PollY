@@ -54,15 +54,31 @@
             }
         };
         self.validatePoll = function (next,isSingle) {
+            var error = "In this type of poll must be more then 1 question";
             var hasError = false;
             self.validPollArray = JSON.parse(JSON.stringify(self.pollData));
             var poll_length = self.validPollArray.poll.length;
             while (poll_length--) {
                 if (self.validPollArray.poll[poll_length].question.value != null && self.validPollArray.poll[poll_length].question.value != "") {
                     var answer_status = true;
+                    var duplicate_answers = false;
                     while (answer_status) {
                         answer_status = false;
                         for (var i = 0; i < self.validPollArray.poll[poll_length].answers.length; i++) {
+                            if (duplicate_answers) {
+                                break;
+                            }
+                            if (i != self.validPollArray.poll[poll_length].answers.length - 1) {
+                                for (var j = i + 1; j < self.validPollArray.poll[poll_length].answers.length; j++) {
+                                    if (self.validPollArray.poll[poll_length].answers[i].value == self.validPollArray.poll[poll_length].answers[j].value) {
+                                        duplicate_answers = true;
+                                        error = "You have duplicated answers in one question!"
+                                        hasError = true;
+                                        return next(error, null);
+                                        break;
+                                    }
+                                }
+                            }
                             if (self.validPollArray.poll[poll_length].answers[i].value == null || self.validPollArray.poll[poll_length].answers[i].value == "") {
                                 self.validPollArray.poll[poll_length].answers.splice(i, 1);
                                 answer_status = true;
@@ -73,20 +89,23 @@
 
                             }
                         }
-                        if (self.validPollArray.poll[poll_length].answers < 2 && !isSingle) {
+                        if (self.validPollArray.poll[poll_length].answers.length < 2) {
                             self.validPollArray.poll.splice(poll_length, 1);
                             hasError = true;
+                            error = "Question must have more then one answer!";
                             var answer_status = false;
+                            return next(error, null);
                         }
                     }
                 } else {
+
                     hasError = true;
                     self.validPollArray.poll.splice(poll_length, 1);
                 }
 
             }
             if (self.validPollArray.poll.length < 2 && !isSingle || hasError == true) {
-                var error = "In this type of poll must be more then 1 question";
+                error = "Poll must have more then one question!"
                 return next(error, null);
             }
             return next(null, self.validPollArray);

@@ -43,7 +43,7 @@ namespace PollyApp.Controllers
                     .Select(x =>x.UrlCode).FirstOrDefault();
                 if (userProject != null)
                 {
-                    var data = PollHelper.ChartPollData(userProject);
+                    var data = PollHelper.ChartPollData(userProject,null);
                     return new JsonResult() { Data = data };
                 }
             }

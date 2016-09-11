@@ -52,10 +52,14 @@ namespace PollyApp.Controllers
             }
         }
 
-        public ActionResult SetCode(string projectUrl)
+        public ActionResult SetCode(string projectUrl, string error)
         {
             try
             {
+				if (error != null && error != String.Empty)
+				{
+					ViewBag.Error = error;
+				}
                 SafeAdmission valid = ((List<SafeAdmission>)Session["admissions"]).Where(x => x.projectUrl == projectUrl).First();
                 if (valid != null && valid.AccessType == (Int32)DbEnum.PollAccess.CodeSet)
                 {
@@ -125,15 +129,19 @@ namespace PollyApp.Controllers
                     .Join(Db.Context.ProjectAccessVoters, p => p.Id, pav => pav.ProjectId, (p, pav) => new { p, pav })
                     .Join(Db.Context.CodeSets, z => z.pav.CodeSetId, c => c.Id, (z, c) => new { z, c })
                     .Where(x => x.c.CodeText.Equals(access_code))
-                    .Where(x => x.z.p.UrlCode.Equals(valid.projectUrl) && x.z.pav.IsUsed==true)
+                    .Where(x => x.z.p.UrlCode.Equals(valid.projectUrl) && x.z.pav.IsUsed==false)
                     .Select(x => new { x.z.pav.Id })
                     .FirstOrDefault();
-                if (project==null)
+                if (project!=null)
                 {
                     valid.UserIdentity=project.Id;
                     valid.Status = true;
                     return RedirectToAction("Index", "Poll", new { poll = valid.projectUrl });
                 }
+				else
+				{
+					return RedirectToAction("SetCode", "Admission", new { projectUrl = projectUrl, error = "Code has already been used or incorrect!" });
+				}
                     
             }
             return Redirect("/");
