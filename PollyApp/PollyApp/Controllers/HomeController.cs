@@ -15,21 +15,26 @@ using PollyApp.Models;
 using System.Threading.Tasks;
 using SendGrid;
 using System.Net.Mail;
+using log4net;
 
 namespace PollyApp.Controllers
 {
     public class HomeController : Controller
     {
         private GenericRepository.Repository Db = new GenericRepository.Repository();
+        private static readonly ILog Logger = LogManager.GetLogger("AppLogger");
+
         // GET: Home
         [UserAuth]
         public ActionResult Index()
         {
             //237
             //918,922
-           var users= PollHelper.GetFilteredPoll(237, new List<int>() { 918});
+           var users = PollHelper.GetFilteredPoll(237, new List<int>() { 918});
             PollHelper.ChartPollData("0057436918",users);
+
             return View();
+            
         }
         [HttpPost]
 
