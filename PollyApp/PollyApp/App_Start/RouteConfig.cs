@@ -14,8 +14,10 @@ namespace PollyApp
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            
-            routes.MapRoute(null,
+            routes.MapRoute(name:"sitemap.xml",
+                url: "sitemap.xml",
+                defaults: new { controller = "Home", action = "SitemapXml"});
+            routes.MapRoute("getPoll",
               url: "Poll/{poll}",
               defaults: new { controller = "Poll", action = "Index", poll = RouteParameter.Optional }
             );

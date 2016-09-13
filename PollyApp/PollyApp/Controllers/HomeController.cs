@@ -9,51 +9,54 @@ using System.Linq;
 using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
-using System.Xml.Linq;
 using System.Data.Entity;
 using System.Web.Security;
 using PollyApp.Models;
+using PollyApp.Seo;
+using System.Xml.Linq;
 using System.Threading.Tasks;
 using SendGrid;
+using System.Globalization;
 using System.Net.Mail;
-using PollyApp.Seo;
+using log4net;
 
 namespace PollyApp.Controllers
 {
-
+    [RoutePrefix("")]
     public class HomeController : Controller
     {
         private GenericRepository.Repository Db = new GenericRepository.Repository();
-        // GET: Home
-        [UserAuth]
-        public ActionResult Index()
-        {
-            //237
-            //918,922
-           var users= PollHelper.GetFilteredPoll(237, new List<int>() { 918});
-            PollHelper.ChartPollData("0057436918",users);
-            return View();
-        }
+        private static readonly ILog Logger = LogManager.GetLogger("AppLogger");
 
+        // SEO *******************************************
+        public dynamic getPublicPolls()
+        {
+            var polls = Db.Context.Projects.Where(x => x.AccessId == 1);
+            return polls;
+        }
         public IReadOnlyCollection<SitemapNode> GetSitemapNodes(UrlHelper urlHelper)
         {
             List<SitemapNode> nodes = new List<SitemapNode>();
-
             nodes.Add(
                 new SitemapNode()
                 {
-                    Url = urlHelper.AbsoluteRouteUrl("HomeGetIndex"),
+                    Url = urlHelper.AbsoluteRouteUrl("Default"),
                     Priority = 1
                 });
-            nodes.Add(
-                new SitemapNode()
-                {
-                    Url = urlHelper.AbsoluteRouteUrl("ConstructorGetIndex"),
-                    Priority = 0.9
-                });
+            foreach (dynamic project in getPublicPolls())
+            {
+                nodes.Add(
+                    new SitemapNode()
+                    {
+                        Url = urlHelper.AbsoluteRouteUrl("getPoll", new { poll = project.UrlCode }),
+                        Frequency = SitemapFrequency.Weekly,
+                        Priority = 0.8
+                    });
+            }
 
             return nodes;
         }
+
         public string GetSitemapDocument(IEnumerable<SitemapNode> sitemapNodes)
         {
             XNamespace xmlns = "http://www.sitemaps.org/schemas/sitemap/0.9";
@@ -62,25 +65,24 @@ namespace PollyApp.Controllers
             foreach (SitemapNode sitemapNode in sitemapNodes)
             {
                 XElement urlElement = new XElement(
-                      xmlns + "url",
-                      new XElement(xmlns + "loc", Uri.EscapeUriString(sitemapNode.Url)),
-                      sitemapNode.LastModified == null ? null : new XElement(
-                          xmlns + "lastmod",
-                          sitemapNode.LastModified.Value.ToLocalTime().ToString("yyyy-MM-ddTHH:mm:sszzz")),
-                      sitemapNode.Frequency == null ? null : new XElement(
-                          xmlns + "changefreq",
-                          sitemapNode.Frequency.Value.ToString().ToLowerInvariant()),
-                      sitemapNode.Priority == null ? null : new XElement(
-                          xmlns + "priority",
-                          sitemapNode.Priority.Value.ToString()));
-                      root.Add(urlElement);
-              }
+                    xmlns + "url",
+                    new XElement(xmlns + "loc", Uri.EscapeUriString(sitemapNode.Url)),
+                    sitemapNode.LastModified == null ? null : new XElement(
+                        xmlns + "lastmod",
+                        sitemapNode.LastModified.Value.ToLocalTime().ToString("yyyy-MM-ddTHH:mm:sszzz")),
+                    sitemapNode.Frequency == null ? null : new XElement(
+                        xmlns + "changefreq",
+                        sitemapNode.Frequency.Value.ToString().ToLowerInvariant()),
+                    sitemapNode.Priority == null ? null : new XElement(
+                        xmlns + "priority",
+                        sitemapNode.Priority.Value.ToString("F1", CultureInfo.InvariantCulture)));
+                root.Add(urlElement);
+            }
 
-              XDocument document = new XDocument(root);
-              return document.ToString();
+            XDocument document = new XDocument(root);
+            return document.ToString();
         }
 
-        [Route("sitemap.xml")]
         public ActionResult SitemapXml()
         {
             var sitemapNodes = GetSitemapNodes(this.Url);
@@ -88,6 +90,26 @@ namespace PollyApp.Controllers
             Response.ContentType = "text/xml";
             return this.Content(xml);
         }
+        //END SEO ***********************************
+
+
+        // GET: Home
+        [UserAuth]
+        public ActionResult Index()
+        {
+            //237
+            //918,922
+            var users = PollHelper.GetFilteredPoll(237, new List<int>() { 918 });
+            PollHelper.ChartPollData("0057436918", users);
+            Logger.InfoFormat("Path {0} Method {1}", HttpContext.Request.Url, HttpContext.Request.HttpMethod);
+            return View();
+
+        }
+
+
+
+
+
 
         [HttpPost]
         public async Task<ActionResult> SendEmail(EmailModel mail)

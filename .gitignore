@@ -1,7 +1,5 @@
 /PollyApp/PollyApp/obj
 /PollyApp/PollyApp/bin
-/PollyApp/TestConsole/bin
 /PollyApp/TestConsole/obj
-/PollyApp/*.suo
-/PollyApp/PollyApp.v12.suo
+/PollyApp/TestConsole/bin
 /PollyApp/.vs
