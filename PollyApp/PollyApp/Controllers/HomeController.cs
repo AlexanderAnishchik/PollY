@@ -17,6 +17,7 @@ using System.Xml.Linq;
 using System.Threading.Tasks;
 using SendGrid;
 using System.Globalization;
+using System.Text;
 using System.Net.Mail;
 using log4net;
 
@@ -40,8 +41,22 @@ namespace PollyApp.Controllers
             nodes.Add(
                 new SitemapNode()
                 {
-                    Url = urlHelper.AbsoluteRouteUrl("Default"),
+                    Url = new System.UriBuilder(Request.Url.AbsoluteUri)
+                    {
+                        Path = Url.Content("~/"),
+                        Query = null,
+                    }.ToString(),
                     Priority = 1
+                });
+            nodes.Add(
+                new SitemapNode()
+                {
+                    Url = new System.UriBuilder(Request.Url.AbsoluteUri)
+                    {
+                        Path = Url.Content("~/Constructor"),
+                        Query = null,
+                    }.ToString(),
+                    Priority = 0.9
                 });
             foreach (dynamic project in getPublicPolls())
             {
@@ -83,6 +98,33 @@ namespace PollyApp.Controllers
             return document.ToString();
         }
 
+       
+        public ContentResult RobotsText()
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+
+            stringBuilder.AppendLine("user-agent: *");
+            stringBuilder.AppendLine("disallow: /Account/");
+            stringBuilder.AppendLine("allow: /Scripts/*.js");
+            stringBuilder.AppendLine("allow: /Scripts/angular-material/*.js");
+            stringBuilder.AppendLine("allow: /Scripts/angular-aria/*.js");
+            stringBuilder.AppendLine("allow: /Scripts/angular-ui/*.js");
+            stringBuilder.AppendLine("allow: /Scripts/App/*.js");
+            stringBuilder.AppendLine("allow: /Scripts/App/Controllers/*.js");
+            stringBuilder.AppendLine("allow: /Scripts/App/Directives/*.js");
+            stringBuilder.AppendLine("allow: /Scripts/App/Factory/*.js");
+            stringBuilder.AppendLine("allow: /Scripts/App/Modules/*.js");
+            stringBuilder.AppendLine("allow: /Scripts/App/Route/*.js");
+            stringBuilder.AppendLine("allow: /Scripts/App/Services/*.js");
+            stringBuilder.AppendLine("allow: /Scripts/*");
+            stringBuilder.AppendLine("allow: /Content/*.css");
+            stringBuilder.AppendLine("allow: /Content/css/*.css");
+            stringBuilder.Append("sitemap: ");
+            stringBuilder.AppendLine(this.Url.RouteUrl("getSitemapXml", null, this.Request.Url.Scheme).TrimEnd('/'));
+
+            return this.Content(stringBuilder.ToString(), "text/plain", Encoding.UTF8);
+        }
+
         public ActionResult SitemapXml()
         {
             var sitemapNodes = GetSitemapNodes(this.Url);
@@ -90,6 +132,7 @@ namespace PollyApp.Controllers
             Response.ContentType = "text/xml";
             return this.Content(xml);
         }
+
         //END SEO ***********************************
 
 
